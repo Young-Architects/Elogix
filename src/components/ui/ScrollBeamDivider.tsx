@@ -1,0 +1,32 @@
+"use client";
+
+import { motion } from "framer-motion";
+
+export default function ScrollBeamDivider() {
+  // Completely transparent wrapper with minimal vertical padding
+  return (
+    <div className="relative w-full flex justify-center py-0 overflow-hidden">
+      <div className="relative w-full max-w-4xl flex items-center justify-center">
+        
+        {/* The Core Animated Line (Shoots out from the center) */}
+        <motion.div
+          initial={{ opacity: 0, scaleX: 0 }}
+          whileInView={{ opacity: 1, scaleX: 1 }}
+          viewport={{ once: false, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="relative w-full h-[2px] bg-gradient-to-r from-transparent via-violet-500 to-transparent origin-center"
+        />
+        
+        {/* A tiny concentrated dot in the center for a sharp "laser" feel */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: false, margin: "-100px" }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-[2px] bg-violet-400 blur-[1px]"
+        />
+
+      </div>
+    </div>
+  );
+}

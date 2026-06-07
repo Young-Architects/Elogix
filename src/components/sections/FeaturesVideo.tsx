@@ -1,551 +1,394 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
-import {
-  motion,
-  MotionValue,
-  useMotionTemplate,
-  useMotionValue,
-  useSpring,
-  useTransform,
-} from "framer-motion";
-import {
-  Play,
-  ArrowUpRight,
-  Sparkles,
-  ShieldCheck,
-  Layers3,
-  Activity,
-} from "lucide-react";
+import { useRef, useState } from "react";
+import { motion, useMotionTemplate, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
+import { Play, ArrowUpRight, Sparkles, ShieldCheck, Layers3, Activity } from "lucide-react";
+import ScrollBeamDivider from "../ui/ScrollBeamDivider";
 
-const floatingBadges = [
+/* ─────────────────────────────────────────────
+   Badge config
+───────────────────────────────────────────── */
+const floatingBadges: Badge[] = [
   {
+    id: "auditing",
     title: "Autonomous Auditing",
+    subtitle: "AI-driven compliance checks",
     icon: ShieldCheck,
-    position:
-      "-top-5 left-1/2 -translate-x-1/2 lg:left-auto lg:right-16 lg:translate-x-0",
-    depth: 1.4,
+    color: "violet",
+    desktopClass: "hidden xl:flex -top-6 right-4 2xl:-right-6",
+    factor: { x: -8, y: -8 },
+    delay: 0.1,
   },
   {
+    id: "showreel",
     title: "Real-time Showreel",
+    subtitle: "Live render pipeline",
     icon: Activity,
-    position: "top-1/2 -right-4 -translate-y-1/2 lg:-right-8",
-    depth: 1.8,
+    color: "emerald",
+    desktopClass: "hidden xl:flex top-1/2 -translate-y-1/2 -right-6 2xl:-right-12",
+    factor: { x: 10, y: 5 },
+    delay: 0.2,
   },
   {
+    id: "ledger",
     title: "Ledger Sync",
+    subtitle: "Zero-latency reconciliation",
     icon: Layers3,
-    position: "-bottom-4 left-5 lg:left-12",
-    depth: 1.2,
+    color: "blue",
+    desktopClass: "hidden xl:flex -bottom-6 left-4 2xl:-left-6",
+    factor: { x: -6, y: 10 },
+    delay: 0.3,
   },
   {
+    id: "validation",
     title: "AI Validation",
+    subtitle: "Intelligent fraud detection",
     icon: Sparkles,
-    position: "top-20 -left-3 lg:-left-8",
-    depth: 1.6,
+    color: "amber",
+    desktopClass: "hidden xl:flex top-1/2 -translate-y-1/2 -left-6 2xl:-left-12",
+    factor: { x: -10, y: -5 },
+    delay: 0.4,
   },
 ];
 
-type FloatingBadgeProps = {
-  title: string;
-  icon: React.ElementType;
-  position: string;
-  depth: number;
-  mouseX: MotionValue<number>;
-  mouseY: MotionValue<number>;
+const colorMap = {
+  violet: {
+    icon: "bg-violet-100 text-violet-600",
+    dot: "bg-violet-500",
+    glow: "shadow-violet-200/60",
+  },
+  emerald: {
+    icon: "bg-emerald-100 text-emerald-600",
+    dot: "bg-emerald-500",
+    glow: "shadow-emerald-200/60",
+  },
+  blue: {
+    icon: "bg-blue-100 text-blue-600",
+    dot: "bg-blue-500",
+    glow: "shadow-blue-200/60",
+  },
+  amber: {
+    icon: "bg-amber-100 text-amber-600",
+    dot: "bg-amber-500",
+    glow: "shadow-amber-200/60",
+  },
 };
 
-function FloatingBadge({
-  title,
-  icon: Icon,
-  position,
-  depth,
-  mouseX,
-  mouseY,
-}: FloatingBadgeProps) {
-  const x = useTransform(mouseX, [-0.5, 0.5], [-18 * depth, 18 * depth]);
-  const y = useTransform(mouseY, [-0.5, 0.5], [-14 * depth, 14 * depth]);
+/* ─────────────────────────────────────────────
+   Badge Component (Desktop Floating)
+───────────────────────────────────────────── */
+type Badge = {
+  id: string;
+  title: string;
+  subtitle: string;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  color: keyof typeof colorMap;
+  desktopClass: string;
+  factor: { x: number; y: number };
+  delay: number;
+};
 
+function BadgePill({ badge, style, className = "" }: { badge: Badge; style?: React.CSSProperties; className?: string }) {
+  const c = colorMap[badge.color];
+  const Icon = badge.icon;
+  
   return (
     <motion.div
-      style={{ x, y }}
-      whileHover={{
-        scale: 1.08,
-        y: -2,
-      }}
-      transition={{
-        type: "spring",
-        stiffness: 220,
-        damping: 18,
-      }}
-      className={`absolute z-40 ${position}`}
+      initial={{ opacity: 0, scale: 0.88, y: 8 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ delay: badge.delay, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      className={`
+        absolute ${className}
+        pointer-events-none select-none
+        min-w-[180px] max-w-[220px]
+        rounded-2xl border border-white/80
+        bg-white/70 backdrop-blur-3xl
+        shadow-xl ${c.glow} 
+        px-3.5 py-2.5
+        ring-1 ring-black/5
+        z-30
+      `}
+      style={style}
     >
-      <div
-        className="
-          group relative overflow-hidden
-          rounded-2xl border border-white/[0.08]
-          bg-white/[0.04]
-          backdrop-blur-xl
-          shadow-[0_0_40px_rgba(124,58,237,0.12)]
-        "
-      >
-        <div
-          className="
-            absolute inset-0 opacity-0 transition-opacity duration-500
-            group-hover:opacity-100
-            bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.28),transparent_70%)]
-          "
-        />
-
-        <div className="relative flex items-center gap-3 px-4 py-3">
-          <div
-            className="
-              flex h-9 w-9 items-center justify-center rounded-xl
-              border border-white/[0.08]
-              bg-gradient-to-br from-violet-500/20 to-fuchsia-500/10
-            "
-          >
-            <Icon className="h-4 w-4 text-violet-200" />
-          </div>
-
-          <div className="overflow-hidden">
-            <p
-              className="
-                text-sm font-medium tracking-tight text-white/90
-                transition-all duration-300
-                group-hover:tracking-normal
-              "
-            >
-              {title}
-            </p>
-
-            <p className="text-[11px] text-white/40">
-              Interactive intelligence
-            </p>
-          </div>
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/60 to-transparent pointer-events-none" />
+      <div className="relative flex items-center gap-3">
+        <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${c.icon} ring-1 ring-white/60 shadow-sm`}>
+          <Icon className="h-4 w-4" />
+        </div>
+        <div className="min-w-0 flex-1">
+          <p className="text-[12px] font-bold leading-tight text-slate-800 truncate">{badge.title}</p>
+          <p className="text-[10px] font-medium leading-snug text-slate-500 truncate mt-0.5">{badge.subtitle}</p>
         </div>
       </div>
+      <span className="absolute top-2 right-2.5 flex h-2 w-2">
+        <span className={`absolute inline-flex h-full w-full animate-ping rounded-full ${c.dot} opacity-60`} />
+        <span className={`relative inline-flex h-2 w-2 rounded-full ${c.dot}`} />
+      </span>
     </motion.div>
   );
 }
 
-export default function ProductVideoShowcase() {
-  const containerRef = useRef<HTMLDivElement | null>(null);
+/* ─────────────────────────────────────────────
+   Main Section Component
+───────────────────────────────────────────── */
+export default function FeaturesVideo() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const rotateX = useSpring(
-    useTransform(mouseY, [-0.5, 0.5], [10, -10]),
-    {
-      stiffness: 90,
-      damping: 25,
-      mass: 0.8,
-    }
-  );
-
-  const rotateY = useSpring(
-    useTransform(mouseX, [-0.5, 0.5], [-12, 12]),
-    {
-      stiffness: 90,
-      damping: 25,
-      mass: 0.8,
-    }
-  );
-
-  const glowX = useSpring(mouseX, {
-    stiffness: 80,
-    damping: 20,
-  });
-
-  const glowY = useSpring(mouseY, {
-    stiffness: 80,
-    damping: 20,
-  });
-
-  const glowTranslateX = useTransform(glowX, [-0.5, 0.5], [-120, 120]);
-  const glowTranslateY = useTransform(glowY, [-0.5, 0.5], [-80, 80]);
-
-  const backgroundGlow = useMotionTemplate`
-    radial-gradient(
-      circle at 50% 50%,
-      rgba(139,92,246,0.24),
-      rgba(91,33,182,0.12),
-      transparent 70%
-    )
-  `;
+  // 3D Parallax logic
+  const rotateX = useMotionValue(0);
+  const rotateY = useMotionValue(0);
+  const springCfg = { stiffness: 90, damping: 22, mass: 0.5 };
+  const sX = useSpring(rotateX, springCfg);
+  const sY = useSpring(rotateY, springCfg);
+  const transform = useMotionTemplate`perspective(1200px) rotateX(${sX}deg) rotateY(${sY}deg)`;
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = containerRef.current?.getBoundingClientRect();
-
     if (!rect) return;
-
-    const width = rect.width;
-    const height = rect.height;
-
-    const x = (e.clientX - rect.left) / width - 0.5;
-    const y = (e.clientY - rect.top) / height - 0.5;
-
-    mouseX.set(x);
-    mouseY.set(y);
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    rotateX.set(y * -10); // Tilt
+    rotateY.set(x * 12);
+    
+    // Pass raw values to CSS variables for badges
+    containerRef.current?.style.setProperty("--mx", `${x}`);
+    containerRef.current?.style.setProperty("--my", `${y}`);
   };
 
   const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
+    rotateX.set(0);
+    rotateY.set(0);
+    containerRef.current?.style.setProperty("--mx", "0");
+    containerRef.current?.style.setProperty("--my", "0");
   };
 
   return (
-    <section
-      className="
-        relative overflow-hidden
-        bg-[#030617]
-        py-24 sm:py-28 lg:py-36
-      "
-    >
-      {/* Deep Background Grid */}
-      <div
-        className="
-          absolute inset-0
-          bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)]
-          bg-[size:72px_72px]
-          [mask-image:radial-gradient(circle_at_center,black,transparent_95%)]
-        "
-      />
+    <section className="relative overflow-hidden bg-slate-200 pb-20 md:pb-28 pt-0">
+    <ScrollBeamDivider />
+      
+      {/* ── Premium Breaker (Top Divider) ── */}
+      {/* <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-violet-300 to-transparent opacity-50" />
+      <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-white to-transparent" /> */}
 
-      {/* Ambient Glow Mesh */}
-      <motion.div
-        style={{
-          x: glowTranslateX,
-          y: glowTranslateY,
-          background: backgroundGlow,
-        }}
-        animate={{
-          opacity: [0.7, 1, 0.7],
-          scale: [1, 1.08, 1],
-        }}
-        transition={{
-          duration: 7,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="
-          absolute left-1/2 top-1/2
-          h-[520px] w-[520px]
-          -translate-x-1/2 -translate-y-1/2
-          rounded-full blur-[120px]
-        "
-      />
+      {/* ── Background Elements ── */}
+      <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
+        <div className="h-[40rem] w-[40rem] rounded-full bg-violet-400/10 blur-[120px]" />
+        <div className="h-[30rem] w-[30rem] rounded-full bg-fuchsia-400/10 blur-[100px] -translate-x-1/2 -translate-y-1/2" />
+      </div>
 
-      {/* Extra Blur Layer */}
-      <div
-        className="
-          absolute left-1/2 top-[55%]
-          h-[320px] w-[720px]
-          -translate-x-1/2
-          rounded-full
-          bg-violet-600/10
-          blur-[140px]
-        "
-      />
-
-      <div className="relative z-10 mx-auto max-w-7xl px-6">
-        {/* Header */}
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-12 lg:mt-20">
+        
+        {/* ── Header ── */}
         <div className="mx-auto max-w-3xl text-center">
-          <div
-            className="
-              inline-flex items-center gap-2
-              rounded-full border border-white/[0.08]
-              bg-white/[0.03]
-              px-4 py-2
-              backdrop-blur-xl
-            "
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 rounded-full border border-violet-200/60 bg-violet-100/50 px-4 py-1.5 backdrop-blur-md shadow-sm"
           >
-            <Sparkles className="h-4 w-4 text-violet-300" />
-
-            <span className="text-sm text-white/70">
+            <Sparkles className="h-3.5 w-3.5 text-violet-600" />
+            <span className="text-xs font-bold text-violet-800 tracking-wide">
               Interactive Product Intelligence
             </span>
-          </div>
+          </motion.div>
 
-          <h2
-            className="
-              mt-6 text-4xl font-semibold tracking-tight text-white
-              sm:text-5xl lg:text-6xl
-            "
+          <motion.h2
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.6 }}
+            className="mt-6 text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl"
           >
-            Your financial workflow,
-            <span
-              className="
-                bg-gradient-to-r from-violet-300 via-fuchsia-300 to-indigo-300
-                bg-clip-text text-transparent
-              "
-            >
-              {" "}
+            Your financial workflow,{" "}
+            <br className="hidden sm:block" />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-600 via-fuchsia-600 to-indigo-600">
               rendered in motion.
             </span>
-          </h2>
-
-          <p
-            className="
-              mx-auto mt-6 max-w-2xl
-              text-base leading-7 text-white/50 sm:text-lg
-            "
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-slate-500 font-medium sm:text-lg"
           >
-            Showcase intelligent approvals, AI-powered auditing, and live
-            operational visibility inside a cinematic product experience built
-            for modern finance teams.
-          </p>
+            Intelligent approvals, AI-powered auditing, and live operational visibility — inside a premium, cinematic product experience.
+          </motion.p>
         </div>
 
-        {/* Showcase */}
-        <div
-          ref={containerRef}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-          className="
-            relative mx-auto mt-20
-            flex max-w-6xl items-center justify-center
-            [perspective:1800px]
-          "
+        {/* ── 3D Card Stage ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
+          className="relative mx-auto mt-16 sm:mt-24 max-w-5xl"
         >
-          {/* Floating Badges */}
+          {/* Floating Badges (Hidden on tablets & mobile, uses grid below instead) */}
           {floatingBadges.map((badge) => (
-            <FloatingBadge
-              key={badge.title}
-              {...badge}
-              mouseX={mouseX}
-              mouseY={mouseY}
+            <BadgePill
+              key={badge.id}
+              badge={badge}
+              className={badge.desktopClass}
+              style={{
+                transform: `translate3d(calc(var(--mx,0) * ${badge.factor.x}px), calc(var(--my,0) * ${badge.factor.y}px), 0)`,
+              }}
             />
           ))}
 
-          {/* Main 3D Window */}
-          <motion.div
-            style={{
-              rotateX,
-              rotateY,
-              transformStyle: "preserve-3d",
-            }}
-            className="
-              relative w-full
-              rounded-[2rem]
-              border border-white/[0.08]
-              bg-slate-950/40
-              backdrop-blur-2xl
-              shadow-[0_40px_120px_rgba(0,0,0,0.75),0_0_0_1px_rgba(255,255,255,0.04),0_0_120px_rgba(91,33,182,0.18)]
-            "
+          {/* Main Container for 3D */}
+          <div
+            ref={containerRef}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            className="relative w-full z-20"
+            style={{ perspective: "1200px" }}
           >
-            {/* Reflection Layer */}
-            <div
-              className="
-                pointer-events-none absolute inset-0 rounded-[2rem]
-                bg-[linear-gradient(180deg,rgba(255,255,255,0.08),transparent_18%,transparent_82%,rgba(255,255,255,0.03))]
-              "
-            />
-
-            {/* Inner Shadow */}
-            <div
-              className="
-                absolute inset-0 rounded-[2rem]
-                shadow-[inset_0_1px_0_rgba(255,255,255,0.06),inset_0_-30px_80px_rgba(0,0,0,0.55)]
-              "
-            />
-
-            {/* Top Browser Bar */}
-            <div
-              className="
-                flex items-center justify-between
-                border-b border-white/[0.06]
-                px-5 py-4
-              "
+            <motion.div
+              style={{ transform, transformStyle: "preserve-3d" }}
+              className="relative w-full rounded-[24px] sm:rounded-[32px] p-[2px] shadow-2xl shadow-violet-500/10"
             >
-              <div className="flex items-center gap-2">
-                <div className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
-                <div className="h-2.5 w-2.5 rounded-full bg-yellow-400/70" />
-                <div className="h-2.5 w-2.5 rounded-full bg-emerald-400/70" />
+              {/* ── Border Beam Animation ── */}
+              <div className="absolute inset-0 rounded-[24px] sm:rounded-[32px] overflow-hidden -z-10">
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+                  className="absolute top-1/2 left-1/2 aspect-square w-[200%] -translate-x-1/2 -translate-y-1/2 bg-[conic-gradient(from_0deg,transparent_60%,rgba(139,92,246,0.8)_80%,transparent_100%)] opacity-70"
+                />
               </div>
 
-              <div
-                className="
-                  hidden rounded-full border border-white/[0.06]
-                  bg-white/[0.03]
-                  px-4 py-1 text-xs text-white/40
-                  sm:block
-                "
-              >
-                expendedesk.ai/dashboard-preview
-              </div>
+              {/* ── Inner Glass Card ── */}
+              <div className="relative w-full overflow-hidden rounded-[22px] sm:rounded-[30px] border border-white/60 bg-white/60 backdrop-blur-2xl shadow-inner">
+                
+                {/* Browser chrome */}
+                <div className="flex items-center justify-between border-b border-slate-200/50 bg-white/40 px-4 py-3 sm:px-6">
+                  <div className="flex items-center gap-2">
+                    <div className="h-3 w-3 rounded-full bg-red-400 shadow-sm" />
+                    <div className="h-3 w-3 rounded-full bg-amber-400 shadow-sm" />
+                    <div className="h-3 w-3 rounded-full bg-emerald-400 shadow-sm" />
+                  </div>
+                  <div className="flex-1 mx-4 max-w-sm mx-auto">
+                    <div className="flex items-center justify-center rounded-full border border-slate-200/60 bg-white/50 px-4 py-1.5 text-[11px] sm:text-xs font-semibold tracking-wide text-slate-500 shadow-sm">
+                      expendesk.com/tour
+                    </div>
+                  </div>
+                  <div className="w-9" /> {/* Spacer for balance */}
+                </div>
 
-              <div className="flex items-center gap-2 text-white/40">
-                <Sparkles className="h-4 w-4" />
-              </div>
-            </div>
-
-            {/* Video Area */}
-            <div className="relative aspect-[16/9] overflow-hidden rounded-b-[2rem]">
-              {/* Replace this with your actual video later */}
-              <div
-                className="
-                  absolute inset-0
-                  bg-[radial-gradient(circle_at_top,rgba(139,92,246,0.18),transparent_45%),linear-gradient(to_bottom,rgba(15,23,42,0.5),rgba(2,6,23,0.98))]
-                "
-              />
-
-              {/* Decorative Dashboard */}
-              <div className="absolute inset-0 p-5 sm:p-8">
-                <div className="grid h-full grid-cols-12 gap-4">
-                  {/* Sidebar */}
-                  <div
-                    className="
-                      col-span-3 hidden rounded-3xl
-                      border border-white/[0.06]
-                      bg-white/[0.03]
-                      p-4 lg:block
-                    "
-                  >
-                    <div className="space-y-3">
-                      {[1, 2, 3, 4, 5].map((i) => (
-                        <div
-                          key={i}
-                          className="
-                            h-10 rounded-2xl
-                            bg-white/[0.04]
-                          "
-                        />
-                      ))}
+                {/* Dashboard layout structure */}
+                <div className="p-3 sm:p-5 grid grid-cols-1 md:grid-cols-12 gap-4">
+                  
+                  {/* Sidebar (Hidden on small) */}
+                  <div className="hidden md:flex md:col-span-3 flex-col gap-3 rounded-xl border border-white/80 bg-white/50 p-4 shadow-sm">
+                    {[...Array(5)].map((_, i) => (
+                      <div key={i} className={`h-8 w-full rounded-lg ${i === 0 ? "bg-violet-100 border border-violet-200" : "bg-slate-100/60"}`} />
+                    ))}
+                    <div className="mt-auto space-y-2">
+                      <div className="h-6 w-full rounded-lg bg-slate-100/60" />
+                      <div className="h-6 w-full rounded-lg bg-slate-100/60" />
                     </div>
                   </div>
 
-                  {/* Main Panel */}
-                  <div className="col-span-12 lg:col-span-9">
-                    <div
-                      className="
-                        relative flex h-full flex-col overflow-hidden
-                        rounded-3xl border border-white/[0.06]
-                        bg-white/[0.03]
-                      "
-                    >
-                      {/* Fake Graph Glow */}
-                      <div
-                        className="
-                          absolute inset-0 opacity-60
-                          bg-[radial-gradient(circle_at_top_right,rgba(168,85,247,0.28),transparent_35%)]
-                        "
-                      />
-
-                      <div className="relative flex items-center justify-between border-b border-white/[0.05] px-6 py-5">
-                        <div>
-                          <h3 className="text-lg font-medium text-white">
-                            AI Finance Intelligence
-                          </h3>
-
-                          <p className="mt-1 text-sm text-white/40">
-                            Interactive platform preview
-                          </p>
-                        </div>
-
-                        <button
-                          className="
-                            group inline-flex items-center gap-2
-                            rounded-full border border-white/[0.08]
-                            bg-white/[0.04]
-                            px-4 py-2 text-sm text-white/80
-                            transition-all duration-300
-                            hover:border-violet-400/40
-                            hover:bg-violet-500/10
-                          "
-                        >
-                          Watch Flow
-
-                          <ArrowUpRight
-                            className="
-                              h-4 w-4 transition-transform duration-300
-                              group-hover:-translate-y-0.5
-                              group-hover:translate-x-0.5
-                            "
-                          />
-                        </button>
+                  {/* Main Video Area */}
+                  <div className="col-span-1 md:col-span-9 flex flex-col gap-4 rounded-xl border border-white/80 bg-white/50 p-3 sm:p-5 shadow-sm">
+                    
+                    {/* Top Bar inside dashboard */}
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="h-4 w-32 sm:w-48 rounded-md bg-slate-200" />
+                        <div className="h-2 w-20 sm:w-24 rounded-md bg-slate-100 mt-2" />
                       </div>
+                      <button className="flex items-center gap-1 rounded-lg bg-violet-600 px-3 py-1.5 text-xs font-semibold text-white shadow-md transition hover:bg-violet-700">
+                        Live Preview <ArrowUpRight className="h-3 w-3" />
+                      </button>
+                    </div>
 
-                      <div className="relative flex-1 p-6">
-                        <div className="grid h-full grid-cols-12 gap-4">
-                          <div
-                            className="
-                              col-span-12 rounded-3xl
-                              border border-white/[0.05]
-                              bg-black/20 p-5
-                              md:col-span-8
-                            "
+                    {/* Highly Structured Video Container */}
+                    <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-slate-900 shadow-2xl border border-slate-800 flex items-center justify-center group">
+                      
+                      {/* Placeholder Image / Video */}
+                      <video 
+                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isPlaying ? "opacity-100" : "opacity-40"}`} 
+                        poster="/video-placeholder.jpg" 
+                        muted 
+                        loop 
+                        playsInline
+                      >
+                        {/* <source src="YOUR_FUTURE_VIDEO.mp4" type="video/mp4" /> */}
+                      </video>
+
+                      {/* Fallback pattern if no poster */}
+                      <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(255,255,255,0.03)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.03)_50%,rgba(255,255,255,0.03)_75%,transparent_75%,transparent)] bg-[length:24px_24px] pointer-events-none" />
+
+                      <AnimatePresence>
+                        {!isPlaying && (
+                          <motion.button
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.8, opacity: 0 }}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => setIsPlaying(true)}
+                            className="relative z-10 flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-2xl transition-all hover:bg-white/20"
                           >
-                            <div
-                              className="
-                                flex h-full items-center justify-center
-                                rounded-[1.75rem]
-                                border border-dashed border-white/[0.08]
-                                bg-gradient-to-br from-violet-500/10 via-transparent to-indigo-500/10
-                              "
-                            >
-                              <button
-                                className="
-                                  group flex h-24 w-24 items-center justify-center
-                                  rounded-full
-                                  border border-white/10
-                                  bg-white/[0.08]
-                                  backdrop-blur-xl
-                                  transition-all duration-500
-                                  hover:scale-105
-                                  hover:bg-violet-500/20
-                                "
-                              >
-                                <div
-                                  className="
-                                    flex h-16 w-16 items-center justify-center
-                                    rounded-full
-                                    bg-gradient-to-br from-violet-500 to-fuchsia-500
-                                    shadow-[0_0_40px_rgba(168,85,247,0.55)]
-                                  "
-                                >
-                                  <Play
-                                    className="ml-1 h-6 w-6 fill-white text-white"
-                                  />
-                                </div>
-                              </button>
-                            </div>
-                          </div>
+                            <span className="absolute inset-0 rounded-full animate-ping bg-white/20 duration-1000" />
+                            <Play className="ml-1 h-6 w-6 sm:h-8 sm:w-8 fill-current drop-shadow-md" />
+                          </motion.button>
+                        )}
+                      </AnimatePresence>
+                    </div>
 
-                          <div className="col-span-12 space-y-4 md:col-span-4">
-                            {[1, 2, 3].map((item) => (
-                              <div
-                                key={item}
-                                className="
-                                  rounded-2xl border border-white/[0.05]
-                                  bg-white/[0.03]
-                                  p-4
-                                "
-                              >
-                                <div className="h-2 w-20 rounded-full bg-white/10" />
-
-                                <div className="mt-4 h-24 rounded-2xl bg-gradient-to-br from-violet-500/10 to-transparent" />
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
+                    {/* Bottom Stats inside dashboard */}
+                    <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-2">
+                      {[...Array(3)].map((_, i) => (
+                        <div key={i} className="h-8 sm:h-10 rounded-lg bg-slate-100/80 border border-slate-200/50" />
+                      ))}
                     </div>
                   </div>
                 </div>
               </div>
+            </motion.div>
+          </div>
 
-              {/* Noise Texture */}
-              <div
-                className="
-                  pointer-events-none absolute inset-0 opacity-[0.035]
-                  [background-image:url('https://grainy-gradients.vercel.app/noise.svg')]
-                "
-              />
+          {/* ── Mobile/Tablet Badge Grid (Visible below xl screens) ── */}
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 px-2 xl:hidden">
+            {floatingBadges.map((badge) => {
+              const c = colorMap[badge.color as keyof typeof colorMap];
+              const Icon = badge.icon;
+              return (
+                <div key={badge.id} className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white/80 backdrop-blur-xl shadow-sm p-3">
+                  <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${c.icon}`}>
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-bold text-slate-800 leading-tight truncate">{badge.title}</p>
+                    <p className="text-xs text-slate-500 font-medium mt-0.5 truncate">{badge.subtitle}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </motion.div>
+
+        {/* ── Stats Row ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+          className="mx-auto mt-16 flex flex-wrap items-center justify-center gap-x-12 gap-y-6 px-4"
+        >
+          {[
+            { value: "99.9%", label: "Uptime SLA" },
+            { value: "< 50ms", label: "Ledger Sync" },
+            { value: "SOC 2", label: "Type II Certified" },
+            { value: "10M+", label: "Transactions Audited" },
+          ].map((stat) => (
+            <div key={stat.label} className="text-center">
+              <p className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-violet-600 via-fuchsia-600 to-indigo-600">
+                {stat.value}
+              </p>
+              <p className="text-[11px] sm:text-xs text-slate-500 mt-1 font-bold tracking-widest uppercase">{stat.label}</p>
             </div>
-          </motion.div>
-        </div>
+          ))}
+        </motion.div>
+
       </div>
     </section>
   );
