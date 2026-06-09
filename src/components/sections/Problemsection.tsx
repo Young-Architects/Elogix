@@ -613,7 +613,7 @@ export default function ProblemSection() {
  
           <button className="group flex flex-shrink-0 items-center gap-2 rounded-full bg-violet-600 px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-violet-300/40 transition-all duration-200 hover:scale-[1.04] hover:bg-violet-700 hover:shadow-violet-400/50 active:scale-[0.97]">
             Upgrade Your Workflow
-            <span className="inline-block transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+            <span className="inline-block transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">➤</span>
           </button>
         </motion.div>
 

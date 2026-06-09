@@ -164,7 +164,7 @@ export default function FeaturesVideo() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-slate-200 pb-20 md:pb-28 pt-0">
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#f8f9ff] via-[#f1f3fe] to-[#eceef8] pb-20 md:pb-28 pt-0">
     <ScrollBeamDivider />
       
       {/* ── Premium Breaker (Top Divider) ── */}
