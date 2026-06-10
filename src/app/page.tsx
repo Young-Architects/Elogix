@@ -1,4 +1,5 @@
 import Navbar from "@/components/layout/Navbar";
+import BenefitsSection from "@/components/sections/BenefitsSection";
 import FeaturesVideo from "@/components/sections/FeaturesVideo";
 import HeroSection from "@/components/sections/HeroSection";
 import ProblemSection from "@/components/sections/Problemsection";
@@ -12,6 +13,7 @@ export default function Home() {
       <FeaturesVideo />
       <ProblemSection />
       <SolutionSection />
+      <BenefitsSection />
     </main>
   );
 }

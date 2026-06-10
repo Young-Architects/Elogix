@@ -619,9 +619,9 @@ export default function SolutionSection() {
                   </div>
                   <div className="space-y-2">
                     {[
-                      { name: "Amazon Web Servi...", amount: "$1,230.00", dept: "Engineering", status: "Approved" },
-                      { name: "Figma",               amount: "$340.00",   dept: "Design",      status: "Approved" },
-                      { name: "Uber",                amount: "$48.90",    dept: "Sales",       status: "Approved" },
+                      { name: "Cloud Services", amount: "$1,230.00", dept: "Engineering", status: "Approved" },
+                      { name: "Designing",               amount: "$340.00",   dept: "Design",      status: "Approved" },
+                      { name: "Transportation",                amount: "$48.90",    dept: "Sales",       status: "Approved" },
                     ].map((row, i) => (
                       <div key={i} className="flex items-center justify-between text-[11px]">
                         <span className="text-slate-300 truncate w-28">{row.name}</span>
