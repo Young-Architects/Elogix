@@ -10,10 +10,10 @@ export default function Home() {
     <main className="min-h-screen overflow-hidden bg-[#050816] text-white">
       <Navbar />
       <HeroSection />
-      <FeaturesVideo />
       <ProblemSection />
       <SolutionSection />
       <BenefitsSection />
+      <FeaturesVideo />
     </main>
   );
 }

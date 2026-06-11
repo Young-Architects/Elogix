@@ -112,7 +112,6 @@ function NodeDiagram() {
   const [svgBox,  setSvgBox]  = React.useState({ w: 0, h: 0 });
   const isInView = useInView(wrapRef, { once: true, margin: "-80px" });
 
-  // ── build bezier paths from real DOM rects ──────────────────────────────────
   const buildBeams = useCallback(() => {
     const wrap   = wrapRef.current;
     const center = centerRef.current;
@@ -153,7 +152,6 @@ function NodeDiagram() {
     setBeams(next);
   }, []);
 
-  // rebuild on resize
   useEffect(() => {
     const el = wrapRef.current;
     if (!el) return;
@@ -163,7 +161,6 @@ function NodeDiagram() {
     return () => { ro.disconnect(); clearTimeout(t); };
   }, [buildBeams]);
 
-  // animate beams once in view
   useEffect(() => {
     if (!isInView || !svgRef.current || beams.length === 0) return;
     const paths = svgRef.current.querySelectorAll<SVGPathElement>(".bp");
@@ -181,7 +178,6 @@ function NodeDiagram() {
 
   return (
     <div ref={wrapRef} className="relative w-full select-none">
-      {/* ── Glass card ── */}
       <div
         className="relative rounded-2xl overflow-hidden"
         style={{
@@ -191,7 +187,6 @@ function NodeDiagram() {
           boxShadow:      "0 8px 40px rgba(124,58,237,0.08), 0 2px 8px rgba(0,0,0,0.04)",
         }}
       >
-        {/* Header labels */}
         <div className="flex items-center justify-between px-4 sm:px-6 pt-4 pb-2 border-b border-slate-100/80">
           <span className="flex items-center gap-1.5 text-[11px] sm:text-xs font-bold tracking-widest uppercase text-rose-500">
             <span className="w-1.5 h-1.5 rounded-full bg-rose-400" />
@@ -203,14 +198,8 @@ function NodeDiagram() {
           </span>
         </div>
 
-        {/* ── 3-column grid: left nodes | center circle | right nodes ── */}
-        {/*
-          FIX: increased gap-x on mobile (was gap-x-1.5), wider center circle (was 48px),
-          and showed node icons on all screen sizes with responsive sizing.
-        */}
         <div className="grid grid-cols-[1fr_auto_1fr] gap-x-2 sm:gap-x-5 md:gap-x-7 px-2 sm:px-5 py-4 sm:py-5 items-center">
 
-          {/* LEFT — Chaos nodes */}
           <div className="flex flex-col gap-2 min-w-0">
             {chaosNodes.map((node, i) => (
               <React.Fragment key={`chaos-${i}`}>
@@ -219,22 +208,17 @@ function NodeDiagram() {
                   className="relative flex items-center gap-1.5 sm:gap-2 rounded-xl px-2 sm:px-2.5 py-2 sm:py-2.5 bg-white border border-rose-100 overflow-hidden"
                   style={{ boxShadow: "0 1px 6px rgba(244,63,94,0.07)" }}
                 >
-                  {/* left accent */}
                   <span className="absolute left-0 top-2 bottom-2 w-[3px] rounded-r-full bg-rose-400" />
-                  {/* icon — now always visible, responsive size */}
                   <span className="flex-shrink-0 w-5 h-5 sm:w-7 sm:h-7 rounded-md sm:rounded-lg bg-rose-50 flex items-center justify-center text-[10px] sm:text-sm leading-none">
                     {node.icon}
                   </span>
-                  {/* label */}
                   <span className="text-[11px] sm:text-[12px] md:text-[13px] font-semibold text-slate-800 leading-snug flex-1 min-w-0 break-words">
                     {node.label}
                   </span>
-                  {/* ✕ badge — hidden on mobile */}
                   <span className="flex-shrink-0 w-[18px] h-[18px] rounded-full bg-rose-50 border border-rose-200 items-center justify-center ml-1 hidden sm:flex">
                     <span className="text-rose-500 text-[8px] font-black leading-none">✕</span>
                   </span>
                 </div>
-                {/* down arrow */}
                 {i < chaosNodes.length - 1 && (
                   <div className="flex justify-center my-0.5">
                     <svg width="10" height="12" viewBox="0 0 10 12" fill="none">
@@ -247,13 +231,6 @@ function NodeDiagram() {
             ))}
           </div>
 
-          {/* CENTER — EXPENDESK circle */}
-          {/*
-            FIX: increased mobile circle from w-[48px]/h-[48px] → w-[68px]/h-[68px]
-            so beams look natural and the circle has visual weight on small screens.
-            Also made "E" text larger (text-xl vs text-sm) and show "EXPENDESK" label
-            on mobile at a slightly bigger size.
-          */}
           <div className="flex items-center justify-center">
             <div
               ref={centerRef}
@@ -263,7 +240,6 @@ function NodeDiagram() {
                 boxShadow:  "0 0 0 8px rgba(124,58,237,0.07),0 0 28px rgba(124,58,237,0.28)",
               }}
             >
-              {/* pulse ring */}
               <span
                 className="absolute inset-0 rounded-full animate-ping"
                 style={{ background: "rgba(124,58,237,0.1)", animationDuration: "2.5s" }}
@@ -278,7 +254,6 @@ function NodeDiagram() {
             </div>
           </div>
 
-          {/* RIGHT — Control nodes */}
           <div className="flex flex-col gap-2 min-w-0">
             {controlNodes.map((node, i) => (
               <React.Fragment key={`ctrl-${i}`}>
@@ -287,22 +262,17 @@ function NodeDiagram() {
                   className="relative flex items-center gap-1.5 sm:gap-2 rounded-xl px-2 sm:px-2.5 py-2 sm:py-2.5 bg-white border border-indigo-100 overflow-hidden"
                   style={{ boxShadow: "0 1px 6px rgba(79,70,229,0.07)" }}
                 >
-                  {/* icon — now always visible, responsive size */}
                   <span className="flex-shrink-0 w-5 h-5 sm:w-7 sm:h-7 rounded-md sm:rounded-lg bg-indigo-50 flex items-center justify-center text-[10px] sm:text-sm leading-none">
                     {node.icon}
                   </span>
-                  {/* label */}
                   <span className="text-[11px] sm:text-[12px] md:text-[13px] font-semibold text-slate-800 leading-snug flex-1 min-w-0 break-words">
                     {node.label}
                   </span>
-                  {/* ✓ badge — hidden on mobile */}
                   <span className="flex-shrink-0 w-[18px] h-[18px] rounded-full bg-emerald-50 border border-emerald-200 items-center justify-center ml-1 hidden sm:flex">
                     <span className="text-emerald-500 text-[8px] font-black leading-none">✓</span>
                   </span>
-                  {/* right accent */}
                   <span className="absolute right-0 top-2 bottom-2 w-[3px] rounded-l-full bg-indigo-400" />
                 </div>
-                {/* down arrow */}
                 {i < controlNodes.length - 1 && (
                   <div className="flex justify-center my-0.5">
                     <svg width="10" height="12" viewBox="0 0 10 12" fill="none">
@@ -316,7 +286,6 @@ function NodeDiagram() {
           </div>
         </div>
 
-        {/* ── SVG beam overlay (pointer-events none, covers entire card) ── */}
         {svgBox.w > 0 && (
           <svg
             ref={svgRef}
@@ -384,6 +353,155 @@ function StatCounter({ value, suffix, color }: { value: number; suffix: string; 
     <span ref={ref} className={`text-3xl sm:text-4xl font-black tabular-nums ${color}`}>
       0{suffix}
     </span>
+  );
+}
+
+// ─── Features Carousel (auto-scroll on mobile/tablet, grid on desktop) ────────
+
+function FeaturesSection() {
+  const trackRef   = useRef<HTMLDivElement>(null);
+  const animRef    = useRef<number | null>(null);
+  const pausedRef  = useRef(false);
+  const posRef     = useRef(0);
+  const [isPaused, setIsPaused] = React.useState(false);
+
+  // Auto-scroll: only runs on mobile/tablet (lg breakpoint = 1024px)
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const SPEED = 0.38; // slightly slower — easier to read
+
+    const step = () => {
+      if (!pausedRef.current && window.innerWidth < 1024) {
+        posRef.current += SPEED;
+        const half = track.scrollWidth / 2;
+        if (posRef.current >= half) posRef.current -= half;
+        track.style.transform = `translateX(-${posRef.current}px)`;
+      }
+      animRef.current = requestAnimationFrame(step);
+    };
+
+    animRef.current = requestAnimationFrame(step);
+    return () => { if (animRef.current) cancelAnimationFrame(animRef.current); };
+  }, []);
+
+  const pause  = () => { pausedRef.current = true;  setIsPaused(true);  };
+  const resume = () => { pausedRef.current = false; setIsPaused(false); };
+
+  // Duplicated cards for seamless loop
+  const allCards = [...features, ...features];
+
+  return (
+    <>
+      {/* ── Mobile / Tablet: auto-scroll carousel ── */}
+      <div className="lg:hidden">
+
+        {/* Pause hint pill — tells users they can hold to read */}
+        <div className="flex justify-center mb-3">
+          <span
+            className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold transition-all duration-300 ${
+              isPaused
+                ? "bg-violet-100 text-violet-700 border border-violet-200"
+                : "bg-slate-100 text-slate-400 border border-slate-200"
+            }`}
+          >
+            <span
+              className={`w-1.5 h-1.5 rounded-full transition-colors duration-300 ${
+                isPaused ? "bg-violet-500" : "bg-slate-300"
+              }`}
+            />
+            {isPaused ? "Paused — release to continue" : "Hold any card to pause & read"}
+          </span>
+        </div>
+
+        <div
+          className="relative overflow-hidden"
+          style={{
+            maskImage: "linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%)",
+          }}
+        >
+          <div
+            ref={trackRef}
+            className="flex gap-3 py-1"
+            style={{ width: "max-content", willChange: "transform" }}
+          >
+            {allCards.map((feat, i) => (
+              <div
+                key={i}
+                onPointerDown={pause}
+                onPointerUp={resume}
+                onPointerLeave={resume}
+                onTouchStart={pause}
+                onTouchEnd={resume}
+                className={`group relative cursor-pointer rounded-2xl p-4 flex-shrink-0 flex flex-col transition-all duration-200 select-none ${feat.border}`}
+                style={{
+                  width: "168px",
+                  background: "rgba(255,255,255,0.7)",
+                  border: "1px solid rgba(0,0,0,0.05)",
+                  backdropFilter: "blur(12px)",
+                  boxShadow: isPaused
+                    ? "0 4px 20px rgba(124,58,237,0.12)"
+                    : "0 2px 12px rgba(0,0,0,0.04)",
+                  transform: isPaused ? "scale(1.02)" : "scale(1)",
+                  transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                }}
+              >
+                <div className="absolute inset-x-0 top-0 h-px rounded-t-2xl bg-gradient-to-r from-transparent via-violet-400/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                {/* Icon */}
+                <div
+                  className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 flex-shrink-0 bg-gradient-to-br ${feat.color}`}
+                  style={{ border: "1px solid rgba(0,0,0,0.04)" }}
+                >
+                  <span className={feat.iconColor}>{feat.icon}</span>
+                </div>
+                {/* Dot */}
+                <div className={`w-1.5 h-1.5 rounded-full ${feat.dot} mb-2 opacity-60 flex-shrink-0`} />
+                {/* Title */}
+                <h4 className="text-slate-900 font-bold text-[12.5px] leading-snug mb-1.5 flex-shrink-0">
+                  {feat.title}
+                </h4>
+                {/* Description — sits naturally below, no extra space */}
+                <p className="text-slate-500 text-[11px] leading-relaxed">
+                  {feat.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ── Desktop: original 7-col grid ── */}
+      <div className="hidden lg:grid grid-cols-4 xl:grid-cols-7 gap-3 sm:gap-4">
+        {features.map((feat, i) => (
+          <motion.div key={i}
+            initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ delay: i * 0.07, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+            whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            className={`group relative cursor-default rounded-2xl p-4 flex flex-col transition-all duration-300 ${feat.border}`}
+            style={{
+              background: "rgba(255,255,255,0.7)",
+              border: "1px solid rgba(0,0,0,0.05)",
+              backdropFilter: "blur(12px)",
+              boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
+            }}
+          >
+            <div className="absolute inset-x-0 top-0 h-px rounded-t-2xl bg-gradient-to-r from-transparent via-violet-400/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div
+              className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 flex-shrink-0 transition-transform duration-300 group-hover:scale-110 bg-gradient-to-br ${feat.color}`}
+              style={{ border: "1px solid rgba(0,0,0,0.04)" }}
+            >
+              <span className={feat.iconColor}>{feat.icon}</span>
+            </div>
+            <div className={`w-1.5 h-1.5 rounded-full ${feat.dot} mb-2 opacity-60 flex-shrink-0`} />
+            <h4 className="text-slate-900 font-bold text-[12.5px] leading-snug mb-1.5 flex-shrink-0">{feat.title}</h4>
+            <p className="text-slate-500 text-[11px] leading-relaxed">{feat.desc}</p>
+          </motion.div>
+        ))}
+      </div>
+    </>
   );
 }
 
@@ -523,26 +641,8 @@ export default function SolutionSection() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-3 sm:gap-4">
-          {features.map((feat, i) => (
-            <motion.div key={i}
-              initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ delay: i * 0.07, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              className={`group relative cursor-default rounded-2xl p-4 transition-all duration-300 ${feat.border}`}
-              style={{ background: "rgba(255,255,255,0.7)", border: "1px solid rgba(0,0,0,0.05)", backdropFilter: "blur(12px)", boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
-              <div className="absolute inset-x-0 top-0 h-px rounded-t-2xl bg-gradient-to-r from-transparent via-violet-400/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 transition-transform duration-300 group-hover:scale-110 bg-gradient-to-br ${feat.color}`}
-                style={{ border: "1px solid rgba(0,0,0,0.04)" }}>
-                <span className={feat.iconColor}>{feat.icon}</span>
-              </div>
-              <div className={`w-1.5 h-1.5 rounded-full ${feat.dot} mb-2 opacity-60`} />
-              <h4 className="text-slate-900 font-bold text-[12.5px] leading-snug mb-1.5">{feat.title}</h4>
-              <p className="text-slate-500 text-[11px] leading-relaxed">{feat.desc}</p>
-            </motion.div>
-          ))}
-        </div>
+        {/* ── Carousel on mobile/tablet, grid on desktop ── */}
+        <FeaturesSection />
       </div>
 
       {/* Divider */}
