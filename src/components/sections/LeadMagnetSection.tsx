@@ -564,7 +564,7 @@ export default function LeadMagnetSection() {
               {LEAD_MAGNET_DATA.headline.plain2}
             </h2>
 
-            <p className="mx-auto mb-8 max-w-[480px] text-[15px] leading-[1.72] text-[#5a5580] sm:mx-0 sm:text-base">
+            <p className="mx-auto mb-8 max-w-[480px] text-[15px] leading-[1.72] font-medium text-[#5a5580] sm:mx-0 sm:text-base">
               {LEAD_MAGNET_DATA.subheadline}
             </p>
 
