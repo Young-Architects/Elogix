@@ -465,7 +465,7 @@ function IndustrySection() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#eceef8] via-[#f1f3fe] to-[#f8f9ff] pt-10 sm:pt-12 pb-16 sm:pb-20">
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#eceef8] via-[#f1f3fe] to-[#f8f9ff] pt-10 sm:pt-12 pb-16 sm:pb-10">
       {/* Background blobs */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 h-[28rem] w-[28rem] rounded-full bg-violet-400/8 blur-[90px]" />
