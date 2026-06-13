@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import Navbar from "@/components/layout/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
 import LeadMagnetSection from "@/components/sections/LeadMagnetSection";
+import TestimonialsSection from "@/components/sections/TestimonialsSection";
 
 // Below-fold sections: lazy loaded to reduce initial JS bundle
 // They render a minimal placeholder until the user scrolls near them
@@ -35,6 +36,7 @@ export default function Home() {
       <BenefitsSection />
       <FeaturesVideo />
       <LeadMagnetSection />
+      <TestimonialsSection />
     </main>
   );
 }
