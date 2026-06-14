@@ -1,0 +1,29 @@
+{
+  "items": [
+    {
+      "label": "Features",
+      "href": "#features",
+      "dropdown": [
+        { "iconKey": "bar-chart-2",      "label": "Analytics",  "desc": "Real-time spend insights",  "href": "#analytics"  },
+        { "iconKey": "zap",              "label": "Automation", "desc": "AI-powered workflows",       "href": "#automation" },
+        { "iconKey": "layout-dashboard", "label": "Dashboard",  "desc": "Unified control center",    "href": "#dashboard"  }
+      ]
+    },
+    {
+      "label": "Workflow",
+      "href": "#workflow",
+      "dropdown": [
+        { "iconKey": "users",       "label": "Teams",     "desc": "Collaborate seamlessly", "href": "#teams"     },
+        { "iconKey": "shield",      "label": "Approvals", "desc": "Multi-level control",    "href": "#approvals" },
+        { "iconKey": "credit-card", "label": "Budgets",   "desc": "Set & enforce limits",   "href": "#budgets"   }
+      ]
+    },
+    { "label": "Security", "href": "#security" },
+    { "label": "Pricing",  "href": "#pricing"  },
+    { "label": "Contact",  "href": "#contact"  }
+  ],
+  "cta": {
+    "label": "Book a Demo",
+    "href": "#demo"
+  }
+}

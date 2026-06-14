@@ -29,6 +29,7 @@ import {
   ArrowDown,
 } from "lucide-react";
 import ScrollBeamDivider from "../ui/ScrollBeamDivider";
+import featuresData from "@/data/sections/features.json";
 
 /* ═══════════════════════════════════════════════════════════════
    SHARED COLOR MAP
@@ -53,56 +54,32 @@ type Badge = {
 };
 
 /* ═══════════════════════════════════════════════════════════════
-   FEATURES VIDEO DATA
+   ICON MAPS — React components keyed by iconKey string in JSON
 ═══════════════════════════════════════════════════════════════ */
-const floatingBadges: Badge[] = [
-  {
-    id: "badge-capture",
-    title: "Expense Capture",
-    subtitle: "Submit receipts instantly via mobile, web, or upload.",
-    icon: Receipt,
-    color: "violet",
-    desktopClass: "hidden xl:flex -top-6 right-4 2xl:-right-6",
-    factor: { x: -8, y: -8 },
-    delay: 0.1,
-  },
-  {
-    id: "badge-approval",
-    title: "Automated Approvals",
-    subtitle: "Route expenses by team, department, or spend limit.",
-    icon: GitBranch,
-    color: "emerald",
-    desktopClass: "hidden xl:flex top-1/2 -translate-y-1/2 -right-6 2xl:-right-12",
-    factor: { x: 10, y: 5 },
-    delay: 0.2,
-  },
-  {
-    id: "badge-reimbursements",
-    title: "Reimbursements",
-    subtitle: "Track employee payouts with complete transparency.",
-    icon: Wallet,
-    color: "blue",
-    desktopClass: "hidden xl:flex -bottom-6 left-4 2xl:-left-6",
-    factor: { x: -6, y: 10 },
-    delay: 0.3,
-  },
-  {
-    id: "badge-policies",
-    title: "Expense Policies",
-    subtitle: "Enforce spending rules and approval hierarchies.",
-    icon: FileText,
-    color: "amber",
-    desktopClass: "hidden xl:flex top-1/2 -translate-y-1/2 -left-6 2xl:-left-12",
-    factor: { x: -10, y: -5 },
-    delay: 0.4,
-  },
-];
+const FLOATING_BADGE_ICON_MAP: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
+  "receipt":    Receipt,
+  "git-branch": GitBranch,
+  "wallet":     Wallet,
+  "file-text":  FileText,
+};
 
-const featureStats = [
-  { id: "stat-dashboards", value: "Real-Time", label: "Dashboards", sub: "Monitor spending trends & budgets as they happen" },
-  { id: "stat-analytics", value: "Reporting", label: "& Analytics", sub: "Finance, operations, and leadership teams" },
-  { id: "stat-integrations", value: "Accounting", label: "Integrations", sub: "Seamlessly connect with existing systems" },
-];
+const INDUSTRY_ICON_MAP: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
+  "monitor":   Monitor,
+  "cpu":       Cpu,
+  "briefcase": Briefcase,
+  "users":     Users,
+};
+
+/* ═══════════════════════════════════════════════════════════════
+   FEATURES VIDEO DATA — imported from @/data/sections/features.json
+═══════════════════════════════════════════════════════════════ */
+const floatingBadges: Badge[] = featuresData.featuresVideo.floatingBadges.map((b) => ({
+  ...b,
+  color: b.color as BadgeColor,
+  icon: FLOATING_BADGE_ICON_MAP[b.iconKey] ?? Receipt,
+}));
+
+const featureStats = featuresData.featuresVideo.stats;
 
 /* ═══════════════════════════════════════════════════════════════
    BADGE PILL
@@ -137,62 +114,13 @@ function BadgePill({ badge, style, className = "" }: { badge: Badge; style?: Rea
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   INDUSTRY DATA
+   INDUSTRY DATA — imported from @/data/sections/features.json
 ═══════════════════════════════════════════════════════════════ */
-const industries = [
-  {
-    id: "digital-agencies",
-    icon: Monitor,
-    label: "Digital Agencies",
-    tagline: "Project-level expense clarity",
-    description: "Track project expenses, client-related costs, and team spending — all scoped to individual engagements.",
-    stats: [{ value: "40%", label: "Less admin time" }, { value: "100%", label: "Project visibility" }],
-    color: "violet" as const,
-    accentFrom: "#7c3aed",
-    accentTo: "#a855f7",
-    glowColor: "rgba(139,92,246,0.18)",
-    badge: "Most Popular",
-  },
-  {
-    id: "it-tech",
-    icon: Cpu,
-    label: "IT & Technology",
-    tagline: "Distributed-team finance ops",
-    description: "Manage distributed teams, travel expenses, and operational budgets with automated policy enforcement.",
-    stats: [{ value: "3×", label: "Faster reimbursements" }, { value: "99%", label: "Policy compliance" }],
-    color: "emerald" as const,
-    accentFrom: "#059669",
-    accentTo: "#34d399",
-    glowColor: "rgba(16,185,129,0.15)",
-    badge: null,
-  },
-  {
-    id: "consulting",
-    icon: Briefcase,
-    label: "Consulting Firms",
-    tagline: "Client profitability, in focus",
-    description: "Control client expenses, reimbursements, and project profitability across every engagement.",
-    stats: [{ value: "60%", label: "Faster approvals" }, { value: "Zero", label: "Missed receipts" }],
-    color: "amber" as const,
-    accentFrom: "#d97706",
-    accentTo: "#fbbf24",
-    glowColor: "rgba(245,158,11,0.15)",
-    badge: null,
-  },
-  {
-    id: "professional",
-    icon: Users,
-    label: "Professional Services",
-    tagline: "Every expense, one place",
-    description: "Gain full visibility into every business expense — from billable hours to operational overhead.",
-    stats: [{ value: "5min", label: "Avg. submission" }, { value: "Live", label: "Budget tracking" }],
-    color: "blue" as const,
-    accentFrom: "#2563eb",
-    accentTo: "#60a5fa",
-    glowColor: "rgba(59,130,246,0.15)",
-    badge: null,
-  },
-];
+const industries = featuresData.industrySection.industries.map((ind) => ({
+  ...ind,
+  color: ind.color as keyof typeof industryColorMap,
+  icon: INDUSTRY_ICON_MAP[ind.iconKey] ?? Monitor,
+}));
 
 const industryColorMap = {
   violet: { dot: "bg-violet-500", iconBg: "bg-violet-100 text-violet-600", pillBg: "bg-violet-50 text-violet-700 border-violet-200", ring: "ring-violet-200", activeBorder: "border-violet-200/60" },
@@ -405,7 +333,7 @@ function DetailPanel({ industry }: { industry: (typeof industries)[0] }) {
 
           {/* Pill tags */}
           <div className="mt-4 flex flex-wrap gap-1.5">
-            {["Auto-approvals", "Real-time tracking", "Policy engine", "Audit logs"].map((pill) => (
+            {featuresData.industrySection.featurePills.map((pill) => (
               <span key={pill} className="text-[11px] font-semibold px-2.5 py-1 rounded-full border bg-white/60 border-slate-200/60 text-slate-500 backdrop-blur-sm">
                 {pill}
               </span>
@@ -490,7 +418,7 @@ function IndustrySection() {
             className="inline-flex items-center gap-2 rounded-full border border-violet-200/60 bg-violet-100/50 px-3.5 py-1 backdrop-blur-md shadow-sm mb-4"
           >
             <Layers className="h-3 w-3 text-violet-500" />
-            <span className="text-[11px] font-bold text-violet-700 tracking-wide uppercase">By Industry</span>
+            <span className="text-[11px] font-bold text-violet-700 tracking-wide uppercase">{featuresData.industrySection.badge}</span>
           </motion.div>
 
           <motion.h3
@@ -499,9 +427,9 @@ function IndustrySection() {
             transition={{ delay: 0.08, duration: 0.5 }}
             className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl"
           >
-            Built for the Way{" "}
+            {featuresData.industrySection.headlineParts.pre}{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-600 via-fuchsia-600 to-indigo-600">
-              Your Industry Operates.
+              {featuresData.industrySection.headlineParts.accent}
             </span>
           </motion.h3>
           <motion.p
@@ -510,7 +438,7 @@ function IndustrySection() {
             transition={{ delay: 0.15 }}
             className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-slate-500 font-medium sm:text-base"
           >
-            Every business manages expenses differently. Expendesk adapts to your workflow — not the other way around.
+            {featuresData.industrySection.subheading}
           </motion.p>
         </div>
 
@@ -530,7 +458,7 @@ function IndustrySection() {
                   <>
                     <ArrowDown className="h-3 w-3 text-violet-500 animate-bounce" />
                     <span className="text-[11px] font-semibold text-slate-500">
-                      Tap any industry — details appear below
+                      {featuresData.industrySection.interactionHints.mobile}
                     </span>
                   </>
                 ) : (
@@ -538,9 +466,9 @@ function IndustrySection() {
                   <>
                     <MousePointer2 className="h-3 w-3 text-violet-500" />
                     <span className="text-[11px] font-semibold text-slate-500">
-                      Click an industry
+                      {featuresData.industrySection.interactionHints.desktopMain}
                     </span>
-                    <span className="ml-1 text-[11px] text-slate-400">— the panel on the right updates instantly</span>
+                    <span className="ml-1 text-[11px] text-slate-400">{featuresData.industrySection.interactionHints.desktopSub}</span>
                   </>
                 )}
               </div>
@@ -604,8 +532,8 @@ function IndustrySection() {
             >
               <TrendingUp className="h-3.5 w-3.5 text-slate-400 shrink-0" />
               <div>
-                <p className="text-xs font-bold text-slate-500">More industries coming soon</p>
-                <p className="text-[11px] text-slate-400 font-medium mt-0.5">Healthcare, E-commerce, Non-profits & more</p>
+                <p className="text-xs font-bold text-slate-500">{featuresData.industrySection.comingSoon.label}</p>
+                <p className="text-[11px] text-slate-400 font-medium mt-0.5">{featuresData.industrySection.comingSoon.subtitle}</p>
               </div>
             </motion.div>
           </div>
@@ -709,7 +637,7 @@ export default function FeaturesVideoWithIndustry() {
               className="inline-flex items-center gap-2 rounded-full border border-violet-200/60 bg-violet-100/50 px-4 py-1.5 backdrop-blur-md shadow-sm"
             >
               <Sparkles className="h-3.5 w-3.5 text-violet-600" />
-              <span className="text-xs font-bold text-violet-800 tracking-wide">Interactive Product Intelligence</span>
+              <span className="text-xs font-bold text-violet-800 tracking-wide">{featuresData.featuresVideo.badge}</span>
             </motion.div>
 
             <motion.h2
@@ -718,10 +646,10 @@ export default function FeaturesVideoWithIndustry() {
               transition={{ delay: 0.1, duration: 0.6 }}
               className="mt-6 text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl"
             >
-              Your financial workflow,{" "}
+              {featuresData.featuresVideo.headlineParts.pre}{" "}
               <br className="hidden sm:block" />
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-600 via-fuchsia-600 to-indigo-600">
-                rendered in motion.
+                {featuresData.featuresVideo.headlineParts.accent}
               </span>
             </motion.h2>
 
@@ -731,7 +659,7 @@ export default function FeaturesVideoWithIndustry() {
               transition={{ delay: 0.2 }}
               className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-slate-500 font-medium sm:text-lg"
             >
-              Everything You Need to Manage Expenses Efficiently
+              {featuresData.featuresVideo.subheading}
             </motion.p>
           </div>
 
@@ -780,7 +708,7 @@ export default function FeaturesVideoWithIndustry() {
                     </div>
                     <div className="flex-1 mx-4 max-w-sm mx-auto">
                       <div className="flex items-center justify-center rounded-full border border-slate-200/60 bg-white/50 px-4 py-1.5 text-[11px] sm:text-xs font-semibold tracking-wide text-slate-500 shadow-sm">
-                        expendesk.com/tour
+                        {featuresData.featuresVideo.browserMockupUrl}
                       </div>
                     </div>
                     <div className="w-9" />

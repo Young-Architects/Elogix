@@ -15,6 +15,7 @@ import {
   Zap,
 } from "lucide-react";
 import { useEffect, useRef, useState, ReactNode } from "react";
+import heroData from "@/data/sections/hero.json";
 
 // Configure the Syne font
 const syne = Syne({
@@ -58,50 +59,24 @@ function Counter({ to, suffix = "", duration = 1.5 }: CounterProps) {
   );
 }
 
+/* ─────────────────────── icon maps ─────────────────────── */
+
+const TRUST_PILL_ICONS: Record<string, React.ElementType> = {
+  "shield-check":   ShieldCheck,
+  "zap":            Zap,
+  "eye":            Eye,
+};
+
+const FEATURE_CARD_ICONS: Record<string, React.ElementType> = {
+  "alert-triangle": AlertTriangle,
+  "git-branch":     GitBranch,
+  "eye":            Eye,
+  "clock":          Clock,
+};
+
 /* ─────────────────────── live expense ticker ─────────────────────── */
 
-const TICKER_ITEMS = [
-  {
-    id: 1,
-    name: "Arjun Mehta",
-    amount: "₹4,200",
-    cat: "Travel",
-    status: "approved",
-    time: "2m ago",
-  },
-  {
-    id: 2,
-    name: "Priya Sharma",
-    amount: "₹12,800",
-    cat: "Software",
-    status: "flagged",
-    time: "5m ago",
-  },
-  {
-    id: 3,
-    name: "Rohan Das",
-    amount: "₹780",
-    cat: "Meals",
-    status: "approved",
-    time: "9m ago",
-  },
-  {
-    id: 4,
-    name: "Sneha Kapoor",
-    amount: "₹34,000",
-    cat: "Conference",
-    status: "pending",
-    time: "14m ago",
-  },
-  {
-    id: 5,
-    name: "Vikram Singh",
-    amount: "₹2,100",
-    cat: "Office",
-    status: "approved",
-    time: "20m ago",
-  },
-];
+const TICKER_ITEMS = heroData.liveExpenseFeed.items;
 
 const STATUS_CONFIG = {
   approved: {
@@ -150,7 +125,7 @@ function LiveExpenseTicker() {
             <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
           </span>
           <span className="text-[11px] font-semibold tracking-wide text-slate-500">
-            Live Expense Feed
+            {heroData.liveExpenseFeed.title}
           </span>
         </div>
         <span className="text-[10px] font-medium text-slate-400">
@@ -210,9 +185,9 @@ function LiveExpenseTicker() {
       {/* bottom summary */}
       <div className="flex items-center justify-between border-t border-black/[0.04] px-4 py-2.5">
         <span className="text-[10px] font-medium text-slate-400">
-          Total processed today
+          {heroData.liveExpenseFeed.totalLabel}
         </span>
-        <span className="text-[11px] font-bold text-indigo-600">₹2,14,680</span>
+        <span className="text-[11px] font-bold text-indigo-600">{heroData.liveExpenseFeed.totalProcessedToday}</span>
       </div>
     </motion.div>
   );
@@ -451,10 +426,10 @@ export default function HeroSection() {
             >
               <Sparkles className="h-3.5 w-3.5 text-indigo-600" />
               <span className="text-[11.5px] font-semibold tracking-wide text-indigo-700">
-                Expense Intelligence Platform · For Finance Teams
+                {heroData.badge.text}
               </span>
               <span className="ml-1 rounded-full bg-indigo-600/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-indigo-700">
-                New
+                {heroData.badge.tag}
               </span>
             </motion.div>
 
@@ -463,10 +438,9 @@ export default function HeroSection() {
               {...fadeUp(0.12)}
               className="max-w-2xl text-[clamp(2.1rem,6vw,4.5rem)] font-bold leading-[1.04] tracking-tight text-slate-900"
             >
-              Control Every Business{" "}
+              {heroData.headlineParts.pre}{" "}
               <span className="relative inline-block bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600 bg-clip-text text-transparent">
-                Expense
-                {/* underline accent */}
+                {heroData.headlineParts.accent}
                 <svg
                   className="absolute -bottom-1 left-0 w-full"
                   viewBox="0 0 200 6"
@@ -491,7 +465,7 @@ export default function HeroSection() {
               <br className="hidden sm:block" />
               <span className="text-slate-700">
                 {" "}
-                Without the Spreadsheet Chaos.
+                {heroData.headlineParts.post}
               </span>
             </motion.h1>
 
@@ -501,21 +475,15 @@ export default function HeroSection() {
               className="mt-6 max-w-xl text-[clamp(0.875rem,2vw,1.0625rem)] leading-[1.85] text-slate-600 font-medium text-left"
             >
               <span className="mb-4">
-                The Expense Management Platform Built for Growing SMEs &
-                Mid-Market Businesses. Track expenses, automate reimbursements,
-                enforce policies, and gain real-time visibility into company
-                spending—all from one powerful platform.
+                {heroData.description}
               </span>
 
-              {/* Changed <p> to <div> to fix the hydration error */}
               <div className="font-bold text-[clamp(0.875rem,2vw,1.0625rem)] my-4 bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600 bg-clip-text text-transparent">
-                Stop Losing Money to Manual Processes
+                {heroData.highlightText}
               </div>
 
               <span>
-                Expendesk helps finance, operations, and leadership teams
-                eliminate expense chaos, reduce financial leakage, and make
-                smarter spending decisions at scale.
+                {heroData.subDescription}
               </span>
             </motion.div>
             {/* Trust pills */}
@@ -523,19 +491,18 @@ export default function HeroSection() {
               {...fadeUp(0.27)}
               className="mt-5 flex flex-wrap items-center justify-center gap-3 lg:justify-start"
             >
-              {[
-                { icon: ShieldCheck, label: "SOC 2 Ready" },
-                { icon: Zap, label: "Real-time Alerts" },
-                { icon: Eye, label: "Full Audit Trail" },
-              ].map(({ icon: Icon, label }) => (
-                <div
-                  key={label}
-                  className="flex items-center gap-1.5 rounded-full border border-black/[0.05] bg-white/60 px-3 py-1.5 text-[11px] font-semibold text-slate-600 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
-                >
-                  <Icon className="h-3 w-3 text-indigo-600" />
-                  {label}
-                </div>
-              ))}
+              {heroData.trustPills.map(({ iconKey, label }) => {
+                const Icon = TRUST_PILL_ICONS[iconKey] ?? ShieldCheck;
+                return (
+                  <div
+                    key={label}
+                    className="flex items-center gap-1.5 rounded-full border border-black/[0.05] bg-white/60 px-3 py-1.5 text-[11px] font-semibold text-slate-600 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+                  >
+                    <Icon className="h-3 w-3 text-indigo-600" />
+                    {label}
+                  </div>
+                );
+              })}
             </motion.div>
 
             {/* CTAs */}
@@ -544,7 +511,7 @@ export default function HeroSection() {
               className="mt-8 flex flex-col items-center gap-3.5 sm:flex-row lg:items-start"
             >
               <motion.a
-                href="#contact"
+                href={heroData.ctas.primary.href}
                 whileHover={{ scale: 1.02, y: -1 }}
                 whileTap={{ scale: 0.98 }}
                 className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600 px-7 py-3.5 text-[13.5px] font-semibold text-white shadow-[0_10px_30px_rgba(99,102,241,0.25)] transition-all hover:shadow-[0_10px_40px_rgba(99,102,241,0.35)]"
@@ -553,15 +520,15 @@ export default function HeroSection() {
                 <div className="absolute inset-0 -translate-x-full skew-x-12 bg-gradient-to-r from-transparent via-white/15 to-transparent transition-transform duration-1000 group-hover:translate-x-full" />
                 {/* gloss */}
                 <div className="absolute inset-x-0 top-0 h-1/2 rounded-t-xl bg-white/10" />
-                <span className="relative z-10">Book Discovery Call</span>
+                <span className="relative z-10">{heroData.ctas.primary.label}</span>
                 <ArrowUpRight className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </motion.a>
 
               <a
-                href="#features"
+                href={heroData.ctas.secondary.href}
                 className="group inline-flex items-center gap-2 rounded-xl border border-black/[0.06] bg-white/60 px-7 py-3.5 text-[13.5px] font-semibold text-slate-700 backdrop-blur-sm shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-all duration-300 hover:border-indigo-500/30 hover:bg-white hover:text-slate-900"
               >
-                Explore Features
+                {heroData.ctas.secondary.label}
                 <ArrowUpRight className="h-3.5 w-3.5 opacity-0 -translate-x-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-indigo-600" />
               </a>
             </motion.div>
@@ -571,11 +538,7 @@ export default function HeroSection() {
               {...fadeUp(0.42)}
               className="mt-10 flex items-center gap-6 divide-x divide-black/[0.06]"
             >
-              {[
-                { value: 94, suffix: "%", label: "Faster closures" },
-                { value: 3, suffix: "×", label: "Audit speed" },
-                { value: 0, suffix: " leakage", label: "With auto-flags" },
-              ].map(({ value, suffix, label }, i) => (
+              {heroData.stats.map(({ value, suffix, label }, i) => (
                 <div
                   key={label}
                   className={`${i > 0 ? "pl-6" : ""} flex flex-col`}
@@ -606,10 +569,10 @@ export default function HeroSection() {
               </div>
               <div className="flex flex-col">
                 <span className="text-[11px] font-semibold text-slate-800">
-                  Duplicate Detected
+                  {heroData.floatingBadges[0].title}
                 </span>
                 <span className="text-[9px] font-medium text-slate-400">
-                  Claim #4821 flagged
+                  {heroData.floatingBadges[0].subtitle}
                 </span>
               </div>
             </FloatingBadge>
@@ -623,10 +586,10 @@ export default function HeroSection() {
               </div>
               <div className="flex flex-col">
                 <span className="text-[11px] font-semibold text-slate-800">
-                  Batch Approved
+                  {heroData.floatingBadges[1].title}
                 </span>
                 <span className="text-[9px] font-medium text-slate-400">
-                  14 claims · ₹91,200
+                  {heroData.floatingBadges[1].subtitle}
                 </span>
               </div>
             </FloatingBadge>
@@ -640,10 +603,10 @@ export default function HeroSection() {
               </div>
               <div className="flex flex-col">
                 <span className="text-[11px] font-semibold text-slate-800">
-                  Leakage Reduced
+                  {heroData.floatingBadges[2].title}
                 </span>
                 <span className="text-[9px] font-medium text-slate-400">
-                  ↓ 38% this month
+                  {heroData.floatingBadges[2].subtitle}
                 </span>
               </div>
             </FloatingBadge>
@@ -657,41 +620,8 @@ export default function HeroSection() {
           transition={{ delay: 0.55, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mt-20 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
         >
-          {[
-            {
-              icon: AlertTriangle,
-              color: "from-amber-500/10 to-orange-500/10",
-              iconColor: "text-amber-600",
-              border: "hover:border-amber-500/20",
-              title: "Leakage Detection",
-              desc: "Auto-flags duplicates, over-limit claims & policy violations before they hit payout.",
-            },
-            {
-              icon: GitBranch,
-              color: "from-violet-500/10 to-purple-500/10",
-              iconColor: "text-violet-600",
-              border: "hover:border-violet-500/20",
-              title: "Multi-Level Approvals",
-              desc: "Structured workflows with partial approvals, delegation, and escalation paths.",
-            },
-            {
-              icon: Eye,
-              color: "from-indigo-500/10 to-blue-500/10",
-              iconColor: "text-indigo-600",
-              border: "hover:border-indigo-500/20",
-              title: "Full Audit Trail",
-              desc: "Every edit, approval, and payout logged with timestamps and actor identity.",
-            },
-            {
-              icon: Clock,
-              color: "from-emerald-500/10 to-teal-500/10",
-              iconColor: "text-emerald-600",
-              border: "hover:border-emerald-500/20",
-              title: "Faster Month-End",
-              desc: "Eliminate back-and-forth. Finance closes books in days, not weeks.",
-            },
-          ].map((card, i) => {
-            const Icon = card.icon;
+          {heroData.featureCards.map((card, i) => {
+            const Icon = FEATURE_CARD_ICONS[card.iconKey] ?? AlertTriangle;
             return (
               <motion.div
                 key={card.title}
@@ -707,13 +637,13 @@ export default function HeroSection() {
                   boxShadow: "0 15px 35px rgba(0,0,0,0.04)",
                   transition: { duration: 0.25 },
                 }}
-                className={`group relative overflow-hidden rounded-2xl border border-black/[0.04] bg-white/60 p-5 backdrop-blur-xl transition-all duration-400 ${card.border} hover:bg-white`}
+                className={`group relative overflow-hidden rounded-2xl border border-black/[0.04] bg-white/60 p-5 backdrop-blur-xl transition-all duration-400 ${card.borderHover} hover:bg-white`}
               >
                 {/* hover top glow */}
                 <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent opacity-0 transition-opacity duration-400 group-hover:opacity-100" />
 
                 <div
-                  className={`mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${card.color} border border-black/[0.02]`}
+                  className={`mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${card.gradientColor} border border-black/[0.02]`}
                 >
                   <Icon className={`h-4.5 w-4.5 ${card.iconColor}`} />
                 </div>
@@ -722,7 +652,7 @@ export default function HeroSection() {
                   {card.title}
                 </h3>
                 <p className="mt-2 text-[12.5px] leading-[1.7] text-slate-500 group-hover:text-slate-600 transition-colors duration-300">
-                  {card.desc}
+                  {card.description}
                 </p>
 
                 {/* Corner accent */}
@@ -744,7 +674,7 @@ export default function HeroSection() {
           {/* Avatars */}
           <div className="flex items-center gap-2">
             <div className="flex -space-x-2">
-              {["SM", "AK", "RD", "PJ"].map((initials, i) => (
+              {heroData.socialProof.avatarInitials.map((initials, i) => (
                 <div
                   key={initials}
                   className="flex h-7 w-7 items-center justify-center rounded-full border-2 border-[#f1f5f9] bg-gradient-to-br from-indigo-500/20 to-violet-600/20 text-[9px] font-bold text-indigo-700"
@@ -756,9 +686,9 @@ export default function HeroSection() {
             </div>
             <span className="text-[12px] font-medium text-slate-500">
               <span className="font-bold text-slate-700">
-                140+ finance teams
+                {heroData.socialProof.businessCount} finance teams
               </span>{" "}
-              trust Expendesk
+              {heroData.socialProof.businessText}
             </span>
           </div>
 
@@ -777,7 +707,7 @@ export default function HeroSection() {
               </svg>
             ))}
             <span className="text-[12px] font-medium text-slate-500 ml-1">
-              4.9 / 5 from early teams
+              {heroData.socialProof.rating} / 5 {heroData.socialProof.ratingText}
             </span>
           </div>
         </motion.div>

@@ -1,0 +1,101 @@
+{
+  "sectionLabel": "The Problem Section",
+  "headline": {
+    "line1": "Your Team Is Growing.",
+    "line2": "So Is Your",
+    "accent": "Expense Chaos."
+  },
+  "description": "As businesses scale, expense management becomes increasingly difficult.",
+  "chaosPoint": { "icon": "⚠️", "label": "CHAOS POINT" },
+  "causes": [
+    {
+      "id": "c1",
+      "icon": "📂",
+      "title": "Finance teams chase receipts",
+      "sub": "Hours lost to manual receipt collection",
+      "tag": "No Policy Enforcement",
+      "tagColor": "bg-violet-100 text-violet-600 border-violet-200"
+    },
+    {
+      "id": "c2",
+      "icon": "⏳",
+      "title": "Managers approve manually",
+      "sub": "Every expense needs intervention",
+      "tag": null,
+      "tagColor": ""
+    },
+    {
+      "id": "c3",
+      "icon": "🕐",
+      "title": "Weeks wait for payments",
+      "sub": "Employees reimbursed too late",
+      "tag": "Manual Processes",
+      "tagColor": "bg-amber-100 text-amber-600 border-amber-200"
+    },
+    {
+      "id": "c4",
+      "icon": "📊",
+      "title": "Leadership lacks visibility",
+      "sub": "No real-time spend intelligence",
+      "tag": null,
+      "tagColor": ""
+    }
+  ],
+  "effects": [
+    {
+      "id": "e1",
+      "icon": "💸",
+      "title": "Hidden Expense Leakages",
+      "badge": "WARNING",
+      "badgeStyle": "bg-amber-100 text-amber-700 border-amber-300",
+      "iconBg": "bg-amber-50",
+      "accentColor": "border-l-amber-400"
+    },
+    {
+      "id": "e2",
+      "icon": "📈",
+      "title": "Budget Overruns",
+      "badge": "CRITICAL",
+      "badgeStyle": "bg-red-100 text-red-700 border-red-300",
+      "iconBg": "bg-red-50",
+      "accentColor": "border-l-red-400"
+    },
+    {
+      "id": "e3",
+      "icon": "📅",
+      "title": "Delayed Month-End Closing",
+      "badge": "STUCK",
+      "badgeStyle": "bg-slate-100 text-slate-600 border-slate-300",
+      "iconBg": "bg-slate-50",
+      "accentColor": "border-l-slate-400"
+    },
+    {
+      "id": "e4",
+      "icon": "😤",
+      "title": "Frustrated Employees",
+      "badge": "HIGH RISK",
+      "badgeStyle": "bg-orange-100 text-orange-700 border-orange-300",
+      "iconBg": "bg-orange-50",
+      "accentColor": "border-l-orange-400"
+    },
+    {
+      "id": "e5",
+      "icon": "📉",
+      "title": "Reduced Profitability",
+      "badge": "DANGER",
+      "badgeStyle": "bg-rose-100 text-rose-700 border-rose-300",
+      "iconBg": "bg-rose-50",
+      "accentColor": "border-l-rose-500"
+    }
+  ],
+  "stats": [
+    { "value": "38%", "label": "average budget overrun",             "color": "text-rose-600"   },
+    { "value": "3×",  "label": "more time on approvals",            "color": "text-amber-600"  },
+    { "value": "72%", "label": "employees frustrated by delays",     "color": "text-violet-600" }
+  ],
+  "bottomCta": {
+    "heading": "The bigger your business becomes, the more expensive these inefficiencies get.",
+    "subtext": "Every untracked dollar compounds. Act before it compounds further.",
+    "buttonLabel": "Upgrade Your Workflow"
+  }
+}

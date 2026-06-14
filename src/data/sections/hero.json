@@ -1,0 +1,87 @@
+{
+  "badge": {
+    "text": "Expense Intelligence Platform · For Finance Teams",
+    "tag": "New"
+  },
+  "headline": "Control Every Business Expense Without the Spreadsheet Chaos.",
+  "headlineParts": {
+    "pre": "Control Every Business",
+    "accent": "Expense",
+    "post": "Without the Spreadsheet Chaos."
+  },
+  "description": "The Expense Management Platform Built for Growing SMEs & Mid-Market Businesses. Track expenses, automate reimbursements, enforce policies, and gain real-time visibility into company spending—all from one powerful platform.",
+  "highlightText": "Stop Losing Money to Manual Processes",
+  "subDescription": "Expendesk helps finance, operations, and leadership teams eliminate expense chaos, reduce financial leakage, and make smarter spending decisions at scale.",
+  "trustPills": [
+    { "iconKey": "shield-check", "label": "SOC 2 Ready"       },
+    { "iconKey": "zap",          "label": "Real-time Alerts"  },
+    { "iconKey": "eye",          "label": "Full Audit Trail"  }
+  ],
+  "ctas": {
+    "primary":   { "label": "Book Discovery Call", "href": "#contact"  },
+    "secondary": { "label": "Explore Features",    "href": "#features" }
+  },
+  "stats": [
+    { "value": 94, "suffix": "%",        "label": "Faster closures" },
+    { "value": 3,  "suffix": "×",        "label": "Audit speed"     },
+    { "value": 0,  "suffix": " leakage", "label": "With auto-flags" }
+  ],
+  "liveExpenseFeed": {
+    "title": "Live Expense Feed",
+    "totalLabel": "Total processed today",
+    "totalProcessedToday": "₹2,14,680",
+    "items": [
+      { "id": 1, "name": "Arjun Mehta",  "amount": "₹4,200",  "cat": "Travel",     "status": "approved", "time": "2m ago"  },
+      { "id": 2, "name": "Priya Sharma", "amount": "₹12,800", "cat": "Software",   "status": "flagged",  "time": "5m ago"  },
+      { "id": 3, "name": "Rohan Das",    "amount": "₹780",    "cat": "Meals",      "status": "approved", "time": "9m ago"  },
+      { "id": 4, "name": "Sneha Kapoor", "amount": "₹34,000", "cat": "Conference", "status": "pending",  "time": "14m ago" },
+      { "id": 5, "name": "Vikram Singh", "amount": "₹2,100",  "cat": "Office",     "status": "approved", "time": "20m ago" }
+    ]
+  },
+  "floatingBadges": [
+    { "id": "duplicate",      "title": "Duplicate Detected", "subtitle": "Claim #4821 flagged", "iconKey": "alert-triangle" },
+    { "id": "batch-approved", "title": "Batch Approved",     "subtitle": "14 claims · ₹91,200", "iconKey": "check-circle"   },
+    { "id": "leakage",        "title": "Leakage Reduced",    "subtitle": "↓ 38% this month",    "iconKey": "trending-down"  }
+  ],
+  "featureCards": [
+    {
+      "iconKey": "alert-triangle",
+      "gradientColor": "from-amber-500/10 to-orange-500/10",
+      "iconColor": "text-amber-600",
+      "borderHover": "hover:border-amber-500/20",
+      "title": "Leakage Detection",
+      "description": "Auto-flags duplicates, over-limit claims & policy violations before they hit payout."
+    },
+    {
+      "iconKey": "git-branch",
+      "gradientColor": "from-violet-500/10 to-purple-500/10",
+      "iconColor": "text-violet-600",
+      "borderHover": "hover:border-violet-500/20",
+      "title": "Multi-Level Approvals",
+      "description": "Structured workflows with partial approvals, delegation, and escalation paths."
+    },
+    {
+      "iconKey": "eye",
+      "gradientColor": "from-indigo-500/10 to-blue-500/10",
+      "iconColor": "text-indigo-600",
+      "borderHover": "hover:border-indigo-500/20",
+      "title": "Full Audit Trail",
+      "description": "Every edit, approval, and payout logged with timestamps and actor identity."
+    },
+    {
+      "iconKey": "clock",
+      "gradientColor": "from-emerald-500/10 to-teal-500/10",
+      "iconColor": "text-emerald-600",
+      "borderHover": "hover:border-emerald-500/20",
+      "title": "Faster Month-End",
+      "description": "Eliminate back-and-forth. Finance closes books in days, not weeks."
+    }
+  ],
+  "socialProof": {
+    "businessCount": "140+",
+    "businessText": "finance teams trust Expendesk",
+    "rating": 4.9,
+    "ratingText": "from early teams",
+    "avatarInitials": ["SM", "AK", "RD", "PJ"]
+  }
+}

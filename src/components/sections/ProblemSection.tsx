@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { Sparkles, TrendingUp } from "lucide-react";
 import ScrollBeamDivider from "../ui/ScrollBeamDivider";
+import problemData from "@/data/sections/problem.json";
 
 /* ═══════════════════════════════════════
    DATA
@@ -28,88 +29,8 @@ interface EffectItem {
   accentColor: string;
 }
 
-const CAUSES: CauseItem[] = [
-  {
-    id: "c1",
-    icon: "📂",
-    title: "Finance teams chase receipts",
-    sub: "Hours lost to manual receipt collection",
-    tag: "No Policy Enforcement",
-    tagColor: "bg-violet-100 text-violet-600 border-violet-200",
-  },
-  {
-    id: "c2",
-    icon: "⏳",
-    title: "Managers approve manually",
-    sub: "Every expense needs intervention",
-    tag: null,
-    tagColor: "",
-  },
-  {
-    id: "c3",
-    icon: "🕐",
-    title: "Weeks wait for payments",
-    sub: "Employees reimbursed too late",
-    tag: "Manual Processes",
-    tagColor: "bg-amber-100 text-amber-600 border-amber-200",
-  },
-  {
-    id: "c4",
-    icon: "📊",
-    title: "Leadership lacks visibility",
-    sub: "No real-time spend intelligence",
-    tag: null,
-    tagColor: "",
-  },
-];
-
-const EFFECTS: EffectItem[] = [
-  {
-    id: "e1",
-    icon: "💸",
-    title: "Hidden Expense Leakages",
-    badge: "WARNING",
-    badgeStyle: "bg-amber-100 text-amber-700 border-amber-300",
-    iconBg: "bg-amber-50",
-    accentColor: "border-l-amber-400",
-  },
-  {
-    id: "e2",
-    icon: "📈",
-    title: "Budget Overruns",
-    badge: "CRITICAL",
-    badgeStyle: "bg-red-100 text-red-700 border-red-300",
-    iconBg: "bg-red-50",
-    accentColor: "border-l-red-400",
-  },
-  {
-    id: "e3",
-    icon: "📅",
-    title: "Delayed Month-End Closing",
-    badge: "STUCK",
-    badgeStyle: "bg-slate-100 text-slate-600 border-slate-300",
-    iconBg: "bg-slate-50",
-    accentColor: "border-l-slate-400",
-  },
-  {
-    id: "e4",
-    icon: "😤",
-    title: "Frustrated Employees",
-    badge: "HIGH RISK",
-    badgeStyle: "bg-orange-100 text-orange-700 border-orange-300",
-    iconBg: "bg-orange-50",
-    accentColor: "border-l-orange-400",
-  },
-  {
-    id: "e5",
-    icon: "📉",
-    title: "Reduced Profitability",
-    badge: "DANGER",
-    badgeStyle: "bg-rose-100 text-rose-700 border-rose-300",
-    iconBg: "bg-rose-50",
-    accentColor: "border-l-rose-500",
-  },
-];
+const CAUSES = problemData.causes as unknown as CauseItem[];
+const EFFECTS = problemData.effects as unknown as EffectItem[];
 
 /* ═══════════════════════════════════════
    SVG CONNECTOR LINES — responsive, always visible
@@ -333,7 +254,7 @@ export default function ProblemSection() {
           >
             <Sparkles className="h-3.5 w-3.5 text-violet-600" />
             <span className="text-xs font-bold text-violet-800 tracking-wide">
-              The Problem Section
+              {problemData.sectionLabel}
             </span>
           </motion.div>
 
@@ -345,9 +266,9 @@ export default function ProblemSection() {
           animate={isInView ? "show" : "hidden"}
           className="mb-4 max-w-3xl text-[2.4rem] font-black leading-[1.06] tracking-tight text-slate-900 sm:text-5xl lg:text-[3.3rem]"
         >
-          Your Team Is Growing.
+          {problemData.headline.line1}
           <br className="hidden sm:block" />
-          So Is Your{" "}
+          {problemData.headline.line2}{" "}
           <span
             className="text-violet-600"
             style={{
@@ -357,7 +278,7 @@ export default function ProblemSection() {
               textUnderlineOffset: "7px",
             }}
           >
-            Expense Chaos.
+            {problemData.headline.accent}
           </span>
         </motion.h2>
 
@@ -368,7 +289,7 @@ export default function ProblemSection() {
           animate={isInView ? "show" : "hidden"}
           className="mb-12 max-w-xl text-[15px] leading-relaxed text-slate-500"
         >
-          As businesses scale, expense management becomes increasingly difficult.
+          {problemData.description}
         </motion.p>
 
         {/* ═══ DIAGRAM CARD ═══ */}
@@ -538,11 +459,7 @@ export default function ProblemSection() {
               {/* Stat strip */}
               <div className="relative z-10 border-t border-white/40 bg-white/40 backdrop-blur-md px-4 py-3 sm:px-7 sm:py-4">
                 <div className="flex flex-wrap items-center gap-x-4 sm:gap-x-6 gap-y-2">
-                  {[
-                    { value: "38%", label: "average budget overrun", color: "text-rose-600" },
-                    { value: "3×",  label: "more time on approvals", color: "text-amber-600" },
-                    { value: "72%", label: "employees frustrated by delays", color: "text-violet-600" },
-                  ].map((stat, i) => (
+                  {problemData.stats.map((stat, i) => (
                     <motion.div
                       key={i}
                       initial={{ opacity: 0, y: 8 }}
@@ -591,7 +508,7 @@ export default function ProblemSection() {
               </div>
               <div>
                 <p className="text-[14px] sm:text-[15px] font-semibold leading-snug text-slate-700">
-                  The bigger your business becomes,
+                  {problemData.bottomCta.heading.split(",")[0]},
                   <span
                     className="ml-1.5 font-black"
                     style={{
@@ -601,18 +518,18 @@ export default function ProblemSection() {
                       backgroundClip: "text",
                     }}
                   >
-                    the more expensive these inefficiencies get.
+                    {problemData.bottomCta.heading.split(",").slice(1).join(",").trim()}
                   </span>
                 </p>
                 <p className="mt-1 text-[11.5px] text-slate-400 font-medium">
-                  Every untracked dollar compounds. Act before it compounds further.
+                  {problemData.bottomCta.subtext}
                 </p>
               </div>
             </div>
           </div>
  
           <button className="group flex flex-shrink-0 items-center gap-2 rounded-full bg-violet-600 px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-violet-300/40 transition-all duration-200 hover:scale-[1.04] hover:bg-violet-700 hover:shadow-violet-400/50 active:scale-[0.97]">
-            Upgrade Your Workflow
+            {problemData.bottomCta.buttonLabel}
             <span className="inline-block transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">➤</span>
           </button>
         </motion.div>

@@ -13,6 +13,7 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import ScrollBeamDivider from '../ui/ScrollBeamDivider';
+import rawBenefitsData from '@/data/sections/benefits.json';
 
 /* ============================================================
    TYPES
@@ -59,114 +60,11 @@ export interface SectionContent {
 }
 
 /* ============================================================
-   DATA
+   DATA — imported from @/data/sections/benefits.json
 ============================================================ */
-export const SECTION_CONTENT: SectionContent = {
-  badge: 'Benefits',
-  headingLine1: 'What happens when expense',
-  headingLine2: 'management ',
-  headingAccent: 'finally works?',
-  subheading:
-    'Six outcomes your finance team feels from day one — measurable, real, and compounding.',
-  cta: {
-    eyebrow:
-      'The bigger your business becomes, the more expensive these inefficiencies get.',
-    body: 'Every untracked rupee compounds. Act before it compounds further.',
-    buttonLabel: 'Upgrade your workflow',
-  },
-};
-
-export const CARDS_DATA: CardConfig[] = [
-  {
-    id: 'visibility',
-    layout: 'normal',
-    accent: 'purple',
-    iconKey: 'eye',
-    title: 'Complete spend visibility',
-    description:
-      'Know exactly where every rupee flows across every team, office, and department — in real time.',
-    metric: { value: 100, suffix: '%', label: 'spend tracked, zero blind spots' },
-  },
-  {
-    id: 'close-books',
-    layout: 'normal',
-    accent: 'pink',
-    iconKey: 'calendar',
-    title: 'Close books faster',
-    description:
-      'Slash month-end reconciliation time. Finance closes in days, not weeks.',
-    metric: { value: 94, suffix: '%', label: 'faster month-end closures' },
-  },
-  {
-    id: 'scale',
-    layout: 'tall',
-    accent: 'teal',
-    iconKey: 'building',
-    title: 'Scale without complexity',
-    description:
-      'Multiple teams, offices, and departments — one unified platform. No added overhead as you grow.',
-    bars: [
-      { label: '5 people',   tag: 'Simple',    targetWidth: 30 },
-      { label: '50 people',  tag: 'Managed',   targetWidth: 62 },
-      { label: '500 people', tag: 'Automated', targetWidth: 94 },
-    ],
-    metric: { value: 1, suffix: '', label: 'platform for every scale' },
-  },
-  {
-    id: 'profitability',
-    layout: 'wide',
-    accent: 'amber',
-    iconKey: 'trending',
-    title: 'Improve profitability',
-    description:
-      'Catch overspending patterns before they erode margins. Act on data, not gut feel. Every department stays inside budget with policy enforcement baked in at the point of spend.',
-    dualMetrics: [
-      { value: 38, suffix: '%', label: 'avg budget overrun recovered' },
-      { value: 3,  suffix: 'x', label: 'faster audit cycles' },
-    ],
-  },
-  {
-    id: 'reimbursement',
-    layout: 'normal',
-    accent: 'blue',
-    iconKey: 'timer',
-    title: 'Eliminate reimbursement delays',
-    description:
-      'Automated reimbursements keep employees paid on time — no manual nudges required.',
-    metric: { value: 70, suffix: '%', label: 'faster reimbursements' },
-  },
-  {
-    id: 'leakage',
-    layout: 'normal',
-    accent: 'green',
-    iconKey: 'shield',
-    title: 'Reduce financial leakage',
-    description:
-      'Auto-flag duplicates, unauthorized spends, and policy violations before payout. Zero leakage.',
-    metric: {
-      value: 0,
-      suffix: ' leaks',
-      label: 'with auto-flag engine active',
-      rawInitial: '—',
-    },
-  },
-];
-
-/* ============================================================
-   TICKER DATA — auto-scroll strip
-============================================================ */
-const TICKER_ITEMS = [
-  { color: '#7C3AED', text: '100% Spend Visibility' },
-  { color: '#DB2777', text: '94% Faster Month-End' },
-  { color: '#0891B2', text: 'Scales to 500+ People' },
-  { color: '#D97706', text: '38% Budget Recovery' },
-  { color: '#2563EB', text: '70% Faster Reimbursement' },
-  { color: '#059669', text: 'Zero Financial Leakage' },
-  { color: '#7C3AED', text: 'Real-Time Dashboards' },
-  { color: '#DB2777', text: 'Policy Enforcement Built-In' },
-  { color: '#0891B2', text: 'One Platform, Every Scale' },
-  { color: '#D97706', text: '3× Faster Audit Cycles' },
-];
+export const SECTION_CONTENT = rawBenefitsData.sectionContent as SectionContent;
+export const CARDS_DATA = rawBenefitsData.cards as unknown as CardConfig[];
+const TICKER_ITEMS = rawBenefitsData.ticker as { color: string; text: string }[];
 
 /* ============================================================
    DESIGN TOKENS — accent palette
@@ -935,11 +833,6 @@ export default function BenefitsSection() {
     >
       {/* ── ScrollBeamDivider flush at the top ── */}
       <ScrollBeamDivider />
-
-      {/* Hide scrollbar in carousel content panes */}
-      <style>{`
-        .carousel-content::-webkit-scrollbar { display: none; }
-      `}</style>
 
       {/* Background ambient orbs */}
       <div

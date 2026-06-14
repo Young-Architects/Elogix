@@ -1,0 +1,161 @@
+{
+  "badge": "Solution Section",
+  "hero": {
+    "headline": {
+      "pre": "Meet",
+      "brand": "Expendesk",
+      "sub": "The Smarter Way to Manage Business Spending",
+      "subAccent": "Smarter Way",
+      "subPost": "to Manage Business Spending",
+      "subPostPre": "to",
+      "subPostSuffix": "Manage Business Spending"
+    },
+    "description": "Expendesk brings every expense, reimbursement, approval, and spending policy into one centralized platform.",
+    "bullets": [
+      { "text": "No spreadsheets.",                "positive": false },
+      { "text": "No manual follow-ups.",           "positive": false },
+      { "text": "No guesswork.",                   "positive": false },
+      { "text": "Just complete financial control.", "positive": true  }
+    ],
+    "cta": "See Expendesk in Action"
+  },
+  "nodeDiagram": {
+    "chaosLabel": "From Chaos",
+    "controlLabel": "To Control",
+    "brandName": "EXPENDESK",
+    "brandTagline": "Financial Control Engine",
+    "brandTaglineParts": ["Financial", "Control Engine"],
+    "chaosNodes": [
+      { "label": "Receipts Lost",       "icon": "🧾" },
+      { "label": "Approval Delays",     "icon": "⏱"  },
+      { "label": "Reimbursement Queue", "icon": "👥" },
+      { "label": "Visibility Missing",  "icon": "👁"  }
+    ],
+    "controlNodes": [
+      { "label": "Expense Captured Instantly", "icon": "📸" },
+      { "label": "Auto Approval",              "icon": "⚡" },
+      { "label": "Instant Reimbursement",      "icon": "💸" },
+      { "label": "Real-Time Dashboard",        "icon": "📊" }
+    ]
+  },
+  "featuresSection": {
+    "heading": "With Expendesk, You Can:",
+    "headingParts": { "pre": "With ", "brand": "Expendesk", "post": ", You Can:" },
+    "subheading": "Everything your finance team needs, in one place.",
+    "features": [
+      {
+        "iconKey": "camera",
+        "title": "Capture expenses instantly",
+        "desc": "Upload receipts on the go and never lose a single expense again.",
+        "color": "from-violet-500/10 to-violet-600/5",
+        "iconColor": "text-violet-600",
+        "dot": "bg-violet-500",
+        "border": "hover:border-violet-300/60"
+      },
+      {
+        "iconKey": "bolt",
+        "title": "Automate approvals",
+        "desc": "Set smart approval flows and eliminate manual follow-ups.",
+        "color": "from-indigo-500/10 to-indigo-600/5",
+        "iconColor": "text-indigo-600",
+        "dot": "bg-indigo-500",
+        "border": "hover:border-indigo-300/60"
+      },
+      {
+        "iconKey": "shield",
+        "title": "Enforce spending policies",
+        "desc": "Ensure policy compliance before spend, not afterwards.",
+        "color": "from-fuchsia-500/10 to-fuchsia-600/5",
+        "iconColor": "text-fuchsia-600",
+        "dot": "bg-fuchsia-500",
+        "border": "hover:border-fuchsia-300/60"
+      },
+      {
+        "iconKey": "users",
+        "title": "Track by team, dept. or location",
+        "desc": "Get granular visibility into where and how money is being spent.",
+        "color": "from-violet-500/10 to-violet-600/5",
+        "iconColor": "text-violet-600",
+        "dot": "bg-violet-500",
+        "border": "hover:border-violet-300/60"
+      },
+      {
+        "iconKey": "refresh",
+        "title": "Accelerate reimbursements",
+        "desc": "Reimburse employees faster and boost happiness.",
+        "color": "from-emerald-500/10 to-emerald-600/5",
+        "iconColor": "text-emerald-600",
+        "dot": "bg-emerald-500",
+        "border": "hover:border-emerald-300/60"
+      },
+      {
+        "iconKey": "file",
+        "title": "Generate audit-ready reports",
+        "desc": "One-click reports that are compliant, accurate and audit-ready.",
+        "color": "from-indigo-500/10 to-indigo-600/5",
+        "iconColor": "text-indigo-600",
+        "dot": "bg-indigo-500",
+        "border": "hover:border-indigo-300/60"
+      },
+      {
+        "iconKey": "bar-chart",
+        "title": "Gain real-time financial visibility",
+        "desc": "Make smarter decisions with real-time spending data.",
+        "color": "from-violet-500/10 to-violet-600/5",
+        "iconColor": "text-violet-600",
+        "dot": "bg-violet-500",
+        "border": "hover:border-violet-300/60"
+      }
+    ]
+  },
+  "stats": [
+    {
+      "iconKey": "bolt",
+      "value": 95,
+      "suffix": "%",
+      "label": "Less approval time",
+      "sub": "Save hours every week",
+      "color": "text-violet-600"
+    },
+    {
+      "iconKey": "refresh",
+      "value": 70,
+      "suffix": "%",
+      "label": "Faster reimbursements",
+      "sub": "Employees get paid faster",
+      "color": "text-indigo-600"
+    },
+    {
+      "iconKey": "shield",
+      "value": 100,
+      "suffix": "%",
+      "label": "Policy compliance",
+      "sub": "Enforced automatically",
+      "color": "text-fuchsia-600"
+    },
+    {
+      "iconKey": "bar-chart",
+      "value": null,
+      "suffix": "",
+      "label": "Financial visibility",
+      "sub": "Always up-to-date",
+      "color": "text-violet-600"
+    }
+  ],
+  "dashboardCta": {
+    "headline": "Ready to Replace Expense Chaos?",
+    "description": "See how Expendesk transforms spending management from reactive to automated.",
+    "buttonLabel": "See Expendesk in Action"
+  },
+  "dashboardPreview": {
+    "title": "Dashboard",
+    "totalLabel": "Total Spending",
+    "totalSpending": "$187,540",
+    "trend": "↑ +12.9% vs last month",
+    "transactions": [
+      { "name": "Cloud Services", "amount": "$1,230.00", "dept": "Engineering", "status": "Approved" },
+      { "name": "Designing",      "amount": "$340.00",   "dept": "Design",      "status": "Approved" },
+      { "name": "Transportation", "amount": "$48.90",    "dept": "Sales",       "status": "Approved" }
+    ]
+  }
+}

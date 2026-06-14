@@ -8,33 +8,12 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import ScrollBeamDivider from "../ui/ScrollBeamDivider";
+import leadMagnetData from "@/data/sections/lead-magnet.json";
 
 /* ──────────────────────────────────────────────────────────────────────────
-   DATA — single source of truth for all copy & numbers
+   DATA — imported from @/data/sections/lead-magnet.json
    ────────────────────────────────────────────────────────────────────────── */
-const LEAD_MAGNET_DATA = {
-  eyebrow: "Free eBook",
-  headline: {
-    plain1: "The",
-    accent: "Hidden Cost",
-    plain2: "of Poor Expense Management",
-  },
-  subheadline:
-    "Discover how growing businesses lose thousands every month through inefficient expense processes—and learn the proven framework leading companies use to gain control.",
-  insideLabel: "Inside you'll learn:",
-  bullets: [
-    "The 7 most common expense management mistakes",
-    "How to reduce reimbursement delays",
-    "Ways to eliminate financial leakage",
-    "Best practices for scaling expense processes",
-    "A practical framework for improving profitability",
-  ],
-  ctaButton: "Download Free eBook",
-  ctaNote: "No spam. Actionable insights only.",
-  pdfPlaceholderUrl: "/placeholder-ebook.pdf",
-  bookMeta: { pages: "24 pages", format: "PDF", level: "SME / Mid-Market" },
-  chartBars: [35, 55, 40, 70, 50, 85, 60],
-};
+const LEAD_MAGNET_DATA = leadMagnetData;
 
 const EASE = [0.23, 1, 0.32, 1] as const;
 
@@ -466,8 +445,8 @@ export default function LeadMagnetSection() {
 
   const handleDownload = () => {
     const a = document.createElement("a");
-    a.href = LEAD_MAGNET_DATA.pdfPlaceholderUrl;
-    a.download = "Expendesk-Hidden-Cost-Ebook.pdf";
+    a.href = LEAD_MAGNET_DATA.pdfUrl;
+    a.download = LEAD_MAGNET_DATA.downloadFilename;
     a.click();
   };
 
@@ -644,7 +623,7 @@ export default function LeadMagnetSection() {
               floatY={-6}
               reduceMotion={reduceMotion}
             >
-              5,000+ downloads
+              {LEAD_MAGNET_DATA.floatingTags[0].text}
             </FloatingTag>
 
             <FloatingTag
@@ -654,7 +633,7 @@ export default function LeadMagnetSection() {
               delay={0.6}
               reduceMotion={reduceMotion}
             >
-              12 min read
+              {LEAD_MAGNET_DATA.floatingTags[1].text}
             </FloatingTag>
 
             <EbookCover isHovered={bookHovered} inView={isInView} reduceMotion={reduceMotion} />
@@ -662,17 +641,6 @@ export default function LeadMagnetSection() {
         </div>
       </div>
 
-      <style>{`
-        @keyframes lm-drift {
-          0%   { background-position: 0% 50%; }
-          50%  { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        .lm-bg-drift { animation: lm-drift 30s ease-in-out infinite; }
-        @media (prefers-reduced-motion: reduce) {
-          .lm-bg-drift { animation: none; }
-        }
-      `}</style>
     </section>
   );
 }

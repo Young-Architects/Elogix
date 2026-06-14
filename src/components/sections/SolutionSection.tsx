@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import ScrollBeamDivider from "../ui/ScrollBeamDivider";
+import solutionData from "@/data/sections/solution.json";
 // ─── Icons ────────────────────────────────────────────────────────────────────
 
 const IconCamera = () => (
@@ -64,39 +65,41 @@ const IconX = () => (
   </svg>
 );
 
-// ─── Data ─────────────────────────────────────────────────────────────────────
+// ─── Icon maps — React components keyed by iconKey string in JSON ─────────────
 
-const features = [
-  { icon: <IconCamera />, title: "Capture expenses instantly", desc: "Upload receipts on the go and never lose a single expense again.", color: "from-violet-500/10 to-violet-600/5", iconColor: "text-violet-600", dot: "bg-violet-500", border: "hover:border-violet-300/60" },
-  { icon: <IconBolt />, title: "Automate approvals", desc: "Set smart approval flows and eliminate manual follow-ups.", color: "from-indigo-500/10 to-indigo-600/5", iconColor: "text-indigo-600", dot: "bg-indigo-500", border: "hover:border-indigo-300/60" },
-  { icon: <IconShield />, title: "Enforce spending policies", desc: "Ensure policy compliance before spend, not afterwards.", color: "from-fuchsia-500/10 to-fuchsia-600/5", iconColor: "text-fuchsia-600", dot: "bg-fuchsia-500", border: "hover:border-fuchsia-300/60" },
-  { icon: <IconUsers />, title: "Track by team, dept. or location", desc: "Get granular visibility into where and how money is being spent.", color: "from-violet-500/10 to-violet-600/5", iconColor: "text-violet-600", dot: "bg-violet-500", border: "hover:border-violet-300/60" },
-  { icon: <IconRefresh />, title: "Accelerate reimbursements", desc: "Reimburse employees faster and boost happiness.", color: "from-emerald-500/10 to-emerald-600/5", iconColor: "text-emerald-600", dot: "bg-emerald-500", border: "hover:border-emerald-300/60" },
-  { icon: <IconFile />, title: "Generate audit-ready reports", desc: "One-click reports that are compliant, accurate and audit-ready.", color: "from-indigo-500/10 to-indigo-600/5", iconColor: "text-indigo-600", dot: "bg-indigo-500", border: "hover:border-indigo-300/60" },
-  { icon: <IconBarChart />, title: "Gain real-time financial visibility", desc: "Make smarter decisions with real-time spending data.", color: "from-violet-500/10 to-violet-600/5", iconColor: "text-violet-600", dot: "bg-violet-500", border: "hover:border-violet-300/60" },
-];
+const FEATURE_ICON_MAP: Record<string, React.ReactNode> = {
+  camera:    <IconCamera />,
+  bolt:      <IconBolt />,
+  shield:    <IconShield />,
+  users:     <IconUsers />,
+  refresh:   <IconRefresh />,
+  file:      <IconFile />,
+  "bar-chart": <IconBarChart />,
+};
 
-const stats = [
-  { icon: <IconBolt />,     value: 95,  suffix: "%", label: "Less approval time",    sub: "Save hours every week",     color: "text-violet-600" },
-  { icon: <IconRefresh />,  value: 70,  suffix: "%", label: "Faster reimbursements", sub: "Employees get paid faster", color: "text-indigo-600" },
-  { icon: <IconShield />,   value: 100, suffix: "%", label: "Policy compliance",     sub: "Enforced automatically",    color: "text-fuchsia-600" },
-  { icon: <IconBarChart />, value: null,suffix: "",  label: "Financial visibility",  sub: "Always up-to-date",         color: "text-violet-600" },
-];
+const STAT_ICON_MAP: Record<string, React.ReactNode> = {
+  bolt:        <IconBolt />,
+  refresh:     <IconRefresh />,
+  shield:      <IconShield />,
+  "bar-chart": <IconBarChart />,
+};
+
+// ─── Data — imported from @/data/sections/solution.json ──────────────────────
+
+const features = solutionData.featuresSection.features.map((f) => ({
+  ...f,
+  icon: FEATURE_ICON_MAP[f.iconKey] ?? null,
+}));
+
+const stats = solutionData.stats.map((s) => ({
+  ...s,
+  icon: STAT_ICON_MAP[s.iconKey] ?? null,
+}));
 
 // ─── Node diagram data ────────────────────────────────────────────────────────
 
-const chaosNodes  = [
-  { label: "Receipts Lost",       icon: "🧾" },
-  { label: "Approval Delays",     icon: "⏱"  },
-  { label: "Reimbursement Queue", icon: "👥" },
-  { label: "Visibility Missing",  icon: "👁"  },
-];
-const controlNodes = [
-  { label: "Expense Captured Instantly", icon: "📸" },
-  { label: "Auto Approval",              icon: "⚡" },
-  { label: "Instant Reimbursement",      icon: "💸" },
-  { label: "Real-Time Dashboard",        icon: "📊" },
-];
+const chaosNodes  = solutionData.nodeDiagram.chaosNodes;
+const controlNodes = solutionData.nodeDiagram.controlNodes;
 
 // ─── Node Diagram (HTML-div nodes + SVG beam overlay) ─────────────────────────
 
@@ -190,10 +193,10 @@ function NodeDiagram() {
         <div className="flex items-center justify-between px-4 sm:px-6 pt-4 pb-2 border-b border-slate-100/80">
           <span className="flex items-center gap-1.5 text-[11px] sm:text-xs font-bold tracking-widest uppercase text-rose-500">
             <span className="w-1.5 h-1.5 rounded-full bg-rose-400" />
-            From Chaos
+            {solutionData.nodeDiagram.chaosLabel}
           </span>
           <span className="flex items-center gap-1.5 text-[11px] sm:text-xs font-bold tracking-widest uppercase text-indigo-600">
-            To Control
+            {solutionData.nodeDiagram.controlLabel}
             <span className="w-1.5 h-1.5 rounded-full bg-indigo-400" />
           </span>
         </div>
@@ -244,12 +247,12 @@ function NodeDiagram() {
                 className="absolute inset-0 rounded-full animate-ping"
                 style={{ background: "rgba(124,58,237,0.1)", animationDuration: "2.5s" }}
               />
-              <span className="relative z-10 text-white font-black text-xl sm:text-2xl leading-none">E</span>
+              <span className="relative z-10 text-white font-black text-xl sm:text-2xl leading-none">{solutionData.nodeDiagram.brandName.charAt(0)}</span>
               <span className="relative z-10 text-white/90 font-bold text-[7px] sm:text-[8px] tracking-[1px] mt-0.5 leading-none">
-                EXPENDESK
+                {solutionData.nodeDiagram.brandName}
               </span>
               <span className="relative z-10 text-violet-200/80 text-[5.5px] sm:text-[7px] text-center leading-tight mt-1 px-1 hidden sm:block">
-                Financial<br />Control Engine
+                {solutionData.nodeDiagram.brandTaglineParts[0]}<br />{solutionData.nodeDiagram.brandTaglineParts[1]}
               </span>
             </div>
           </div>
@@ -541,7 +544,7 @@ export default function SolutionSection() {
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase"
             style={{ background: "rgba(124,58,237,0.07)", border: "1px solid rgba(139,92,246,0.25)", color: "#7c3aed" }}>
             <Sparkles className="w-3.5 h-3.5" />
-            Solution Section
+            {solutionData.badge}
           </span>
         </motion.div>
 
@@ -556,41 +559,36 @@ export default function SolutionSection() {
             transition={{ duration: 0.72, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <h2 className="text-4xl sm:text-5xl lg:text-[3.2rem] font-black leading-[1.06] tracking-tight text-slate-900 mb-5">
-              Meet{" "}
+              {solutionData.hero.headline.pre}{" "}
               <span style={{ background: "linear-gradient(135deg,#7c3aed,#4f46e5)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                Expendesk
+                {solutionData.hero.headline.brand}
               </span>
               <br />
               <span className="text-[2rem] sm:text-[2.4rem] lg:text-[2.6rem] font-bold leading-tight text-slate-800">
                 The{" "}
                 <span style={{ background: "linear-gradient(90deg,#7c3aed,#a78bfa)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                  Smarter Way
+                  {solutionData.hero.headline.subAccent}
                 </span>{" "}
-                to<br />Manage Business Spending
+                {solutionData.hero.headline.subPostPre}<br />{solutionData.hero.headline.subPostSuffix}
               </span>
             </h2>
 
             <p className="text-[15px] leading-relaxed text-slate-500 mb-7 max-w-md">
-              Expendesk brings every expense, reimbursement, approval, and spending policy into one centralized platform.
+              {solutionData.hero.description}
             </p>
 
             {/* Bullets */}
             <div className="space-y-3 mb-8">
-              {[
-                { text: "No spreadsheets.",             ok: false },
-                { text: "No manual follow-ups.",        ok: false },
-                { text: "No guesswork.",                ok: false },
-                { text: "Just complete financial control.", ok: true },
-              ].map((item, i) => (
+              {solutionData.hero.bullets.map((item, i) => (
                 <motion.div key={i} initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }} transition={{ delay: 0.15 + i * 0.08, duration: 0.45 }}
                   className="flex items-center gap-3">
                   <span className={`flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center ${
-                    item.ok ? "bg-violet-600 text-white shadow-sm shadow-violet-200" : "bg-rose-50 border border-rose-200 text-rose-400"
+                    item.positive ? "bg-violet-600 text-white shadow-sm shadow-violet-200" : "bg-rose-50 border border-rose-200 text-rose-400"
                   }`}>
-                    {item.ok ? <IconCheck /> : <IconX />}
+                    {item.positive ? <IconCheck /> : <IconX />}
                   </span>
-                  <span className={`text-sm sm:text-[15px] font-medium ${item.ok ? "text-violet-700 font-semibold" : "text-slate-500"}`}>
+                  <span className={`text-sm sm:text-[15px] font-medium ${item.positive ? "text-violet-700 font-semibold" : "text-slate-500"}`}>
                     {item.text}
                   </span>
                 </motion.div>
@@ -605,7 +603,7 @@ export default function SolutionSection() {
               whileTap={{ scale: 0.97 }}
               className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-white text-[13.5px] transition-all duration-300"
               style={{ background: "linear-gradient(135deg,#7c3aed,#4f46e5)", boxShadow: "0 6px 24px rgba(124,58,237,0.22),inset 0 1px 0 rgba(255,255,255,0.15)" }}>
-              See Expendesk in Action
+              {solutionData.hero.cta}
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-4 h-4">
                 <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
               </svg>
@@ -630,14 +628,14 @@ export default function SolutionSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
         <motion.div {...fadeUp(0)} className="text-center mb-12">
           <h3 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-            With{" "}
+            {solutionData.featuresSection.headingParts.pre}
             <span style={{ background: "linear-gradient(135deg,#7c3aed,#4f46e5)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-              Expendesk
+              {solutionData.featuresSection.headingParts.brand}
             </span>
-            , You Can:
+            {solutionData.featuresSection.headingParts.post}
           </h3>
           <p className="mt-3 text-slate-500 text-[15px] max-w-lg mx-auto">
-            Everything your finance team needs, in one place.
+            {solutionData.featuresSection.subheading}
           </p>
         </motion.div>
 
@@ -697,12 +695,12 @@ export default function SolutionSection() {
                     <div className="w-2.5 h-2.5 rounded-full bg-amber-500/70" />
                     <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
                   </div>
-                  <span className="text-slate-400 text-[11px] font-semibold ml-1">Dashboard</span>
+                  <span className="text-slate-400 text-[11px] font-semibold ml-1">{solutionData.dashboardPreview.title}</span>
                 </div>
                 <div className="p-4">
-                  <div className="text-slate-500 text-[10px] mb-0.5 font-medium tracking-wide">Total Spending</div>
-                  <div className="text-white text-2xl font-black mb-0.5">$187,540</div>
-                  <div className="text-emerald-400 text-[11px] font-semibold mb-4">↑ +12.9% vs last month</div>
+                  <div className="text-slate-500 text-[10px] mb-0.5 font-medium tracking-wide">{solutionData.dashboardPreview.totalLabel}</div>
+                  <div className="text-white text-2xl font-black mb-0.5">{solutionData.dashboardPreview.totalSpending}</div>
+                  <div className="text-emerald-400 text-[11px] font-semibold mb-4">{solutionData.dashboardPreview.trend}</div>
                   <svg viewBox="0 0 200 36" className="w-full mb-4" style={{ height: 36 }}>
                     <defs>
                       <linearGradient id="sparkG" x1="0" y1="0" x2="0" y2="1">
@@ -718,11 +716,7 @@ export default function SolutionSection() {
                     <span className="w-16 text-right hidden sm:block">Team</span><span className="w-14 text-right">Status</span>
                   </div>
                   <div className="space-y-2">
-                    {[
-                      { name: "Cloud Services", amount: "$1,230.00", dept: "Engineering", status: "Approved" },
-                      { name: "Designing",               amount: "$340.00",   dept: "Design",      status: "Approved" },
-                      { name: "Transportation",                amount: "$48.90",    dept: "Sales",       status: "Approved" },
-                    ].map((row, i) => (
+                    {solutionData.dashboardPreview.transactions.map((row, i) => (
                       <div key={i} className="flex items-center justify-between text-[11px]">
                         <span className="text-slate-300 truncate w-28">{row.name}</span>
                         <span className="text-slate-400 w-14 text-right">{row.amount}</span>
@@ -738,16 +732,16 @@ export default function SolutionSection() {
             {/* CTA text */}
             <div className="relative z-10 px-5 pb-5" style={{ borderTop: "1px solid rgba(124,58,237,0.08)" }}>
               <div className="pt-4">
-                <h4 className="text-slate-900 text-lg font-black mb-1.5 tracking-tight">Ready to Replace Expense Chaos?</h4>
+                <h4 className="text-slate-900 text-lg font-black mb-1.5 tracking-tight">{solutionData.dashboardCta.headline}</h4>
                 <p className="text-slate-500 text-[13px] mb-4 leading-relaxed">
-                  See how Expendesk transforms spending management from reactive to automated.
+                  {solutionData.dashboardCta.description}
                 </p>
                 <motion.button
                   whileHover={{ scale: 1.02, boxShadow: "0 10px 30px rgba(124,58,237,0.25)" }}
                   whileTap={{ scale: 0.98 }}
                   className="w-full py-3 rounded-xl font-bold text-white text-[13.5px] flex items-center justify-center gap-2 transition-all duration-300"
                   style={{ background: "linear-gradient(135deg,#7c3aed,#4f46e5)", boxShadow: "0 4px 18px rgba(124,58,237,0.18),inset 0 1px 0 rgba(255,255,255,0.15)" }}>
-                  See Expendesk in Action
+                  {solutionData.dashboardCta.buttonLabel}
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-4 h-4">
                     <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
                   </svg>

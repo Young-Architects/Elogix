@@ -29,6 +29,7 @@ import {
   LayoutDashboard,
   type LucideIcon,
 } from "lucide-react";
+import navData from "@/data/navigation.json";
 
 /* ───────────────────────── animation ───────────────────────── */
 
@@ -75,57 +76,29 @@ type MobileNavItemProps = {
   onClick: () => void;
 };
 
-/* ───────────────────────── data ───────────────────────── */
+/* ───────────────────────── icon map ───────────────────────── */
 
-const FEATURES_DROPDOWN: DropdownItem[] = [
-  {
-    icon: BarChart2,
-    label: "Analytics",
-    desc: "Real-time spend insights",
-    href: "#analytics",
-  },
-  {
-    icon: Zap,
-    label: "Automation",
-    desc: "AI-powered workflows",
-    href: "#automation",
-  },
-  {
-    icon: LayoutDashboard,
-    label: "Dashboard",
-    desc: "Unified control center",
-    href: "#dashboard",
-  },
-];
+const NAV_ICON_MAP: Record<string, LucideIcon> = {
+  "bar-chart-2":      BarChart2,
+  "zap":              Zap,
+  "layout-dashboard": LayoutDashboard,
+  "users":            Users,
+  "shield":           Shield,
+  "credit-card":      CreditCard,
+};
 
-const WORKFLOW_DROPDOWN: DropdownItem[] = [
-  {
-    icon: Users,
-    label: "Teams",
-    desc: "Collaborate seamlessly",
-    href: "#teams",
-  },
-  {
-    icon: Shield,
-    label: "Approvals",
-    desc: "Multi-level control",
-    href: "#approvals",
-  },
-  {
-    icon: CreditCard,
-    label: "Budgets",
-    desc: "Set & enforce limits",
-    href: "#budgets",
-  },
-];
+/* ───────────────────────── data (from navigation.json) ───────────────────────── */
 
-const NAV_ITEMS: NavItem[] = [
-  { label: "Features", href: "#features", dropdown: FEATURES_DROPDOWN },
-  { label: "Workflow", href: "#workflow", dropdown: WORKFLOW_DROPDOWN },
-  { label: "Security", href: "#security" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Contact", href: "#contact" },
-];
+const NAV_ITEMS: NavItem[] = navData.items.map((item) => ({
+  label: item.label,
+  href:  item.href,
+  dropdown: item.dropdown?.map((d) => ({
+    icon:  NAV_ICON_MAP[d.iconKey] ?? BarChart2,
+    label: d.label,
+    desc:  d.desc,
+    href:  d.href,
+  })),
+}));
 
 /* ───────────────────────── dropdown ───────────────────────── */
 
@@ -435,13 +408,13 @@ export default function Navbar(): ReactNode {
                 fontSize: scrolled ? "12px" : "12.5px",
               }}
               transition={FAST_SPRING}
-              href="#demo"
+              href={navData.cta.href}
               className="group relative overflow-hidden rounded-full bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500 px-4.5 font-semibold text-white shadow-[0_6px_20px_rgba(99,102,241,0.32),0_2px_8px_rgba(139,92,246,0.18)]"
             >
               {/* Shimmer sweep */}
               <div className="absolute inset-0 -translate-x-full skew-x-12 bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               <span className="relative z-10 flex items-center gap-1.5">
-                Book a Demo
+                {navData.cta.label}
                 <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </span>
             </motion.a>
@@ -509,7 +482,7 @@ export default function Navbar(): ReactNode {
                   <motion.a
                     whileTap={{ scale: 0.98 }}
                     transition={FAST_SPRING}
-                    href="#demo"
+                    href={navData.cta.href}
                     onClick={() => {
                       setMobileOpen(false);
                       setMobileOpenDropdown(null);
@@ -517,7 +490,7 @@ export default function Navbar(): ReactNode {
                     className="group relative flex w-full items-center justify-center gap-1.5 overflow-hidden rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 py-2.5 text-[12px] font-semibold text-white shadow-lg shadow-indigo-500/20"
                   >
                     <div className="absolute inset-0 -translate-x-full skew-x-12 bg-gradient-to-r from-transparent via-white/15 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-                    <span className="relative z-10">Book a Demo</span>
+                    <span className="relative z-10">{navData.cta.label}</span>
                     <Sparkles className="relative z-10 h-3.5 w-3.5" />
                   </motion.a>
                 </div>
@@ -527,46 +500,6 @@ export default function Navbar(): ReactNode {
         </motion.div>
       </motion.header>
 
-      {/* ── Global styles ── */}
-      <style jsx global>{`
-        * {
-          -webkit-tap-highlight-color: transparent;
-        }
-        html {
-          scroll-behavior: smooth;
-        }
-        body {
-          overflow-x: hidden;
-          text-rendering: optimizeLegibility;
-          -webkit-font-smoothing: antialiased;
-        }
-
-        .nav-underline-item {
-          position: relative;
-        }
-        .nav-underline-item::after {
-          content: "";
-          position: absolute;
-          bottom: 5px;
-          left: 14px;
-          right: 14px;
-          height: 1.5px;
-          border-radius: 9999px;
-          background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 60%, #a78bfa 100%);
-          transform: scaleX(0);
-          transform-origin: right center;
-          transition: transform 0.34s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .nav-underline-item:hover::after {
-          transform: scaleX(1);
-          transform-origin: left center;
-        }
-
-        .nav-cta:focus-visible {
-          outline: 2px solid rgba(99, 102, 241, 0.5);
-          outline-offset: 3px;
-        }
-      `}</style>
     </>
   );
 }

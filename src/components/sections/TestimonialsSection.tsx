@@ -3,195 +3,37 @@
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import ScrollBeamDivider from "../ui/ScrollBeamDivider";
+import rawTestData from "@/data/sections/testimonials.json";
+import type { Testimonial } from "@/types";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// TYPES
+// DATA  —  imported from @/data/sections/testimonials.json
+// avatarGradient is a display concern kept here; backend provides the rest.
 // ─────────────────────────────────────────────────────────────────────────────
 
-export interface Testimonial {
-  id: string;
-  quote: string;
-  author: string;
-  role: string;
-  company: string;
-  companyType: string;
-  /** Two-letter initials used when no avatarImage is provided */
-  avatar: string;
-  /**
-   * Optional avatar image URL. When present it overrides the gradient initials.
-   * For Next.js you can swap the <img> in <Avatar/> for next/image — just
-   * remember to whitelist the host in next.config.js → images.remotePatterns.
-   */
-  avatarImage?: string;
-  /** Tailwind gradient classes e.g. "from-violet-500 to-purple-700" */
-  avatarGradient: string;
-  rating: number;
-  metric?: {
-    value: string;
-    label: string;
-  };
-}
+const TESTIMONIAL_GRADIENTS: Record<string, string> = {
+  "1":  "from-violet-500 to-purple-700",
+  "2":  "from-fuchsia-500 to-pink-600",
+  "3":  "from-indigo-500 to-blue-600",
+  "4":  "from-emerald-500 to-teal-600",
+  "5":  "from-orange-500 to-amber-600",
+  "6":  "from-violet-500 to-indigo-600",
+  "7":  "from-rose-500 to-pink-600",
+  "8":  "from-cyan-500 to-blue-600",
+  "9":  "from-purple-500 to-violet-700",
+  "10": "from-violet-600 to-fuchsia-600",
+  "11": "from-teal-500 to-emerald-600",
+  "12": "from-amber-500 to-orange-600",
+};
 
-// ─────────────────────────────────────────────────────────────────────────────
-// DATA  —  swap this with your API call when backend is ready.
-// To use a real photo later, just add  avatarImage: "https://..."  to an entry.
-// ─────────────────────────────────────────────────────────────────────────────
-
-export const testimonialsData: Testimonial[] = [
-  {
-    id: "1",
-    quote:
-      "Expendesk eliminated our manual reimbursement backlog entirely. Our finance team now closes month-end in half the time — what used to take 3 full days now takes a few hours.",
-    author: "Rajesh Mehta",
-    role: "Chief Financial Officer",
-    company: "TechVista Solutions",
-    companyType: "IT Services · 200+ employees",
-    avatar: "RM",
-    // avatarImage: "https://your-cdn.com/avatars/rajesh.jpg", // ← example
-    avatarGradient: "from-violet-500 to-purple-700",
-    rating: 5,
-    metric: { value: "83%", label: "Faster Month-End" },
-  },
-  {
-    id: "2",
-    quote:
-      "The auto-approval workflows alone saved our ops team over 15 hours a week. Expense processing time dropped by more than 70% in our very first month on Expendesk.",
-    author: "Priya Nair",
-    role: "Operations Head",
-    company: "Zenvoy Commerce",
-    companyType: "E-Commerce · 150+ employees",
-    avatar: "PN",
-    avatarGradient: "from-fuchsia-500 to-pink-600",
-    rating: 5,
-    metric: { value: "3×", label: "Audit Speed" },
-  },
-  {
-    id: "3",
-    quote:
-      "Finally, a platform our finance team and employees actually enjoy using. The UI is clean, approvals happen in seconds, and nothing ever falls through the cracks.",
-    author: "Arjun Sharma",
-    role: "Founder & CEO",
-    company: "BuildForge India",
-    companyType: "Construction Tech · 80 employees",
-    avatar: "AS",
-    avatarGradient: "from-indigo-500 to-blue-600",
-    rating: 5,
-  },
-  {
-    id: "4",
-    quote:
-      "Expendesk caught two duplicate claims in the very first week. The leakage detection is exceptional — it essentially paid for itself from day one.",
-    author: "Kavitha Rangan",
-    role: "Finance Manager",
-    company: "Meridian Exports",
-    companyType: "Manufacturing · 300+ employees",
-    avatar: "KR",
-    avatarGradient: "from-emerald-500 to-teal-600",
-    rating: 5,
-    metric: { value: "₹0", label: "Leakage" },
-  },
-  {
-    id: "5",
-    quote:
-      "The multi-level approval workflow is exactly what we needed at our scale. We can delegate, escalate, and track every claim in one place — with full audit visibility.",
-    author: "Vikram Bose",
-    role: "VP Finance",
-    company: "SkyRoute Logistics",
-    companyType: "Logistics · 500+ employees",
-    avatar: "VB",
-    avatarGradient: "from-orange-500 to-amber-600",
-    rating: 5,
-    metric: { value: "94%", label: "Faster Closures" },
-  },
-  {
-    id: "6",
-    quote:
-      "Before Expendesk, employees waited weeks for reimbursements. Now it processes in real-time. The positive shift in team morale has been genuinely remarkable.",
-    author: "Sneha Kapoor",
-    role: "HR & Finance Lead",
-    company: "GreenBridge Ventures",
-    companyType: "VC-backed Startup · 60 employees",
-    avatar: "SK",
-    avatarGradient: "from-violet-500 to-indigo-600",
-    rating: 5,
-  },
-  {
-    id: "7",
-    quote:
-      "The full audit trail alone justified the switch. Every approval, every edit is timestamped with actor identity. Regulatory compliance has become completely effortless.",
-    author: "Suresh Iyer",
-    role: "Internal Auditor",
-    company: "Pinnacle Financial Services",
-    companyType: "BFSI · 400+ employees",
-    avatar: "SI",
-    avatarGradient: "from-rose-500 to-pink-600",
-    rating: 5,
-    metric: { value: "100%", label: "Audit Ready" },
-  },
-  {
-    id: "8",
-    quote:
-      "We grew from 50 to 200 employees and Expendesk scaled with us seamlessly. The policy engine adapted to our new org structure without any manual reconfiguration.",
-    author: "Ananya Gupta",
-    role: "COO",
-    company: "Nomad Digital Studio",
-    companyType: "Creative Agency · 200 employees",
-    avatar: "AG",
-    avatarGradient: "from-cyan-500 to-blue-600",
-    rating: 5,
-  },
-  {
-    id: "9",
-    quote:
-      "Leadership finally has real-time spend visibility. The dashboard does exactly what I had been asking our previous tool to do for years — without weeks of configuration.",
-    author: "Deepak Pillai",
-    role: "Managing Director",
-    company: "CoreAxis Consulting",
-    companyType: "Strategy Consulting · 120 employees",
-    avatar: "DP",
-    avatarGradient: "from-purple-500 to-violet-700",
-    rating: 5,
-    metric: { value: "Live", label: "Spend Intel" },
-  },
-  {
-    id: "10",
-    quote:
-      "We migrated from spreadsheets to Expendesk in under a week. Onboarding was smooth and the ROI was clearly visible within the very first month of use.",
-    author: "Meera Joshi",
-    role: "Finance Controller",
-    company: "Aether Products Ltd.",
-    companyType: "FMCG · 250 employees",
-    avatar: "MJ",
-    avatarGradient: "from-violet-600 to-fuchsia-600",
-    rating: 5,
-  },
-  {
-    id: "11",
-    quote:
-      "Auto-flagging for policy violations is a game changer. We have completely stopped reimbursing out-of-policy claims — the system catches and blocks them first.",
-    author: "Ravi Chandran",
-    role: "Group Finance Head",
-    company: "Stellar Industries",
-    companyType: "Manufacturing · 600+ employees",
-    avatar: "RC",
-    avatarGradient: "from-teal-500 to-emerald-600",
-    rating: 5,
-    metric: { value: "₹2.1L", label: "Blocked / Month" },
-  },
-  {
-    id: "12",
-    quote:
-      "Expendesk brought real structure to what was absolute chaos. Vendor payments, employee reimbursements, travel advances — all unified in one intelligent platform.",
-    author: "Pallavi Deshpande",
-    role: "Head of Finance",
-    company: "Nexus TechLabs",
-    companyType: "SaaS Product · 90 employees",
-    avatar: "PD",
-    avatarGradient: "from-amber-500 to-orange-600",
-    rating: 5,
-    metric: { value: "1", label: "Unified Platform" },
-  },
-];
+export const testimonialsData: Testimonial[] = rawTestData.testimonials.map(
+  (t) => ({
+    ...t,
+    avatarImage: t.avatarImage ?? undefined,
+    metric: t.metric ?? undefined,
+    avatarGradient: TESTIMONIAL_GRADIENTS[t.id] ?? "from-slate-500 to-slate-700",
+  })
+);
 
 // ─────────────────────────────────────────────────────────────────────────────
 // ICONS
@@ -407,26 +249,7 @@ export default function TestimonialsSection() {
   const row2 = testimonialsData.slice(6, 12);
 
   return (
-    <>
-      {/* ── Keyframe styles  (tip: move these into globals.css if you prefer) ──
-          backface-visibility:hidden keeps the GPU layer crisp so text doesn't
-          soften while the row is translating. */}
-      <style>{`
-        @keyframes expendeskMarqueeLeft  { from { transform: translateX(0%);   } to { transform: translateX(-50%); } }
-        @keyframes expendeskMarqueeRight { from { transform: translateX(-50%); } to { transform: translateX(0%);   } }
-        .expd-marquee-left  { animation: expendeskMarqueeLeft  linear infinite; }
-        .expd-marquee-right { animation: expendeskMarqueeRight linear infinite; }
-        .expd-marquee-left, .expd-marquee-right {
-          backface-visibility: hidden;
-          -webkit-backface-visibility: hidden;
-          transform-style: preserve-3d;
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .expd-marquee-left, .expd-marquee-right { animation: none !important; }
-        }
-      `}</style>
-
-      <section
+    <section
         ref={sectionRef}
         id="testimonials"
         className="relative overflow-hidden bg-[#ECECF4] pb-20 md:pb-28 pt-0"
@@ -469,12 +292,12 @@ export default function TestimonialsSection() {
               <QuoteGlyph className="h-2.5 w-2.5" />
             </span>
             <span className="text-[11px] font-semibold uppercase tracking-widest text-violet-600">
-              Customer Stories
+              {rawTestData.section.badge.label}
             </span>
             <span className="h-3 w-px bg-violet-200" aria-hidden="true" />
             <span className="flex items-center gap-1 text-[11px] font-semibold text-amber-500">
               <StarIcon className="h-3 w-3" />
-              4.9
+              {rawTestData.section.badge.rating}
             </span>
           </motion.div>
 
@@ -485,14 +308,14 @@ export default function TestimonialsSection() {
             transition={{ duration: 0.65, delay: 0.1 }}
             className="text-3xl font-black leading-[1.1] tracking-tight text-gray-900 sm:text-4xl md:text-5xl lg:text-[56px]"
           >
-            Businesses Don&rsquo;t Need{" "}
+            {rawTestData.section.headline.plain1}{" "}
             <span className="bg-gradient-to-r from-violet-600 to-fuchsia-500 bg-clip-text text-transparent">
-              More Software.
+              {rawTestData.section.headline.accent1}
             </span>
             <br />
-            They Need{" "}
+            {rawTestData.section.headline.plain2}{" "}
             <span className="bg-gradient-to-r from-violet-700 via-violet-600 to-purple-500 bg-clip-text text-transparent">
-              More Control.
+              {rawTestData.section.headline.accent2}
             </span>
           </motion.h2>
         </div>
@@ -539,13 +362,12 @@ export default function TestimonialsSection() {
               ))}
             </div>
             <p className="text-sm text-gray-500">
-              Join{" "}
-              <span className="font-semibold text-gray-700">140+ businesses</span>{" "}
-              already in control
+              {rawTestData.section.bottomCta.pre}{" "}
+              <span className="font-semibold text-gray-700">{rawTestData.section.bottomCta.highlight}</span>{" "}
+              {rawTestData.section.bottomCta.post}
             </p>
           </div>
         </motion.div>
       </section>
-    </>
   );
 }

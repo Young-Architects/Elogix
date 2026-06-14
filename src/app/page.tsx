@@ -7,12 +7,12 @@ import TestimonialsSection from "@/components/sections/TestimonialsSection";
 // Below-fold sections: lazy loaded to reduce initial JS bundle
 // They render a minimal placeholder until the user scrolls near them
 const ProblemSection = dynamic(
-  () => import("@/components/sections/Problemsection"),
+  () => import("@/components/sections/ProblemSection"),
   { loading: () => <div className="min-h-[200px]" />, ssr: true }
 );
 
 const SolutionSection = dynamic(
-  () => import("@/components/sections/Solutionsection"),
+  () => import("@/components/sections/SolutionSection"),
   { loading: () => <div className="min-h-[200px]" />, ssr: true }
 );
 

@@ -19,7 +19,38 @@ body {
   color: white;
 }
 
-/* Custom Scrollbar for Diagram */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Nav underline hover animation */
+.nav-underline-item {
+  position: relative;
+}
+.nav-underline-item::after {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  left: 14px;
+  right: 14px;
+  height: 1.5px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 60%, #a78bfa 100%);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.34s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-underline-item:hover::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.nav-cta:focus-visible {
+  outline: 2px solid rgba(99, 102, 241, 0.5);
+  outline-offset: 3px;
+}
+
+/* ─── Custom Scrollbar — SolutionSection diagram ─────────────────────────── */
 .custom-scrollbar::-webkit-scrollbar {
   height: 6px;
 }
@@ -32,4 +63,38 @@ body {
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background-color: rgba(124, 58, 237, 0.4);
+}
+
+/* ─── BenefitsSection — hide scrollbar in mobile card carousel content ────── */
+.carousel-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── LeadMagnetSection — slow background drift animation ────────────────── */
+@keyframes lm-drift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.lm-bg-drift {
+  animation: lm-drift 30s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lm-bg-drift { animation: none; }
+}
+
+/* ─── TestimonialsSection — infinite marquee rows ────────────────────────── */
+@keyframes expendeskMarqueeLeft  { from { transform: translateX(0%);   } to { transform: translateX(-50%); } }
+@keyframes expendeskMarqueeRight { from { transform: translateX(-50%); } to { transform: translateX(0%);   } }
+.expd-marquee-left  { animation: expendeskMarqueeLeft  linear infinite; }
+.expd-marquee-right { animation: expendeskMarqueeRight linear infinite; }
+.expd-marquee-left,
+.expd-marquee-right {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+@media (prefers-reduced-motion: reduce) {
+  .expd-marquee-left,
+  .expd-marquee-right { animation: none !important; }
 }
