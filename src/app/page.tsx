@@ -3,6 +3,8 @@ import Navbar from "@/components/layout/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
 import LeadMagnetSection from "@/components/sections/LeadMagnetSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
+import WhyExpendesk from "@/components/sections/Whyexpendesk";
+import Whyexpendesk from "@/components/sections/Whyexpendesk";
 
 // Below-fold sections: lazy loaded to reduce initial JS bundle
 // They render a minimal placeholder until the user scrolls near them
@@ -37,6 +39,7 @@ export default function Home() {
       <FeaturesVideo />
       <LeadMagnetSection />
       <TestimonialsSection />
+      <Whyexpendesk/>
     </main>
   );
 }

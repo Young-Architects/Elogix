@@ -252,7 +252,7 @@ export default function TestimonialsSection() {
     <section
         ref={sectionRef}
         id="testimonials"
-        className="relative overflow-hidden bg-[#ECECF4] pb-20 md:pb-28 pt-0"
+        className="relative overflow-hidden bg-[#ECECF4] pb-20 md:pb-20 pt-0"
       >
         {/* Your own divider, sitting at the seam between the two sections */}
         <ScrollBeamDivider />
