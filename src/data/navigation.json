@@ -1,25 +1,30 @@
 {
   "items": [
     {
-      "label": "Features",
-      "href": "#features",
+      "label": "Home",
+      "href": "/",
       "dropdown": [
-        { "iconKey": "bar-chart-2",      "label": "Analytics",  "desc": "Real-time spend insights",  "href": "#analytics"  },
-        { "iconKey": "zap",              "label": "Automation", "desc": "AI-powered workflows",       "href": "#automation" },
-        { "iconKey": "layout-dashboard", "label": "Dashboard",  "desc": "Unified control center",    "href": "#dashboard"  }
+        { "iconKey": "home",           "label": "Hero",          "desc": "Back to the top",            "href": "/#hero"           },
+        { "iconKey": "alert-triangle", "label": "Problem",       "desc": "The challenge we solve",     "href": "/#problem"        },
+        { "iconKey": "check-circle",   "label": "Solution",      "desc": "How we solve it",            "href": "/#solution"       },
+        { "iconKey": "star",           "label": "Benefits",      "desc": "What you gain",              "href": "/#benefits"       },
+        { "iconKey": "play",           "label": "Features",      "desc": "See it in action",           "href": "/#features-video" },
+        { "iconKey": "mail",           "label": "Get Started",   "desc": "Start your journey",         "href": "/#lead-magnet"    },
+        { "iconKey": "message-circle", "label": "Testimonials",  "desc": "What customers say",         "href": "/#testimonials"   },
+        { "iconKey": "help-circle",    "label": "Why Expendesk", "desc": "Our story & mission",        "href": "/#why-expendesk"  }
       ]
     },
     {
-      "label": "Workflow",
-      "href": "#workflow",
+      "label": "Solutions",
+      "href": "/solutions",
       "dropdown": [
-        { "iconKey": "users",       "label": "Teams",     "desc": "Collaborate seamlessly", "href": "#teams"     },
-        { "iconKey": "shield",      "label": "Approvals", "desc": "Multi-level control",    "href": "#approvals" },
-        { "iconKey": "credit-card", "label": "Budgets",   "desc": "Set & enforce limits",   "href": "#budgets"   }
+        { "iconKey": "shield",      "label": "Expense Management for Pharmaceutical Industries", "desc": "Streamline compliance & audit-ready expense reporting",   "href": "/solutions/pharmaceutical"   },
+        { "iconKey": "zap",         "label": "Expense Management for Manufacturing Industries",  "desc": "Control factory & plant spend with real-time visibility", "href": "/solutions/manufacturing"    },
+        { "iconKey": "bar-chart-2", "label": "Expense Management for Digital Agencies",          "desc": "Track project budgets & client billing with precision",   "href": "/solutions/digital-agencies" }
       ]
     },
-    { "label": "Security", "href": "#security" },
     { "label": "Pricing",  "href": "#pricing"  },
+    { "label": "Security", "href": "#security" },
     { "label": "Contact",  "href": "#contact"  }
   ],
   "cta": {

@@ -522,6 +522,7 @@ export default function SolutionSection() {
 
   return (
     <section
+      id="solution"
       ref={sectionRef}
       className="relative w-full overflow-hidden bg-gradient-to-b from-[#f8f9ff] via-[#f1f3fe] to-[#eceef8] pb-20 md:pb-28 pt-0"
     >

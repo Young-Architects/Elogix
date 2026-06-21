@@ -619,7 +619,7 @@ export default function FeaturesVideoWithIndustry() {
       {/* ══════════════════════════════════════
           SECTION 1 — FEATURES VIDEO
       ══════════════════════════════════════ */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#f8f9ff] via-[#f1f3fe] to-[#eceef8] pb-14 md:pb-16 pt-0">
+      <section id="features-video" className="relative overflow-hidden bg-gradient-to-b from-[#f8f9ff] via-[#f1f3fe] to-[#eceef8] pb-14 md:pb-16 pt-0">
         <ScrollBeamDivider />
 
         <div className="absolute inset-0 pointer-events-none flex items-center justify-center">

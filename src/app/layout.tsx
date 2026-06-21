@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Syne } from "next/font/google";
 import "./globals.css";
 import ChatWidget from "@/components/layout/ChatWidget";
+import Navbar from "@/components/layout/Navbar";
+import ScrollToHash from "@/components/layout/ScrollToHash";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -63,6 +65,8 @@ export default function RootLayout({
           min-h-screen
         `}
       >
+        <Navbar />
+        <ScrollToHash />
         {children}
         <ChatWidget />
       </body>

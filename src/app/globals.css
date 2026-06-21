@@ -4,6 +4,12 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Offset anchor scroll targets so they land below the fixed navbar */
+section[id],
+div[id] {
+  scroll-margin-top: 84px;
+}
+
 body {
   background: #050816;
   color: white;

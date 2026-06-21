@@ -817,6 +817,7 @@ export default function BenefitsSection() {
 
   return (
     <section
+      id="benefits"
       ref={sectionRef}
       className="relative overflow-hidden font-['Inter',sans-serif]"
       style={{
