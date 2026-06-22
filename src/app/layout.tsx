@@ -1,28 +1,22 @@
+/**
+ * Root layout — wraps every route in the App Router.
+ *
+ * Responsibilities:
+ *  - Imports the single global stylesheet (`globals.css`).
+ *  - Declares site-wide `metadata` (SEO/OpenGraph) and `viewport` (theme color).
+ *  - Renders the persistent chrome that lives on all pages: the fixed `Navbar`,
+ *    the floating `ChatWidget`, and `ScrollToHash` (the headless controller that
+ *    owns in-page smooth scrolling — see `lib/scroll.ts`).
+ *
+ * Note on fonts: body copy intentionally uses the native system sans-serif
+ * stack (no web font is mapped to `font-family` here). The Hero loads Syne
+ * locally for its own headings. See the README "Typography note".
+ */
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Syne } from "next/font/google";
 import "./globals.css";
 import ChatWidget from "@/components/layout/ChatWidget";
 import Navbar from "@/components/layout/Navbar";
 import ScrollToHash from "@/components/layout/ScrollToHash";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const syne = Syne({
-  variable: "--font-syne",
-  subsets: ["latin"],
-  weight: ["700", "800"],
-  display: "swap",
-});
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -49,22 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-      </head>
-      <body
-        className={`
-          ${geistSans.variable}
-          ${geistMono.variable}
-          ${syne.variable}
-          antialiased
-          bg-black
-          text-white
-          min-h-screen
-        `}
-      >
+      <body className="antialiased bg-black text-white min-h-screen">
         <Navbar />
         <ScrollToHash />
         {children}

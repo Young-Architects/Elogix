@@ -1,5 +1,20 @@
 "use client";
 
+/**
+ * ProblemSection — "root causes → chaos → consequences" flow diagram
+ * (id="problem").
+ *
+ * The visual is a 3-column grid (cause cards | central "CHAOS POINT" node |
+ * effect cards) with animated SVG connector lines drawn between them.
+ * `ConnectorLines` measures the real DOM positions of each card and the centre
+ * node (via refs + getBoundingClientRect) to compute Bézier paths, then
+ * re-measures on resize through a ResizeObserver. Because positions are measured
+ * at runtime, the same markup works across all breakpoints.
+ *
+ * Cards, stats and CTA copy come from `src/data/sections/problem.json`. Icons in
+ * this section are plain emoji stored directly in the JSON (no Lucide registry).
+ */
+
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { Sparkles, TrendingUp } from "lucide-react";
@@ -43,6 +58,11 @@ interface PathDef {
   delay: number;
 }
 
+// Connector stroke colours, keyed by index. Module-scoped constants so they
+// keep a stable identity across renders (no need to list them as hook deps).
+const CAUSE_COLORS = ["#7c3aed", "#7c3aed", "#7c3aed", "#7c3aed"];
+const EFFECT_COLORS = ["#f59e0b", "#ef4444", "#94a3b8", "#f97316", "#f43f5e"];
+
 function ConnectorLines({
   causeEls,
   effectEls,
@@ -58,9 +78,6 @@ function ConnectorLines({
 }) {
   const svgRef = useRef<SVGSVGElement>(null);
   const [paths, setPaths] = useState<PathDef[]>([]);
-
-  const CAUSE_COLORS = ["#7c3aed", "#7c3aed", "#7c3aed", "#7c3aed"];
-  const EFFECT_COLORS = ["#f59e0b", "#ef4444", "#94a3b8", "#f97316", "#f43f5e"];
 
   const buildPaths = useCallback(() => {
     const svg = svgRef.current;

@@ -1,5 +1,19 @@
 "use client";
 
+/**
+ * TestimonialsSection — social proof marquee (id="testimonials").
+ *
+ * Two `MarqueeRow`s scroll in opposite directions (left/right) at different
+ * speeds. The scrolling itself is pure CSS (`expd-marquee-*` keyframes in
+ * globals.css); each row duplicates its items once so the loop is seamless, and
+ * hovering/touching a row pauses it via `animationPlayState`. Cards are
+ * equal-height (an `h-full` chain) and render a gradient-initial `Avatar` unless
+ * an optional `avatarImage` is provided.
+ *
+ * Data comes from `src/data/sections/testimonials.json`; the display-only
+ * `avatarGradient` is assigned here from `TESTIMONIAL_GRADIENTS` keyed by id.
+ */
+
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import ScrollBeamDivider from "../ui/ScrollBeamDivider";

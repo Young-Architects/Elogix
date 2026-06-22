@@ -1,5 +1,24 @@
 "use client";
 
+/**
+ * WhyExpendesk — "before vs after" capability comparison (id="why-expendesk").
+ *
+ * Two responsive presentations of the same `comparisons` data:
+ *  - `TableView` (desktop, md+): a "list + spotlight" panel. The left column
+ *    lists capabilities; the right shows full detail for the active one. It
+ *    auto-rotates on a requestAnimationFrame progress timer (story-style
+ *    segmented bars) and can be paused / jumped via the controls.
+ *  - `CardView` (mobile, <md): a horizontal snap-scroll carousel of cards with
+ *    dots and prev/next buttons; `measure()` tracks the active card on scroll.
+ *
+ * Both show a skeleton (`eb-skel`) for `LOAD_MS` after the section first enters
+ * the viewport to fake a load-in, then the real content. `CtaPanel` renders the
+ * closing dark CTA. Content + icon keys come from
+ * `src/data/sections/why-expendesk.json` (typed as `WhyExpendeskData`); icon
+ * keys map to Lucide via the `ICONS` registry. Most animations/effects
+ * (beam, shimmer, orbs, skeleton) are CSS classes defined in globals.css.
+ */
+
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
   motion,

@@ -1,5 +1,15 @@
 "use client";
 
+/**
+ * ScrollBeamDivider — the shared "laser line" that marks the seam between
+ * sections. Most sections render it flush at their top edge (with `pt-0`) so it
+ * sits exactly on the boundary with the previous section.
+ *
+ * On scroll into view a thin gradient line scales out from the center and a
+ * brighter blurred dot fades in for a sharp focal point. `viewport.once: false`
+ * means it re-animates every time it re-enters the viewport.
+ */
+
 import { motion } from "framer-motion";
 
 export default function ScrollBeamDivider() {

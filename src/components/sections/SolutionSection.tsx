@@ -1,5 +1,22 @@
 "use client";
 
+/**
+ * SolutionSection — "from chaos to control" (id="solution").
+ *
+ * Three stacked blocks:
+ *  1. `NodeDiagram` — chaos nodes (left) and control nodes (right) wired to a
+ *     central Expendesk hub by animated SVG beams. Like ProblemSection, the
+ *     beam paths are computed from measured DOM positions and redrawn on resize.
+ *  2. `FeaturesSection` — an auto-scrolling marquee of feature cards on mobile/
+ *     tablet (<1024px, pauses on press) that becomes a static grid on desktop.
+ *  3. Stats (animated `StatCounter`s) + a CTA card containing a mini dashboard
+ *     mockup with a sparkline.
+ *
+ * Inline SVG components (IconCamera, IconBolt, …) are mapped from string
+ * `iconKey`s in `src/data/sections/solution.json` via FEATURE_ICON_MAP /
+ * STAT_ICON_MAP. All copy/figures live in that JSON.
+ */
+
 import React, { useCallback, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Sparkles } from "lucide-react";

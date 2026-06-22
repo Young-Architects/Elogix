@@ -1,3 +1,19 @@
+/* =============================================================================
+ * globals.css — the single source of truth for global CSS in this app.
+ *
+ * Contents, in order:
+ *   1. Tailwind v4 import + base resets (scroll behavior, anchor offsets,
+ *      selection color, tap-highlight, box-sizing).
+ *   2. Navbar underline hover effect.
+ *   3. Component-scoped custom CSS — each block is labelled with the component
+ *      that owns it: SolutionSection / BenefitsSection / LeadMagnetSection /
+ *      TestimonialsSection / ChatWidget / WhyExpendesk (prefixed `eb-`).
+ *
+ * Conventions (see README "Styling Rules"):
+ *   - This file is the ONLY place for class definitions and @keyframes.
+ *   - Inline `style={{}}` in components is reserved for runtime-computed values.
+ *   - Every animation here has a `prefers-reduced-motion: reduce` opt-out.
+ * ========================================================================== */
 @import "tailwindcss";
 
 /* Smooth scrolling is driven by the JS engine in src/lib/scroll.ts so it can

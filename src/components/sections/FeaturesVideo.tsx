@@ -1,5 +1,24 @@
 "use client";
 
+/**
+ * FeaturesVideo — exports `FeaturesVideoWithIndustry`, which renders TWO stacked
+ * subsections:
+ *
+ *  1. Features video (id="features-video") — a 3D mouse-tilt browser mockup
+ *     (perspective + Framer Motion springs) with a play button and floating
+ *     `BadgePill`s that parallax via CSS vars set on mousemove. On small screens
+ *     the badges fall back to a static grid below the mockup.
+ *  2. `IndustrySection` — an interactive industry selector: a list of cards on
+ *     the left and a `DetailPanel` on the right (desktop) / below (mobile). It
+ *     tracks `isMobile` to swap the interaction model and auto-scrolls the panel
+ *     into view on selection.
+ *
+ * Floating-badge and industry icons map from string `iconKey`s
+ * (`FLOATING_BADGE_ICON_MAP` / `INDUSTRY_ICON_MAP`); all copy/figures come from
+ * `src/data/sections/features.json`. The <video> element is an intentional
+ * placeholder (no `src` yet) — wire up a real source when available.
+ */
+
 import { useRef, useState, useEffect } from "react";
 import {
   motion,
@@ -21,7 +40,6 @@ import {
   Briefcase,
   Users,
   TrendingUp,
-  Shield,
   Layers,
   ChevronRight,
   MousePointer2,

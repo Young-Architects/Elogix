@@ -1,5 +1,21 @@
 'use client';
 
+/**
+ * BenefitsSection — "bento" grid of benefit cards (id="benefits").
+ *
+ * Layout:
+ *  - Desktop (lg+): a 3-column bento grid where cards can be `normal`, `wide`,
+ *    or `tall` (see `gridCls` in `BentoCard`).
+ *  - Mobile/tablet (<lg): the same cards become a swipeable, auto-advancing
+ *    `MobileCardCarousel` with progress bar, dots, and arrows.
+ *
+ * Cards animate counters (`useCounter`) and bars into view, and have a
+ * mouse-following spotlight + shimmer on hover. The `ACCENTS` token map defines
+ * the per-card colour theme (keyed by `accent` from the JSON). A `TickerStrip`
+ * marquee sits above the grid. All content + card layout config come from
+ * `src/data/sections/benefits.json`; `iconKey`s map to Lucide via `ICON_MAP`.
+ */
+
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import {
@@ -683,7 +699,8 @@ function MobileCardCarousel({ active }: { active: boolean }) {
   const handleTouchEnd = useCallback((e: React.TouchEvent) => {
     const diff = touchStartX.current - e.changedTouches[0].clientX;
     if (Math.abs(diff) > 40) {
-      diff > 0 ? goTo(current + 1, true) : goTo(current - 1, true);
+      if (diff > 0) goTo(current + 1, true);
+      else goTo(current - 1, true);
     }
   }, [current, goTo]);
 

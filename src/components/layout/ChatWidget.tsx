@@ -1,5 +1,22 @@
 "use client";
 
+/**
+ * ChatWidget — floating AI chat launcher + panel, rendered once in the root
+ * layout so it persists across the whole site.
+ *
+ * Behavior:
+ *  - Posts each visitor message to the webhook in
+ *    `NEXT_PUBLIC_N8N_CHAT_WEBHOOK_URL` (an n8n workflow) and renders the reply.
+ *  - A stable per-visitor id is generated with `crypto.randomUUID()` and cached
+ *    in `localStorage` (used as both `sessionId` and `visitorId` in the payload).
+ *  - Client-side rate limit (`RATE_LIMIT_MS`) prevents rapid-fire sends;
+ *    network failures surface as an inline "error" bubble rather than throwing.
+ *  - Esc closes the panel; the textarea auto-grows up to a max height.
+ *
+ * If the env var is unset, the UI still renders but sends will fail (error
+ * bubble). Types for the request/response live in `src/types/index.ts`.
+ */
+
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, X } from "lucide-react";

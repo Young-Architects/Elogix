@@ -1,5 +1,19 @@
 "use client";
 
+/**
+ * LeadMagnetSection — free eBook download CTA (id="lead-magnet").
+ *
+ * A two-column layout: marketing copy + `DownloadButton` on one side, and a
+ * fully CSS-rendered 3D `EbookCover` on the other (no image asset — the book,
+ * spine, pages, chart and glow are all divs; it scales as one unit via a single
+ * fluid `font-size` + em-based internals). Floating glass tags orbit the book.
+ *
+ * `DownloadButton` runs an idle → loading → done state machine, then triggers a
+ * real download of `pdfUrl` via a synthetic <a download>. Ambient particles and
+ * float animations are gated behind `useReducedMotion()`. Copy, bullets, book
+ * meta, and the PDF url come from `src/data/sections/lead-magnet.json`.
+ */
+
 import React from "react";
 import { useRef, useState, useMemo } from "react";
 import {

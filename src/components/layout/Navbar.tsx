@@ -1,5 +1,22 @@
 "use client";
 
+/**
+ * Navbar — the fixed, pill-shaped top navigation present on every page.
+ *
+ * Features:
+ *  - Shrinks/raises its shadow once the page is scrolled past 40px (`scrolled`).
+ *  - A gradient scroll-progress bar pinned to the very top (driven by Framer
+ *    Motion's `useScroll`).
+ *  - Hover-intent desktop dropdowns (with a small close delay) and a separate
+ *    accordion-style mobile menu.
+ *  - Closes on outside-click / route changes.
+ *
+ * Data-driven: links, dropdown entries, and the CTA come from
+ * `src/data/navigation.json`. Each dropdown item carries a string `iconKey`
+ * which is mapped to a Lucide icon via `NAV_ICON_MAP` below — so the JSON stays
+ * serialisable and never imports React components.
+ */
+
 import Link from "next/link";
 import {
   motion,

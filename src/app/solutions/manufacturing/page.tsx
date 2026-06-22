@@ -1,3 +1,13 @@
+/**
+ * /solutions/manufacturing — static, SEO-focused industry landing page.
+ *
+ * One of three sibling pages under `solutions/` (manufacturing, pharmaceutical,
+ * digital-agencies), linked from the Navbar "Solutions" dropdown. Each is fully
+ * self-contained: copy is inline here (these do NOT use the `src/data/` JSON
+ * pattern that the home-page sections use). Prerendered as static HTML at build.
+ *
+ * `#demo` CTA anchors are placeholders — there is no demo section yet.
+ */
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

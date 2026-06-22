@@ -1,3 +1,16 @@
+/**
+ * Home page — composes the marketing landing page from independent sections.
+ *
+ * Rendering strategy (performance):
+ *  - Above-the-fold sections (Hero, LeadMagnet, Testimonials, WhyExpendesk) are
+ *    imported statically so they are in the initial bundle / first paint.
+ *  - Below-the-fold sections are loaded with `next/dynamic` so their client JS
+ *    is code-split into separate chunks. `ssr: true` keeps them server-rendered
+ *    for SEO; the `loading` placeholder only reserves space during hydration.
+ *
+ * Section order here is the visual order on the page. Each section is fully
+ * self-contained and reads its copy from `src/data/sections/<name>.json`.
+ */
 import dynamic from "next/dynamic";
 import HeroSection from "@/components/sections/HeroSection";
 import LeadMagnetSection from "@/components/sections/LeadMagnetSection";

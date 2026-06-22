@@ -1,5 +1,22 @@
 "use client";
 
+/**
+ * HeroSection — the first, above-the-fold section (id="hero").
+ *
+ * Pieces:
+ *  - An interactive `<canvas>` dot grid that repels/brightens around the cursor
+ *    (runs on its own requestAnimationFrame loop; cleaned up on unmount/resize).
+ *  - A cursor-following blurred glow driven by Framer Motion springs.
+ *  - `Counter` — counts a stat up from 0 once it scrolls into view.
+ *  - `LiveExpenseTicker` — auto-cycling fake "approved/flagged/pending" feed.
+ *  - Floating badges, trust pills, CTAs, feature cards and a social-proof strip.
+ *
+ * This section loads Syne locally (`syne.className`) for its own headings — it
+ * is the only place a web font is applied. All copy comes from
+ * `src/data/sections/hero.json`; string `iconKey`s map to Lucide icons via the
+ * `TRUST_PILL_ICONS` / `FEATURE_CARD_ICONS` registries below.
+ */
+
 import { Syne } from "next/font/google";
 import { motion, useMotionValue, useSpring, useInView } from "framer-motion";
 import {
