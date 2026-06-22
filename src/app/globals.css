@@ -1,13 +1,19 @@
 @import "tailwindcss";
 
+/* Smooth scrolling is driven by the JS engine in src/lib/scroll.ts so it can
+   track lazy-loaded sections whose height is still settling. A CSS
+   `scroll-behavior: smooth` here would fight that engine (it turns every
+   per-frame scrollTo into its own animation), so we keep native scrolling
+   instant and let the engine own the smoothness. */
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
-/* Offset anchor scroll targets so they land below the fixed navbar */
+/* Offset anchor scroll targets so they land below the fixed navbar — matches
+   NAVBAR_OFFSET in src/lib/scroll.ts. Used as a fallback for any native jump. */
 section[id],
 div[id] {
-  scroll-margin-top: 84px;
+  scroll-margin-top: 90px;
 }
 
 body {
