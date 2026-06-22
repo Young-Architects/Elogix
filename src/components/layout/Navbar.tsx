@@ -52,6 +52,9 @@ import {
   Mail,
   MessageCircle,
   HelpCircle,
+  FileText,
+  Briefcase,
+  BookOpen,
   type LucideIcon,
 } from "lucide-react";
 import navData from "@/data/navigation.json";
@@ -123,6 +126,9 @@ const NAV_ICON_MAP: Record<string, LucideIcon> = {
   "mail":             Mail,
   "message-circle":   MessageCircle,
   "help-circle":      HelpCircle,
+  "file-text":        FileText,
+  "briefcase":        Briefcase,
+  "book-open":        BookOpen,
 };
 
 /* ───────────────────────── data (from navigation.json) ───────────────────────── */
@@ -465,7 +471,21 @@ export default function Navbar(): ReactNode {
           </nav>
 
           {/* ── Desktop CTA ── */}
-          <div className="hidden items-center md:flex pr-0.5">
+          <div className="hidden items-center gap-2 md:flex pr-0.5">
+            <motion.a
+              whileHover={{ scale: 1.025, y: -0.5 }}
+              whileTap={{ scale: 0.975 }}
+              animate={{
+                paddingTop: scrolled ? "6px" : "8px",
+                paddingBottom: scrolled ? "6px" : "8px",
+                fontSize: scrolled ? "12px" : "12.5px",
+              }}
+              transition={FAST_SPRING}
+              href={navData.login.href}
+              className="rounded-full border border-violet-200 bg-violet-50/60 px-4.5 font-semibold text-violet-600 shadow-sm transition-colors hover:border-violet-300 hover:bg-violet-100/80 hover:text-violet-700"
+            >
+              {navData.login.label}
+            </motion.a>
             <motion.a
               whileHover={{ scale: 1.025, y: -0.5 }}
               whileTap={{ scale: 0.975 }}
@@ -545,7 +565,19 @@ export default function Navbar(): ReactNode {
                   ))}
                 </div>
 
-                <div className="mt-2.5 border-t border-slate-100 pt-2.5">
+                <div className="mt-2.5 space-y-2 border-t border-slate-100 pt-2.5">
+                  <motion.a
+                    whileTap={{ scale: 0.98 }}
+                    transition={FAST_SPRING}
+                    href={navData.login.href}
+                    onClick={() => {
+                      setMobileOpen(false);
+                      setMobileOpenDropdown(null);
+                    }}
+                    className="flex w-full items-center justify-center rounded-xl border border-slate-200 py-2.5 text-[12px] font-semibold text-slate-700 transition-colors hover:border-violet-300 hover:text-violet-600"
+                  >
+                    {navData.login.label}
+                  </motion.a>
                   <motion.a
                     whileTap={{ scale: 0.98 }}
                     transition={FAST_SPRING}

@@ -24,9 +24,22 @@
       ]
     },
     { "label": "Pricing",  "href": "#pricing"  },
-    { "label": "Security", "href": "#security" },
+    {
+      "label": "Resources",
+      "href": "/resources",
+      "dropdown": [
+        { "iconKey": "file-text",     "label": "Whitepapers",  "desc": "In-depth research & insights",   "href": "/resources/whitepapers"  },
+        { "iconKey": "briefcase",     "label": "Case Studies", "desc": "Real customer success stories",  "href": "/resources/case-studies" },
+        { "iconKey": "book-open",     "label": "Blogs",        "desc": "Latest articles & updates",      "href": "/resources/blogs"        },
+        { "iconKey": "help-circle",   "label": "FAQs",         "desc": "Answers to common questions",    "href": "/resources/faqs"         }
+      ]
+    },
     { "label": "Contact",  "href": "#contact"  }
   ],
+  "login": {
+    "label": "Login",
+    "href": "#login"
+  },
   "cta": {
     "label": "Book a Demo",
     "href": "#demo"
