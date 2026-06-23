@@ -29,6 +29,7 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import ScrollBeamDivider from '../ui/ScrollBeamDivider';
+import MagneticButton from '@/components/ui/MagneticButton';
 import rawBenefitsData from '@/data/sections/benefits.json';
 
 /* ============================================================
@@ -976,24 +977,13 @@ export default function BenefitsSection() {
             </span>
           </div>
 
-          <motion.button
-            className="shrink-0 text-[#F5F3FF] border-none rounded-full text-[12px] font-bold cursor-pointer whitespace-nowrap font-[inherit] flex items-center gap-[7px]"
-            style={{
-              background:  'linear-gradient(135deg,#7C3AED,#5B21B6)',
-              padding:     '11px 22px',
-              boxShadow:   '0 4px 18px rgba(124,58,237,0.32), inset 0 1px 0 rgba(255,255,255,0.15)',
-            }}
-            whileHover={{
-              scale:      1.04,
-              opacity:    0.95,
-              boxShadow:  '0 8px 28px rgba(124,58,237,0.42), inset 0 1px 0 rgba(255,255,255,0.15)',
-              transition: { duration: 0.22, ease: 'easeOut' },
-            }}
-            whileTap={{ scale: 0.97 }}
+          <MagneticButton
+            variant="primary"
+            className="shrink-0 whitespace-nowrap rounded-full px-5.5 py-2.75 text-[12px]"
+            icon={<ArrowRight size={14} aria-hidden />}
           >
             {SECTION_CONTENT.cta.buttonLabel}
-            <ArrowRight size={14} aria-hidden />
-          </motion.button>
+          </MagneticButton>
         </motion.div>
 
       </div>

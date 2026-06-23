@@ -9,6 +9,7 @@
  * `#demo` CTA anchors are placeholders — there is no demo section yet.
  */
 import type { Metadata } from "next";
+import MagneticButton from "@/components/ui/MagneticButton";
 
 export const metadata: Metadata = {
   title: "Expense Management for Manufacturing Industries | Expendesk",
@@ -33,12 +34,13 @@ export default function ManufacturingSolutionPage() {
           manufacturing teams granular cost control without slowing down
           operations.
         </p>
-        <a
+        <MagneticButton
           href="#demo"
-          className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-500/30 transition-transform hover:-translate-y-0.5"
+          variant="primary"
+          className="mt-8 rounded-full px-7 py-3 text-sm shadow-lg shadow-violet-500/30"
         >
           Book a Demo
-        </a>
+        </MagneticButton>
       </section>
 
       {/* Key benefits */}

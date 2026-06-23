@@ -30,10 +30,15 @@ src/
 │   ├── globals.css                 # Single source of truth for global CSS + @keyframes
 │   ├── layout.tsx                  # Root layout: fonts, metadata, viewport, Navbar, ChatWidget
 │   ├── page.tsx                    # Home page composition (above-fold static, below-fold lazy)
-│   └── solutions/                  # Per-industry SEO landing pages
-│       ├── digital-agencies/page.tsx
-│       ├── manufacturing/page.tsx
-│       └── pharmaceutical/page.tsx
+│   ├── solutions/                  # Per-industry SEO landing pages
+│   │   ├── digital-agencies/page.tsx
+│   │   ├── manufacturing/page.tsx
+│   │   └── pharmaceutical/page.tsx
+│   └── resources/                  # Resources dropdown routes (placeholders → notFound())
+│       ├── blogs/page.tsx
+│       ├── case-studies/page.tsx
+│       ├── faqs/page.tsx
+│       └── whitepapers/page.tsx
 │
 ├── components/
 │   ├── layout/
@@ -50,10 +55,11 @@ src/
 │   │   ├── TestimonialsSection.tsx # Dual infinite marquee rows
 │   │   └── WhyExpendesk.tsx        # Before/after comparison (table on desktop, cards on mobile)
 │   └── ui/
+│       ├── MagneticButton.tsx      # Shared magnetic CTA (cursor-follow, gradient variants)
 │       └── ScrollBeamDivider.tsx   # Shared animated section divider
 │
 ├── data/
-│   ├── navigation.json             # Navbar links, dropdown items, CTA
+│   ├── navigation.json             # Navbar links, dropdown items, Login + CTA
 │   └── sections/                   # One JSON file per section (all copy lives here)
 │       ├── hero.json
 │       ├── problem.json
@@ -79,6 +85,29 @@ src/
 **All copy lives in `src/data/`** — headings, labels, descriptions, badge text, stats, testimonials. Each section component imports its own JSON file and maps string `iconKey`s onto Lucide/SVG icons through a local registry; nothing user-facing is hardcoded in components.
 
 To update any text, edit the corresponding JSON file — no component code needs to change. See [`src/data/README.md`](src/data/README.md) for the full file-to-component map.
+
+---
+
+## Shared CTA — `MagneticButton`
+
+All primary calls-to-action across the site render through one component, [`src/components/ui/MagneticButton.tsx`](src/components/ui/MagneticButton.tsx) — a cursor-following "magnetic" button driven by Framer Motion springs, with an ambient glow, shimmer sweep, and hover gradient.
+
+```tsx
+import MagneticButton from "@/components/ui/MagneticButton";
+
+<MagneticButton variant="primary" icon={<ArrowRight size={16} />}>
+  Book a Demo
+</MagneticButton>
+
+// Renders as a Next.js <Link> when given href:
+<MagneticButton href="/#demo" variant="primary">Book a Demo</MagneticButton>
+```
+
+- **Variants:** `primary` · `glow` · `secondary` · `ghost` · `outline` · `danger`. It always renders **white text on a dark/gradient fill**, so it's used for primary CTAs; light/glass secondary buttons keep their own styling.
+- **Sizes:** `xs`–`2xl` presets, or override padding/radius/font-size directly through `className` (last-wins).
+- **Props of note:** `href` (+ `external`), `icon` / `iconPosition`, `loading`, `fullWidth`, `magnetStrength`. Standard `onClick` and button attributes pass through.
+
+Used by: the Hero, Problem, Solution (×2), Benefits, and WhyExpendesk section CTAs, plus the three `solutions/*` "Book a Demo" buttons.
 
 ---
 

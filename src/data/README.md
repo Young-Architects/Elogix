@@ -19,4 +19,4 @@ Centralised content for all landing page sections. Each file under `sections/` m
 
 ## Navigation
 
-`navigation.json` — top-level nav items, dropdown entries, and the CTA button.
+`navigation.json` — top-level nav items (including the Solutions and Resources dropdowns), dropdown entries, and the Login + CTA buttons.

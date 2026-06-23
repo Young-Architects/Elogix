@@ -33,6 +33,7 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState, ReactNode } from "react";
 import heroData from "@/data/sections/hero.json";
+import MagneticButton from "@/components/ui/MagneticButton";
 
 // Configure the Syne font
 const syne = Syne({
@@ -528,19 +529,14 @@ export default function HeroSection() {
               {...fadeUp(0.33)}
               className="mt-8 flex flex-col items-center gap-3.5 sm:flex-row lg:items-start"
             >
-              <motion.a
+              <MagneticButton
                 href={heroData.ctas.primary.href}
-                whileHover={{ scale: 1.02, y: -1 }}
-                whileTap={{ scale: 0.98 }}
-                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600 px-7 py-3.5 text-[13.5px] font-semibold text-white shadow-[0_10px_30px_rgba(99,102,241,0.25)] transition-all hover:shadow-[0_10px_40px_rgba(99,102,241,0.35)]"
+                variant="primary"
+                className="px-7 py-3.5 text-[13.5px] rounded-xl shadow-[0_10px_30px_rgba(99,102,241,0.25)]"
+                icon={<ArrowUpRight className="h-4 w-4" />}
               >
-                {/* shimmer */}
-                <div className="absolute inset-0 -translate-x-full skew-x-12 bg-gradient-to-r from-transparent via-white/15 to-transparent transition-transform duration-1000 group-hover:translate-x-full" />
-                {/* gloss */}
-                <div className="absolute inset-x-0 top-0 h-1/2 rounded-t-xl bg-white/10" />
-                <span className="relative z-10">{heroData.ctas.primary.label}</span>
-                <ArrowUpRight className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </motion.a>
+                {heroData.ctas.primary.label}
+              </MagneticButton>
 
               <a
                 href={heroData.ctas.secondary.href}

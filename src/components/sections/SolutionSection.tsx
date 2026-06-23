@@ -21,6 +21,7 @@ import React, { useCallback, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import ScrollBeamDivider from "../ui/ScrollBeamDivider";
+import MagneticButton from "@/components/ui/MagneticButton";
 import solutionData from "@/data/sections/solution.json";
 // ─── Icons ────────────────────────────────────────────────────────────────────
 
@@ -614,18 +615,23 @@ export default function SolutionSection() {
             </div>
 
             {/* CTA */}
-            <motion.button
+            <motion.div
               initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }} transition={{ delay: 0.5, duration: 0.5 }}
-              whileHover={{ scale: 1.03, boxShadow: "0 10px 35px rgba(124,58,237,0.28)" }}
-              whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-white text-[13.5px] transition-all duration-300"
-              style={{ background: "linear-gradient(135deg,#7c3aed,#4f46e5)", boxShadow: "0 6px 24px rgba(124,58,237,0.22),inset 0 1px 0 rgba(255,255,255,0.15)" }}>
-              {solutionData.hero.cta}
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-4 h-4">
-                <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
-              </svg>
-            </motion.button>
+              className="inline-block"
+            >
+              <MagneticButton
+                variant="primary"
+                className="rounded-xl px-7 py-3.5 text-[13.5px]"
+                icon={
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-4 h-4">
+                    <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+                  </svg>
+                }
+              >
+                {solutionData.hero.cta}
+              </MagneticButton>
+            </motion.div>
           </motion.div>
 
           {/* RIGHT — Node diagram */}
@@ -754,16 +760,18 @@ export default function SolutionSection() {
                 <p className="text-slate-500 text-[13px] mb-4 leading-relaxed">
                   {solutionData.dashboardCta.description}
                 </p>
-                <motion.button
-                  whileHover={{ scale: 1.02, boxShadow: "0 10px 30px rgba(124,58,237,0.25)" }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full py-3 rounded-xl font-bold text-white text-[13.5px] flex items-center justify-center gap-2 transition-all duration-300"
-                  style={{ background: "linear-gradient(135deg,#7c3aed,#4f46e5)", boxShadow: "0 4px 18px rgba(124,58,237,0.18),inset 0 1px 0 rgba(255,255,255,0.15)" }}>
+                <MagneticButton
+                  variant="primary"
+                  fullWidth
+                  className="rounded-xl py-3 text-[13.5px]"
+                  icon={
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-4 h-4">
+                      <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+                    </svg>
+                  }
+                >
                   {solutionData.dashboardCta.buttonLabel}
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-4 h-4">
-                    <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
-                  </svg>
-                </motion.button>
+                </MagneticButton>
               </div>
             </div>
           </motion.div>

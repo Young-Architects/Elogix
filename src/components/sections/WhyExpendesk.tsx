@@ -47,6 +47,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import ScrollBeamDivider from "../ui/ScrollBeamDivider";
+import MagneticButton from "@/components/ui/MagneticButton";
 import type { WhyExpendeskData } from "@/types";
 import rawContent from "@/data/sections/why-expendesk.json";
 
@@ -762,16 +763,13 @@ function CtaPanel() {
             {cta.prompt}
           </p>
 
-          <button
-            type="button"
-            className="eb-shimmer group relative mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-[15px] font-bold text-[#1A1230] shadow-[0_8px_24px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(167,139,250,0.4)] sm:w-auto"
+          <MagneticButton
+            variant="primary"
+            className="mt-4 w-full rounded-full px-7 py-3.5 text-[15px] shadow-[0_8px_24px_rgba(0,0,0,0.35)] sm:w-auto"
+            icon={<ArrowRight className="h-4 w-4" strokeWidth={2.6} />}
           >
             {cta.button}
-            <ArrowRight
-              className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
-              strokeWidth={2.6}
-            />
-          </button>
+          </MagneticButton>
 
           <div className="mt-6 flex flex-col items-center justify-center gap-x-3 gap-y-1.5 text-[12px] font-medium text-violet-300/50 sm:flex-row">
             {cta.trustPoints.map((point, i) => (

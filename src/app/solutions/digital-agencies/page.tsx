@@ -9,6 +9,7 @@
  * `#demo` CTA anchors are placeholders — there is no demo section yet.
  */
 import type { Metadata } from "next";
+import MagneticButton from "@/components/ui/MagneticButton";
 
 export const metadata: Metadata = {
   title: "Expense Management for Digital Agencies | Expendesk",
@@ -33,12 +34,13 @@ export default function DigitalAgenciesSolutionPage() {
           every expense to a project and client — so billing is accurate and
           profitability is always clear.
         </p>
-        <a
+        <MagneticButton
           href="#demo"
-          className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-fuchsia-500 to-pink-500 px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-fuchsia-500/30 transition-transform hover:-translate-y-0.5"
+          variant="primary"
+          className="mt-8 rounded-full px-7 py-3 text-sm shadow-lg shadow-fuchsia-500/30"
         >
           Book a Demo
-        </a>
+        </MagneticButton>
       </section>
 
       {/* Key benefits */}
