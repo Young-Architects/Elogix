@@ -1,0 +1,221 @@
+"use client";
+
+/**
+ * ChatProvider — single source of truth for the Expendesk AI chat.
+ *
+ * Owns the conversation state and webhook logic (moved out of ChatWidget) so the
+ * exact same chat can be rendered in two places without losing history:
+ *   1. Docked into a hero's right-side slot (see `HeroChatDock`).
+ *   2. As the floating bottom-right widget (see `ChatWidget`).
+ *
+ * It also owns the dock handoff: a hero registers its slot via `registerDock`,
+ * and an IntersectionObserver flips `heroInView`. While the hero (and its docked
+ * chat) is on screen, the floating widget hides; once scrolled past, the docked
+ * chat scrolls away and the floating launcher takes over.
+ */
+
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import type {
+  ChatMessage,
+  ChatWebhookRequest,
+  ChatWebhookResponse,
+} from "@/types";
+
+const WEBHOOK_URL = process.env.NEXT_PUBLIC_N8N_CHAT_WEBHOOK_URL!;
+const RATE_LIMIT_MS = 2500;
+const STORAGE_KEY = "expendesk_visitor_id";
+/** How long the assistant "types" before revealing its greeting on load. */
+const BOOT_TYPING_MS = 1300;
+
+const GREETING: ChatMessage = {
+  id: "greeting",
+  role: "bot",
+  content:
+    "Hi there! I'm the Expendesk assistant. Ask me anything about expense management, reimbursements, or policies.",
+  timestamp: 0,
+};
+
+function getOrCreateVisitorId(): string {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) return stored;
+    const id = crypto.randomUUID();
+    localStorage.setItem(STORAGE_KEY, id);
+    return id;
+  } catch {
+    return crypto.randomUUID();
+  }
+}
+
+interface ChatContextValue {
+  messages: ChatMessage[];
+  input: string;
+  setInput: (v: string) => void;
+  isLoading: boolean;
+  /** True while the greeting is being "typed out" on first load. */
+  isBooting: boolean;
+  canSend: boolean;
+  sendMessage: () => void;
+  // Floating widget open/closed state
+  isOpen: boolean;
+  setOpen: (v: boolean) => void;
+  toggleOpen: () => void;
+  // Dock handoff
+  heroInView: boolean;
+  registerDock: (node: HTMLElement | null) => void;
+}
+
+const ChatContext = createContext<ChatContextValue | null>(null);
+
+export function useChat(): ChatContextValue {
+  const ctx = useContext(ChatContext);
+  if (!ctx) throw new Error("useChat must be used within <ChatProvider>");
+  return ctx;
+}
+
+export function ChatProvider({ children }: { children: React.ReactNode }) {
+  // Start with no messages + "typing" so the greeting animates in on load.
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [isBooting, setIsBooting] = useState(true);
+  const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isCoolingDown, setIsCoolingDown] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [heroInView, setHeroInView] = useState(false);
+
+  const visitorIdRef = useRef<string>("");
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  useEffect(() => {
+    visitorIdRef.current = getOrCreateVisitorId();
+  }, []);
+
+  // Boot sequence: show typing dots briefly, then reveal the greeting.
+  useEffect(() => {
+    const t = setTimeout(() => {
+      setMessages((prev) => (prev.length ? prev : [GREETING]));
+      setIsBooting(false);
+    }, BOOT_TYPING_MS);
+    return () => clearTimeout(t);
+  }, []);
+
+  // Esc closes the floating panel.
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpen(false);
+    };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, []);
+
+  // A hero registers its dock slot here. We optimistically assume the slot is in
+  // view the moment it registers (heroes sit at the top of the page) so the
+  // floating widget doesn't flash on first paint, then let the observer correct.
+  const registerDock = useCallback((node: HTMLElement | null) => {
+    observerRef.current?.disconnect();
+    observerRef.current = null;
+
+    if (!node) {
+      setHeroInView(false);
+      return;
+    }
+
+    setHeroInView(true);
+    const obs = new IntersectionObserver(
+      ([entry]) => setHeroInView(entry.isIntersecting),
+      { threshold: 0, rootMargin: "0px 0px -12% 0px" },
+    );
+    obs.observe(node);
+    observerRef.current = obs;
+  }, []);
+
+  useEffect(() => () => observerRef.current?.disconnect(), []);
+
+  const sendMessage = useCallback(async () => {
+    const text = input.trim();
+    if (!text || isLoading || isCoolingDown || isBooting) return;
+
+    const userMsg: ChatMessage = {
+      id: crypto.randomUUID(),
+      role: "user",
+      content: text,
+      timestamp: Date.now(),
+    };
+
+    setMessages((prev) => [...prev, userMsg]);
+    setInput("");
+    setIsLoading(true);
+    setIsCoolingDown(true);
+    setTimeout(() => setIsCoolingDown(false), RATE_LIMIT_MS);
+
+    const visitorId = visitorIdRef.current;
+    const payload: ChatWebhookRequest = {
+      sessionId: visitorId,
+      message: text,
+      visitorId,
+    };
+
+    try {
+      const res = await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = (await res.json()) as ChatWebhookResponse;
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: crypto.randomUUID(),
+          role: "bot",
+          content: data.reply,
+          timestamp: Date.now(),
+        },
+      ]);
+    } catch {
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: crypto.randomUUID(),
+          role: "error",
+          content:
+            "I'm having trouble connecting. Please try again in a moment.",
+          timestamp: Date.now(),
+        },
+      ]);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [input, isLoading, isCoolingDown, isBooting]);
+
+  const canSend =
+    input.trim().length > 0 && !isLoading && !isCoolingDown && !isBooting;
+
+  const value = useMemo<ChatContextValue>(
+    () => ({
+      messages,
+      input,
+      setInput,
+      isLoading,
+      isBooting,
+      canSend,
+      sendMessage,
+      isOpen,
+      setOpen: setIsOpen,
+      toggleOpen: () => setIsOpen((o) => !o),
+      heroInView,
+      registerDock,
+    }),
+    [messages, input, isLoading, isBooting, canSend, sendMessage, isOpen, heroInView, registerDock],
+  );
+
+  return <ChatContext.Provider value={value}>{children}</ChatContext.Provider>;
+}

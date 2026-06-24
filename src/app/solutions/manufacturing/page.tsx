@@ -2,14 +2,14 @@
  * /solutions/manufacturing — static, SEO-focused industry landing page.
  *
  * One of three sibling pages under `solutions/` (manufacturing, pharmaceutical,
- * digital-agencies), linked from the Navbar "Solutions" dropdown. Each is fully
- * self-contained: copy is inline here (these do NOT use the `src/data/` JSON
- * pattern that the home-page sections use). Prerendered as static HTML at build.
+ * digital-agencies), linked from the Navbar "Solutions" dropdown. Copy lives in
+ * `./_data/content.ts`. Prerendered as static HTML at build.
  *
  * `#demo` CTA anchors are placeholders — there is no demo section yet.
  */
 import type { Metadata } from "next";
 import MagneticButton from "@/components/ui/MagneticButton";
+import { content } from "./_data/content";
 
 export const metadata: Metadata = {
   title: "Expense Management for Manufacturing Industries | Expendesk",
@@ -23,46 +23,31 @@ export default function ManufacturingSolutionPage() {
       {/* Hero */}
       <section className="flex flex-col items-center justify-center px-6 py-32 text-center bg-gradient-to-b from-violet-50 to-white">
         <span className="mb-4 inline-block rounded-full bg-violet-100 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-violet-600">
-          Manufacturing
+          {content.eyebrow}
         </span>
         <h1 className="max-w-3xl text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-          Expense Management for{" "}
-          <span className="text-violet-600">Manufacturing Industries</span>
+          {content.headline.pre}{" "}
+          <span className="text-violet-600">{content.headline.accent}</span>
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-slate-600">
-          Keep every plant, facility, and department on budget. Expendesk gives
-          manufacturing teams granular cost control without slowing down
-          operations.
+          {content.description}
         </p>
         <MagneticButton
-          href="#demo"
+          href={content.cta.href}
           variant="primary"
           className="mt-8 rounded-full px-7 py-3 text-sm shadow-lg shadow-violet-500/30"
         >
-          Book a Demo
+          {content.cta.label}
         </MagneticButton>
       </section>
 
       {/* Key benefits */}
       <section className="mx-auto max-w-5xl px-6 py-20">
         <h2 className="mb-10 text-center text-2xl font-bold text-slate-800">
-          Built for Manufacturing Operations
+          {content.benefits.heading}
         </h2>
         <div className="grid gap-6 sm:grid-cols-3">
-          {[
-            {
-              title: "Multi-Site Cost Control",
-              desc: "Manage and compare spend across multiple plants and facilities in one dashboard.",
-            },
-            {
-              title: "Purchase Order Matching",
-              desc: "Automatically match expenses to POs and flag discrepancies before they escalate.",
-            },
-            {
-              title: "Vendor Spend Analytics",
-              desc: "Get clear visibility into supplier and vendor costs to negotiate better rates.",
-            },
-          ].map((item) => (
+          {content.benefits.items.map((item) => (
             <div
               key={item.title}
               className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"

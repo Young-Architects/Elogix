@@ -14,6 +14,7 @@
  */
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { ChatProvider } from "@/components/chat/ChatProvider";
 import ChatWidget from "@/components/layout/ChatWidget";
 import Navbar from "@/components/layout/Navbar";
 import ScrollToHash from "@/components/layout/ScrollToHash";
@@ -44,10 +45,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="antialiased bg-black text-white min-h-screen">
-        <Navbar />
-        <ScrollToHash />
-        {children}
-        <ChatWidget />
+        <ChatProvider>
+          <Navbar />
+          <ScrollToHash />
+          {children}
+          <ChatWidget />
+        </ChatProvider>
       </body>
     </html>
   );

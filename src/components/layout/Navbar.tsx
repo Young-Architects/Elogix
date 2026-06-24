@@ -58,6 +58,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import navData from "@/data/navigation.json";
+import { IN_PAGE_NAV_EVENT } from "./ScrollToHash";
 
 /* ───────────────────────── animation ───────────────────────── */
 
@@ -343,6 +344,18 @@ export default function Navbar(): ReactNode {
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  // Close the mobile menu when an in-page hash link is tapped. ScrollToHash
+  // intercepts those clicks in capture phase + stopPropagation(), so the links'
+  // own onClick (which closes the menu) never fires on same-page navigation.
+  useEffect(() => {
+    const close = (): void => {
+      setMobileOpen(false);
+      setMobileOpenDropdown(null);
+    };
+    window.addEventListener(IN_PAGE_NAV_EVENT, close);
+    return () => window.removeEventListener(IN_PAGE_NAV_EVENT, close);
   }, []);
 
   const openMenu = useCallback((label: string): void => {

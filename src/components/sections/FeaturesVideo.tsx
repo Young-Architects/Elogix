@@ -759,7 +759,6 @@ export default function FeaturesVideoWithIndustry() {
                       <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-slate-900 shadow-2xl border border-slate-800 flex items-center justify-center group">
                         <video
                           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isPlaying ? "opacity-100" : "opacity-40"}`}
-                          poster="/video-placeholder.jpg"
                           muted
                           loop
                           playsInline

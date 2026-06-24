@@ -23,17 +23,16 @@ import {
   ArrowUpRight,
   ShieldCheck,
   Sparkles,
-  CheckCircle2,
-  TrendingDown,
   GitBranch,
   Eye,
   Clock,
   AlertTriangle,
   Zap,
 } from "lucide-react";
-import { useEffect, useRef, useState, ReactNode } from "react";
+import { useEffect, useRef, useState } from "react";
 import heroData from "@/data/sections/hero.json";
 import MagneticButton from "@/components/ui/MagneticButton";
+import HeroChatDock from "@/components/chat/HeroChatDock";
 
 // Configure the Syne font
 const syne = Syne({
@@ -92,147 +91,11 @@ const FEATURE_CARD_ICONS: Record<string, React.ElementType> = {
   "clock":          Clock,
 };
 
-/* ─────────────────────── live expense ticker ─────────────────────── */
-
-const TICKER_ITEMS = heroData.liveExpenseFeed.items;
-
-const STATUS_CONFIG = {
-  approved: {
-    label: "Approved",
-    color: "text-emerald-600",
-    bg: "bg-emerald-500/10",
-    dot: "bg-emerald-500",
-  },
-  flagged: {
-    label: "Flagged",
-    color: "text-amber-700",
-    bg: "bg-amber-500/10",
-    dot: "bg-amber-500",
-  },
-  pending: {
-    label: "Pending",
-    color: "text-slate-500",
-    bg: "bg-slate-500/10",
-    dot: "bg-slate-400",
-  },
-};
-
-function LiveExpenseTicker() {
-  const [active, setActive] = useState(0);
-
-  useEffect(() => {
-    const t = setInterval(
-      () => setActive((p) => (p + 1) % TICKER_ITEMS.length),
-      2800,
-    );
-    return () => clearInterval(t);
-  }, []);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: 60, y: 20 }}
-      animate={{ opacity: 1, x: 0, y: 0 }}
-      transition={{ delay: 0.9, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className="relative w-full max-w-[340px] overflow-hidden rounded-2xl border border-black/[0.04] bg-white/70 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.06)]"
-    >
-      {/* top bar */}
-      <div className="flex items-center justify-between border-b border-black/[0.04] px-4 py-3">
-        <div className="flex items-center gap-2">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-60" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-          </span>
-          <span className="text-[11px] font-semibold tracking-wide text-slate-500">
-            {heroData.liveExpenseFeed.title}
-          </span>
-        </div>
-        <span className="text-[10px] font-medium text-slate-400">
-          {TICKER_ITEMS.length} recent
-        </span>
-      </div>
-
-      {/* items */}
-      <div className="divide-y divide-black/[0.03]">
-        {TICKER_ITEMS.map((item, i) => {
-          const s = STATUS_CONFIG[item.status as keyof typeof STATUS_CONFIG];
-          const isActive = i === active;
-          return (
-            <motion.div
-              key={item.id}
-              animate={{
-                backgroundColor: isActive
-                  ? "rgba(99,102,241,0.04)"
-                  : "rgba(0,0,0,0)",
-              }}
-              transition={{ duration: 0.4 }}
-              className="flex items-center gap-3 px-4 py-3"
-            >
-              {/* avatar */}
-              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500/10 to-violet-600/10 text-[10px] font-bold text-indigo-600">
-                {item.name
-                  .split(" ")
-                  .map((n) => n[0])
-                  .join("")}
-              </div>
-              <div className="flex min-w-0 flex-1 flex-col gap-0.5">
-                <div className="flex items-center justify-between">
-                  <span className="truncate text-[12px] font-semibold text-slate-800">
-                    {item.name}
-                  </span>
-                  <span className="text-[12px] font-bold text-slate-900">
-                    {item.amount}
-                  </span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-medium text-slate-400">
-                    {item.cat} · {item.time}
-                  </span>
-                  <span
-                    className={`inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 text-[9px] font-semibold ${s.bg} ${s.color}`}
-                  >
-                    <span className={`h-1 w-1 rounded-full ${s.dot}`} />
-                    {s.label}
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-          );
-        })}
-      </div>
-
-      {/* bottom summary */}
-      <div className="flex items-center justify-between border-t border-black/[0.04] px-4 py-2.5">
-        <span className="text-[10px] font-medium text-slate-400">
-          {heroData.liveExpenseFeed.totalLabel}
-        </span>
-        <span className="text-[11px] font-bold text-indigo-600">{heroData.liveExpenseFeed.totalProcessedToday}</span>
-      </div>
-    </motion.div>
-  );
-}
-
-/* ─────────────────────── floating badges ─────────────────────── */
-
-function FloatingBadge({
-  children,
-  className,
-  delay = 0,
-}: {
-  children: ReactNode;
-  className?: string;
-  delay?: number;
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.8, y: 10 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ delay, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      className={`pointer-events-none absolute ${className}`}
-    >
-      {children}
-    </motion.div>
-  );
-}
+/* ─────────────────────── hero right slot ───────────────────────
+   The right-side "Live Expense Feed" card has been replaced by the
+   docked Expendesk AI chat — rendered via <HeroChatDock /> in the
+   right column below. The chat auto-opens here while the hero is in
+   view, then hands off to the floating launcher once scrolled past. */
 
 /* ─────────────────────── main component ─────────────────────── */
 
@@ -568,63 +431,32 @@ export default function HeroSection() {
             </motion.div>
           </div>
 
-          {/* ════ RIGHT COLUMN ════ */}
-          <div className="relative flex w-full flex-col items-center gap-4 lg:w-[360px] xl:w-[400px] shrink-0">
-            {/* Live expense ticker */}
-            <LiveExpenseTicker />
-
-            {/* Floating badges around the card */}
-            <FloatingBadge
-              delay={1.1}
-              className="-left-4 top-16 hidden lg:flex items-center gap-2 rounded-xl border border-black/[0.04] bg-white/80 px-3 py-2 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.04)]"
-            >
-              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-amber-500/10">
-                <AlertTriangle className="h-3.5 w-3.5 text-amber-600" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-[11px] font-semibold text-slate-800">
-                  {heroData.floatingBadges[0].title}
-                </span>
-                <span className="text-[9px] font-medium text-slate-400">
-                  {heroData.floatingBadges[0].subtitle}
-                </span>
-              </div>
-            </FloatingBadge>
-
-            <FloatingBadge
-              delay={1.25}
-              className="-right-4 bottom-32 hidden lg:flex items-center gap-2 rounded-xl border border-black/[0.04] bg-white/80 px-3 py-2 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.04)]"
-            >
-              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-500/10">
-                <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-[11px] font-semibold text-slate-800">
-                  {heroData.floatingBadges[1].title}
-                </span>
-                <span className="text-[9px] font-medium text-slate-400">
-                  {heroData.floatingBadges[1].subtitle}
-                </span>
-              </div>
-            </FloatingBadge>
-
-            <FloatingBadge
-              delay={1.4}
-              className="left-1/2 -translate-x-1/2 -bottom-4 hidden lg:flex items-center gap-2 rounded-xl border border-black/[0.04] bg-white/80 px-3 py-2 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.04)] whitespace-nowrap"
-            >
-              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-500/10">
-                <TrendingDown className="h-3.5 w-3.5 text-indigo-600" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-[11px] font-semibold text-slate-800">
-                  {heroData.floatingBadges[2].title}
-                </span>
-                <span className="text-[9px] font-medium text-slate-400">
-                  {heroData.floatingBadges[2].subtitle}
-                </span>
-              </div>
-            </FloatingBadge>
-          </div>
+          {/* ════ RIGHT COLUMN — docked Expendesk AI chat ════ */}
+           <motion.div
+                      className="relative flex w-full shrink-0 justify-center lg:w-[380px] lg:justify-end xl:w-[400px]"
+                      initial={{ opacity: 0, x: 32, y: 8 }}
+                      animate={{ opacity: 1, x: 0, y: 0 }}
+                      transition={{
+                        duration: 0.78,
+                        delay: 0.28,
+                        ease: [0.21, 0.47, 0.32, 0.98],
+                      }}
+                    >
+                      {/* Glow halo behind chat */}
+                      <div
+                        className="absolute inset-0 rounded-3xl pointer-events-none"
+                        style={{
+                          background:
+                            "radial-gradient(ellipse 80% 70% at 50% 50%,rgba(124,58,237,0.12) 0%,transparent 72%)",
+                          filter: "blur(24px)",
+                        }}
+                      />
+          
+                      {/* Chat container — matches width of HeroChatDock */}
+                      <div className="relative w-full max-w-[420px]">
+                        <HeroChatDock />
+                      </div>
+                    </motion.div>
         </div>
 
         {/* ════ FEATURE CARDS ROW ════ */}

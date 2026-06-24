@@ -5,7 +5,6 @@
     "headlineParts": { "pre": "Your financial workflow,", "accent": "rendered in motion." },
     "subheading": "Everything You Need to Manage Expenses Efficiently",
     "browserMockupUrl": "expendesk.com/tour",
-    "videoPlaceholder": "/video-placeholder.jpg",
     "floatingBadges": [
       {
         "id": "badge-capture",

@@ -167,8 +167,3 @@ function runSettle(id: string, token: number): void {
 
   requestAnimationFrame(check);
 }
-
-/** Cancel any in-flight programmatic scroll (e.g. the user navigated away). */
-export function cancelScroll(): void {
-  animationToken++;
-}
