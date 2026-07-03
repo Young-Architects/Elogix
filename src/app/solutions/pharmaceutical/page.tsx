@@ -12,6 +12,7 @@
 import type { Metadata } from "next";
 import HeroSection from "./_components/HeroSection";
 import ProblemSection from "./_components/ProblemSection";
+import SelfAssessmentSection from "./_components/SelfAssessmentSection";
 
 export const metadata: Metadata = {
   title: "Expense Management for Pharmaceutical Industries | Expendesk",
@@ -24,13 +25,13 @@ export default function PharmaceuticalSolutionPage() {
     <main className="min-h-screen bg-white">
       <HeroSection />
       <ProblemSection />
+      <SelfAssessmentSection />
 
       {/*
         Upcoming sections — build each one in ./_components/ and compose it
         here in order. Add its copy as a new ./_data/<section>.ts file and
         re-export it from ./_data/index.ts.
 
-        <SelfAssessmentSection />
         <ChecklistIntroSection />
         <BridgeSection />
         <IntroducingExpendeskSection />

@@ -116,3 +116,57 @@ export interface ProblemContent {
     cta: string;
   };
 }
+
+/* ── Self-assessment section ──────────────────────────── */
+
+/** The four scoring tiers, keyed by band. */
+export type ScoreTierKey = "idle" | "critical" | "atRisk" | "strong";
+
+/** Keys into the component's SVG icon registry. */
+export type AssessmentIconKey = "clipboard" | "alert" | "trend" | "shield";
+
+/** A single yes/no audit question in the interactive checklist. */
+export interface AssessmentQuestion {
+  id: string;
+  question: string;
+}
+
+/** Presentation config for one score tier (copy + Tailwind classes + colors). */
+export interface ScoreTier {
+  label: string;
+  message: string;
+  /** Tailwind classes for the tier badge pill. */
+  badgeClass: string;
+  /** Tailwind gradient stops for the progress bar. */
+  barClass: string;
+  /** Progress-ring gradient stops, `[from, to]`. */
+  ring: readonly [string, string];
+  /** Which registry icon represents this tier. */
+  iconKey: AssessmentIconKey;
+}
+
+/** All copy + data for the interactive self-assessment section. */
+export interface SelfAssessmentContent {
+  /** Eyebrow pill copy. */
+  badge: string;
+  heading: {
+    lead: string;
+    /** Gradient-accented run. */
+    accent: string;
+    tail: string;
+  };
+  subheading: string;
+  /** Label above the mobile sticky score bar. */
+  liveScoreLabel: string;
+  /** Small "of {total}" label under the desktop ring. */
+  ofLabel: string;
+  /** Shared CTA (mobile footer + desktop panel). */
+  scheduleCta: string;
+  closing: {
+    /** Emphasised lead-in run. */
+    emphasis: string;
+    body: string;
+  };
+  questions: AssessmentQuestion[];
+  tiers: Record<ScoreTierKey, ScoreTier>;
+}

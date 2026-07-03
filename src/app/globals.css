@@ -7,7 +7,8 @@
  *   2. Navbar underline hover effect.
  *   3. Component-scoped custom CSS — each block is labelled with the component
  *      that owns it: SolutionSection / BenefitsSection / LeadMagnetSection /
- *      TestimonialsSection / ChatWidget / WhyExpendesk (prefixed `eb-`).
+ *      TestimonialsSection / ChatWidget / WhyExpendesk (prefixed `eb-`) /
+ *      pharmaceutical SelfAssessmentSection (prefixed `sa-`).
  *
  * Conventions (see README "Styling Rules"):
  *   - This file is the ONLY place for class definitions and @keyframes.
@@ -232,4 +233,26 @@ body {
   .eb-beam-new, .eb-shimmer::after, .eb-orb-1, .eb-orb-2,
   .eb-star, .eb-swipe-hint, .eb-skel
   { animation: none; }
+}
+
+/* ─── SelfAssessmentSection (pharmaceutical) — animated conic border beam ──
+   Spins a --sa-bb-angle custom property so a conic-gradient ring appears to
+   rotate around the card border. The spin duration is passed per-instance via
+   an inline `animation-duration`; colors are runtime props on the element. */
+@property --sa-bb-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes saBorderBeamSpin {
+  from { --sa-bb-angle: 0deg;   }
+  to   { --sa-bb-angle: 360deg; }
+}
+.sa-border-beam {
+  animation-name: saBorderBeamSpin;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sa-border-beam { animation: none; }
 }
