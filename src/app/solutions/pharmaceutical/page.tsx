@@ -4,12 +4,14 @@
  * One of three sibling pages under `solutions/` (manufacturing, pharmaceutical,
  * digital-agencies), linked from the Navbar "Solutions" dropdown. This page is
  * being built out section-by-section: each section is a component in
- * `./_components/`, composed here, with all copy in `./_data/content.ts`.
+ * `./_components/`, composed here, with all copy in `./_data/` (one file per
+ * section, re-exported from `./_data/index.ts`).
  *
  * `#demo` CTA anchors are placeholders — there is no demo section yet.
  */
 import type { Metadata } from "next";
 import HeroSection from "./_components/HeroSection";
+import ProblemSection from "./_components/ProblemSection";
 
 export const metadata: Metadata = {
   title: "Expense Management for Pharmaceutical Industries | Expendesk",
@@ -21,12 +23,13 @@ export default function PharmaceuticalSolutionPage() {
   return (
     <main className="min-h-screen bg-white">
       <HeroSection />
+      <ProblemSection />
 
       {/*
         Upcoming sections — build each one in ./_components/ and compose it
-        here in order. Add its copy under a new key in ./_data/content.ts.
+        here in order. Add its copy as a new ./_data/<section>.ts file and
+        re-export it from ./_data/index.ts.
 
-        <ProblemSection />
         <SelfAssessmentSection />
         <ChecklistIntroSection />
         <BridgeSection />

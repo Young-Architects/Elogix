@@ -38,8 +38,14 @@ src/
 │   │   │   ├── _data/content.ts    # Page copy
 │   │   │   └── page.tsx
 │   │   └── pharmaceutical/         # Built section-by-section (route-private _ folders)
-│   │       ├── _components/        # HeroSection.tsx (+ future sections)
-│   │       ├── _data/content.ts    # All page copy
+│   │       ├── _components/        # One component per section
+│   │       │   ├── HeroSection.tsx      # Split-hero: copy + docked AI chat
+│   │       │   └── ProblemSection.tsx   # Impact stats, MR chips, legacy-tool + consequence carousels
+│   │       ├── _data/              # One file per section — ALL copy + data (nothing inline)
+│   │       │   ├── index.ts        # Barrel: groups sections into `content`, re-exports each + types
+│   │       │   ├── types.ts        # Shared interfaces (HeroContent, ProblemContent, ImpactStat, …)
+│   │       │   ├── hero.ts         # Hero: headline, benefits, CTAs, trust tags, scroll label
+│   │       │   └── problem.ts      # Problem: every headline/label/CTA + stats, chips, tools, cards
 │   │       └── page.tsx            # Composes the sections in order
 │   └── resources/                  # Resources dropdown routes (placeholders → notFound())
 │       ├── blogs/page.tsx · case-studies/page.tsx · faqs/page.tsx · whitepapers/page.tsx
@@ -83,9 +89,12 @@ src/
 
 ## Content Architecture
 
-**Copy is never hardcoded in components.** Home-page sections each import their own JSON from `src/data/sections/` and map string `iconKey`s onto Lucide/SVG icons through a local registry. The per-industry `solutions/*` pages keep their copy in a route-private `_data/content.ts` next to the page.
+**Copy is never hardcoded in components.** Home-page sections each import their own JSON from `src/data/sections/` and map string `iconKey`s onto Lucide/SVG icons through a local registry. The per-industry `solutions/*` pages keep their copy in route-private `_data/` folders next to the page:
 
-To update any text, edit the corresponding `*.json` (home sections) or `_data/content.ts` (solution pages) — no component code needs to change. See [`src/data/README.md`](src/data/README.md) for the full file-to-component map.
+- **`manufacturing/`** and **`digital-agencies/`** are single-section pages, so their copy lives in one `_data/content.ts`.
+- **`pharmaceutical/`** is a multi-section page built out over time, so its data is **split one file per section** under `_data/` — `hero.ts`, `problem.ts`, … — each exporting a single typed section object (`HeroContent`, `ProblemContent`, …) defined in `_data/types.ts` and re-exported from `_data/index.ts`. **Every** string a section renders — headlines (split into `lead`/`accent`/`tail` runs so gradient text stays data-driven), badges, paragraphs, labels, CTAs, chips, cards, and stats — lives in its section file. Components are purely presentational (`import { problem } from "../_data"` → map over `problem.oldTools`, read `problem.headline.accent`); there is **no inline copy in the components** and **no single catch-all data file**. Add a new section by dropping a `<section>.ts` file into `_data/`, adding its interface to `types.ts`, and re-exporting from `index.ts`.
+
+To update any text, edit the corresponding `*.json` (home sections), `_data/content.ts` (single-section solution pages), or `_data/<section>.ts` (pharmaceutical) — no component code needs to change. See [`src/data/README.md`](src/data/README.md) for the full home-page file-to-component map.
 
 ---
 

@@ -5,9 +5,7 @@ import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { Sparkles } from "lucide-react";
 import HeroChatDock from "@/components/chat/HeroChatDock";
-import { content } from "../_data/content";
-
-const { hero } = content;
+import { hero } from "../_data";
 
 // ─── Hex grid background ─────────────────────────────────────────────────
 function HexGrid() {
@@ -92,7 +90,9 @@ export default function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen overflow-hidden flex items-center"
+      // FIX 1: items-start on mobile so content aligns to top and doesn't
+      // leave a dead zone below. lg:items-center restores desktop centering.
+      className="relative min-h-screen overflow-hidden flex items-start lg:items-center"
       style={{
         background:
           "linear-gradient(155deg,#F5F3FF 0%,#FAFAFF 42%,#EDE9FE 100%)",
@@ -156,7 +156,12 @@ export default function HeroSection() {
       </div>
 
       {/* ── Main Content ─────────────────────────────── */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 md:px-10 py-28 lg:py-36">
+      <div
+        // FIX 2 (updated): Split py into pt/pb so mobile top clears the fixed
+        // navbar (~60-64 px) — pt-24 (96px) guarantees the pill badge is always
+        // visible. Bottom stays lean. Desktop keeps lg:py-36 via overrides.
+        className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 md:px-10 pt-24 pb-14 sm:pt-28 sm:pb-16 lg:py-36"
+      >
         <div className="grid lg:grid-cols-2 gap-12 xl:gap-20 items-center">
 
           {/* ── LEFT: Copy ──────────────────────────────── */}
@@ -394,8 +399,12 @@ export default function HeroSection() {
               }}
             />
 
-            {/* Chat container — matches width of HeroChatDock */}
-            <div className="relative w-full mb-30 max-w-[420px] lg:w-[380px] xl:w-[420px]">
+            {/* Chat container
+                FIX 3: Removed mb-30 (was ~120px phantom bottom margin on mobile).
+                        pb-20 gives the chat dock generous breathing room on mobile
+                        so the scroll nudge is clearly visible below it.
+                        lg:pb-0 removes it on desktop where it isn't needed.        */}
+            <div className="relative w-full pb-20 lg:pb-0 max-w-[420px] lg:w-[380px] xl:w-[420px]">
               <HeroChatDock />
             </div>
           </motion.div>
@@ -410,7 +419,7 @@ export default function HeroSection() {
         transition={{ delay: 2.0 }}
       >
         <span className="text-slate-400 text-[9.5px] uppercase tracking-[0.18em] font-semibold">
-          Scroll
+          {hero.scrollLabel}
         </span>
         <motion.div
           className="w-px h-9 origin-top"
