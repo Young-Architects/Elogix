@@ -39,15 +39,17 @@ src/
 │   │   │   └── page.tsx
 │   │   └── pharmaceutical/         # Built section-by-section (route-private _ folders)
 │   │       ├── _components/        # One component per section (presentation only)
-│   │       │   ├── HeroSection.tsx           # Split-hero: copy + docked AI chat
-│   │       │   ├── ProblemSection.tsx        # Impact stats, MR chips, legacy-tool + consequence carousels
-│   │       │   └── SelfAssessmentSection.tsx  # Interactive 60-sec audit checklist + live score ring
+│   │       │   ├── HeroSection.tsx            # Split-hero: copy + docked AI chat
+│   │       │   ├── ProblemSection.tsx         # Impact stats, MR chips, legacy-tool + consequence carousels
+│   │       │   ├── SelfAssessmentSection.tsx  # Interactive 60-sec audit checklist + live score ring
+│   │       │   └── ChecklistIntroSection.tsx  # Lead magnet: audience chips + animated checklist-preview card
 │   │       ├── _data/              # One file per section — ALL copy + data (nothing inline)
 │   │       │   ├── index.ts             # Barrel: groups sections into `content`, re-exports each + types
-│   │       │   ├── types.ts             # Shared interfaces (HeroContent, ProblemContent, SelfAssessmentContent, …)
+│   │       │   ├── types.ts             # Shared interfaces (HeroContent, ProblemContent, SelfAssessmentContent, ChecklistIntroContent, …)
 │   │       │   ├── hero.ts              # Hero: headline, benefits, CTAs, trust tags, scroll label
 │   │       │   ├── problem.ts           # Problem: every headline/label/CTA + stats, chips, tools, cards
-│   │       │   └── self-assessment.ts   # Self-assessment: copy + audit questions + score-tier config
+│   │       │   ├── self-assessment.ts   # Self-assessment: copy + audit questions + score-tier config
+│   │       │   └── checklist-intro.ts   # Checklist intro: copy + audience roles + document-mock preview
 │   │       └── page.tsx            # Composes the sections in order
 │   └── resources/                  # Resources dropdown routes (placeholders → notFound())
 │       ├── blogs/page.tsx · case-studies/page.tsx · faqs/page.tsx · whitepapers/page.tsx
@@ -94,9 +96,9 @@ src/
 **Copy is never hardcoded in components.** Home-page sections each import their own JSON from `src/data/sections/` and map string `iconKey`s onto Lucide/SVG icons through a local registry. The per-industry `solutions/*` pages keep their copy in route-private `_data/` folders next to the page:
 
 - **`manufacturing/`** and **`digital-agencies/`** are single-section pages, so their copy lives in one `_data/content.ts`.
-- **`pharmaceutical/`** is a multi-section page built out over time, so its data is **split one file per section** under `_data/` — `hero.ts`, `problem.ts`, `self-assessment.ts`, … — each exporting a single typed section object (`HeroContent`, `ProblemContent`, `SelfAssessmentContent`, …) defined in `_data/types.ts` and re-exported from `_data/index.ts`. **Every** string a section renders — headlines (split into `lead`/`accent`/`tail` runs so gradient text stays data-driven), badges, paragraphs, labels, CTAs, chips, cards, stats, audit questions, and score-tier config — lives in its section file. Components are purely presentational (`import { problem } from "../_data"` → map over `problem.oldTools`, read `problem.headline.accent`); there is **no inline copy in the components** and **no single catch-all data file**.
-  - Where data needs to point at an icon, it stores a string `iconKey` (e.g. the self-assessment score tiers) and the component maps it onto an SVG through a local registry — the same pattern the home sections use, so no JSX leaks into the data files.
-  - Section CSS is **not** inlined either: any `@keyframes`/custom-property animation (e.g. the self-assessment card's rotating border beam) lives in [`globals.css`](src/app/globals.css) under a `sa-`-prefixed block, with only runtime values (spin duration, gradient colors) passed via `style={{}}`.
+- **`pharmaceutical/`** is a multi-section page built out over time, so its data is **split one file per section** under `_data/` — `hero.ts`, `problem.ts`, `self-assessment.ts`, `checklist-intro.ts`, … — each exporting a single typed section object (`HeroContent`, `ProblemContent`, `SelfAssessmentContent`, `ChecklistIntroContent`, …) defined in `_data/types.ts` and re-exported from `_data/index.ts`. **Every** string a section renders — headlines (split into `lead`/`accent`/`tail` runs so gradient text stays data-driven), badges, paragraphs, labels, CTAs, chips, cards, stats, audit questions, score-tier config, audience roles, and even the download URL — lives in its section file. Components are purely presentational (`import { problem } from "../_data"` → map over `problem.oldTools`, read `problem.headline.accent`); there is **no inline copy in the components** and **no single catch-all data file**.
+  - Where data needs to point at an icon, it stores a string `iconKey` (e.g. the self-assessment score tiers, the checklist audience chips + evaluate rows) and the component maps it onto an SVG through a local registry — the same pattern the home sections use, so no JSX leaks into the data files.
+  - Section CSS is **not** inlined either: any `@keyframes`/custom-property animation (e.g. the self-assessment card's spinning border beam under `sa-`, the checklist card's travelling stroke beam under `ck-`) lives in [`globals.css`](src/app/globals.css) under a section-prefixed block, with only runtime values (spin duration, gradient colors) passed via `style={{}}`.
   - Add a new section by dropping a `<section>.ts` file into `_data/`, adding its interface to `types.ts`, re-exporting from `index.ts`, and putting any custom CSS in `globals.css`.
 
 To update any text, edit the corresponding `*.json` (home sections), `_data/content.ts` (single-section solution pages), or `_data/<section>.ts` (pharmaceutical) — no component code needs to change. See [`src/data/README.md`](src/data/README.md) for the full home-page file-to-component map.

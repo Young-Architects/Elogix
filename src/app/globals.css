@@ -8,7 +8,8 @@
  *   3. Component-scoped custom CSS — each block is labelled with the component
  *      that owns it: SolutionSection / BenefitsSection / LeadMagnetSection /
  *      TestimonialsSection / ChatWidget / WhyExpendesk (prefixed `eb-`) /
- *      pharmaceutical SelfAssessmentSection (prefixed `sa-`).
+ *      pharmaceutical SelfAssessmentSection (prefixed `sa-`) /
+ *      pharmaceutical ChecklistIntroSection (prefixed `ck-`).
  *
  * Conventions (see README "Styling Rules"):
  *   - This file is the ONLY place for class definitions and @keyframes.
@@ -255,4 +256,21 @@ body {
 }
 @media (prefers-reduced-motion: reduce) {
   .sa-border-beam { animation: none; }
+}
+
+/* ─── ChecklistIntroSection (pharmaceutical) — SVG stroke-path border beam ──
+   Travels a dashed segment around a rounded <rect> stroke (uniform speed on any
+   aspect ratio). The keyframe is identical for every instance, so it's shared
+   here; per-card spin duration is passed via an inline `animation-duration`. */
+@keyframes ckBorderBeamTravel {
+  from { stroke-dashoffset: 0;    }
+  to   { stroke-dashoffset: -100; }
+}
+.ck-border-beam {
+  animation-name: ckBorderBeamTravel;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ck-border-beam { animation: none; }
 }

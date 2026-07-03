@@ -170,3 +170,68 @@ export interface SelfAssessmentContent {
   questions: AssessmentQuestion[];
   tiers: Record<ScoreTierKey, ScoreTier>;
 }
+
+/* ── Checklist-intro (lead magnet) section ────────────── */
+
+/** Keys into the checklist section's SVG icon registry. */
+export type ChecklistIconKey =
+  | "briefcase"
+  | "chartBar"
+  | "handshake"
+  | "target"
+  | "users"
+  | "wallet"
+  | "document"
+  | "workflow"
+  | "shieldAlert"
+  | "chartLine"
+  | "shieldCheck"
+  | "smile";
+
+/** A "built for" audience chip. */
+export interface ChecklistRole {
+  label: string;
+  iconKey: ChecklistIconKey;
+}
+
+/** A row in the document-mock "what it evaluates" list. */
+export interface ChecklistEvalItem {
+  label: string;
+  iconKey: ChecklistIconKey;
+}
+
+/** All copy + data for the checklist-intro lead-magnet section. */
+export interface ChecklistIntroContent {
+  badge: string;
+  heading: {
+    lead: string;
+    /** Gradient-accented run. */
+    accent: string;
+    tail: string;
+  };
+  /** Eyebrow above the audience chips. */
+  builtForLabel: string;
+  roles: ChecklistRole[];
+  closing: {
+    /** Emphasised lead-in run. */
+    emphasis: string;
+    body: string;
+  };
+  cta: {
+    label: string;
+    /** Download URL for the checklist PDF. */
+    href: string;
+    /** Suggested filename for the downloaded file. */
+    downloadName: string;
+    subtext: string;
+  };
+  /** Copy for the floating "checklist preview" document mock. */
+  document: {
+    ribbon: string;
+    fileName: string;
+    pointsBadge: string;
+    evaluates: ChecklistEvalItem[];
+    footer: { time: string; categories: string };
+    floatingBadge: { title: string; subtitle: string };
+  };
+}

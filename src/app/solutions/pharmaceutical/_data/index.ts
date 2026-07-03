@@ -7,6 +7,7 @@
  *   hero.ts             → Hero section copy
  *   problem.ts          → Problem section copy + data (stats, chips, tools, consequences)
  *   self-assessment.ts  → Self-assessment copy + audit questions + score tiers
+ *   checklist-intro.ts  → Checklist-intro copy + audience roles + document mock
  *   types.ts            → shared interfaces
  *
  * As each new section is built, add a `<section>.ts` file here, add its
@@ -18,11 +19,13 @@
 import { hero } from "./hero";
 import { problem } from "./problem";
 import { selfAssessment } from "./self-assessment";
+import { checklistIntro } from "./checklist-intro";
 
 /** Grouped section objects, one key per section. */
-export const content = { hero, problem, selfAssessment } as const;
+export const content = { hero, problem, selfAssessment, checklistIntro } as const;
 
 export { hero } from "./hero";
 export { problem } from "./problem";
 export { selfAssessment } from "./self-assessment";
+export { checklistIntro } from "./checklist-intro";
 export type * from "./types";
