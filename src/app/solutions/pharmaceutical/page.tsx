@@ -16,6 +16,7 @@ import SelfAssessmentSection from "./_components/SelfAssessmentSection";
 import ChecklistIntroSection from "./_components/ChecklistIntroSection";
 import BridgeSection from "./_components/BridgeSection";
 import IntroducingExpendeskSection from "./_components/IntroducingExpendeskSection";
+import ChecklistContentsSection from "./_components/ChecklistContentsSection";
 
 export const metadata: Metadata = {
   title: "Expense Management for Pharmaceutical Industries | Expendesk",
@@ -32,13 +33,14 @@ export default function PharmaceuticalSolutionPage() {
       <ChecklistIntroSection />
       <BridgeSection />
       <IntroducingExpendeskSection />
+      <ChecklistContentsSection />
+      {/* <ChecklistContentsSection /> */}
 
       {/*
         Upcoming sections — build each one in ./_components/ and compose it
         here in order. Add its copy as a new ./_data/<section>.ts file and
         re-export it from ./_data/index.ts.
 
-        <ChecklistContentsSection />
         <DualCtaSection />
         <SocialProofSection />
         <FinalCtaSection />

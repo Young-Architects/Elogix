@@ -87,7 +87,7 @@ export default function IntroducingExpendeskSection() {
       // with BridgeSection above; the top gap is carried by the inner container
       // instead, so on mobile the divider isn't pushed down and there's no large
       // white gap between the two sections.
-      className="relative overflow-hidden bg-[#F8F9FC] pb-24 pt-0 sm:pb-32 lg:pb-40"
+      className="relative overflow-hidden bg-[#F8F9FC] pb-24 pt-0 sm:pb-32 lg:pb-16"
     >
       <ScrollBeamDivider />
 

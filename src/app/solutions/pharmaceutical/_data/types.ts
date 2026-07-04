@@ -304,3 +304,43 @@ export interface IntroducingExpendeskContent {
   outro: string;
   cta: { label: string; href: string };
 }
+
+/* ── Checklist-contents ("what's inside") section ─────── */
+
+/** Keys into the checklist-contents section's Lucide icon registry. */
+export type ChecklistContentsIconKey =
+  | "receipt"
+  | "fuel"
+  | "plane"
+  | "workflow"
+  | "shieldAlert"
+  | "fileCheck"
+  | "clipboardCheck"
+  | "eye"
+  | "smile"
+  | "barChart";
+
+/** A single revealed checklist category (timeline row / compact tile). */
+export interface ChecklistContentsItem {
+  id: number;
+  title: string;
+  iconKey: ChecklistContentsIconKey;
+}
+
+/** All copy + data for the "What's inside the checklist" section. */
+export interface ChecklistContentsContent {
+  badge: string;
+  heading: {
+    lead: string;
+    /** Gradient-accented run. */
+    accent: string;
+    tail: string;
+  };
+  /** Total assessment points advertised; the hidden count is derived as
+   *  `totalAreas - items.length`. */
+  totalAreas: number;
+  items: ChecklistContentsItem[];
+  /** Locked "plus N more" card copy. The number is injected from the derived
+   *  hidden count, so `accentSuffix` is just the trailing phrase. */
+  locked: { lead: string; accentSuffix: string };
+}

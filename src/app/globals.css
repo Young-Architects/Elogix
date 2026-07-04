@@ -11,7 +11,8 @@
  *      pharmaceutical SelfAssessmentSection (prefixed `sa-`) /
  *      pharmaceutical ChecklistIntroSection (prefixed `ck-`) /
  *      pharmaceutical BridgeSection (prefixed `br-`) /
- *      pharmaceutical IntroducingExpendeskSection (prefixed `ie-`).
+ *      pharmaceutical IntroducingExpendeskSection (prefixed `ie-`) /
+ *      pharmaceutical ChecklistContentsSection (prefixed `cc-`).
  *
  * Conventions (see README "Styling Rules"):
  *   - This file is the ONLY place for class definitions and @keyframes.
@@ -306,4 +307,22 @@ body {
 }
 .ie-no-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+/* ─── ChecklistContentsSection (pharmaceutical) — masked dot-grid backdrop ──
+   A faint purple dot grid faded out toward the edges with a radial mask, so it
+   only reads near the top-center behind the heading. Static (no animation). */
+.cc-dot-grid {
+  background-image: radial-gradient(circle, #d8b4fe 1px, transparent 1px);
+  background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(
+    ellipse 75% 55% at 50% 0%,
+    black 40%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 75% 55% at 50% 0%,
+    black 40%,
+    transparent 100%
+  );
 }

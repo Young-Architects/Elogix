@@ -10,6 +10,7 @@
  *   checklist-intro.ts       → Checklist-intro copy + audience roles + document mock
  *   bridge.ts                → Bridge section copy + "same challenges" cards
  *   introducing-expendesk.ts → "Introducing Expendesk" copy + capability cards + CTA
+ *   checklist-contents.ts    → "What's inside the checklist" copy + revealed categories
  *   types.ts                 → shared interfaces
  *
  * As each new section is built, add a `<section>.ts` file here, add its
@@ -24,6 +25,7 @@ import { selfAssessment } from "./self-assessment";
 import { checklistIntro } from "./checklist-intro";
 import { bridge } from "./bridge";
 import { introducingExpendesk } from "./introducing-expendesk";
+import { checklistContents } from "./checklist-contents";
 
 /** Grouped section objects, one key per section. */
 export const content = {
@@ -33,6 +35,7 @@ export const content = {
   checklistIntro,
   bridge,
   introducingExpendesk,
+  checklistContents,
 } as const;
 
 export { hero } from "./hero";
@@ -41,4 +44,5 @@ export { selfAssessment } from "./self-assessment";
 export { checklistIntro } from "./checklist-intro";
 export { bridge } from "./bridge";
 export { introducingExpendesk } from "./introducing-expendesk";
+export { checklistContents } from "./checklist-contents";
 export type * from "./types";

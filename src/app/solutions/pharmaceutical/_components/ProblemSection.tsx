@@ -359,7 +359,7 @@ export default function ProblemSection() {
               className="bg-clip-text text-transparent"
               style={{
                 backgroundImage:
-                  "linear-gradient(118deg, #EF4444 0%, #F97316 55%, #FBBF24 100%)",
+                  "linear-gradient(118deg, #a78bfa 0%, #e879f9 50%, #a78bfa 100%)",
               }}
             >
               {problem.headline.accent}
@@ -406,7 +406,7 @@ export default function ProblemSection() {
                 className="text-5xl sm:text-4xl xl:text-5xl font-black mb-2 bg-clip-text text-transparent"
                 style={{
                   backgroundImage:
-                    "linear-gradient(118deg,#EF4444 0%,#F97316 100%)",
+                    "linear-gradient(118deg,#a78bfa 0%,#e879f9 50%,#a78bfa 100%)",
                 }}
               >
                 <CountUp to={stat.value} suffix={stat.suffix} />
@@ -582,7 +582,7 @@ export default function ProblemSection() {
               className="bg-clip-text text-transparent"
               style={{
                 backgroundImage:
-                  "linear-gradient(128deg, #EF4444 0%, #F97316 100%)",
+                  "linear-gradient(128deg, #a78bfa 0%, #e879f9 50%, #a78bfa 100%)",
               }}
             >
               {problem.result.accent}
@@ -755,7 +755,7 @@ export default function ProblemSection() {
                       className="bg-clip-text text-transparent"
                       style={{
                         backgroundImage:
-                          "linear-gradient(118deg,#EF4444 0%,#F97316 100%)",
+                          "linear-gradient(118deg,#a78bfa 0%,#e879f9 50%,#a78bfa 100%)",
                       }}
                     >
                       {problem.closing.headlineAccent}

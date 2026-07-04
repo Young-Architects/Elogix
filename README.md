@@ -44,16 +44,18 @@ src/
 │   │       │   ├── SelfAssessmentSection.tsx       # Interactive 60-sec audit checklist + live score ring
 │   │       │   ├── ChecklistIntroSection.tsx       # Lead magnet: audience chips + animated checklist-preview card
 │   │       │   ├── BridgeSection.tsx               # "How do you fix them?": challenge cards + mobile marquee
-│   │       │   └── IntroducingExpendeskSection.tsx # Product reveal: auto-cycling capability cards + CTA banner
+│   │       │   ├── IntroducingExpendeskSection.tsx # Product reveal: auto-cycling capability cards + CTA banner
+│   │       │   └── ChecklistContentsSection.tsx    # "What's inside": category timeline / tile grid + locked card
 │   │       ├── _data/              # One file per section — ALL copy + data (nothing inline)
 │   │       │   ├── index.ts                  # Barrel: groups sections into `content`, re-exports each + types
-│   │       │   ├── types.ts                  # Shared interfaces (HeroContent, ProblemContent, …, BridgeContent, IntroducingExpendeskContent)
+│   │       │   ├── types.ts                  # Shared interfaces (HeroContent, ProblemContent, …, ChecklistContentsContent)
 │   │       │   ├── hero.ts                   # Hero: headline, benefits, CTAs, trust tags, scroll label
 │   │       │   ├── problem.ts                # Problem: every headline/label/CTA + stats, chips, tools, cards
 │   │       │   ├── self-assessment.ts        # Self-assessment: copy + audit questions + score-tier config
 │   │       │   ├── checklist-intro.ts        # Checklist intro: copy + audience roles + document-mock preview
 │   │       │   ├── bridge.ts                 # Bridge: copy + "same challenges" cards
-│   │       │   └── introducing-expendesk.ts  # Introducing: copy + capability cards + CTA
+│   │       │   ├── introducing-expendesk.ts  # Introducing: copy + capability cards + CTA
+│   │       │   └── checklist-contents.ts     # Checklist contents: copy + revealed categories + locked count
 │   │       └── page.tsx            # Composes the sections in order
 │   └── resources/                  # Resources dropdown routes (placeholders → notFound())
 │       ├── blogs/page.tsx · case-studies/page.tsx · faqs/page.tsx · whitepapers/page.tsx
@@ -102,7 +104,7 @@ src/
 - **`manufacturing/`** and **`digital-agencies/`** are single-section pages, so their copy lives in one `_data/content.ts`.
 - **`pharmaceutical/`** is a multi-section page built out over time, so its data is **split one file per section** under `_data/` — `hero.ts`, `problem.ts`, `self-assessment.ts`, `checklist-intro.ts`, `bridge.ts`, `introducing-expendesk.ts`, … — each exporting a single typed section object (`HeroContent`, `ProblemContent`, `SelfAssessmentContent`, `ChecklistIntroContent`, `BridgeContent`, `IntroducingExpendeskContent`, …) defined in `_data/types.ts` and re-exported from `_data/index.ts`. **Every** string a section renders — headlines (split into `lead`/`accent`/`tail` runs so gradient text stays data-driven), badges, paragraphs, labels, CTAs, chips, cards, stats, audit questions, score-tier config, audience roles, capability lists, and even the download/CTA URLs — lives in its section file. Components are purely presentational (`import { problem } from "../_data"` → map over `problem.oldTools`, read `problem.headline.accent`); there is **no inline copy in the components** and **no single catch-all data file**.
   - Where data needs to point at an icon, it stores a string `iconKey` (e.g. the self-assessment score tiers, the checklist audience chips, the bridge challenge cards, the Expendesk capability cards) and the component maps it onto an SVG/Lucide icon through a local registry — the same pattern the home sections use, so no JSX leaks into the data files.
-  - Section CSS is **not** inlined either: any `@keyframes`/custom-property animation or injected `<style>` block (e.g. the self-assessment card's spinning border beam under `sa-`, the checklist card's travelling stroke beam under `ck-`, the bridge mobile marquee under `br-`, the Expendesk carousel's scrollbar-hide under `ie-`) lives in [`globals.css`](src/app/globals.css) under a section-prefixed block, each with a `prefers-reduced-motion` opt-out. Only runtime values (spin duration, gradient colors) are passed via `style={{}}`.
+  - Section CSS is **not** inlined either: any `@keyframes`/custom-property animation, injected `<style>` block, or reusable static backdrop (e.g. the self-assessment card's spinning border beam under `sa-`, the checklist card's travelling stroke beam under `ck-`, the bridge mobile marquee under `br-`, the Expendesk carousel's scrollbar-hide under `ie-`, the checklist-contents masked dot grid under `cc-`) lives in [`globals.css`](src/app/globals.css) under a section-prefixed block; animated ones each carry a `prefers-reduced-motion` opt-out. Only runtime values (spin duration, gradient colors) are passed via `style={{}}`.
   - **Section seams** use the shared [`ScrollBeamDivider`](src/components/ui/ScrollBeamDivider.tsx), which must sit flush on the boundary between two sections. A section that renders it keeps **`pt-0`** and carries its top spacing on an inner container instead — otherwise the section's top padding pushes the divider down into its body. Keeping the previous section's bottom padding equal to this section's inner top padding centers the beam on the seam.
   - Add a new section by dropping a `<section>.ts` file into `_data/`, adding its interface to `types.ts`, re-exporting from `index.ts`, and putting any custom CSS in `globals.css`.
 
