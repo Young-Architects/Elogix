@@ -439,7 +439,7 @@ export default function ChecklistIntroSection() {
       // pt-0 keeps the ScrollBeamDivider flush on the seam with the previous
       // section; the top spacing is carried by the inner grid instead so the
       // divider isn't pushed down into the section body.
-      className="relative overflow-hidden pb-16 pt-0 [-webkit-font-smoothing:antialiased] [backface-visibility:hidden] sm:pb-20 lg:pb-28"
+      className="relative overflow-hidden pb-12 pt-0 [-webkit-font-smoothing:antialiased] [backface-visibility:hidden] sm:pb-16"
     >
       <HexBackground />
       <ScrollBeamDivider />

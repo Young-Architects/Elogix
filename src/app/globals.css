@@ -9,7 +9,9 @@
  *      that owns it: SolutionSection / BenefitsSection / LeadMagnetSection /
  *      TestimonialsSection / ChatWidget / WhyExpendesk (prefixed `eb-`) /
  *      pharmaceutical SelfAssessmentSection (prefixed `sa-`) /
- *      pharmaceutical ChecklistIntroSection (prefixed `ck-`).
+ *      pharmaceutical ChecklistIntroSection (prefixed `ck-`) /
+ *      pharmaceutical BridgeSection (prefixed `br-`) /
+ *      pharmaceutical IntroducingExpendeskSection (prefixed `ie-`).
  *
  * Conventions (see README "Styling Rules"):
  *   - This file is the ONLY place for class definitions and @keyframes.
@@ -273,4 +275,35 @@ body {
 }
 @media (prefers-reduced-motion: reduce) {
   .ck-border-beam { animation: none; }
+}
+
+/* ─── BridgeSection (pharmaceutical) — infinite marquee (mobile/tablet) ────
+   The "same challenges" row auto-scrolls one full copy left, then loops. The
+   track renders the cards twice, so translating by -50% (minus the gap) yields
+   a seamless wrap. Pauses on hover/touch. */
+@keyframes brMarquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 0.5rem)); }
+}
+.br-marquee {
+  width: max-content;
+  animation: brMarquee 25s linear infinite;
+}
+.br-marquee:hover,
+.br-marquee:active {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .br-marquee { animation: none; }
+}
+
+/* ─── IntroducingExpendeskSection (pharmaceutical) — hide scrollbar ────────
+   The mobile capability carousel scrolls programmatically; the native
+   scrollbar is hidden so only the cards + progress bars read as the control. */
+.ie-no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.ie-no-scrollbar::-webkit-scrollbar {
+  display: none;
 }

@@ -235,3 +235,72 @@ export interface ChecklistIntroContent {
     floatingBadge: { title: string; subtitle: string };
   };
 }
+
+/* ── Bridge section ───────────────────────────────────── */
+
+/** Keys into the bridge section's Lucide icon registry. */
+export type BridgeIconKey =
+  | "fileWarning"
+  | "clock"
+  | "eyeOff"
+  | "hourglass"
+  | "shieldAlert"
+  | "alertTriangle";
+
+/** A "same challenges" card. */
+export interface BridgeChallenge {
+  id: string;
+  label: string;
+  iconKey: BridgeIconKey;
+}
+
+/** All copy + data for the bridge ("how do you fix them?") section. */
+export interface BridgeContent {
+  badge: string;
+  heading: {
+    lead: string;
+    /** Gradient-accented run. */
+    accent: string;
+  };
+  subheading: string;
+  challenges: BridgeChallenge[];
+  closing: {
+    lead: string;
+    /** Gradient-accented run. */
+    accent: string;
+  };
+}
+
+/* ── Introducing-Expendesk section ────────────────────── */
+
+/** Keys into the introducing section's Lucide icon registry. */
+export type IntroducingIconKey =
+  | "fileCheck"
+  | "zap"
+  | "shieldCheck"
+  | "workflow"
+  | "barChart"
+  | "trendingDown"
+  | "smile";
+
+/** A capability card in the auto-cycling command center. */
+export interface IntroducingFeature {
+  id: number;
+  label: string;
+  iconKey: IntroducingIconKey;
+}
+
+/** All copy + data for the "Introducing Expendesk" section. */
+export interface IntroducingExpendeskContent {
+  badge: string;
+  heading: {
+    lead: string;
+    /** Gradient-accented run. */
+    accent: string;
+  };
+  subheading: string;
+  features: IntroducingFeature[];
+  /** Dark closing banner copy + CTA. */
+  outro: string;
+  cta: { label: string; href: string };
+}

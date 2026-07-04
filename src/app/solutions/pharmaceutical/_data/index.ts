@@ -4,11 +4,13 @@
  * Copy is never hardcoded in the section components — each section has its own
  * data file in this folder, typed against `./types.ts`:
  *
- *   hero.ts             → Hero section copy
- *   problem.ts          → Problem section copy + data (stats, chips, tools, consequences)
- *   self-assessment.ts  → Self-assessment copy + audit questions + score tiers
- *   checklist-intro.ts  → Checklist-intro copy + audience roles + document mock
- *   types.ts            → shared interfaces
+ *   hero.ts                  → Hero section copy
+ *   problem.ts               → Problem section copy + data (stats, chips, tools, consequences)
+ *   self-assessment.ts       → Self-assessment copy + audit questions + score tiers
+ *   checklist-intro.ts       → Checklist-intro copy + audience roles + document mock
+ *   bridge.ts                → Bridge section copy + "same challenges" cards
+ *   introducing-expendesk.ts → "Introducing Expendesk" copy + capability cards + CTA
+ *   types.ts                 → shared interfaces
  *
  * As each new section is built, add a `<section>.ts` file here, add its
  * interface to `types.ts`, and re-export it below. `content` groups every
@@ -20,12 +22,23 @@ import { hero } from "./hero";
 import { problem } from "./problem";
 import { selfAssessment } from "./self-assessment";
 import { checklistIntro } from "./checklist-intro";
+import { bridge } from "./bridge";
+import { introducingExpendesk } from "./introducing-expendesk";
 
 /** Grouped section objects, one key per section. */
-export const content = { hero, problem, selfAssessment, checklistIntro } as const;
+export const content = {
+  hero,
+  problem,
+  selfAssessment,
+  checklistIntro,
+  bridge,
+  introducingExpendesk,
+} as const;
 
 export { hero } from "./hero";
 export { problem } from "./problem";
 export { selfAssessment } from "./self-assessment";
 export { checklistIntro } from "./checklist-intro";
+export { bridge } from "./bridge";
+export { introducingExpendesk } from "./introducing-expendesk";
 export type * from "./types";
