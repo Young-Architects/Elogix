@@ -17,6 +17,7 @@ import ChecklistIntroSection from "./_components/ChecklistIntroSection";
 import BridgeSection from "./_components/BridgeSection";
 import IntroducingExpendeskSection from "./_components/IntroducingExpendeskSection";
 import ChecklistContentsSection from "./_components/ChecklistContentsSection";
+import Choosenextstepsection from "./_components/Choosenextstepsection";
 
 export const metadata: Metadata = {
   title: "Expense Management for Pharmaceutical Industries | Expendesk",
@@ -34,6 +35,7 @@ export default function PharmaceuticalSolutionPage() {
       <BridgeSection />
       <IntroducingExpendeskSection />
       <ChecklistContentsSection />
+      <Choosenextstepsection />
       {/* <ChecklistContentsSection /> */}
 
       {/*
@@ -41,8 +43,6 @@ export default function PharmaceuticalSolutionPage() {
         here in order. Add its copy as a new ./_data/<section>.ts file and
         re-export it from ./_data/index.ts.
 
-        <DualCtaSection />
-        <SocialProofSection />
         <FinalCtaSection />
       */}
     </main>

@@ -442,7 +442,7 @@ export default function WhatsInsideChecklistSection() {
     // the doubled top gap that a section py-* + inner pt-* combination caused.
     <section
       aria-labelledby="whats-inside-heading"
-      className="relative bg-white pt-0 pb-14 sm:pb-20 lg:pb-28"
+      className="relative bg-white pt-0 pb-14 sm:pb-20 lg:pb-16"
     >
       <ScrollBeamDivider />
 

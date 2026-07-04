@@ -45,17 +45,19 @@ src/
 │   │       │   ├── ChecklistIntroSection.tsx       # Lead magnet: audience chips + animated checklist-preview card
 │   │       │   ├── BridgeSection.tsx               # "How do you fix them?": challenge cards + mobile marquee
 │   │       │   ├── IntroducingExpendeskSection.tsx # Product reveal: auto-cycling capability cards + CTA banner
-│   │       │   └── ChecklistContentsSection.tsx    # "What's inside": category timeline / tile grid + locked card
+│   │       │   ├── ChecklistContentsSection.tsx    # "What's inside": category timeline / tile grid + locked card
+│   │       │   └── Choosenextstepsection.tsx        # Dual-CTA cards (MagneticButton) + dark trust capsule
 │   │       ├── _data/              # One file per section — ALL copy + data (nothing inline)
 │   │       │   ├── index.ts                  # Barrel: groups sections into `content`, re-exports each + types
-│   │       │   ├── types.ts                  # Shared interfaces (HeroContent, ProblemContent, …, ChecklistContentsContent)
+│   │       │   ├── types.ts                  # Shared interfaces (HeroContent, ProblemContent, …, ChooseNextStepContent)
 │   │       │   ├── hero.ts                   # Hero: headline, benefits, CTAs, trust tags, scroll label
 │   │       │   ├── problem.ts                # Problem: every headline/label/CTA + stats, chips, tools, cards
 │   │       │   ├── self-assessment.ts        # Self-assessment: copy + audit questions + score-tier config
 │   │       │   ├── checklist-intro.ts        # Checklist intro: copy + audience roles + document-mock preview
 │   │       │   ├── bridge.ts                 # Bridge: copy + "same challenges" cards
 │   │       │   ├── introducing-expendesk.ts  # Introducing: copy + capability cards + CTA
-│   │       │   └── checklist-contents.ts     # Checklist contents: copy + revealed categories + locked count
+│   │       │   ├── checklist-contents.ts     # Checklist contents: copy + revealed categories + locked count
+│   │       │   └── choose-next-step.ts       # Choose next step: copy + CTA options + trust points
 │   │       └── page.tsx            # Composes the sections in order
 │   └── resources/                  # Resources dropdown routes (placeholders → notFound())
 │       ├── blogs/page.tsx · case-studies/page.tsx · faqs/page.tsx · whitepapers/page.tsx
@@ -104,7 +106,7 @@ src/
 - **`manufacturing/`** and **`digital-agencies/`** are single-section pages, so their copy lives in one `_data/content.ts`.
 - **`pharmaceutical/`** is a multi-section page built out over time, so its data is **split one file per section** under `_data/` — `hero.ts`, `problem.ts`, `self-assessment.ts`, `checklist-intro.ts`, `bridge.ts`, `introducing-expendesk.ts`, … — each exporting a single typed section object (`HeroContent`, `ProblemContent`, `SelfAssessmentContent`, `ChecklistIntroContent`, `BridgeContent`, `IntroducingExpendeskContent`, …) defined in `_data/types.ts` and re-exported from `_data/index.ts`. **Every** string a section renders — headlines (split into `lead`/`accent`/`tail` runs so gradient text stays data-driven), badges, paragraphs, labels, CTAs, chips, cards, stats, audit questions, score-tier config, audience roles, capability lists, and even the download/CTA URLs — lives in its section file. Components are purely presentational (`import { problem } from "../_data"` → map over `problem.oldTools`, read `problem.headline.accent`); there is **no inline copy in the components** and **no single catch-all data file**.
   - Where data needs to point at an icon, it stores a string `iconKey` (e.g. the self-assessment score tiers, the checklist audience chips, the bridge challenge cards, the Expendesk capability cards) and the component maps it onto an SVG/Lucide icon through a local registry — the same pattern the home sections use, so no JSX leaks into the data files.
-  - Section CSS is **not** inlined either: any `@keyframes`/custom-property animation, injected `<style>` block, or reusable static backdrop (e.g. the self-assessment card's spinning border beam under `sa-`, the checklist card's travelling stroke beam under `ck-`, the bridge mobile marquee under `br-`, the Expendesk carousel's scrollbar-hide under `ie-`, the checklist-contents masked dot grid under `cc-`) lives in [`globals.css`](src/app/globals.css) under a section-prefixed block; animated ones each carry a `prefers-reduced-motion` opt-out. Only runtime values (spin duration, gradient colors) are passed via `style={{}}`.
+  - Section CSS is **not** inlined either: any `@keyframes`/custom-property animation, injected `<style>` block, or reusable static backdrop (e.g. the self-assessment card's spinning border beam under `sa-`, the checklist card's travelling stroke beam under `ck-`, the bridge mobile marquee under `br-`, the Expendesk carousel's scrollbar-hide under `ie-`, the checklist-contents masked dot grid under `cc-`, the choose-next-step dot grids + shimmer-text sizing under `cn-`) lives in [`globals.css`](src/app/globals.css) under a section-prefixed block; animated ones each carry a `prefers-reduced-motion` opt-out. Only runtime values (spin duration, gradient colors) are passed via `style={{}}`.
   - **Section seams** use the shared [`ScrollBeamDivider`](src/components/ui/ScrollBeamDivider.tsx), which must sit flush on the boundary between two sections. A section that renders it keeps **`pt-0`** and carries its top spacing on an inner container instead — otherwise the section's top padding pushes the divider down into its body. Keeping the previous section's bottom padding equal to this section's inner top padding centers the beam on the seam.
   - Add a new section by dropping a `<section>.ts` file into `_data/`, adding its interface to `types.ts`, re-exporting from `index.ts`, and putting any custom CSS in `globals.css`.
 
@@ -131,9 +133,9 @@ import MagneticButton from "@/components/ui/MagneticButton";
 - **Sizes:** `xs`–`2xl` presets, or override padding/radius/font-size directly through `className` (last-wins).
 - **Props of note:** `href` (+ `external`), `icon` / `iconPosition`, `loading`, `fullWidth`, `magnetStrength`. Standard `onClick` and button attributes pass through.
 
-Used by: the Hero, Problem, Solution (×2), Benefits, and WhyExpendesk section CTAs; the `manufacturing` and `digital-agencies` "Book a Demo" buttons; and the pharmaceutical **Introducing Expendesk "Book a Free Demo"** CTA.
+Used by: the Hero, Problem, Solution (×2), Benefits, and WhyExpendesk section CTAs; the `manufacturing` and `digital-agencies` "Book a Demo" buttons; the pharmaceutical **Introducing Expendesk "Book a Free Demo"** CTA; and the two **Choose-Next-Step** card buttons ("Download Checklist" / "Schedule Demo").
 
-> **Keeping a themed gradient on `MagneticButton`.** The pharma "Book a Free Demo" button needs the page's violet→fuchsia gradient, not the `primary` variant's blue→purple→pink fill (which is painted by an internal layer that a `className` background can't override). The pattern: use **`variant="ghost"`** (no background layers) and supply the gradient + shape through `className` — e.g. `<MagneticButton href=… variant="ghost" className="rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-600 to-violet-600 …">`. The magnetic drift, shimmer, and scale still come from the component.
+> **Keeping a themed gradient on `MagneticButton`.** Several pharma buttons need the page's violet/fuchsia (or white-on-purple) look, not the `primary` variant's blue→purple→pink fill (which is painted by an internal layer a `className` background can't override). The pattern: use **`variant="ghost"`** (no background layers) and supply the gradient + shape through `className` — e.g. `<MagneticButton variant="ghost" className="rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-600 to-violet-600 …">`. For a light button with dark text (the Choose-Next-Step primary card), colour the label/icon directly (`<span className="text-purple-700">…</span>`, `icon={<ArrowRight className="text-purple-700" />}`) since MagneticButton's own text defaults to white. The magnetic drift, shimmer, and scale still come from the component.
 >
 > The remaining pharma CTAs (Hero download buttons, Checklist "Download", Self-Assessment "Schedule") are still bespoke — their light/outline styling has no matching `MagneticButton` variant — and can be migrated the same way if desired.
 

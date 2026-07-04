@@ -12,7 +12,8 @@
  *      pharmaceutical ChecklistIntroSection (prefixed `ck-`) /
  *      pharmaceutical BridgeSection (prefixed `br-`) /
  *      pharmaceutical IntroducingExpendeskSection (prefixed `ie-`) /
- *      pharmaceutical ChecklistContentsSection (prefixed `cc-`).
+ *      pharmaceutical ChecklistContentsSection (prefixed `cc-`) /
+ *      pharmaceutical ChooseNextStepSection (prefixed `cn-`).
  *
  * Conventions (see README "Styling Rules"):
  *   - This file is the ONLY place for class definitions and @keyframes.
@@ -325,4 +326,31 @@ body {
     black 40%,
     transparent 100%
   );
+}
+
+/* ─── ChooseNextStepSection (pharmaceutical) — backdrops + shimmer text ────
+   `cn-dot-grid`      : purple dot grid masked toward centre, behind the header.
+   `cn-dot-grid-dark` : faint white dot grid inside the dark trust capsule.
+   `cn-shimmer-text`  : 200% gradient sizing so ShimmerText can drift its
+                        background-position (animation itself is in the JSX). */
+.cn-dot-grid {
+  background-image: radial-gradient(circle, #d8b4fe 1px, transparent 1px);
+  background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(
+    ellipse 70% 60% at 50% 30%,
+    black 30%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 70% 60% at 50% 30%,
+    black 30%,
+    transparent 100%
+  );
+}
+.cn-dot-grid-dark {
+  background-image: radial-gradient(circle, #ffffff 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.cn-shimmer-text {
+  background-size: 200% auto;
 }

@@ -344,3 +344,40 @@ export interface ChecklistContentsContent {
    *  hidden count, so `accentSuffix` is just the trailing phrase. */
   locked: { lead: string; accentSuffix: string };
 }
+
+/* ── Choose-next-step (dual CTA + trust) section ──────── */
+
+/** Keys into the choose-next-step section's Lucide icon registry. */
+export type ChooseNextStepIconKey = "download" | "calendar";
+
+/** One of the two "next step" CTA cards. */
+export interface ChooseNextStepOption {
+  id: number;
+  /** Small eyebrow, e.g. "Option 1". */
+  label: string;
+  title: string;
+  description: string;
+  buttonLabel: string;
+  iconKey: ChooseNextStepIconKey;
+}
+
+/** All copy + data for the "Choose your next step" section. */
+export interface ChooseNextStepContent {
+  badge: string;
+  heading: {
+    lead: string;
+    /** Gradient-accented run. */
+    accent: string;
+  };
+  options: ChooseNextStepOption[];
+  /** Dark social-proof / trust capsule. */
+  trust: {
+    heading: {
+      lead: string;
+      /** Gradient-accented run. */
+      accent: string;
+    };
+    subheading: string;
+    points: string[];
+  };
+}
