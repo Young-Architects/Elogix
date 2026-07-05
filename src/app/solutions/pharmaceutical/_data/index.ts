@@ -12,6 +12,7 @@
  *   introducing-expendesk.ts → "Introducing Expendesk" copy + capability cards + CTA
  *   checklist-contents.ts    → "What's inside the checklist" copy + revealed categories
  *   choose-next-step.ts      → Dual-CTA + trust closer copy + options + trust points
+ *   final-cta.ts             → Closing final-CTA copy + action panels
  *   types.ts                 → shared interfaces
  *
  * As each new section is built, add a `<section>.ts` file here, add its
@@ -28,6 +29,7 @@ import { bridge } from "./bridge";
 import { introducingExpendesk } from "./introducing-expendesk";
 import { checklistContents } from "./checklist-contents";
 import { chooseNextStep } from "./choose-next-step";
+import { finalCta } from "./final-cta";
 
 /** Grouped section objects, one key per section. */
 export const content = {
@@ -39,6 +41,7 @@ export const content = {
   introducingExpendesk,
   checklistContents,
   chooseNextStep,
+  finalCta,
 } as const;
 
 export { hero } from "./hero";
@@ -49,4 +52,5 @@ export { bridge } from "./bridge";
 export { introducingExpendesk } from "./introducing-expendesk";
 export { checklistContents } from "./checklist-contents";
 export { chooseNextStep } from "./choose-next-step";
+export { finalCta } from "./final-cta";
 export type * from "./types";

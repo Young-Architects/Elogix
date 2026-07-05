@@ -46,10 +46,11 @@ src/
 │   │       │   ├── BridgeSection.tsx               # "How do you fix them?": challenge cards + mobile marquee
 │   │       │   ├── IntroducingExpendeskSection.tsx # Product reveal: auto-cycling capability cards + CTA banner
 │   │       │   ├── ChecklistContentsSection.tsx    # "What's inside": category timeline / tile grid + locked card
-│   │       │   └── Choosenextstepsection.tsx        # Dual-CTA cards (MagneticButton) + dark trust capsule
+│   │       │   ├── Choosenextstepsection.tsx        # Dual-CTA cards (MagneticButton) + dark trust capsule
+│   │       │   └── FinalCtaSection.tsx              # Closing CTA: two action panels (MagneticButton) on dark bg
 │   │       ├── _data/              # One file per section — ALL copy + data (nothing inline)
 │   │       │   ├── index.ts                  # Barrel: groups sections into `content`, re-exports each + types
-│   │       │   ├── types.ts                  # Shared interfaces (HeroContent, ProblemContent, …, ChooseNextStepContent)
+│   │       │   ├── types.ts                  # Shared interfaces (HeroContent, ProblemContent, …, FinalCtaContent)
 │   │       │   ├── hero.ts                   # Hero: headline, benefits, CTAs, trust tags, scroll label
 │   │       │   ├── problem.ts                # Problem: every headline/label/CTA + stats, chips, tools, cards
 │   │       │   ├── self-assessment.ts        # Self-assessment: copy + audit questions + score-tier config
@@ -57,7 +58,8 @@ src/
 │   │       │   ├── bridge.ts                 # Bridge: copy + "same challenges" cards
 │   │       │   ├── introducing-expendesk.ts  # Introducing: copy + capability cards + CTA
 │   │       │   ├── checklist-contents.ts     # Checklist contents: copy + revealed categories + locked count
-│   │       │   └── choose-next-step.ts       # Choose next step: copy + CTA options + trust points
+│   │       │   ├── choose-next-step.ts       # Choose next step: copy + CTA options + trust points
+│   │       │   └── final-cta.ts              # Final CTA: copy + two action panels
 │   │       └── page.tsx            # Composes the sections in order
 │   └── resources/                  # Resources dropdown routes (placeholders → notFound())
 │       ├── blogs/page.tsx · case-studies/page.tsx · faqs/page.tsx · whitepapers/page.tsx
@@ -133,7 +135,7 @@ import MagneticButton from "@/components/ui/MagneticButton";
 - **Sizes:** `xs`–`2xl` presets, or override padding/radius/font-size directly through `className` (last-wins).
 - **Props of note:** `href` (+ `external`), `icon` / `iconPosition`, `loading`, `fullWidth`, `magnetStrength`. Standard `onClick` and button attributes pass through.
 
-Used by: the Hero, Problem, Solution (×2), Benefits, and WhyExpendesk section CTAs; the `manufacturing` and `digital-agencies` "Book a Demo" buttons; the pharmaceutical **Introducing Expendesk "Book a Free Demo"** CTA; and the two **Choose-Next-Step** card buttons ("Download Checklist" / "Schedule Demo").
+Used by: the Hero, Problem, Solution (×2), Benefits, and WhyExpendesk section CTAs; the `manufacturing` and `digital-agencies` "Book a Demo" buttons; the pharmaceutical **Introducing Expendesk "Book a Free Demo"** CTA; and the two **Choose-Next-Step** card buttons ("Download Checklist" / "Schedule Demo"); and the two **Final-CTA** action-panel buttons ("Download Checklist" / "Book a Demo").
 
 > **Keeping a themed gradient on `MagneticButton`.** Several pharma buttons need the page's violet/fuchsia (or white-on-purple) look, not the `primary` variant's blue→purple→pink fill (which is painted by an internal layer a `className` background can't override). The pattern: use **`variant="ghost"`** (no background layers) and supply the gradient + shape through `className` — e.g. `<MagneticButton variant="ghost" className="rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-600 to-violet-600 …">`. For a light button with dark text (the Choose-Next-Step primary card), colour the label/icon directly (`<span className="text-purple-700">…</span>`, `icon={<ArrowRight className="text-purple-700" />}`) since MagneticButton's own text defaults to white. The magnetic drift, shimmer, and scale still come from the component.
 >

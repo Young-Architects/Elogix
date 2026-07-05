@@ -18,6 +18,7 @@ import BridgeSection from "./_components/BridgeSection";
 import IntroducingExpendeskSection from "./_components/IntroducingExpendeskSection";
 import ChecklistContentsSection from "./_components/ChecklistContentsSection";
 import Choosenextstepsection from "./_components/Choosenextstepsection";
+import FinalCtaSection from "./_components/FinalCtaSection";
 
 export const metadata: Metadata = {
   title: "Expense Management for Pharmaceutical Industries | Expendesk",
@@ -36,15 +37,7 @@ export default function PharmaceuticalSolutionPage() {
       <IntroducingExpendeskSection />
       <ChecklistContentsSection />
       <Choosenextstepsection />
-      {/* <ChecklistContentsSection /> */}
-
-      {/*
-        Upcoming sections — build each one in ./_components/ and compose it
-        here in order. Add its copy as a new ./_data/<section>.ts file and
-        re-export it from ./_data/index.ts.
-
-        <FinalCtaSection />
-      */}
+      <FinalCtaSection />
     </main>
   );
 }

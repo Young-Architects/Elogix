@@ -13,7 +13,8 @@
  *      pharmaceutical BridgeSection (prefixed `br-`) /
  *      pharmaceutical IntroducingExpendeskSection (prefixed `ie-`) /
  *      pharmaceutical ChecklistContentsSection (prefixed `cc-`) /
- *      pharmaceutical ChooseNextStepSection (prefixed `cn-`).
+ *      pharmaceutical ChooseNextStepSection (prefixed `cn-`) /
+ *      pharmaceutical FinalCtaSection (prefixed `fc-`).
  *
  * Conventions (see README "Styling Rules"):
  *   - This file is the ONLY place for class definitions and @keyframes.
@@ -352,5 +353,12 @@ body {
   background-size: 24px 24px;
 }
 .cn-shimmer-text {
+  background-size: 200% auto;
+}
+
+/* ─── FinalCtaSection (pharmaceutical) — shimmer text sizing ───────────────
+   200% gradient sizing so ShimmerText can drift its background-position (the
+   animation itself is driven by Framer Motion in the JSX). */
+.fc-shimmer-text {
   background-size: 200% auto;
 }

@@ -381,3 +381,32 @@ export interface ChooseNextStepContent {
     points: string[];
   };
 }
+
+/* ── Final CTA section ────────────────────────────────── */
+
+/** Keys into the final-CTA section's Lucide icon registry. */
+export type FinalCtaIconKey = "download" | "calendar";
+
+/** One structured action panel (checklist download / book a demo). */
+export interface FinalCtaPanel {
+  /** Primary panel gets the bolder gradient treatment. */
+  isPrimary: boolean;
+  iconKey: FinalCtaIconKey;
+  /** Optional small pill above the title (e.g. "Secondary Option:"). */
+  eyebrow?: string;
+  title: string;
+  /** Optional description with a gradient-accented middle run. */
+  description?: { lead: string; accent: string; tail: string };
+  buttonLabel: string;
+}
+
+/** All copy + data for the closing final-CTA section. */
+export interface FinalCtaContent {
+  heading: {
+    lead: string;
+    /** Gradient-accented run. */
+    accent: string;
+  };
+  subheading: string;
+  panels: FinalCtaPanel[];
+}
