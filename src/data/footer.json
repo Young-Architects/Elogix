@@ -1,0 +1,64 @@
+{
+  "brand": {
+    "name": "Expendesk",
+    "subheading": "Expense & Reimbursement Management Software for SMEs & Mid-Market Businesses",
+    "tagline": "Automate Expenses. Accelerate Reimbursements. Improve Business Control."
+  },
+  "columns": [
+    {
+      "heading": "Solutions",
+      "links": [
+        { "label": "Pharmaceutical Industries", "href": "/solutions/pharmaceutical" },
+        { "label": "Manufacturing Industries",  "href": "/solutions/manufacturing" },
+        { "label": "Digital Agencies",          "href": "/solutions/digital-agencies" }
+      ]
+    },
+    {
+      "heading": "Features",
+      "links": [
+        { "label": "Overview",      "href": "/#hero" },
+        { "label": "The Problem",   "href": "/#problem" },
+        { "label": "The Solution",  "href": "/#solution" },
+        { "label": "Benefits",      "href": "/#benefits" },
+        { "label": "Product Tour",  "href": "/#features-video" },
+        { "label": "Get Started",   "href": "/#lead-magnet" },
+        { "label": "Testimonials",  "href": "/#testimonials" },
+        { "label": "Why Expendesk", "href": "/#why-expendesk" }
+      ]
+    },
+    {
+      "heading": "Resources",
+      "links": [
+        { "label": "Whitepapers",  "href": "/resources/whitepapers" },
+        { "label": "Case Studies", "href": "/resources/case-studies" },
+        { "label": "Blogs",        "href": "/resources/blogs" },
+        { "label": "FAQs",         "href": "/resources/faqs" }
+      ]
+    },
+    {
+      "heading": "Quick Links",
+      "links": [
+        { "label": "Features",    "href": "/#features-video" },
+        { "label": "Industries",  "href": "/solutions" },
+        { "label": "Resources",   "href": "/resources" },
+        { "label": "Blogs",       "href": "/resources/blogs" },
+        { "label": "Pricing",     "href": "/#pricing" },
+        { "label": "Contact Us",  "href": "/#contact" },
+        { "label": "Book a Demo", "href": "/#demo" }
+      ]
+    }
+  ],
+  "socials": [
+    { "iconKey": "linkedin",  "label": "LinkedIn",  "href": "#linkedin" },
+    { "iconKey": "youtube",   "label": "YouTube",   "href": "#youtube" },
+    { "iconKey": "facebook",  "label": "Facebook",  "href": "#facebook" },
+    { "iconKey": "instagram", "label": "Instagram", "href": "#instagram" },
+    { "iconKey": "x",         "label": "X",         "href": "#x" }
+  ],
+  "legal": [
+    { "label": "Terms of Service", "href": "/legal/terms" },
+    { "label": "Privacy Policy",   "href": "/legal/privacy" },
+    { "label": "Cookies Policy",   "href": "/legal/cookies" },
+    { "label": "Legal Notice",     "href": "/legal/notice" }
+  ]
+}

@@ -79,7 +79,7 @@ const TOGGLE_SPRING: Transition = {
 
 /* ───────────────────────── motion-compatible Link ───────────────────────── */
 
-const MotionLink = motion(Link);
+const MotionLink = motion.create(Link);
 
 /* ───────────────────────── types ───────────────────────── */
 

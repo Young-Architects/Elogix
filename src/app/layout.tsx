@@ -5,8 +5,8 @@
  *  - Imports the single global stylesheet (`globals.css`).
  *  - Declares site-wide `metadata` (SEO/OpenGraph) and `viewport` (theme color).
  *  - Renders the persistent chrome that lives on all pages: the fixed `Navbar`,
- *    the floating `ChatWidget`, and `ScrollToHash` (the headless controller that
- *    owns in-page smooth scrolling — see `lib/scroll.ts`).
+ *    the site-wide `Footer`, the floating `ChatWidget`, and `ScrollToHash` (the
+ *    headless controller that owns in-page smooth scrolling — see `lib/scroll.ts`).
  *
  * Note on fonts: body copy intentionally uses the native system sans-serif
  * stack (no web font is mapped to `font-family` here). The Hero loads Syne
@@ -17,6 +17,7 @@ import "./globals.css";
 import { ChatProvider } from "@/components/chat/ChatProvider";
 import ChatWidget from "@/components/layout/ChatWidget";
 import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import ScrollToHash from "@/components/layout/ScrollToHash";
 
 export const viewport: Viewport = {
@@ -49,6 +50,7 @@ export default function RootLayout({
           <Navbar />
           <ScrollToHash />
           {children}
+          <Footer />
           <ChatWidget />
         </ChatProvider>
       </body>
