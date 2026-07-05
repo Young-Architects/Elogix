@@ -1,0 +1,17 @@
+{
+  "_section": "Pharmaceutical · Introducing Expendesk",
+  "badge": "Introducing Expendesk",
+  "heading": "Expense & Reimbursement Management Built for Growing Pharma Teams",
+  "subheading": "Expendesk helps pharmaceutical companies:",
+  "features": [
+    { "id": 0, "label": "Automate expense claims", "icon": "file-check" },
+    { "id": 1, "label": "Accelerate reimbursements", "icon": "zap" },
+    { "id": 2, "label": "Enforce policy compliance", "icon": "shield-check" },
+    { "id": 3, "label": "Eliminate approval bottlenecks", "icon": "workflow" },
+    { "id": 4, "label": "Gain real-time spend visibility", "icon": "bar-chart" },
+    { "id": 5, "label": "Reduce finance workload", "icon": "trending-down" },
+    { "id": 6, "label": "Improve employee satisfaction", "icon": "smile" }
+  ],
+  "outro": "Instead of managing expenses through spreadsheets and emails, finance teams can manage the entire reimbursement lifecycle from a single platform.",
+  "cta": { "label": "Book a Free Demo", "href": "#book-demo" }
+}

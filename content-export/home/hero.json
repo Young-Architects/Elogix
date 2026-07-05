@@ -1,0 +1,38 @@
+{
+  "_section": "Home · Hero",
+  "badge": {
+    "text": "Expense Intelligence Platform · For Finance Teams",
+    "tag": "New"
+  },
+  "headline": "Control Every Business Expense Without the Spreadsheet Chaos.",
+  "description": "The Expense Management Platform Built for Growing SMEs & Mid-Market Businesses. Track expenses, automate reimbursements, enforce policies, and gain real-time visibility into company spending—all from one powerful platform.",
+  "highlightText": "Stop Losing Money to Manual Processes",
+  "subDescription": "Expendesk helps finance, operations, and leadership teams eliminate expense chaos, reduce financial leakage, and make smarter spending decisions at scale.",
+  "trustPills": [
+    { "icon": "shield-check", "label": "SOC 2 Ready" },
+    { "icon": "zap", "label": "Real-time Alerts" },
+    { "icon": "eye", "label": "Full Audit Trail" }
+  ],
+  "ctas": {
+    "primary": { "label": "Book Discovery Call", "href": "#contact" },
+    "secondary": { "label": "Explore Features", "href": "#features" }
+  },
+  "stats": [
+    { "value": 94, "suffix": "%", "label": "Faster closures" },
+    { "value": 3, "suffix": "×", "label": "Audit speed" },
+    { "value": 0, "suffix": " leakage", "label": "With auto-flags" }
+  ],
+  "featureCards": [
+    { "icon": "alert-triangle", "title": "Leakage Detection", "description": "Auto-flags duplicates, over-limit claims & policy violations before they hit payout." },
+    { "icon": "git-branch", "title": "Multi-Level Approvals", "description": "Structured workflows with partial approvals, delegation, and escalation paths." },
+    { "icon": "eye", "title": "Full Audit Trail", "description": "Every edit, approval, and payout logged with timestamps and actor identity." },
+    { "icon": "clock", "title": "Faster Month-End", "description": "Eliminate back-and-forth. Finance closes books in days, not weeks." }
+  ],
+  "socialProof": {
+    "businessCount": "140+",
+    "businessText": "finance teams trust Expendesk",
+    "rating": 4.9,
+    "ratingText": "from early teams",
+    "avatarInitials": ["SM", "AK", "RD", "PJ"]
+  }
+}

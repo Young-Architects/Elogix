@@ -1,0 +1,23 @@
+{
+  "_section": "Pharmaceutical · Checklist Contents (what's inside)",
+  "badge": "WHAT'S INSIDE THE CHECKLIST",
+  "heading": "The 25 Critical Areas Every Pharma Company Should Audit",
+  "totalAreas": 25,
+  "note": "Only the first 10 areas are revealed on the page. The locked card shows a 'Plus N more' count derived as totalAreas minus the number of items below.",
+  "items": [
+    { "id": 1, "title": "Expense Submission Process", "icon": "receipt" },
+    { "id": 2, "title": "Fuel Reimbursement Management", "icon": "fuel" },
+    { "id": 3, "title": "Travel & Lodging Claims", "icon": "plane" },
+    { "id": 4, "title": "Approval Workflow Efficiency", "icon": "workflow" },
+    { "id": 5, "title": "Expense Fraud Prevention", "icon": "shield-alert" },
+    { "id": 6, "title": "Policy Compliance", "icon": "file-check" },
+    { "id": 7, "title": "Audit Readiness", "icon": "clipboard-check" },
+    { "id": 8, "title": "Spend Visibility", "icon": "eye" },
+    { "id": 9, "title": "Employee Experience", "icon": "smile" },
+    { "id": 10, "title": "Reporting & Analytics", "icon": "bar-chart" }
+  ],
+  "locked": {
+    "lead": "Plus ",
+    "accentSuffix": " more assessment points."
+  }
+}

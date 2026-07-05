@@ -1,0 +1,19 @@
+{
+  "_section": "Solutions · Manufacturing",
+  "meta": {
+    "title": "Expense Management for Manufacturing Industries | Expendesk",
+    "description": "Control factory and plant spend with real-time visibility. Purpose-built expense management for manufacturing companies."
+  },
+  "eyebrow": "Manufacturing",
+  "headline": { "pre": "Expense Management for", "accent": "Manufacturing Industries" },
+  "description": "Keep every plant, facility, and department on budget. Expendesk gives manufacturing teams granular cost control without slowing down operations.",
+  "cta": { "label": "Book a Demo", "href": "#demo" },
+  "benefits": {
+    "heading": "Built for Manufacturing Operations",
+    "items": [
+      { "title": "Multi-Site Cost Control", "desc": "Manage and compare spend across multiple plants and facilities in one dashboard." },
+      { "title": "Purchase Order Matching", "desc": "Automatically match expenses to POs and flag discrepancies before they escalate." },
+      { "title": "Vendor Spend Analytics", "desc": "Get clear visibility into supplier and vendor costs to negotiate better rates." }
+    ]
+  }
+}

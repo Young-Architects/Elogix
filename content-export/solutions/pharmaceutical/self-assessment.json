@@ -1,0 +1,28 @@
+{
+  "_section": "Pharmaceutical · Self-Assessment (60-second audit)",
+  "badge": "SELF-ASSESSMENT · 60-SECOND AUDIT",
+  "heading": "How Healthy Is Your Expense Management Process?",
+  "subheading": "Answer honestly. Most pharma leaders are surprised by where they land.",
+  "liveScoreLabel": "Your live score",
+  "ofLabel": "of",
+  "scheduleCta": "Schedule a Free Assessment",
+  "closing": {
+    "emphasis": "If you're unsure about even a few of these, ",
+    "body": "your organization may already be losing time, money, and productivity."
+  },
+  "questions": [
+    { "id": "digital-submission", "question": "Can Medical Representatives submit claims digitally?" },
+    { "id": "sla-processing", "question": "Are reimbursements processed within a defined SLA?" },
+    { "id": "status-tracking", "question": "Can employees track reimbursement status?" },
+    { "id": "duplicate-detection", "question": "Are duplicate claims automatically detected?" },
+    { "id": "approval-speed", "question": "Do managers approve claims without delays?" },
+    { "id": "spend-visibility", "question": "Does leadership have real-time spend visibility?" },
+    { "id": "audit-readiness", "question": "Are expense records audit-ready?" }
+  ],
+  "tiers": {
+    "idle": { "label": "Not started", "message": "Tap each question to see where your process stands." },
+    "critical": { "label": "Critical gaps", "message": "There are real blind spots here actively costing you." },
+    "atRisk": { "label": "At risk", "message": "Manual gaps are quietly draining time and budget." },
+    "strong": { "label": "Ahead of the curve", "message": "Solid foundation — a few refinements make it airtight." }
+  }
+}

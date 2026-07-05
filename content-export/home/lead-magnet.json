@@ -1,0 +1,27 @@
+{
+  "_section": "Home · Lead Magnet (eBook)",
+  "eyebrow": "Free eBook",
+  "headline": "The Hidden Cost of Poor Expense Management",
+  "subheadline": "Discover how growing businesses lose thousands every month through inefficient expense processes—and learn the proven framework leading companies use to gain control.",
+  "insideLabel": "Inside you'll learn:",
+  "bullets": [
+    "The 7 most common expense management mistakes",
+    "How to reduce reimbursement delays",
+    "Ways to eliminate financial leakage",
+    "Best practices for scaling expense processes",
+    "A practical framework for improving profitability"
+  ],
+  "ctaButton": "Download Free eBook",
+  "ctaNote": "No spam. Actionable insights only.",
+  "pdfUrl": "/placeholder-ebook.pdf",
+  "downloadFilename": "Expendesk-Hidden-Cost-Ebook.pdf",
+  "bookMeta": {
+    "pages": "24 pages",
+    "format": "PDF",
+    "level": "SME / Mid-Market"
+  },
+  "floatingTags": [
+    { "text": "5,000+ downloads" },
+    { "text": "12 min read" }
+  ]
+}

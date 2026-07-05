@@ -1,0 +1,72 @@
+{
+  "_section": "Home · Solution",
+  "badge": "Solution Section",
+  "hero": {
+    "headline": {
+      "pre": "Meet",
+      "brand": "Expendesk",
+      "sub": "The Smarter Way to Manage Business Spending"
+    },
+    "description": "Expendesk brings every expense, reimbursement, approval, and spending policy into one centralized platform.",
+    "bullets": [
+      { "text": "No spreadsheets.", "positive": false },
+      { "text": "No manual follow-ups.", "positive": false },
+      { "text": "No guesswork.", "positive": false },
+      { "text": "Just complete financial control.", "positive": true }
+    ],
+    "cta": "See Expendesk in Action"
+  },
+  "nodeDiagram": {
+    "chaosLabel": "From Chaos",
+    "controlLabel": "To Control",
+    "brandName": "EXPENDESK",
+    "brandTagline": "Financial Control Engine",
+    "chaosNodes": [
+      { "label": "Receipts Lost", "emoji": "🧾" },
+      { "label": "Approval Delays", "emoji": "⏱" },
+      { "label": "Reimbursement Queue", "emoji": "👥" },
+      { "label": "Visibility Missing", "emoji": "👁" }
+    ],
+    "controlNodes": [
+      { "label": "Expense Captured Instantly", "emoji": "📸" },
+      { "label": "Auto Approval", "emoji": "⚡" },
+      { "label": "Instant Reimbursement", "emoji": "💸" },
+      { "label": "Real-Time Dashboard", "emoji": "📊" }
+    ]
+  },
+  "featuresSection": {
+    "heading": "With Expendesk, You Can:",
+    "subheading": "Everything your finance team needs, in one place.",
+    "features": [
+      { "icon": "camera", "title": "Capture expenses instantly", "desc": "Upload receipts on the go and never lose a single expense again." },
+      { "icon": "bolt", "title": "Automate approvals", "desc": "Set smart approval flows and eliminate manual follow-ups." },
+      { "icon": "shield", "title": "Enforce spending policies", "desc": "Ensure policy compliance before spend, not afterwards." },
+      { "icon": "users", "title": "Track by team, dept. or location", "desc": "Get granular visibility into where and how money is being spent." },
+      { "icon": "refresh", "title": "Accelerate reimbursements", "desc": "Reimburse employees faster and boost happiness." },
+      { "icon": "file", "title": "Generate audit-ready reports", "desc": "One-click reports that are compliant, accurate and audit-ready." },
+      { "icon": "bar-chart", "title": "Gain real-time financial visibility", "desc": "Make smarter decisions with real-time spending data." }
+    ]
+  },
+  "stats": [
+    { "icon": "bolt", "value": 95, "suffix": "%", "label": "Less approval time", "sub": "Save hours every week" },
+    { "icon": "refresh", "value": 70, "suffix": "%", "label": "Faster reimbursements", "sub": "Employees get paid faster" },
+    { "icon": "shield", "value": 100, "suffix": "%", "label": "Policy compliance", "sub": "Enforced automatically" },
+    { "icon": "bar-chart", "value": null, "suffix": "", "label": "Financial visibility", "sub": "Always up-to-date" }
+  ],
+  "dashboardCta": {
+    "headline": "Ready to Replace Expense Chaos?",
+    "description": "See how Expendesk transforms spending management from reactive to automated.",
+    "buttonLabel": "See Expendesk in Action"
+  },
+  "dashboardPreview": {
+    "title": "Dashboard",
+    "totalLabel": "Total Spending",
+    "totalSpending": "$187,540",
+    "trend": "↑ +12.9% vs last month",
+    "transactions": [
+      { "name": "Cloud Services", "amount": "$1,230.00", "dept": "Engineering", "status": "Approved" },
+      { "name": "Designing", "amount": "$340.00", "dept": "Design", "status": "Approved" },
+      { "name": "Transportation", "amount": "$48.90", "dept": "Sales", "status": "Approved" }
+    ]
+  }
+}

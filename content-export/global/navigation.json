@@ -1,0 +1,42 @@
+{
+  "_section": "Global · Navigation (Navbar)",
+  "items": [
+    {
+      "label": "Home",
+      "href": "/",
+      "dropdown": [
+        { "icon": "home", "label": "Hero", "desc": "Back to the top", "href": "/#hero" },
+        { "icon": "alert-triangle", "label": "Problem", "desc": "The challenge we solve", "href": "/#problem" },
+        { "icon": "check-circle", "label": "Solution", "desc": "How we solve it", "href": "/#solution" },
+        { "icon": "star", "label": "Benefits", "desc": "What you gain", "href": "/#benefits" },
+        { "icon": "play", "label": "Features", "desc": "See it in action", "href": "/#features-video" },
+        { "icon": "mail", "label": "Get Started", "desc": "Start your journey", "href": "/#lead-magnet" },
+        { "icon": "message-circle", "label": "Testimonials", "desc": "What customers say", "href": "/#testimonials" },
+        { "icon": "help-circle", "label": "Why Expendesk", "desc": "Our story & mission", "href": "/#why-expendesk" }
+      ]
+    },
+    {
+      "label": "Solutions",
+      "href": "/solutions",
+      "dropdown": [
+        { "icon": "shield", "label": "Expense Management for Pharmaceutical Industries", "desc": "Streamline compliance & audit-ready expense reporting", "href": "/solutions/pharmaceutical" },
+        { "icon": "zap", "label": "Expense Management for Manufacturing Industries", "desc": "Control factory & plant spend with real-time visibility", "href": "/solutions/manufacturing" },
+        { "icon": "bar-chart-2", "label": "Expense Management for Digital Agencies", "desc": "Track project budgets & client billing with precision", "href": "/solutions/digital-agencies" }
+      ]
+    },
+    { "label": "Pricing", "href": "#pricing" },
+    {
+      "label": "Resources",
+      "href": "/resources",
+      "dropdown": [
+        { "icon": "file-text", "label": "Whitepapers", "desc": "In-depth research & insights", "href": "/resources/whitepapers" },
+        { "icon": "briefcase", "label": "Case Studies", "desc": "Real customer success stories", "href": "/resources/case-studies" },
+        { "icon": "book-open", "label": "Blogs", "desc": "Latest articles & updates", "href": "/resources/blogs" },
+        { "icon": "help-circle", "label": "FAQs", "desc": "Answers to common questions", "href": "/resources/faqs" }
+      ]
+    },
+    { "label": "Contact", "href": "#contact" }
+  ],
+  "login": { "label": "Login", "href": "#login" },
+  "cta": { "label": "Book a Demo", "href": "#demo" }
+}

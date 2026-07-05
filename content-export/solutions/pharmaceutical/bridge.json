@@ -1,0 +1,15 @@
+{
+  "_section": "Pharmaceutical · Bridge (how do you fix them?)",
+  "badge": "Bridge to Expendesk",
+  "heading": "Once You Identify the Gaps, How Do You Fix Them?",
+  "subheading": "Most pharma companies discover the same challenges:",
+  "challenges": [
+    { "id": "manual-claims", "label": "Manual expense claims", "icon": "file-warning" },
+    { "id": "delayed-approvals", "label": "Delayed approvals", "icon": "clock" },
+    { "id": "poor-visibility", "label": "Poor spend visibility", "icon": "eye-off" },
+    { "id": "reimbursement-bottlenecks", "label": "Reimbursement bottlenecks", "icon": "hourglass" },
+    { "id": "fraud-risk", "label": "Expense fraud risks", "icon": "shield-alert" },
+    { "id": "compliance-issues", "label": "Compliance issues", "icon": "alert-triangle" }
+  ],
+  "closing": "This is exactly why organizations are moving toward automated expense management platforms."
+}

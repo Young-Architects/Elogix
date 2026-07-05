@@ -1,0 +1,23 @@
+{
+  "_section": "Pharmaceutical · Final CTA",
+  "heading": "Find Out Where Your Expense Process Is Holding You Back",
+  "subheading": "Then decide whether your organization needs process improvements, automation, or a complete expense management solution.",
+  "panels": [
+    {
+      "isPrimary": true,
+      "icon": "download",
+      "eyebrow": null,
+      "title": "Start with the checklist.",
+      "description": "Download the 25-Point Pharma Expense Management Audit Checklist today.",
+      "buttonLabel": "Download Checklist"
+    },
+    {
+      "isPrimary": false,
+      "icon": "calendar",
+      "eyebrow": "Secondary Option:",
+      "title": "Want to see the solution in action?",
+      "description": null,
+      "buttonLabel": "Book a Demo"
+    }
+  ]
+}

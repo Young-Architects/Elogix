@@ -1,0 +1,39 @@
+{
+  "_section": "Pharmaceutical · Checklist Intro (lead magnet)",
+  "badge": "INTRODUCING THE CHECKLIST",
+  "heading": "A Practical 25-Point Audit Framework for Pharmaceutical Companies",
+  "builtForLabel": "Built specifically for",
+  "roles": [
+    { "label": "CFOs", "icon": "briefcase" },
+    { "label": "Finance Heads", "icon": "chart-bar" },
+    { "label": "Commercial Teams", "icon": "handshake" },
+    { "label": "Sales Operations Leaders", "icon": "target" },
+    { "label": "HR & Administration Teams", "icon": "users" }
+  ],
+  "closing": {
+    "emphasis": "In less than 15 minutes, ",
+    "body": "you'll know exactly where your organization stands."
+  },
+  "cta": {
+    "label": "Download the Checklist",
+    "href": "/downloads/pharma-expense-audit-checklist-demo.pdf",
+    "downloadName": "Pharma-Expense-Audit-Checklist.pdf",
+    "subtext": "Instant PDF · No spam · Built for pharma finance teams"
+  },
+  "document": {
+    "ribbon": "100% Free",
+    "fileName": "Pharma-Expense-Audit-Checklist.pdf",
+    "pointsBadge": "25 Points",
+    "evaluates": [
+      { "label": "Reimbursement Processes", "icon": "wallet" },
+      { "label": "Expense Policies", "icon": "document" },
+      { "label": "Approval Workflows", "icon": "workflow" },
+      { "label": "Fraud Controls", "icon": "shield-alert" },
+      { "label": "Reporting Systems", "icon": "chart-line" },
+      { "label": "Compliance Readiness", "icon": "shield-check" },
+      { "label": "Employee Experience", "icon": "smile" }
+    ],
+    "footer": { "time": "Under 15 minutes", "categories": "7 categories" },
+    "floatingBadge": { "title": "Instant clarity", "subtitle": "Know where you stand" }
+  }
+}

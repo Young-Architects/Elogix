@@ -1,0 +1,85 @@
+{
+  "_section": "Home · Features / Industry",
+  "featuresVideo": {
+    "badge": "Interactive Product Intelligence",
+    "headline": "Your financial workflow, rendered in motion.",
+    "subheading": "Everything You Need to Manage Expenses Efficiently",
+    "browserMockupUrl": "expendesk.com/tour",
+    "floatingBadges": [
+      { "id": "badge-capture", "icon": "receipt", "title": "Expense Capture", "subtitle": "Submit receipts instantly via mobile, web, or upload." },
+      { "id": "badge-approval", "icon": "git-branch", "title": "Automated Approvals", "subtitle": "Route expenses by team, department, or spend limit." },
+      { "id": "badge-reimbursements", "icon": "wallet", "title": "Reimbursements", "subtitle": "Track employee payouts with complete transparency." },
+      { "id": "badge-policies", "icon": "file-text", "title": "Expense Policies", "subtitle": "Enforce spending rules and approval hierarchies." }
+    ],
+    "stats": [
+      { "id": "stat-dashboards", "value": "Real-Time", "label": "Dashboards", "sub": "Monitor spending trends & budgets as they happen" },
+      { "id": "stat-analytics", "value": "Reporting", "label": "& Analytics", "sub": "Finance, operations, and leadership teams" },
+      { "id": "stat-integrations", "value": "Accounting", "label": "Integrations", "sub": "Seamlessly connect with existing systems" }
+    ]
+  },
+  "industrySection": {
+    "badge": "By Industry",
+    "headline": "Built for the Way Your Industry Operates.",
+    "subheading": "Every business manages expenses differently. Expendesk adapts to your workflow — not the other way around.",
+    "featurePills": ["Auto-approvals", "Real-time tracking", "Policy engine", "Audit logs"],
+    "comingSoon": {
+      "label": "More industries coming soon",
+      "subtitle": "Healthcare, E-commerce, Non-profits & more"
+    },
+    "interactionHints": {
+      "mobile": "Tap any industry — details appear below",
+      "desktopMain": "Click an industry",
+      "desktopSub": "— the panel on the right updates instantly"
+    },
+    "industries": [
+      {
+        "id": "digital-agencies",
+        "icon": "monitor",
+        "label": "Digital Agencies",
+        "tagline": "Project-level expense clarity",
+        "description": "Track project expenses, client-related costs, and team spending — all scoped to individual engagements.",
+        "stats": [
+          { "value": "40%", "label": "Less admin time" },
+          { "value": "100%", "label": "Project visibility" }
+        ],
+        "badge": "Most Popular"
+      },
+      {
+        "id": "it-tech",
+        "icon": "cpu",
+        "label": "IT & Technology",
+        "tagline": "Distributed-team finance ops",
+        "description": "Manage distributed teams, travel expenses, and operational budgets with automated policy enforcement.",
+        "stats": [
+          { "value": "3×", "label": "Faster reimbursements" },
+          { "value": "99%", "label": "Policy compliance" }
+        ],
+        "badge": null
+      },
+      {
+        "id": "consulting",
+        "icon": "briefcase",
+        "label": "Consulting Firms",
+        "tagline": "Client profitability, in focus",
+        "description": "Control client expenses, reimbursements, and project profitability across every engagement.",
+        "stats": [
+          { "value": "60%", "label": "Faster approvals" },
+          { "value": "Zero", "label": "Missed receipts" }
+        ],
+        "badge": null
+      },
+      {
+        "id": "professional",
+        "icon": "users",
+        "label": "Professional Services",
+        "tagline": "Every expense, one place",
+        "description": "Gain full visibility into every business expense — from billable hours to operational overhead.",
+        "stats": [
+          { "value": "5min", "label": "Avg. submission" },
+          { "value": "Live", "label": "Budget tracking" }
+        ],
+        "badge": null
+      }
+    ]
+  }
+}

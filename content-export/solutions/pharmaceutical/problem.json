@@ -1,0 +1,48 @@
+{
+  "_section": "Pharmaceutical · Problem",
+  "badge": "The Hidden Problem",
+  "headline": "Most Pharma Companies Don't Realize How Much Expense Inefficiency Is Costing Them",
+  "intro": "The pain is real. The losses are compounding. And most organizations won't see it — until it's too late.",
+  "impactStats": [
+    { "value": 73, "suffix": "%", "label": "of pharma companies still manage field expenses manually", "emoji": "📊" },
+    { "value": 21, "suffix": " Days", "label": "average reimbursement delay without a proper system", "emoji": "⏳" },
+    { "value": 18, "suffix": "%", "label": "of field expense claims contain errors or duplicate entries", "emoji": "🔄" }
+  ],
+  "mrExpensesLabel": "Every day, your Medical Representatives spend their own money on:",
+  "mrExpenses": [
+    { "emoji": "⛽", "label": "Fuel" },
+    { "emoji": "✈️", "label": "Travel" },
+    { "emoji": "🏨", "label": "Lodging" },
+    { "emoji": "👨‍⚕️", "label": "Doctor Visits" },
+    { "emoji": "💰", "label": "Daily Allowances" },
+    { "emoji": "📋", "label": "Field Activities" }
+  ],
+  "legacyDivider": { "emoji": "⚡", "label": "Yet most still rely on..." },
+  "oldToolsFooter": "No automation",
+  "oldTools": [
+    { "emoji": "📊", "name": "Spreadsheets", "desc": "Version conflicts, formula errors, zero real-time visibility across your field teams.", "tag": "MANUAL" },
+    { "emoji": "📧", "name": "Email Chains", "desc": "Approval requests buried in inboxes. Days of back-and-forth with zero tracking.", "tag": "SLOW" },
+    { "emoji": "💬", "name": "WhatsApp Groups", "desc": "Informal approvals, no audit trail. A compliance team's worst nightmare.", "tag": "RISKY" },
+    { "emoji": "✍️", "name": "Manual Approvals", "desc": "Paper trails, human errors, weeks of delay before a rep sees any reimbursement.", "tag": "BROKEN" }
+  ],
+  "result": {
+    "eyebrow": "As a result",
+    "headline": "Your business is silently bleeding",
+    "subtext": "And it compounds — month after month — while you're focused on growing revenue."
+  },
+  "problems": [
+    { "emoji": "⏳", "label": "Reimbursements get delayed", "body": "MRs wait weeks for money they've already spent from their own pockets — quietly demotivating your frontline." },
+    { "emoji": "😤", "label": "Employees become frustrated", "body": "Your best field talent walks out the door when they feel financially invisible and administratively stuck." },
+    { "emoji": "📉", "label": "Finance teams get overwhelmed", "body": "Manual reconciliation consumes dozens of hours each month — hours that should be spent on growth." },
+    { "emoji": "🔍", "label": "Managers lose visibility", "body": "No real-time dashboard. No spend control. Decisions made blind while the budget silently erodes." },
+    { "emoji": "🔄", "label": "Duplicate claims go unnoticed", "body": "Without automation, the same expense can slip through and get reimbursed twice — every single month." },
+    { "emoji": "⚠️", "label": "Compliance risks increase", "body": "One audit can expose months of untracked, undocumented spending. The penalties aren't worth the risk." }
+  ],
+  "closing": {
+    "emoji": "⚠️",
+    "badge": "The Scary Part",
+    "headline": "Most of these issues remain invisible — until they hit profitability and morale.",
+    "body": "By the time you notice, the damage is done. Competitors on modern expense management are already pulling ahead.",
+    "cta": "See how Expendesk solves this"
+  }
+}

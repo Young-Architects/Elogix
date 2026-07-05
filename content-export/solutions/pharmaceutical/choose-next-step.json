@@ -1,0 +1,20 @@
+{
+  "_section": "Pharmaceutical · Choose Your Next Step (dual CTA + trust)",
+  "badge": "TWO WAYS TO GET STARTED",
+  "heading": "Choose Your Next Step",
+  "options": [
+    { "id": 1, "label": "Option 1", "title": "Download the Audit Checklist", "description": "Identify weaknesses in your current expense process.", "buttonLabel": "Download Checklist", "icon": "download" },
+    { "id": 2, "label": "Option 2", "title": "Book a Personalized Demo", "description": "See how Expendesk can automate and streamline your entire reimbursement process.", "buttonLabel": "Schedule Demo", "icon": "calendar" }
+  ],
+  "trust": {
+    "heading": "Built for Businesses That Depend on Efficient Reimbursements",
+    "subheading": "Expendesk is designed to help growing organizations:",
+    "points": [
+      "Reduce reimbursement delays",
+      "Improve compliance",
+      "Strengthen financial control",
+      "Improve employee experience",
+      "Scale expense operations confidently"
+    ]
+  }
+}

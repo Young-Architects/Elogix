@@ -116,6 +116,18 @@ To update any text, edit the corresponding `*.json` (home sections), `_data/cont
 
 ---
 
+## Content Handover — Headless CMS (`content-export/`)
+
+The [`content-export/`](content-export/) folder at the repo root is a **standalone package for the backend / CMS team** (headless WordPress + ACF on Hostinger). It mirrors every piece of editable copy on the site as **content-only JSON** — all presentation config (Tailwind classes, gradients, animation timings, layout hints) stripped out, `id`s preserved, and each frontend `iconKey` reduced to a plain semantic `icon` name.
+
+- It is **reference/export only** — the live app does **not** read from it, so editing files there changes nothing on the site. It exists so the backend team can model ACF fields against the exact shape and values the site expects.
+- [`content-export/README.md`](content-export/README.md) explains the conventions and the migration path (build ACF groups → expose via REST/WPGraphQL → frontend fetches the same shape with a local-JSON fallback, so nothing changes visually).
+- [`content-export/ACF-FIELD-MAP.md`](content-export/ACF-FIELD-MAP.md) is a field-by-field build guide (ACF field types, repeaters, groups) plus the allowed `icon` value lists per section.
+
+> **Regenerate when copy changes.** `content-export/` is a snapshot of `src/data/**` and the solutions `_data/**`. If site copy changes before the CMS goes live, re-export so the two stay in sync.
+
+---
+
 ## Shared CTA — `MagneticButton`
 
 All primary calls-to-action across the site render through one component, [`src/components/ui/MagneticButton.tsx`](src/components/ui/MagneticButton.tsx) — a cursor-following "magnetic" button driven by Framer Motion springs, with an ambient glow, shimmer sweep, and hover gradient.
