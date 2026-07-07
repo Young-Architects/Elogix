@@ -369,7 +369,7 @@ export default function HeroSection() {
               </span>
             </motion.div>
             {/* Trust pills */}
-            <motion.div
+            {/* <motion.div
               {...fadeUp(0.27)}
               className="mt-5 flex flex-wrap items-center justify-center gap-3 lg:justify-start"
             >
@@ -385,7 +385,7 @@ export default function HeroSection() {
                   </div>
                 );
               })}
-            </motion.div>
+            </motion.div> */}
 
             {/* CTAs */}
             <motion.div

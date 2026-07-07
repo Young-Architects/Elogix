@@ -16,6 +16,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'daily',
       priority: 0.8,
     },
+    {
+      url: `${SITE_URL}/contact-us`,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/contact-sales`,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
   ];
 
   // Walk every page of posts; on API failure we still emit the static routes.

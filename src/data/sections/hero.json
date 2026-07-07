@@ -1,25 +1,25 @@
 {
   "badge": {
-    "text": "Expense Intelligence Platform · For Finance Teams",
+    "text": "AI-Powered Expense & Reimbursement Management Platform",
     "tag": "New"
   },
   "headline": "Control Every Business Expense Without the Spreadsheet Chaos.",
   "headlineParts": {
-    "pre": "Control Every Business",
+    "pre": "Take Control of Every Business",
     "accent": "Expense",
     "post": "Without the Spreadsheet Chaos."
   },
-  "description": "The Expense Management Platform Built for Growing SMEs & Mid-Market Businesses. Track expenses, automate reimbursements, enforce policies, and gain real-time visibility into company spending—all from one powerful platform.",
-  "highlightText": "Stop Losing Money to Manual Processes",
-  "subDescription": "Expendesk helps finance, operations, and leadership teams eliminate expense chaos, reduce financial leakage, and make smarter spending decisions at scale.",
+  "description": "Expendesk helps SMEs and Mid-Market Businesses automate expense tracking, employee reimbursements, approvals, policy compliance, and spend visibility—so your finance team spends less time processing expenses and more time driving growth.",
+  "highlightText": "",
+  "subDescription": "",
   "trustPills": [
     { "iconKey": "shield-check", "label": "SOC 2 Ready"       },
     { "iconKey": "zap",          "label": "Real-time Alerts"  },
     { "iconKey": "eye",          "label": "Full Audit Trail"  }
   ],
   "ctas": {
-    "primary":   { "label": "Book Discovery Call", "href": "#contact"  },
-    "secondary": { "label": "Explore Features",    "href": "#features" }
+    "primary":   { "label": "Book a Free Demo", "href": "#contact"  },
+    "secondary": { "label": "Download the Free Expense Management Guide",    "href": "#features" }
   },
   "stats": [
     { "value": 94, "suffix": "%",        "label": "Faster closures" },

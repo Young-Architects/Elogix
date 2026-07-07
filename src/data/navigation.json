@@ -34,7 +34,7 @@
         { "iconKey": "help-circle",   "label": "FAQs",         "desc": "Answers to common questions",    "href": "/resources/faqs"         }
       ]
     },
-    { "label": "Contact",  "href": "#contact"  }
+    { "label": "Contact",  "href": "/contact-us"  }
   ],
   "login": {
     "label": "Login",
