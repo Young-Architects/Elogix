@@ -11,13 +11,12 @@
  *  - `LiveExpenseTicker` — auto-cycling fake "approved/flagged/pending" feed.
  *  - Floating badges, trust pills, CTAs, feature cards and a social-proof strip.
  *
- * This section loads Syne locally (`syne.className`) for its own headings — it
- * is the only place a web font is applied. All copy comes from
+ * Typography uses the site-wide default font stack (same as every other
+ * section — no web font here). All copy comes from
  * `src/data/sections/hero.json`; string `iconKey`s map to Lucide icons via the
  * `TRUST_PILL_ICONS` / `FEATURE_CARD_ICONS` registries below.
  */
 
-import { Syne } from "next/font/google";
 import { motion, useMotionValue, useSpring, useInView } from "framer-motion";
 import {
   ArrowUpRight,
@@ -25,21 +24,13 @@ import {
   Sparkles,
   GitBranch,
   Eye,
-  Clock,
-  AlertTriangle,
+  TrendingUp,
   Zap,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import heroData from "@/data/sections/hero.json";
 import MagneticButton from "@/components/ui/MagneticButton";
 import HeroChatDock from "@/components/chat/HeroChatDock";
-
-// Configure the Syne font
-const syne = Syne({
-  subsets: ["latin"],
-  weight: ["700", "800"],
-  display: "swap",
-});
 
 /* ─────────────────────── helpers ─────────────────────── */
 
@@ -85,10 +76,11 @@ const TRUST_PILL_ICONS: Record<string, React.ElementType> = {
 };
 
 const FEATURE_CARD_ICONS: Record<string, React.ElementType> = {
-  "alert-triangle": AlertTriangle,
+  "zap":            Zap,
   "git-branch":     GitBranch,
   "eye":            Eye,
-  "clock":          Clock,
+  "shield-check":   ShieldCheck,
+  "trending-up":    TrendingUp,
 };
 
 /* ─────────────────────── hero right slot ───────────────────────
@@ -247,7 +239,7 @@ export default function HeroSection() {
     <section
       id="hero"
       ref={containerRef}
-      className={`${syne.className} relative min-h-screen overflow-hidden bg-gradient-to-b from-[#f8fafc] via-[#f1f5f9] to-[#e2e8f0]`}
+      className="relative min-h-screen overflow-hidden bg-gradient-to-b from-[#f8fafc] via-[#f1f5f9] to-[#e2e8f0]"
       style={{
         paddingTop: "clamp(100px, 14vw, 152px)",
         paddingBottom: "clamp(60px, 8vw, 120px)",
@@ -318,7 +310,7 @@ export default function HeroSection() {
             {/* Headline */}
             <motion.h1
               {...fadeUp(0.12)}
-              className="max-w-2xl text-[clamp(2.1rem,6vw,4.5rem)] font-bold leading-[1.04] tracking-tight text-slate-900"
+              className="max-w-2xl text-[clamp(2.1rem,6vw,4.5rem)] font-black leading-[1.06] tracking-tight text-slate-900"
             >
               {heroData.headlineParts.pre}{" "}
               <span className="relative inline-block bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600 bg-clip-text text-transparent">
@@ -464,10 +456,10 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.55, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-20 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
+          className="mt-20 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5"
         >
           {heroData.featureCards.map((card, i) => {
-            const Icon = FEATURE_CARD_ICONS[card.iconKey] ?? AlertTriangle;
+            const Icon = FEATURE_CARD_ICONS[card.iconKey] ?? ShieldCheck;
             return (
               <motion.div
                 key={card.title}
@@ -494,12 +486,9 @@ export default function HeroSection() {
                   <Icon className={`h-4.5 w-4.5 ${card.iconColor}`} />
                 </div>
 
-                <h3 className="text-[14px] font-bold text-slate-900">
+                <h3 className="text-[14px] font-bold leading-snug text-slate-900">
                   {card.title}
                 </h3>
-                <p className="mt-2 text-[12.5px] leading-[1.7] text-slate-500 group-hover:text-slate-600 transition-colors duration-300">
-                  {card.description}
-                </p>
 
                 {/* Corner accent */}
                 <div className="absolute right-3 top-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">

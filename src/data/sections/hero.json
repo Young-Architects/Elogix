@@ -28,40 +28,43 @@
   ],
   "featureCards": [
     {
-      "iconKey": "alert-triangle",
+      "iconKey": "zap",
       "gradientColor": "from-amber-500/10 to-orange-500/10",
       "iconColor": "text-amber-600",
       "borderHover": "hover:border-amber-500/20",
-      "title": "Leakage Detection",
-      "description": "Auto-flags duplicates, over-limit claims & policy violations before they hit payout."
+      "title": "Faster Employee Reimbursements"
     },
     {
       "iconKey": "git-branch",
       "gradientColor": "from-violet-500/10 to-purple-500/10",
       "iconColor": "text-violet-600",
       "borderHover": "hover:border-violet-500/20",
-      "title": "Multi-Level Approvals",
-      "description": "Structured workflows with partial approvals, delegation, and escalation paths."
+      "title": "Automated Approval Workflows"
     },
     {
       "iconKey": "eye",
       "gradientColor": "from-indigo-500/10 to-blue-500/10",
       "iconColor": "text-indigo-600",
       "borderHover": "hover:border-indigo-500/20",
-      "title": "Full Audit Trail",
-      "description": "Every edit, approval, and payout logged with timestamps and actor identity."
+      "title": "Real-Time Spend Visibility"
     },
     {
-      "iconKey": "clock",
+      "iconKey": "shield-check",
       "gradientColor": "from-emerald-500/10 to-teal-500/10",
       "iconColor": "text-emerald-600",
       "borderHover": "hover:border-emerald-500/20",
-      "title": "Faster Month-End",
-      "description": "Eliminate back-and-forth. Finance closes books in days, not weeks."
+      "title": "Expense Policy Compliance"
+    },
+    {
+      "iconKey": "trending-up",
+      "gradientColor": "from-fuchsia-500/10 to-pink-500/10",
+      "iconColor": "text-fuchsia-600",
+      "borderHover": "hover:border-fuchsia-500/20",
+      "title": "Built for Growing Businesses"
     }
   ],
   "socialProof": {
-    "businessCount": "140+",
+    "businessCount": "20+",
     "businessText": "finance teams trust Expendesk",
     "rating": 4.9,
     "ratingText": "from early teams",
