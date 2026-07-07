@@ -14,6 +14,7 @@
  */
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { SITE_URL } from "@/lib/site";
 import { ChatProvider } from "@/components/chat/ChatProvider";
 import ChatWidget from "@/components/layout/ChatWidget";
 import Navbar from "@/components/layout/Navbar";
@@ -27,7 +28,11 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Expendesk — Expense Intelligence Platform for Finance Teams",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Expendesk — Expense Intelligence Platform for Finance Teams",
+    template: "%s — Expendesk",
+  },
   description:
     "Track expenses, automate reimbursements, enforce policies, and gain real-time visibility into company spending — all from one powerful platform built for SMEs.",
   keywords: ["expense management", "finance", "reimbursements", "SME", "expense tracking"],

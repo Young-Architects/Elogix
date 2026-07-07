@@ -2,7 +2,7 @@
 
 **Live site:** https://expendesk-v1.vercel.app/
 
-Marketing landing page for **Expendesk**, an expense intelligence platform built for finance teams and SMEs. A single long-form home page composed of independent, animated sections, plus a small set of per-industry solution pages and an AI chat widget.
+Marketing landing page for **Expendesk**, an expense intelligence platform built for finance teams and SMEs. A single long-form home page composed of independent, animated sections, a set of per-industry solution pages, an AI chat widget, and a **headless-WordPress blog** at `/resources/blogs`.
 
 ---
 
@@ -27,9 +27,13 @@ Only the libraries actually imported by the app are kept as dependencies (`next`
 ```
 src/
 ├── app/
-│   ├── globals.css                 # Single source of truth for global CSS + @keyframes
+│   ├── globals.css                 # Single source of truth for global CSS + @keyframes (incl. .blog-content typography)
 │   ├── layout.tsx                  # Root layout: wraps app in ChatProvider; Navbar, ScrollToHash, ChatWidget
 │   ├── page.tsx                    # Home page composition (above-fold static, below-fold lazy)
+│   ├── robots.ts                   # robots.txt (allow all, disallow /api/) + sitemap pointer
+│   ├── sitemap.ts                  # sitemap.xml: static routes + every published blog post (from the WP API)
+│   ├── api/
+│   │   └── revalidate/route.ts     # POST webhook: WordPress → on-demand ISR purge (secret-guarded)
 │   ├── solutions/                  # Per-industry SEO landing pages (copy in each page's _data/)
 │   │   ├── digital-agencies/
 │   │   │   ├── _data/content.ts    # Page copy
@@ -61,8 +65,17 @@ src/
 │   │       │   ├── choose-next-step.ts       # Choose next step: copy + CTA options + trust points
 │   │       │   └── final-cta.ts              # Final CTA: copy + two action panels
 │   │       └── page.tsx            # Composes the sections in order
-│   └── resources/                  # Resources dropdown routes (placeholders → notFound())
-│       ├── blogs/page.tsx · case-studies/page.tsx · faqs/page.tsx · whitepapers/page.tsx
+│   └── resources/                  # Resources dropdown routes
+│       ├── blogs/                  # Headless-WordPress blog (see "Blog" section below)
+│       │   ├── layout.tsx          # Light-theme white canvas wrapper for all blog routes
+│       │   ├── loading.tsx         # Skeleton for the listing (hero + featured + grid)
+│       │   ├── page.tsx            # Listing: hero → featured post → card grid → pagination (+ ?category filter)
+│       │   ├── [slug]/             # Individual post — SSG at build + on-demand for new posts
+│       │   │   ├── page.tsx        # Article + sticky sidebar, OpenGraph/Twitter meta, JSON-LD
+│       │   │   └── not-found.tsx   # Per-post 404
+│       │   ├── _components/        # BlogCard · FeaturedPost · BlogContent · BlogSidebar · BlogPagination · ShareLinks
+│       │   └── _data/content.ts    # All blog UI copy (labels, CTA, empty/error states)
+│       └── case-studies/ · faqs/ · whitepapers/   # Still placeholders → notFound()
 │
 ├── components/
 │   ├── chat/                       # Expendesk AI chat — shared state, two render targets
@@ -92,11 +105,17 @@ src/
 │       └── hero · problem · solution · benefits · features · lead-magnet · testimonials · why-expendesk .json
 │
 ├── lib/
+│   ├── blog-api.ts                 # Server data layer for the WP Blog-to-JSON API (ISR, cache tags, helpers)
+│   ├── site.ts                     # SITE_URL — canonical origin for metadata/sitemap/canonicals
 │   ├── scroll.ts                   # Layout-shift-aware smooth-scroll engine for hash links
 │   └── utils.ts                    # cn() helper (shadcn convention; currently unused)
 │
 └── types/
+    ├── blog.ts                     # Blog-to-JSON API schema (ContentBlock union, BlogPost, list response)
     └── index.ts                    # Shared TypeScript interfaces (Testimonial, Chat*, Why*)
+
+wordpress/
+└── blog-to-json-webhook.php        # WP plugin: pings /api/revalidate on publish/update/delete (install on the WP site)
 ```
 
 ---
@@ -168,6 +187,51 @@ The Expendesk AI chat posts visitor messages to an n8n webhook and renders the r
 
 ---
 
+## Blog — Headless WordPress (`/resources/blogs`)
+
+The blog is a **headless** integration: content authors write posts in WordPress; the Next.js site fetches them as structured JSON and renders them with its own design. Nothing about the WordPress theme reaches the browser.
+
+### How it flows
+
+```
+WordPress (Hostinger)                         Next.js site
+─────────────────────                         ────────────
+"Blog to JSON" plugin                         src/lib/blog-api.ts   (server data layer, ISR + cache tags)
+  exposes REST API           ── fetch ──▶       │
+  /wp-json/blog-to-json/v1                       ├─▶ /resources/blogs          (listing: featured + grid + pagination)
+                                                 ├─▶ /resources/blogs/[slug]   (article + sidebar, SSG + on-demand)
+                                                 └─▶ sitemap.xml               (one entry per post)
+
+  on publish/update/delete   ── POST ──▶       POST /api/revalidate  (purges the tagged cache instantly)
+  (webhook plugin)                             src/app/api/revalidate/route.ts
+```
+
+- **Data layer — [`src/lib/blog-api.ts`](src/lib/blog-api.ts).** All fetches are server-side, cached with Next.js ISR (`revalidate: 300s` fallback) and **tagged** (`blog-list`, `blog-post-<slug>`) so they can be purged on demand. It decodes WordPress HTML entities, hides bare-email author names behind a brand byline, and **degrades gracefully** — any CMS hiccup is logged and returns `null` rather than crashing the page. Helpers: `getBlogPosts`, `getBlogPostBySlug`, `getAllBlogSlugs`, `estimateReadingTime`, `formatBlogDate`.
+- **Types — [`src/types/blog.ts`](src/types/blog.ts).** Mirrors the plugin's schema. A post's body is a **`ContentBlock[]`** discriminated union (`heading`, `paragraph`, `quote`, `list`, `image`, `code`, `table`, `embed`, `separator`, `unknown`) with inline `TextRun`s for formatting.
+- **Renderer — [`BlogContent.tsx`](src/app/resources/blogs/_components/BlogContent.tsx).** Maps each block to **semantic React elements** — no `dangerouslySetInnerHTML` for post body. An `unknown` block is rendered as plain text so **content is never dropped and never injected as raw HTML**.
+- **Listing — [`page.tsx`](src/app/resources/blogs/page.tsx).** Gradient hero → featured (newest) post on page 1 → responsive card grid → pagination. `?category=` filters the cached list in-process (the plugin has no category endpoint; volumes are small). Handles distinct **error** and **empty** states.
+- **Post — [`[slug]/page.tsx`](src/app/resources/blogs/[slug]/page.tsx).** `generateStaticParams` pre-renders every existing post at build; `dynamicParams = true` renders posts published afterwards on first request. Emits per-post OpenGraph/Twitter metadata, a canonical URL, and **`BlogPosting` JSON-LD**. Sticky sidebar ([`BlogSidebar`](src/app/resources/blogs/_components/BlogSidebar.tsx)): brand CTA + recent posts + category counts.
+- **Copy** lives in [`_data/content.ts`](src/app/resources/blogs/_data/content.ts) (per the project's no-inline-copy convention). **Blog typography** is scoped under `.blog-content` in [`globals.css`](src/app/globals.css) so it never leaks into the rest of the site.
+
+### Security (untrusted CMS input)
+
+Post HTML is treated as untrusted. `BlogContent` enforces: an inline-style **denylist** (`position`, `z-index`, `top/left/…`, `expression`, `url(...)`); an iframe-embed **allowlist** (YouTube, Vimeo, Spotify, SoundCloud, CodePen, CodeSandbox, Google Maps) with a sandboxed `<iframe>`; and safe links (`javascript:`/`data:`/`vbscript:` dropped, external links get `rel="noopener noreferrer"`).
+
+### Instant updates (revalidation webhook)
+
+[`src/app/api/revalidate/route.ts`](src/app/api/revalidate/route.ts) accepts a secret-guarded `POST` and calls `revalidateTag(..., 'max')` (Next 16 two-arg, stale-while-revalidate form) to purge the list and, if a `slug` is given, that post. The WordPress side is [`wordpress/blog-to-json-webhook.php`](wordpress/blog-to-json-webhook.php) — a small plugin that pings this endpoint on every publish/update/trash/delete of a `post`. Without the webhook the site still refreshes within the 5-minute ISR window; with it, changes appear within seconds.
+
+> **Install the webhook plugin:** edit the two constants at the top of `blog-to-json-webhook.php` (`BTJ_NEXTJS_ORIGIN` = the deployed site origin, `BTJ_REVALIDATE_SECRET` = the same value as `REVALIDATE_SECRET` in the Next.js env), upload it to `wp-content/plugins/` (or `mu-plugins/` to keep it always-on), and activate it.
+
+### Go-live checklist
+
+1. Set `NEXT_PUBLIC_SITE_URL` to the real production domain (drives canonicals, `sitemap.xml`, `robots.txt`, OG image URLs).
+2. Set `WORDPRESS_API_URL` to the site's `…/wp-json/blog-to-json/v1` base, and keep `REVALIDATE_SECRET` in the host env.
+3. Install + activate `wordpress/blog-to-json-webhook.php` on the WP site with the **same** secret and the deployed origin.
+4. Verify: publish a test post in WordPress → it appears at `/resources/blogs` within seconds and gets a `/resources/blogs/<slug>` page + a sitemap entry.
+
+---
+
 ## Rendering & Performance
 
 The home page is split for fast first paint:
@@ -196,14 +260,30 @@ In-page hash navigation is owned entirely by [`ScrollToHash.tsx`](src/components
 
 ## Environment Variables
 
-The chat widget posts to an external webhook. Create `.env.local`:
+Create `.env.local`:
 
 ```bash
 # Endpoint the ChatWidget POSTs visitor messages to (e.g. an n8n workflow)
 NEXT_PUBLIC_N8N_CHAT_WEBHOOK_URL=https://your-n8n-instance/webhook/expendesk-chat
+
+# Headless-WordPress blog (Blog-to-JSON plugin) REST base — no trailing slash
+WORDPRESS_API_URL=https://your-wp-site/wp-json/blog-to-json/v1
+
+# Shared secret for POST /api/revalidate — must match BTJ_REVALIDATE_SECRET
+# in wordpress/blog-to-json-webhook.php
+REVALIDATE_SECRET=your-long-random-secret
+
+# Canonical site origin for metadata, sitemap.xml, robots.txt, OG image URLs.
+# Set to the real production domain on deploy.
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```
 
-Without it the chat UI still renders, but sending a message will fail and show the error state.
+| Variable | Used by | If missing |
+|---|---|---|
+| `NEXT_PUBLIC_N8N_CHAT_WEBHOOK_URL` | Chat widget | Chat renders, but sending a message fails with the error state. |
+| `WORDPRESS_API_URL` | Blog data layer | Falls back to a hardcoded default base; point it at your WP site. |
+| `REVALIDATE_SECRET` | `/api/revalidate` webhook | Endpoint returns 500 and rejects revalidation; blog still refreshes on the 5-min ISR window. |
+| `NEXT_PUBLIC_SITE_URL` | Metadata, sitemap, robots | Falls back to `http://localhost:3000` — wrong canonicals/sitemap in production. |
 
 ---
 

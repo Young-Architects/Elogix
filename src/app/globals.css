@@ -15,6 +15,8 @@
  *      pharmaceutical ChecklistContentsSection (prefixed `cc-`) /
  *      pharmaceutical ChooseNextStepSection (prefixed `cn-`) /
  *      pharmaceutical FinalCtaSection (prefixed `fc-`).
+ *   4. Blog content typography (scoped under `.blog-content`, plus the
+ *      `.blog-table-scroll` / `.blog-embed` wrappers used by BlogContent).
  *
  * Conventions (see README "Styling Rules"):
  *   - This file is the ONLY place for class definitions and @keyframes.
@@ -361,4 +363,177 @@ body {
    animation itself is driven by Framer Motion in the JSX). */
 .fc-shimmer-text {
   background-size: 200% auto;
+}
+
+/* ─── Blog content typography (BlogContent renderer) ──────────────────────
+   Styles for the block array rendered from the WordPress Blog-to-JSON API.
+   Scoped under .blog-content so it never leaks into the rest of the site. */
+
+.blog-content {
+  --blog-text: #1f2933;
+  --blog-muted: #52606d;
+  --blog-border: #e4e7eb;
+  --blog-accent: #2563eb;
+  --blog-code-bg: #0f172a;
+  --blog-code-text: #e2e8f0;
+
+  color: var(--blog-text);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  word-wrap: break-word;
+}
+
+.blog-content > * + * {
+  margin-top: 1.25em;
+}
+
+/* Headings ---------------------------------------------------------- */
+.blog-content h2,
+.blog-content h3,
+.blog-content h4,
+.blog-content h5,
+.blog-content h6 {
+  line-height: 1.3;
+  font-weight: 700;
+  scroll-margin-top: 6rem; /* anchor links land below a sticky navbar */
+}
+
+.blog-content h2 { font-size: 1.75rem; margin-top: 2.25em; }
+.blog-content h3 { font-size: 1.375rem; margin-top: 2em; }
+.blog-content h4 { font-size: 1.125rem; margin-top: 1.75em; }
+
+/* Inline ------------------------------------------------------------ */
+.blog-content a {
+  color: var(--blog-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.blog-content a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.blog-content mark {
+  background: #fef08a;
+  padding: 0 0.15em;
+  border-radius: 2px;
+}
+
+.blog-content p code,
+.blog-content li code {
+  background: rgba(15, 23, 42, 0.07);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.875em;
+}
+
+/* Lists -------------------------------------------------------------- */
+.blog-content ul,
+.blog-content ol {
+  padding-left: 1.5rem;
+}
+
+.blog-content ul { list-style: disc; }
+.blog-content ol { list-style: decimal; }
+
+.blog-content li + li {
+  margin-top: 0.4em;
+}
+
+/* Quote --------------------------------------------------------------- */
+.blog-content blockquote {
+  border-left: 4px solid var(--blog-accent);
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  color: var(--blog-muted);
+  font-style: italic;
+}
+
+.blog-content blockquote cite {
+  display: block;
+  margin-top: 0.5rem;
+  font-style: normal;
+  font-size: 0.875rem;
+}
+
+/* Media --------------------------------------------------------------- */
+.blog-content figure {
+  margin: 2rem 0;
+}
+
+.blog-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+}
+
+.blog-content figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--blog-muted);
+  text-align: center;
+}
+
+.blog-embed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 2rem 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.blog-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Code blocks ---------------------------------------------------------- */
+.blog-content pre {
+  background: var(--blog-code-bg);
+  color: var(--blog-code-text);
+  padding: 1.25rem;
+  border-radius: 12px;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.blog-content pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Tables ---------------------------------------------------------------- */
+.blog-table-scroll {
+  overflow-x: auto;
+  margin: 2rem 0;
+}
+
+.blog-content table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.9375rem;
+}
+
+.blog-content th,
+.blog-content td {
+  border: 1px solid var(--blog-border);
+  padding: 0.6rem 0.9rem;
+  text-align: left;
+}
+
+.blog-content th {
+  background: #f5f7fa;
+  font-weight: 600;
+}
+
+/* Separator --------------------------------------------------------------- */
+.blog-content hr {
+  border: 0;
+  border-top: 1px solid var(--blog-border);
+  margin: 3rem 0;
 }
