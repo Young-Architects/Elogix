@@ -380,7 +380,16 @@ body {
   color: var(--blog-text);
   font-size: 1.0625rem;
   line-height: 1.75;
-  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* CMS content is untrusted layout-wise: WordPress authors can attach fixed
+   inline widths to any block (style="width:498px" on figures, images, …).
+   Clamp everything to the column so no post can ever cause horizontal
+   overflow on small screens — desktop rendering is unaffected. */
+.blog-content,
+.blog-content * {
+  max-width: 100%;
 }
 
 .blog-content > * + * {

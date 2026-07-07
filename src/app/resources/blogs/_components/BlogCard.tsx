@@ -67,7 +67,7 @@ export default function BlogCard({ post }: { post: BlogPost }) {
             </span>
           </div>
 
-          <h2 className="text-lg font-bold leading-snug tracking-tight text-slate-900 transition-colors group-hover:text-indigo-600">
+          <h2 className="break-words text-lg font-bold leading-snug tracking-tight text-slate-900 transition-colors group-hover:text-indigo-600">
             {post.title}
           </h2>
 

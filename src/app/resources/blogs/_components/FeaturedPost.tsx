@@ -60,7 +60,7 @@ export default function FeaturedPost({ post }: { post: BlogPost }) {
             ))}
           </div>
 
-          <h2 className="text-2xl font-extrabold leading-tight tracking-tight text-slate-900 transition-colors group-hover:text-indigo-600 sm:text-3xl">
+          <h2 className="break-words text-2xl font-extrabold leading-tight tracking-tight text-slate-900 transition-colors group-hover:text-indigo-600 sm:text-3xl">
             {post.title}
           </h2>
 

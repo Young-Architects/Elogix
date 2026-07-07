@@ -13,12 +13,13 @@ Marketing landing page for **Expendesk**, an expense intelligence platform built
 | Framework | Next.js 16 (App Router, Turbopack) |
 | Language | TypeScript 5 (strict mode) |
 | Styling | Tailwind CSS v4 |
-| Animations | Framer Motion 12 + hand-written CSS keyframes |
+| Animations | Framer Motion 12 (most of the site) + GSAP 3 / ScrollTrigger (pharmaceutical scroll sequences) + hand-written CSS keyframes |
 | Icons | Lucide React |
 | Fonts | System sans-serif stack (body) · Syne self-hosted via `next/font` (Hero headings) |
+| Content | Headless WordPress ("Blog to JSON" plugin) for `/resources/blogs`; all marketing copy in local JSON/TS data files |
 | Runtime | React 19 |
 
-Only the libraries actually imported by the app are kept as dependencies (`next`, `react`, `react-dom`, `framer-motion`, `lucide-react`, plus `clsx` + `tailwind-merge` behind the `cn()` helper that ships for shadcn-style components). No UI-kit, particle, or animation-runtime packages are pulled in.
+Only the libraries actually imported by the app are kept as dependencies: `next`, `react`, `react-dom`, `framer-motion` (24 files), `lucide-react` (23 files), `gsap` (7 pharmaceutical section components, via `ScrollTrigger`), plus `clsx` + `tailwind-merge` behind the `cn()` helper that ships for shadcn-style components. No UI-kit or particle packages are pulled in.
 
 ---
 
@@ -28,7 +29,7 @@ Only the libraries actually imported by the app are kept as dependencies (`next`
 src/
 ├── app/
 │   ├── globals.css                 # Single source of truth for global CSS + @keyframes (incl. .blog-content typography)
-│   ├── layout.tsx                  # Root layout: wraps app in ChatProvider; Navbar, ScrollToHash, ChatWidget
+│   ├── layout.tsx                  # Root layout: global metadata (metadataBase, title template); ChatProvider wraps Navbar + ScrollToHash + Footer + ChatWidget
 │   ├── page.tsx                    # Home page composition (above-fold static, below-fold lazy)
 │   ├── robots.ts                   # robots.txt (allow all, disallow /api/) + sitemap pointer
 │   ├── sitemap.ts                  # sitemap.xml: static routes + every published blog post (from the WP API)
@@ -243,10 +244,23 @@ Other measures:
 
 - The only web font is Syne, self-hosted by `next/font/google` with `display: "swap"` and scoped to the Hero headings (no runtime request to Google). Body copy uses the native system sans-serif stack, so there is no blocking font fetch for the bulk of the page.
 - `next.config.ts` enables `compress`, `optimizeCss`, AVIF/WebP image formats, and strips the `x-powered-by` header.
-- `prefers-reduced-motion` is honoured across the heavier animations (LeadMagnet, Testimonials, WhyExpendesk, the global scroll engine).
+- **Blog images are optimised through `next/image`.** `next.config.ts` allowlists the WordPress host under `images.remotePatterns` (scoped to `/wp-content/uploads/**`). The host is derived from `WORDPRESS_API_URL` at build with a hardcoded fallback, so **changing the CMS domain is a single env edit** — no code change. A WordPress image on a non-allowlisted host will throw at render, so update the env if the CMS moves.
+- `prefers-reduced-motion` is honoured across the heavier animations (LeadMagnet, Testimonials, WhyExpendesk, the global scroll engine, and the GSAP/ScrollTrigger pharmaceutical sequences).
 - Marquees/carousels use `will-change: transform` and pause on hover/touch.
 
 > **Typography note:** body text renders in the native system sans-serif stack by design. The Hero applies Syne directly via `syne.className`. (Previously Geist/Geist Mono were loaded and exposed as `--font-*` CSS variables on `<body>` but never mapped to a `font-family`, so they had no visual effect — they have been removed to drop the unused font fetches without changing how anything looks. To adopt Geist for body copy later, load it via `next/font` and map it in an `@theme inline` block in `globals.css`.)
+
+---
+
+## SEO & Metadata
+
+- **Global defaults** — [`layout.tsx`](src/app/layout.tsx) sets `metadataBase` (from `SITE_URL`), a title **template** (`%s — Expendesk`), description, keywords, and default OpenGraph. Every page inherits these; a page's own `metadata`/`generateMetadata` overrides only what it declares.
+- **Per-page** — the solution pages and blog listing export a static `metadata`; blog posts build theirs in `generateMetadata` (title, excerpt, canonical, article OpenGraph/Twitter, author, tags, image).
+- **Structured data** — blog posts emit `BlogPosting` **JSON-LD** built only from serialized API fields (with `<` escaped), safe to inline.
+- **[`robots.ts`](src/app/robots.ts)** — allows everything except `/api/`, and points crawlers at the sitemap.
+- **[`sitemap.ts`](src/app/sitemap.ts)** — emits the static marketing routes plus one entry per published blog post (walked from the WP API, so new posts appear automatically); degrades to just the static routes if the API is unreachable.
+
+All absolute URLs (canonicals, OG images, sitemap) derive from `SITE_URL` ([`lib/site.ts`](src/lib/site.ts)) — **set `NEXT_PUBLIC_SITE_URL` in production** or these point at `localhost`.
 
 ---
 

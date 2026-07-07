@@ -21,7 +21,9 @@ import type {
 /* Styling helpers                                                     */
 /* ------------------------------------------------------------------ */
 
-/** CSS properties an author should never be able to inject from post HTML. */
+/** CSS properties an author should never be able to inject from post HTML.
+ *  min-width/min-height are blocked because they beat the max-width clamp in
+ *  globals.css that keeps CMS-sized blocks from overflowing small screens. */
 const BLOCKED_STYLE_PROPS = new Set([
   'position',
   'z-index',
@@ -32,6 +34,8 @@ const BLOCKED_STYLE_PROPS = new Set([
   'content',
   'behavior',
   'expression',
+  'min-width',
+  'min-height',
 ]);
 
 function kebabToCamel(prop: string): string {
@@ -45,6 +49,8 @@ function toReactStyle(styling?: BlockStyling): CSSProperties | undefined {
     const key = prop.trim().toLowerCase();
     if (BLOCKED_STYLE_PROPS.has(key)) continue;
     if (/url\s*\(|expression\s*\(/i.test(value)) continue;
+    // Negative margins can drag content outside the column on phones.
+    if (key.startsWith('margin') && value.includes('-')) continue;
     style[kebabToCamel(key)] = value;
   }
   return Object.keys(style).length ? (style as CSSProperties) : undefined;
