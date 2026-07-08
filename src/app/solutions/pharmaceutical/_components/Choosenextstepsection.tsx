@@ -231,6 +231,7 @@ function CtaCard({ option, index }: { option: ChooseNextStepOption; index: numbe
             defaults to white); the secondary card keeps the white default. */}
         {isPrimary ? (
           <MagneticButton
+            href={option.href}
             type="button"
             variant="ghost"
             icon={<ArrowRight className="h-4 w-4 text-purple-700" />}
@@ -240,6 +241,7 @@ function CtaCard({ option, index }: { option: ChooseNextStepOption; index: numbe
           </MagneticButton>
         ) : (
           <MagneticButton
+            href={option.href}
             type="button"
             variant="ghost"
             icon={<ArrowRight className="h-4 w-4" />}

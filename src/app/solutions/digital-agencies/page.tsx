@@ -5,7 +5,8 @@
  * digital-agencies), linked from the Navbar "Solutions" dropdown. Copy lives in
  * `./_data/content.ts`. Prerendered as static HTML at build.
  *
- * `#demo` CTA anchors are placeholders — there is no demo section yet.
+ * The "Book a Demo" CTA points at `/contact-us` for now (no dedicated demo
+ * booking flow yet).
  */
 import type { Metadata } from "next";
 import MagneticButton from "@/components/ui/MagneticButton";

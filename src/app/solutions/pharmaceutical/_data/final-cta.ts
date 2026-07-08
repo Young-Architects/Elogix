@@ -36,6 +36,7 @@ export const finalCta: FinalCtaContent = {
       eyebrow: "Secondary Option:",
       title: "Want to see the solution in action?",
       buttonLabel: "Book a Demo",
+      href: "/contact-us",
     },
   ],
 };

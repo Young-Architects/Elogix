@@ -1,10 +1,10 @@
 {
   "sectionContent": {
-    "badge": "Benefits",
-    "headingLine1": "What happens when expense",
-    "headingLine2": "management ",
-    "headingAccent": "finally works?",
-    "subheading": "Six outcomes your finance team feels from day one — measurable, real, and compounding.",
+    "badge": "EVERYTHING YOU NEED",
+    "headingLine1": "Powerful Features.",
+    "headingLine2": "",
+    "headingAccent": "Simple Experience.",
+    "subheading": "Everything your finance team needs to manage expenses — from capture to compliance, in one place.",
     "cta": {
       "eyebrow": "The bigger your business becomes, the more expensive these inefficiencies get.",
       "body": "Every untracked rupee compounds. Act before it compounds further.",
@@ -17,17 +17,17 @@
       "layout": "normal",
       "accent": "purple",
       "iconKey": "eye",
-      "title": "Complete spend visibility",
-      "description": "Know exactly where every rupee flows across every team, office, and department — in real time.",
+      "title": "Spend Visibility",
+      "description": "Understand where every rupee is spent across your organization.",
       "metric": { "value": 100, "suffix": "%", "label": "spend tracked, zero blind spots" }
     },
     {
-      "id": "close-books",
+      "id": "reporting",
       "layout": "normal",
       "accent": "pink",
-      "iconKey": "calendar",
-      "title": "Close books faster",
-      "description": "Slash month-end reconciliation time. Finance closes in days, not weeks.",
+      "iconKey": "chart",
+      "title": "Reporting & Analytics",
+      "description": "Generate powerful reports with real-time expense insights.",
       "metric": { "value": 94, "suffix": "%", "label": "faster month-end closures" }
     },
     {
@@ -35,8 +35,8 @@
       "layout": "tall",
       "accent": "teal",
       "iconKey": "building",
-      "title": "Scale without complexity",
-      "description": "Multiple teams, offices, and departments — one unified platform. No added overhead as you grow.",
+      "title": "Secure & Scalable",
+      "description": "Built for growing SMEs and mid-market businesses — multiple teams, offices, and departments on one unified platform.",
       "bars": [
         { "label": "5 people",   "tag": "Simple",    "targetWidth": 30 },
         { "label": "50 people",  "tag": "Managed",   "targetWidth": 62 },
@@ -45,15 +45,15 @@
       "metric": { "value": 1, "suffix": "", "label": "platform for every scale" }
     },
     {
-      "id": "profitability",
+      "id": "expense-tracking",
       "layout": "wide",
       "accent": "amber",
-      "iconKey": "trending",
-      "title": "Improve profitability",
-      "description": "Catch overspending patterns before they erode margins. Act on data, not gut feel. Every department stays inside budget with policy enforcement baked in at the point of spend.",
+      "iconKey": "receipt",
+      "title": "Expense Tracking & Receipt Management",
+      "description": "Capture and organize expenses from anywhere. Receipts are stored digitally for faster verification — so every claim is audit-ready from day one.",
       "dualMetrics": [
-        { "value": 38, "suffix": "%", "label": "avg budget overrun recovered" },
-        { "value": 3,  "suffix": "x", "label": "faster audit cycles" }
+        { "value": 24, "suffix": "/7", "label": "expense capture from anywhere" },
+        { "value": 3,  "suffix": "x", "label": "faster receipt verification" }
       ]
     },
     {
@@ -61,27 +61,27 @@
       "layout": "normal",
       "accent": "blue",
       "iconKey": "timer",
-      "title": "Eliminate reimbursement delays",
-      "description": "Automated reimbursements keep employees paid on time — no manual nudges required.",
+      "title": "Employee Reimbursements",
+      "description": "Accelerate reimbursement cycles and improve employee satisfaction.",
       "metric": { "value": 70, "suffix": "%", "label": "faster reimbursements" }
     },
     {
-      "id": "leakage",
+      "id": "compliance",
       "layout": "normal",
       "accent": "green",
       "iconKey": "shield",
-      "title": "Reduce financial leakage",
-      "description": "Auto-flag duplicates, unauthorized spends, and policy violations before payout. Zero leakage.",
-      "metric": { "value": 0, "suffix": " leaks", "label": "with auto-flag engine active", "rawInitial": "—" }
+      "title": "Policy Compliance",
+      "description": "Automatically enforce company reimbursement policies — with approval workflows based on departments, managers, or expense limits.",
+      "metric": { "value": 0, "suffix": " violations", "label": "slip past automated enforcement", "rawInitial": "—" }
     }
   ],
   "ticker": [
     { "color": "#7C3AED", "text": "100% Spend Visibility"       },
     { "color": "#DB2777", "text": "94% Faster Month-End"        },
     { "color": "#0891B2", "text": "Scales to 500+ People"       },
-    { "color": "#D97706", "text": "38% Budget Recovery"         },
+    { "color": "#D97706", "text": "Automated Approval Workflows" },
     { "color": "#2563EB", "text": "70% Faster Reimbursement"    },
-    { "color": "#059669", "text": "Zero Financial Leakage"      },
+    { "color": "#059669", "text": "Digital Receipt Management"  },
     { "color": "#7C3AED", "text": "Real-Time Dashboards"        },
     { "color": "#DB2777", "text": "Policy Enforcement Built-In" },
     { "color": "#0891B2", "text": "One Platform, Every Scale"   },

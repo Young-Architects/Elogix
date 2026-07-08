@@ -96,7 +96,14 @@ function Avatar({ t }: { t: Testimonial }) {
   if (t.avatarImage) {
     return (
       <div className={ring}>
-        {/* Swap for next/image when you wire up real photos */}
+        {/*
+          Plain <img> is intentional: avatar photos are optional (every
+          testimonial currently uses the gradient-initials fallback below), and
+          real photos would come from an unknown external host that isn't in
+          next.config.ts `images.remotePatterns`. Swap for next/image and
+          allowlist the host once real photo URLs are wired up.
+        */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={t.avatarImage}
           alt={t.author}

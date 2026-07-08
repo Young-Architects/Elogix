@@ -21,8 +21,11 @@
         { "label": "The Solution",  "href": "/#solution" },
         { "label": "Benefits",      "href": "/#benefits" },
         { "label": "Product Tour",  "href": "/#features-video" },
-        { "label": "Get Started",   "href": "/#lead-magnet" },
+        { "label": "How It Works",  "href": "/#how-it-works" },
+        { "label": "Free Guide",    "href": "/#lead-magnet" },
+        { "label": "Compare",       "href": "/#comparison" },
         { "label": "Testimonials",  "href": "/#testimonials" },
+        { "label": "FAQ",           "href": "/#faq" },
         { "label": "Why Expendesk", "href": "/#why-expendesk" }
       ]
     },
@@ -32,7 +35,7 @@
         { "label": "Whitepapers",  "href": "/resources/whitepapers" },
         { "label": "Case Studies", "href": "/resources/case-studies" },
         { "label": "Blogs",        "href": "/resources/blogs" },
-        { "label": "FAQs",         "href": "/resources/faqs" }
+        { "label": "FAQs",         "href": "/#faq" }
       ]
     },
     {
@@ -44,7 +47,7 @@
         { "label": "Blogs",       "href": "/resources/blogs" },
         { "label": "Pricing",     "href": "/#pricing" },
         { "label": "Contact Us",  "href": "/contact-us" },
-        { "label": "Book a Demo", "href": "/#demo" }
+        { "label": "Book a Demo", "href": "/contact-us" }
       ]
     }
   ],

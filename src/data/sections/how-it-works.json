@@ -1,0 +1,46 @@
+{
+  "badge": "How It Works",
+  "headline": "Get Started in Three Simple Steps",
+  "headlineParts": { "pre": "Get Started in ", "accent": "Three Simple Steps" },
+  "subheading": "From first receipt to full financial clarity — no training manuals, no migration headaches.",
+  "steps": [
+    {
+      "id": "capture",
+      "step": "01",
+      "stepLabel": "Step 1",
+      "iconKey": "camera",
+      "title": "Capture Expenses",
+      "description": "Employees submit expenses with receipts in just a few clicks.",
+      "accentFrom": "#7c3aed",
+      "accentTo": "#a855f7",
+      "glow": "rgba(124,58,237,0.16)"
+    },
+    {
+      "id": "approvals",
+      "step": "02",
+      "stepLabel": "Step 2",
+      "iconKey": "git-branch",
+      "title": "Automate Approvals",
+      "description": "Route expenses through configurable approval workflows.",
+      "accentFrom": "#c026d3",
+      "accentTo": "#e879f9",
+      "glow": "rgba(192,38,211,0.15)"
+    },
+    {
+      "id": "visibility",
+      "step": "03",
+      "stepLabel": "Step 3",
+      "iconKey": "bar-chart",
+      "title": "Gain Visibility",
+      "description": "Track spending, process reimbursements, and generate reports from one centralized platform.",
+      "accentFrom": "#4f46e5",
+      "accentTo": "#818cf8",
+      "glow": "rgba(79,70,229,0.16)"
+    }
+  ],
+  "cta": {
+    "prompt": "Three steps. That's the whole setup.",
+    "buttonLabel": "See Expendesk in Action",
+    "buttonHref": "/contact-us"
+  }
+}

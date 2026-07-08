@@ -283,7 +283,7 @@ function MobileCtaFooter() {
   return (
     <div className="shrink-0 border-t border-gray-100 bg-white px-5 py-3 lg:hidden">
       <a
-        href="#contact"
+        href="/contact-us"
         className="flex w-full items-center justify-center rounded-xl border border-gray-200 px-4 py-3 text-sm font-medium text-gray-700 transition-colors hover:border-purple-300 hover:bg-purple-50 hover:text-purple-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/40"
       >
         {selfAssessment.scheduleCta}
@@ -390,7 +390,7 @@ function DesktopScorePanel({
 
         {/* ── "Schedule a Free Assessment" as a static button ── */}
         <a
-          href="#contact"
+          href="/contact-us"
           className="mt-6 flex w-full items-center justify-center rounded-xl border border-gray-200 px-4 py-3 text-sm font-medium text-gray-700 transition-all hover:border-purple-300 hover:bg-purple-50 hover:text-purple-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/40"
         >
           {selfAssessment.scheduleCta}

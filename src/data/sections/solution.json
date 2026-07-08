@@ -1,23 +1,24 @@
 {
-  "badge": "Solution Section",
+  "badge": "The Solution",
   "hero": {
     "headline": {
       "pre": "Meet",
       "brand": "Expendesk",
-      "sub": "The Smarter Way to Manage Business Spending",
-      "subAccent": "Smarter Way",
-      "subPost": "to Manage Business Spending",
+      "sub": "One Platform to Manage Every Business Expense.",
+      "subAccent": "One Platform",
+      "subPost": "to Manage Every Business Expense.",
       "subPostPre": "to",
-      "subPostSuffix": "Manage Business Spending"
+      "subPostSuffix": "Manage Every Business Expense."
     },
-    "description": "Expendesk brings every expense, reimbursement, approval, and spending policy into one centralized platform.",
+    "description": "Expendesk centralizes your entire expense management process—from expense submission to reimbursement, approvals, reporting, and compliance.",
     "bullets": [
       { "text": "No spreadsheets.",                "positive": false },
       { "text": "No manual follow-ups.",           "positive": false },
-      { "text": "No guesswork.",                   "positive": false },
-      { "text": "Just complete financial control.", "positive": true  }
+      { "text": "No endless email threads.",                   "positive": false },
+      { "text": "Just complete visibility and control over business spending.", "positive": true  }
     ],
-    "cta": "See Expendesk in Action"
+    "cta": "See Expendesk in Action",
+    "ctaHref": "/contact-us"
   },
   "nodeDiagram": {
     "chaosLabel": "From Chaos",
@@ -45,7 +46,7 @@
     "features": [
       {
         "iconKey": "camera",
-        "title": "Capture expenses instantly",
+        "title": "Automate expense claims",
         "desc": "Upload receipts on the go and never lose a single expense again.",
         "color": "from-violet-500/10 to-violet-600/5",
         "iconColor": "text-violet-600",
@@ -53,8 +54,17 @@
         "border": "hover:border-violet-300/60"
       },
       {
+        "iconKey": "refresh",
+        "title": "Speed up employee reimbursements",
+        "desc": "Reimburse employees faster and boost happiness.",
+        "color": "from-emerald-500/10 to-emerald-600/5",
+        "iconColor": "text-emerald-600",
+        "dot": "bg-emerald-500",
+        "border": "hover:border-emerald-300/60"
+      },
+      {
         "iconKey": "bolt",
-        "title": "Automate approvals",
+        "title": "Create multi-level approval workflows",
         "desc": "Set smart approval flows and eliminate manual follow-ups.",
         "color": "from-indigo-500/10 to-indigo-600/5",
         "iconColor": "text-indigo-600",
@@ -62,31 +72,22 @@
         "border": "hover:border-indigo-300/60"
       },
       {
-        "iconKey": "shield",
-        "title": "Enforce spending policies",
-        "desc": "Ensure policy compliance before spend, not afterwards.",
-        "color": "from-fuchsia-500/10 to-fuchsia-600/5",
-        "iconColor": "text-fuchsia-600",
-        "dot": "bg-fuchsia-500",
-        "border": "hover:border-fuchsia-300/60"
-      },
-      {
         "iconKey": "users",
-        "title": "Track by team, dept. or location",
-        "desc": "Get granular visibility into where and how money is being spent.",
+        "title": "Track business spending in real time",
+        "desc": "Get granular visibility by team, department, or location.",
         "color": "from-violet-500/10 to-violet-600/5",
         "iconColor": "text-violet-600",
         "dot": "bg-violet-500",
         "border": "hover:border-violet-300/60"
       },
       {
-        "iconKey": "refresh",
-        "title": "Accelerate reimbursements",
-        "desc": "Reimburse employees faster and boost happiness.",
-        "color": "from-emerald-500/10 to-emerald-600/5",
-        "iconColor": "text-emerald-600",
-        "dot": "bg-emerald-500",
-        "border": "hover:border-emerald-300/60"
+        "iconKey": "shield",
+        "title": "Enforce company expense policies",
+        "desc": "Ensure policy compliance before spend, not afterwards.",
+        "color": "from-fuchsia-500/10 to-fuchsia-600/5",
+        "iconColor": "text-fuchsia-600",
+        "dot": "bg-fuchsia-500",
+        "border": "hover:border-fuchsia-300/60"
       },
       {
         "iconKey": "file",
@@ -99,7 +100,7 @@
       },
       {
         "iconKey": "bar-chart",
-        "title": "Gain real-time financial visibility",
+        "title": "Gain actionable financial insights",
         "desc": "Make smarter decisions with real-time spending data.",
         "color": "from-violet-500/10 to-violet-600/5",
         "iconColor": "text-violet-600",
@@ -113,6 +114,7 @@
       "iconKey": "bolt",
       "value": 95,
       "suffix": "%",
+      "valueText": null,
       "label": "Less approval time",
       "sub": "Save hours every week",
       "color": "text-violet-600"
@@ -121,6 +123,7 @@
       "iconKey": "refresh",
       "value": 70,
       "suffix": "%",
+      "valueText": null,
       "label": "Faster reimbursements",
       "sub": "Employees get paid faster",
       "color": "text-indigo-600"
@@ -129,6 +132,7 @@
       "iconKey": "shield",
       "value": 100,
       "suffix": "%",
+      "valueText": null,
       "label": "Policy compliance",
       "sub": "Enforced automatically",
       "color": "text-fuchsia-600"
@@ -137,6 +141,7 @@
       "iconKey": "bar-chart",
       "value": null,
       "suffix": "",
+      "valueText": "Real-Time",
       "label": "Financial visibility",
       "sub": "Always up-to-date",
       "color": "text-violet-600"
@@ -145,7 +150,8 @@
   "dashboardCta": {
     "headline": "Ready to Replace Expense Chaos?",
     "description": "See how Expendesk transforms spending management from reactive to automated.",
-    "buttonLabel": "See Expendesk in Action"
+    "buttonLabel": "See Expendesk in Action",
+    "buttonHref": "/contact-us"
   },
   "dashboardPreview": {
     "title": "Dashboard",

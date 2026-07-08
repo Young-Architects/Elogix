@@ -1,0 +1,22 @@
+{
+  "badge": "Why Expendesk",
+  "headline": {
+    "plain": "More Than Expense Software.",
+    "accent": "A Better Way to Manage Business Spending."
+  },
+  "subheading": "See the difference automation makes — side by side.",
+  "columns": {
+    "before": { "label": "Traditional Process", "caption": "The old way" },
+    "after": { "label": "Expendesk", "caption": "The smarter way", "tag": "Recommended" }
+  },
+  "vsLabel": "VS",
+  "rows": [
+    { "id": "platform",   "before": "Spreadsheets",            "after": "Automated Platform",        "iconKey": "zap" },
+    { "id": "workflows",  "before": "Manual Approvals",        "after": "Smart Workflows",           "iconKey": "workflow" },
+    { "id": "processing", "before": "Delayed Reimbursements",  "after": "Faster Processing",         "iconKey": "timer" },
+    { "id": "records",    "before": "Lost Receipts",           "after": "Digital Record Management", "iconKey": "folder-check" },
+    { "id": "dashboards", "before": "Limited Visibility",      "after": "Real-Time Dashboards",      "iconKey": "bar-chart" },
+    { "id": "insights",   "before": "Reactive Decisions",      "after": "Data-Driven Insights",      "iconKey": "trending-up" }
+  ],
+  "footnote": { "pre": "Six upgrades.", "accent": "One platform.", "post": "Zero spreadsheets." }
+}

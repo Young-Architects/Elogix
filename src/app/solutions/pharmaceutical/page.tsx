@@ -7,7 +7,8 @@
  * `./_components/`, composed here, with all copy in `./_data/` (one file per
  * section, re-exported from `./_data/index.ts`).
  *
- * `#demo` CTA anchors are placeholders — there is no demo section yet.
+ * Demo / "Schedule" CTAs point at `/contact-us` for now (no dedicated demo
+ * booking flow yet).
  */
 import type { Metadata } from "next";
 import HeroSection from "./_components/HeroSection";

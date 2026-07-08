@@ -69,12 +69,6 @@ function Counter({ to, suffix = "", duration = 1.5 }: CounterProps) {
 
 /* ─────────────────────── icon maps ─────────────────────── */
 
-const TRUST_PILL_ICONS: Record<string, React.ElementType> = {
-  "shield-check":   ShieldCheck,
-  "zap":            Zap,
-  "eye":            Eye,
-};
-
 const FEATURE_CARD_ICONS: Record<string, React.ElementType> = {
   "zap":            Zap,
   "git-branch":     GitBranch,

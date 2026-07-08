@@ -39,6 +39,21 @@ const FeaturesVideo = dynamic(
   { loading: () => <div className="min-h-50" />, ssr: true }
 );
 
+const HowItWorksSection = dynamic(
+  () => import("@/components/sections/HowItWorksSection"),
+  { loading: () => <div className="min-h-50" />, ssr: true }
+);
+
+const ComparisonSection = dynamic(
+  () => import("@/components/sections/ComparisonSection"),
+  { loading: () => <div className="min-h-50" />, ssr: true }
+);
+
+const FaqSection = dynamic(
+  () => import("@/components/sections/FaqSection"),
+  { loading: () => <div className="min-h-50" />, ssr: true }
+);
+
 export default function Home() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#050816] text-white">
@@ -47,8 +62,11 @@ export default function Home() {
       <SolutionSection />
       <BenefitsSection />
       <FeaturesVideo />
+      <HowItWorksSection />
       <LeadMagnetSection />
+      <ComparisonSection />
       <TestimonialsSection />
+      <FaqSection />
       <WhyExpendesk />
     </main>
   );

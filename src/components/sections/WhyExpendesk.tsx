@@ -34,6 +34,7 @@ import {
   Star,
   ArrowRight,
   ArrowLeftRight,
+  BookOpen,
   ChevronLeft,
   ChevronRight,
   Play,
@@ -44,6 +45,8 @@ import {
   BarChart3,
   ShieldCheck,
   Wallet,
+  Gauge,
+  TrendingUp,
   type LucideIcon,
 } from "lucide-react";
 import ScrollBeamDivider from "../ui/ScrollBeamDivider";
@@ -64,6 +67,8 @@ const ICONS: Record<string, LucideIcon> = {
   BarChart3,
   ShieldCheck,
   Wallet,
+  Gauge,
+  TrendingUp,
 };
 
 /* =========================================================================
@@ -676,7 +681,7 @@ function CardView({ loading }: { loading: boolean }) {
                           </div>
                         </div>
 
-                        <p className="eb-clamp-2 mt-4 text-[12px] font-medium leading-relaxed text-slate-500">
+                        <p className="eb-clamp-3 mt-4 text-[12px] font-medium leading-relaxed text-slate-500">
                           {c.detail}
                         </p>
                       </div>
@@ -750,26 +755,56 @@ function CtaPanel() {
           className="eb-orb-2 pointer-events-none absolute -left-20 -bottom-24 h-64 w-64 rounded-full bg-fuchsia-700/15 blur-[100px]"
         />
 
-        <div className="relative z-10 mx-auto max-w-xl">
+        <div className="relative z-10 mx-auto max-w-2xl">
           <h3 className="text-2xl font-extrabold leading-tight tracking-tight text-white sm:text-3xl lg:text-[2.4rem]">
             {cta.heading}
           </h3>
 
-          <p className="mx-auto mt-4 max-w-md text-[15px] font-medium leading-relaxed text-violet-200/65 sm:text-base">
+          <p className="mx-auto mt-3 max-w-lg text-[16px] font-bold leading-snug sm:text-[19px]">
+            <span className="bg-gradient-to-r from-violet-300 via-fuchsia-300 to-violet-200 bg-clip-text text-transparent">
+              {cta.subheading}
+            </span>
+          </p>
+
+          <p className="mx-auto mt-4 max-w-md text-[14.5px] font-medium leading-relaxed text-violet-200/65 sm:text-[15px]">
             {cta.body}
           </p>
+
+          {/* Highlight chips */}
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
+            {cta.highlights.map((h) => (
+              <span
+                key={h}
+                className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-[11.5px] font-semibold text-violet-100/80 backdrop-blur-sm"
+              >
+                <Check className="h-3 w-3 shrink-0 text-fuchsia-400" strokeWidth={3} />
+                {h}
+              </span>
+            ))}
+          </div>
 
           <p className="mt-8 text-[10.5px] font-bold uppercase tracking-[0.22em] text-violet-400">
             {cta.prompt}
           </p>
 
-          <MagneticButton
-            variant="primary"
-            className="mt-4 w-full rounded-full px-7 py-3.5 text-[15px] shadow-[0_8px_24px_rgba(0,0,0,0.35)] sm:w-auto"
-            icon={<ArrowRight className="h-4 w-4" strokeWidth={2.6} />}
-          >
-            {cta.button}
-          </MagneticButton>
+          <div className="mt-4 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <MagneticButton
+              href={cta.buttonHref}
+              variant="primary"
+              className="w-full rounded-full px-7 py-3.5 text-[15px] shadow-[0_8px_24px_rgba(0,0,0,0.35)] sm:w-auto"
+              icon={<ArrowRight className="h-4 w-4" strokeWidth={2.6} />}
+            >
+              {cta.button}
+            </MagneticButton>
+            <MagneticButton
+              href={cta.secondaryButton.href}
+              variant="secondary"
+              className="w-full rounded-full px-6 py-3.5 text-[13.5px] text-violet-100 sm:w-auto"
+              icon={<BookOpen className="h-4 w-4" strokeWidth={2.2} />}
+            >
+              {cta.secondaryButton.label}
+            </MagneticButton>
+          </div>
 
           <div className="mt-6 flex flex-col items-center justify-center gap-x-3 gap-y-1.5 text-[12px] font-medium text-violet-300/50 sm:flex-row">
             {cta.trustPoints.map((point, i) => (

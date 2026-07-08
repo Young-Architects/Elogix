@@ -231,7 +231,7 @@ export default function Footer(): ReactNode {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden border-t border-white/10 bg-gradient-to-b from-slate-950 to-black text-white">
+    <footer id="footer" className="relative overflow-hidden border-t border-white/10 bg-gradient-to-b from-slate-950 to-black text-white">
       {/* Ambient brand glow */}
       <div
         aria-hidden="true"

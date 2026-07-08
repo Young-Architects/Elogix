@@ -27,6 +27,8 @@ import {
   ShieldCheck,
   Sparkles,
   ArrowRight,
+  Receipt,
+  BarChart3,
 } from 'lucide-react';
 import ScrollBeamDivider from '../ui/ScrollBeamDivider';
 import MagneticButton from '@/components/ui/MagneticButton';
@@ -178,6 +180,8 @@ const ICON_MAP: Record<string, React.ReactNode> = {
   trending: <TrendingUp   size={18} aria-hidden />,
   timer:    <Timer        size={18} aria-hidden />,
   shield:   <ShieldCheck  size={18} aria-hidden />,
+  receipt:  <Receipt      size={18} aria-hidden />,
+  chart:    <BarChart3    size={18} aria-hidden />,
 };
 
 /* ============================================================
@@ -286,7 +290,7 @@ function MetricRow({
         active={active}
         style={{ fontSize, fontWeight: 900, lineHeight: 1, color: numColor, display: 'block' }}
       />
-      <div className="text-[11px] text-slate-400 mt-1 font-medium tracking-[0.03em]">
+      <div className="text-[11px] text-slate-500 mt-1 font-medium tracking-[0.03em]">
         {metric.label}
       </div>
     </div>
@@ -410,7 +414,7 @@ function WideContent({
                   display: 'block',
                 }}
               />
-              <div className="text-[11px] text-slate-400 mt-1 font-medium tracking-[0.03em]">
+              <div className="text-[11px] text-slate-500 mt-1 font-medium tracking-[0.03em]">
                 {m.label}
               </div>
             </div>

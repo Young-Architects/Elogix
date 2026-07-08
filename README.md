@@ -19,7 +19,7 @@ Marketing landing page for **Expendesk**, an expense intelligence platform built
 | Content | Headless WordPress ("Blog to JSON" plugin) for `/resources/blogs`; all marketing copy in local JSON/TS data files |
 | Runtime | React 19 |
 
-Only the libraries actually imported by the app are kept as dependencies: `next`, `react`, `react-dom`, `framer-motion` (24 files), `lucide-react` (23 files), `gsap` (7 pharmaceutical section components, via `ScrollTrigger`), plus `clsx` + `tailwind-merge` behind the `cn()` helper that ships for shadcn-style components. No UI-kit or particle packages are pulled in.
+Only the libraries actually imported by the app are kept as dependencies: `next`, `react`, `react-dom`, `framer-motion` (31 files), `lucide-react` (27 files), `gsap` (7 pharmaceutical section components, via `ScrollTrigger`), plus `clsx` + `tailwind-merge` behind the `cn()` helper (used by the contact-sales form and available for shadcn-style components). No UI-kit or particle packages are pulled in.
 
 ---
 
@@ -36,6 +36,7 @@ src/
 │   ├── api/
 │   │   └── revalidate/route.ts     # POST webhook: WordPress → on-demand ISR purge (secret-guarded)
 │   ├── solutions/                  # Per-industry SEO landing pages (copy in each page's _data/)
+│   │   ├── page.tsx                # /solutions hub index → <ComingSoon /> (footer links here)
 │   │   ├── digital-agencies/
 │   │   │   ├── _data/content.ts    # Page copy
 │   │   │   └── page.tsx
@@ -66,17 +67,19 @@ src/
 │   │       │   ├── choose-next-step.ts       # Choose next step: copy + CTA options + trust points
 │   │       │   └── final-cta.ts              # Final CTA: copy + two action panels
 │   │       └── page.tsx            # Composes the sections in order
-│   └── resources/                  # Resources dropdown routes
-│       ├── blogs/                  # Headless-WordPress blog (see "Blog" section below)
-│       │   ├── layout.tsx          # Light-theme white canvas wrapper for all blog routes
-│       │   ├── loading.tsx         # Skeleton for the listing (hero + featured + grid)
-│       │   ├── page.tsx            # Listing: hero → featured post → card grid → pagination (+ ?category filter)
-│       │   ├── [slug]/             # Individual post — SSG at build + on-demand for new posts
-│       │   │   ├── page.tsx        # Article + sticky sidebar, OpenGraph/Twitter meta, JSON-LD
-│       │   │   └── not-found.tsx   # Per-post 404
-│       │   ├── _components/        # BlogCard · FeaturedPost · BlogContent · BlogSidebar · BlogPagination · ShareLinks
-│       │   └── _data/content.ts    # All blog UI copy (labels, CTA, empty/error states)
-│       └── case-studies/ · faqs/ · whitepapers/   # Still placeholders → notFound()
+│   ├── resources/                  # Resources dropdown routes
+│   │   ├── page.tsx                # /resources hub index → <ComingSoon /> (footer links here)
+│   │   ├── blogs/                  # Headless-WordPress blog (see "Blog" section below)
+│   │   │   ├── layout.tsx          # Light-theme white canvas wrapper for all blog routes
+│   │   │   ├── loading.tsx         # Skeleton for the listing (hero + featured + grid)
+│   │   │   ├── page.tsx            # Listing: hero → featured post → card grid → pagination (+ ?category filter)
+│   │   │   ├── [slug]/             # Individual post — SSG at build + on-demand for new posts
+│   │   │   │   ├── page.tsx        # Article + sticky sidebar, OpenGraph/Twitter meta, JSON-LD
+│   │   │   │   └── not-found.tsx   # Per-post 404
+│   │   │   ├── _components/        # BlogCard · FeaturedPost · BlogContent · BlogSidebar · BlogPagination · ShareLinks
+│   │   │   └── _data/content.ts    # All blog UI copy (labels, CTA, empty/error states)
+│   │   ├── case-studies/ · whitepapers/   # Not built yet → render <ComingSoon /> (noindex)
+│   │   └── faqs/                   # Legacy route → redirect() to the on-page /#faq section
 │
 ├── components/
 │   ├── chat/                       # Expendesk AI chat — shared state, two render targets
@@ -87,29 +90,35 @@ src/
 │   │   ├── Navbar.tsx              # Sticky pill nav, animated dropdowns, scroll progress bar
 │   │   ├── ChatWidget.tsx          # Floating launcher + panel (hidden while a hero dock is in view)
 │   │   └── ScrollToHash.tsx        # Single owner of in-page hash smooth-scrolling
-│   ├── sections/
+│   ├── sections/                   # Home-page sections, in visual page order (see page.tsx)
 │   │   ├── HeroSection.tsx         # Canvas dot grid, animated counters; docks the AI chat on the right
 │   │   ├── ProblemSection.tsx      # SVG cause→chaos→effect connector diagram
 │   │   ├── SolutionSection.tsx     # Node/beam diagram, feature carousel, dashboard preview
 │   │   ├── BenefitsSection.tsx     # Bento grid (desktop) / swipeable carousel (mobile)
-│   │   ├── FeaturesVideo.tsx       # 3D tilt card + interactive industry selector
-│   │   ├── LeadMagnetSection.tsx   # 3D eBook cover, download CTA
+│   │   ├── FeaturesVideo.tsx       # 3D tilt card + scrollable, data-driven industry selector
+│   │   ├── HowItWorksSection.tsx   # 3-step "get started" flow (arrow chips desktop / ↓ stack mobile)
+│   │   ├── LeadMagnetSection.tsx   # 3D guide cover, download CTA
+│   │   ├── ComparisonSection.tsx   # "Traditional vs Expendesk" versus card (spinning beam + VS badge)
 │   │   ├── TestimonialsSection.tsx # Dual infinite marquee rows
-│   │   └── WhyExpendesk.tsx        # Before/after comparison (table on desktop, cards on mobile)
+│   │   ├── FaqSection.tsx          # Single-open accordion + FAQPage JSON-LD for rich results
+│   │   └── WhyExpendesk.tsx        # Before/after comparison + closing dark CTA panel
 │   └── ui/
 │       ├── MagneticButton.tsx      # Shared magnetic CTA (cursor-follow, gradient variants)
+│       ├── ComingSoon.tsx          # Shared placeholder page body for unbuilt routes (title/message props)
 │       └── ScrollBeamDivider.tsx   # Shared animated section divider
 │
 ├── data/
-│   ├── navigation.json             # Navbar links, dropdown items, Login + CTA
-│   └── sections/                   # One JSON file per home section (all copy lives here)
-│       └── hero · problem · solution · benefits · features · lead-magnet · testimonials · why-expendesk .json
+│   ├── navigation.json             # Navbar links, dropdown items, Login + CTA (Home dropdown mirrors section anchors)
+│   ├── footer.json                 # Footer brand blurb, link columns, socials, legal (Features column mirrors anchors)
+│   ├── README.md                   # Section ↔ component ↔ anchor map + content conventions
+│   └── sections/                   # One JSON file per home section (all copy lives here), in page order:
+│       └── hero · problem · solution · benefits · features · how-it-works · lead-magnet · comparison · testimonials · faq · why-expendesk .json
 │
 ├── lib/
 │   ├── blog-api.ts                 # Server data layer for the WP Blog-to-JSON API (ISR, cache tags, helpers)
 │   ├── site.ts                     # SITE_URL — canonical origin for metadata/sitemap/canonicals
 │   ├── scroll.ts                   # Layout-shift-aware smooth-scroll engine for hash links
-│   └── utils.ts                    # cn() helper (shadcn convention; currently unused)
+│   └── utils.ts                    # cn() helper (clsx + tailwind-merge; used by the contact-sales form)
 │
 └── types/
     ├── blog.ts                     # Blog-to-JSON API schema (ContentBlock union, BlogPost, list response)
@@ -167,7 +176,7 @@ import MagneticButton from "@/components/ui/MagneticButton";
 - **Sizes:** `xs`–`2xl` presets, or override padding/radius/font-size directly through `className` (last-wins).
 - **Props of note:** `href` (+ `external`), `icon` / `iconPosition`, `loading`, `fullWidth`, `magnetStrength`. Standard `onClick` and button attributes pass through.
 
-Used by: the Hero, Problem, Solution (×2), Benefits, and WhyExpendesk section CTAs; the `manufacturing` and `digital-agencies` "Book a Demo" buttons; the pharmaceutical **Introducing Expendesk "Book a Free Demo"** CTA; and the two **Choose-Next-Step** card buttons ("Download Checklist" / "Schedule Demo"); and the two **Final-CTA** action-panel buttons ("Download Checklist" / "Book a Demo").
+Used by: the Hero, Problem, Solution (×2), Benefits, How It Works, FAQ, and WhyExpendesk section CTAs (WhyExpendesk's closing panel uses a `primary` + a `secondary` button side by side); the `manufacturing` and `digital-agencies` "Book a Demo" buttons; the pharmaceutical **Introducing Expendesk "Book a Free Demo"** CTA; and the two **Choose-Next-Step** card buttons ("Download Checklist" / "Schedule Demo"); and the two **Final-CTA** action-panel buttons ("Download Checklist" / "Book a Demo").
 
 > **Keeping a themed gradient on `MagneticButton`.** Several pharma buttons need the page's violet/fuchsia (or white-on-purple) look, not the `primary` variant's blue→purple→pink fill (which is painted by an internal layer a `className` background can't override). The pattern: use **`variant="ghost"`** (no background layers) and supply the gradient + shape through `className` — e.g. `<MagneticButton variant="ghost" className="rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-600 to-violet-600 …">`. For a light button with dark text (the Choose-Next-Step primary card), colour the label/icon directly (`<span className="text-purple-700">…</span>`, `icon={<ArrowRight className="text-purple-700" />}`) since MagneticButton's own text defaults to white. The magnetic drift, shimmer, and scale still come from the component.
 >
@@ -237,8 +246,8 @@ Post HTML is treated as untrusted. `BlogContent` enforces: an inline-style **den
 
 The home page is split for fast first paint:
 
-- **Above the fold** (`HeroSection`, `WhyExpendesk`, `TestimonialsSection`, `LeadMagnetSection`) is imported statically.
-- **Below the fold** (`ProblemSection`, `SolutionSection`, `BenefitsSection`, `FeaturesVideo`) is loaded with `next/dynamic` (`ssr: true`) so its client JS is code-split into separate chunks while still server-rendering for SEO.
+- **Statically imported** (`HeroSection`, `LeadMagnetSection`, `TestimonialsSection`, `WhyExpendesk`) so they are in the initial bundle / first paint.
+- **Lazy-loaded** with `next/dynamic` (`ssr: true`) so their client JS is code-split into separate chunks while still server-rendering for SEO: `ProblemSection`, `SolutionSection`, `BenefitsSection`, `FeaturesVideo`, `HowItWorksSection`, `ComparisonSection`, `FaqSection`.
 
 Other measures:
 

@@ -621,6 +621,7 @@ export default function SolutionSection() {
               className="inline-block"
             >
               <MagneticButton
+                href={solutionData.hero.ctaHref}
                 variant="primary"
                 className="rounded-xl px-7 py-3.5 text-[13.5px]"
                 icon={
@@ -692,9 +693,9 @@ export default function SolutionSection() {
                   <div className={`mb-2 ${stat.color}`}>{stat.icon}</div>
                   {stat.value !== null
                     ? <StatCounter value={stat.value} suffix={stat.suffix} color={stat.color} />
-                    : <span className={`text-2xl sm:text-3xl font-black ${stat.color}`}>Real-Time</span>}
+                    : <span className={`text-2xl sm:text-3xl font-black ${stat.color}`}>{stat.valueText}</span>}
                   <div className="text-slate-800 font-semibold text-xs mt-0.5">{stat.label}</div>
-                  <div className="text-slate-400 text-xs mt-0.5">{stat.sub}</div>
+                  <div className="text-slate-500 text-xs mt-0.5">{stat.sub}</div>
                 </div>
               </motion.div>
             ))}
@@ -761,6 +762,7 @@ export default function SolutionSection() {
                   {solutionData.dashboardCta.description}
                 </p>
                 <MagneticButton
+                  href={solutionData.dashboardCta.buttonHref}
                   variant="primary"
                   fullWidth
                   className="rounded-xl py-3 text-[13.5px]"

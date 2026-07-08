@@ -29,5 +29,5 @@ export const introducingExpendesk: IntroducingExpendeskContent = {
 
   outro:
     "Instead of managing expenses through spreadsheets and emails, finance teams can manage the entire reimbursement lifecycle from a single platform.",
-  cta: { label: "Book a Free Demo", href: "#book-demo" },
+  cta: { label: "Book a Free Demo", href: "/contact-us" },
 };

@@ -55,6 +55,10 @@ import {
   FileText,
   Briefcase,
   BookOpen,
+  Route,
+  GitCompare,
+  Award,
+  PanelBottom,
   type LucideIcon,
 } from "lucide-react";
 import navData from "@/data/navigation.json";
@@ -130,6 +134,10 @@ const NAV_ICON_MAP: Record<string, LucideIcon> = {
   "file-text":        FileText,
   "briefcase":        Briefcase,
   "book-open":        BookOpen,
+  "route":            Route,
+  "git-compare":      GitCompare,
+  "award":            Award,
+  "panel-bottom":     PanelBottom,
 };
 
 /* ───────────────────────── data (from navigation.json) ───────────────────────── */

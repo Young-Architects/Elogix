@@ -18,8 +18,8 @@
     { "iconKey": "eye",          "label": "Full Audit Trail"  }
   ],
   "ctas": {
-    "primary":   { "label": "Book a Free Demo", "href": "#contact"  },
-    "secondary": { "label": "Download the Free Expense Management Guide",    "href": "#features" }
+    "primary":   { "label": "Book a Free Demo", "href": "/contact-us"  },
+    "secondary": { "label": "Download the Free Expense Management Guide",    "href": "/#lead-magnet" }
   },
   "stats": [
     { "value": 94, "suffix": "%",        "label": "Faster closures" },

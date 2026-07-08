@@ -1,42 +1,51 @@
 {
-  "sectionLabel": "The Problem Section",
+  "sectionLabel": "The Problem",
   "headline": {
-    "line1": "Your Team Is Growing.",
-    "line2": "So Is Your",
+    "line1": "Business Growth Shouldn't",
+    "line2": "Create",
     "accent": "Expense Chaos."
   },
-  "description": "As businesses scale, expense management becomes increasingly difficult.",
+  "description": "As your business grows, so do your operational expenses.",
+  "escalation": [
+    "More employees",
+    "More reimbursements",
+    "More approvals",
+    "More spreadsheets",
+    "More manual work"
+  ],
+  "closingLine": "Eventually, finance teams spend more time chasing receipts than making financial decisions.",
+  "resultLead": "The result?",
   "chaosPoint": { "icon": "⚠️", "label": "CHAOS POINT" },
   "causes": [
     {
       "id": "c1",
-      "icon": "📂",
-      "title": "Finance teams chase receipts",
-      "sub": "Hours lost to manual receipt collection",
-      "tag": "No Policy Enforcement",
-      "tagColor": "bg-violet-100 text-violet-600 border-violet-200"
+      "icon": "🧾",
+      "title": "Lost receipts",
+      "sub": "Finance teams chase paperwork, not decisions",
+      "tag": "Manual Processes",
+      "tagColor": "bg-amber-100 text-amber-600 border-amber-200"
     },
     {
       "id": "c2",
       "icon": "⏳",
-      "title": "Managers approve manually",
-      "sub": "Every expense needs intervention",
+      "title": "Manual expense approvals",
+      "sub": "Every claim waits on a manager",
       "tag": null,
       "tagColor": ""
     },
     {
       "id": "c3",
-      "icon": "🕐",
-      "title": "Weeks wait for payments",
-      "sub": "Employees reimbursed too late",
-      "tag": "Manual Processes",
-      "tagColor": "bg-amber-100 text-amber-600 border-amber-200"
+      "icon": "📊",
+      "title": "More spreadsheets, more manual work",
+      "sub": "Growth multiplies the busywork",
+      "tag": "No Policy Enforcement",
+      "tagColor": "bg-violet-100 text-violet-600 border-violet-200"
     },
     {
       "id": "c4",
-      "icon": "📊",
-      "title": "Leadership lacks visibility",
-      "sub": "No real-time spend intelligence",
+      "icon": "🔍",
+      "title": "Poor spend visibility",
+      "sub": "No real-time view of company spend",
       "tag": null,
       "tagColor": ""
     }
@@ -44,12 +53,12 @@
   "effects": [
     {
       "id": "e1",
-      "icon": "💸",
-      "title": "Hidden Expense Leakages",
-      "badge": "WARNING",
-      "badgeStyle": "bg-amber-100 text-amber-700 border-amber-300",
-      "iconBg": "bg-amber-50",
-      "accentColor": "border-l-amber-400"
+      "icon": "⏱️",
+      "title": "Delayed Reimbursements",
+      "badge": "STUCK",
+      "badgeStyle": "bg-slate-100 text-slate-600 border-slate-300",
+      "iconBg": "bg-slate-50",
+      "accentColor": "border-l-slate-400"
     },
     {
       "id": "e2",
@@ -62,18 +71,18 @@
     },
     {
       "id": "e3",
-      "icon": "📅",
-      "title": "Delayed Month-End Closing",
-      "badge": "STUCK",
-      "badgeStyle": "bg-slate-100 text-slate-600 border-slate-300",
-      "iconBg": "bg-slate-50",
-      "accentColor": "border-l-slate-400"
+      "icon": "🚨",
+      "title": "Expense Fraud",
+      "badge": "HIGH RISK",
+      "badgeStyle": "bg-rose-100 text-rose-700 border-rose-300",
+      "iconBg": "bg-rose-50",
+      "accentColor": "border-l-rose-400"
     },
     {
       "id": "e4",
       "icon": "😤",
       "title": "Frustrated Employees",
-      "badge": "HIGH RISK",
+      "badge": "BURNOUT",
       "badgeStyle": "bg-orange-100 text-orange-700 border-orange-300",
       "iconBg": "bg-orange-50",
       "accentColor": "border-l-orange-400"
@@ -81,7 +90,7 @@
     {
       "id": "e5",
       "icon": "📉",
-      "title": "Reduced Profitability",
+      "title": "Slower business decisions",
       "badge": "DANGER",
       "badgeStyle": "bg-rose-100 text-rose-700 border-rose-300",
       "iconBg": "bg-rose-50",

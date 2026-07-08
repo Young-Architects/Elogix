@@ -217,7 +217,7 @@ function EbookCover({
               boxShadow: "0 2px 8px rgba(236,72,153,0.35)",
             }}
           >
-            FREE eBOOK
+            FREE GUIDE
           </div>
 
           {/* Brand */}
@@ -401,7 +401,7 @@ function DownloadButton({
               animate={{ rotate: 360 }}
               transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
             />
-            Preparing your eBook…
+            Preparing your guide…
           </motion.span>
         )}
         {state === "done" && (
@@ -415,7 +415,7 @@ function DownloadButton({
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
               <polyline points="20 6 9 17 4 12" />
             </svg>
-            eBook on its way!
+            Guide on its way!
           </motion.span>
         )}
       </AnimatePresence>

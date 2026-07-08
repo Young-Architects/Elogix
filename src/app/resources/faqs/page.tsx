@@ -1,11 +1,11 @@
 /**
- * /resources/faqs — placeholder route.
+ * /resources/faqs — redirect route.
  *
- * Linked from the Navbar "Resources" dropdown. Intentionally renders a 404 for
- * now via `notFound()`; replace with real content when this page is built out.
+ * The FAQ content now lives on the home page (`/#faq`), so this legacy route
+ * (and any old bookmarks) redirects there instead of 404-ing.
  */
-import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
 
 export default function FaqsPage() {
-  notFound();
+  redirect("/#faq");
 }

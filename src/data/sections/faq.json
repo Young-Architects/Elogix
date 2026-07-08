@@ -1,0 +1,41 @@
+{
+  "badge": "FAQ",
+  "headline": {
+    "plain": "Frequently Asked",
+    "accent": "Questions"
+  },
+  "subheading": "Everything you need to know about Expendesk — straight answers, no jargon.",
+  "faqs": [
+    {
+      "id": "multiple-locations",
+      "question": "Can Expendesk support businesses with multiple locations?",
+      "answer": "Yes. Expendesk helps manage expenses across branches, departments, and teams from one centralized platform."
+    },
+    {
+      "id": "custom-workflows",
+      "question": "Can approval workflows be customized?",
+      "answer": "Yes. Configure approval hierarchies based on departments, spending limits, or reporting structures."
+    },
+    {
+      "id": "growing-smes",
+      "question": "Is Expendesk suitable for growing SMEs?",
+      "answer": "Absolutely. Expendesk is designed to scale alongside SMEs and Mid-Market Businesses."
+    },
+    {
+      "id": "track-reimbursements",
+      "question": "Can employees track reimbursement status?",
+      "answer": "Yes. Employees can monitor the progress of submitted claims throughout the approval process."
+    },
+    {
+      "id": "policy-compliance",
+      "question": "Does Expendesk support policy compliance?",
+      "answer": "Yes. Expense policies and approval workflows help ensure consistent compliance across the organization."
+    }
+  ],
+  "support": {
+    "heading": "Still have questions?",
+    "subtext": "Our team is one message away — no bots, no runaround.",
+    "buttonLabel": "Contact Us",
+    "buttonHref": "/contact-us"
+  }
+}

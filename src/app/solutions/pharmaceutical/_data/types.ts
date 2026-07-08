@@ -358,6 +358,8 @@ export interface ChooseNextStepOption {
   title: string;
   description: string;
   buttonLabel: string;
+  /** Optional link target; the demo CTA points at the contact page. */
+  href?: string;
   iconKey: ChooseNextStepIconKey;
 }
 
@@ -398,6 +400,8 @@ export interface FinalCtaPanel {
   /** Optional description with a gradient-accented middle run. */
   description?: { lead: string; accent: string; tail: string };
   buttonLabel: string;
+  /** Optional link target; the demo CTA points at the contact page. */
+  href?: string;
 }
 
 /** All copy + data for the closing final-CTA section. */

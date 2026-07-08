@@ -62,7 +62,11 @@ interface PathDef {
 // Connector stroke colours, keyed by index. Module-scoped constants so they
 // keep a stable identity across renders (no need to list them as hook deps).
 const CAUSE_COLORS = ["#7c3aed", "#7c3aed", "#7c3aed", "#7c3aed"];
-const EFFECT_COLORS = ["#f59e0b", "#ef4444", "#94a3b8", "#f97316", "#f43f5e"];
+const EFFECT_COLORS = ["#94a3b8", "#ef4444", "#f43f5e", "#f97316", "#e11d48"];
+
+// Dot colours for the escalation pills — violet deepening to rose as the
+// pressure builds toward the chaos point.
+const ESCALATION_DOTS = ["#a78bfa", "#8b5cf6", "#7c3aed", "#d946ef", "#f43f5e"];
 
 function ConnectorLines({
   causeEls,
@@ -285,7 +289,7 @@ export default function ProblemSection() {
           animate={isInView ? "show" : "hidden"}
           className="mb-4 max-w-3xl text-[2.4rem] font-black leading-[1.06] tracking-tight text-slate-900 sm:text-5xl lg:text-[3.3rem]"
         >
-          {problemData.headline.line1}
+          {problemData.headline.line1}{" "}
           <br className="hidden sm:block" />
           {problemData.headline.line2}{" "}
           <span
@@ -306,14 +310,62 @@ export default function ProblemSection() {
           variants={fadeUp}
           initial="hidden"
           animate={isInView ? "show" : "hidden"}
-          className="mb-12 max-w-xl text-[15px] leading-relaxed text-slate-500"
+          className="mb-4 max-w-xl text-[15px] leading-relaxed text-slate-500"
         >
           {problemData.description}
         </motion.p>
 
+        {/* Escalation pills — the "More…" build-up toward the chaos point */}
+        <div className="mb-4 flex max-w-2xl flex-wrap items-center gap-x-2 gap-y-2">
+          {problemData.escalation.map((item, i) => (
+            <motion.span
+              key={item}
+              initial={{ opacity: 0, y: 8, scale: 0.94 }}
+              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={{ delay: 0.22 + i * 0.09, duration: 0.38, ease: [0.25, 0.1, 0.25, 1] }}
+              className="inline-flex items-center gap-1.5 rounded-full border border-slate-200/80 bg-white/70 px-3 py-1 text-[12px] font-semibold text-slate-600 shadow-sm backdrop-blur-sm"
+            >
+              <span
+                className="h-1.5 w-1.5 flex-shrink-0 rounded-full"
+                style={{ backgroundColor: ESCALATION_DOTS[i] ?? "#7c3aed" }}
+              />
+              {item}
+            </motion.span>
+          ))}
+        </div>
+
+        <motion.p
+          custom={0.3}
+          variants={fadeUp}
+          initial="hidden"
+          animate={isInView ? "show" : "hidden"}
+          className="mb-5 max-w-xl text-[15px] leading-relaxed text-slate-500"
+        >
+          {problemData.closingLine}
+        </motion.p>
+
+        {/* "The result?" lead-in pointing into the diagram */}
+        <motion.p
+          custom={0.38}
+          variants={fadeUp}
+          initial="hidden"
+          animate={isInView ? "show" : "hidden"}
+          className="mb-6 flex items-center gap-2 text-[15px] font-extrabold tracking-tight text-slate-800"
+        >
+          {problemData.resultLead}
+          <motion.span
+            aria-hidden
+            animate={{ y: [0, 4, 0] }}
+            transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
+            className="text-violet-500"
+          >
+            ↓
+          </motion.span>
+        </motion.p>
+
         {/* ═══ DIAGRAM CARD ═══ */}
         <motion.div
-          custom={0.22}
+          custom={0.46}
           variants={fadeUp}
           initial="hidden"
           animate={isInView ? "show" : "hidden"}
@@ -405,7 +457,7 @@ export default function ProblemSection() {
                           </div>
                           <div className="min-w-0 flex-1">
                             <p className="text-[8.5px] sm:text-[13px] font-bold leading-[1.1] sm:leading-tight text-slate-800 break-words whitespace-normal">{c.title}</p>
-                            <p className="hidden sm:block mt-0.5 text-[11.5px] leading-snug text-slate-400 break-words">{c.sub}</p>
+                            <p className="hidden sm:block mt-0.5 text-[11.5px] leading-snug text-slate-500 break-words">{c.sub}</p>
                           </div>
                         </motion.div>
                       </div>
@@ -540,7 +592,7 @@ export default function ProblemSection() {
                     {problemData.bottomCta.heading.split(",").slice(1).join(",").trim()}
                   </span>
                 </p>
-                <p className="mt-1 text-[11.5px] text-slate-400 font-medium">
+                <p className="mt-1 text-[11.5px] text-slate-500 font-medium">
                   {problemData.bottomCta.subtext}
                 </p>
               </div>

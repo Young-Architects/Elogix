@@ -19,7 +19,7 @@
  * placeholder (no `src` yet) — wire up a real source when available.
  */
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import {
   motion,
   useMotionTemplate,
@@ -45,6 +45,12 @@ import {
   MousePointer2,
   ChevronDown,
   ArrowDown,
+  Pill,
+  Factory,
+  Package,
+  Truck,
+  HeartPulse,
+  ShoppingBag,
 } from "lucide-react";
 import ScrollBeamDivider from "../ui/ScrollBeamDivider";
 import featuresData from "@/data/sections/features.json";
@@ -82,10 +88,16 @@ const FLOATING_BADGE_ICON_MAP: Record<string, React.ComponentType<React.SVGProps
 };
 
 const INDUSTRY_ICON_MAP: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
-  "monitor":   Monitor,
-  "cpu":       Cpu,
-  "briefcase": Briefcase,
-  "users":     Users,
+  "monitor":      Monitor,
+  "cpu":          Cpu,
+  "briefcase":    Briefcase,
+  "users":        Users,
+  "pill":         Pill,
+  "factory":      Factory,
+  "package":      Package,
+  "truck":        Truck,
+  "heart-pulse":  HeartPulse,
+  "shopping-bag": ShoppingBag,
 };
 
 /* ═══════════════════════════════════════════════════════════════
@@ -145,6 +157,10 @@ const industryColorMap = {
   emerald: { dot: "bg-emerald-500", iconBg: "bg-emerald-100 text-emerald-600", pillBg: "bg-emerald-50 text-emerald-700 border-emerald-200", ring: "ring-emerald-200", activeBorder: "border-emerald-200/60" },
   amber: { dot: "bg-amber-500", iconBg: "bg-amber-100 text-amber-600", pillBg: "bg-amber-50 text-amber-700 border-amber-200", ring: "ring-amber-200", activeBorder: "border-amber-200/60" },
   blue: { dot: "bg-blue-500", iconBg: "bg-blue-100 text-blue-600", pillBg: "bg-blue-50 text-blue-700 border-blue-200", ring: "ring-blue-200", activeBorder: "border-blue-200/60" },
+  indigo: { dot: "bg-indigo-500", iconBg: "bg-indigo-100 text-indigo-600", pillBg: "bg-indigo-50 text-indigo-700 border-indigo-200", ring: "ring-indigo-200", activeBorder: "border-indigo-200/60" },
+  rose: { dot: "bg-rose-500", iconBg: "bg-rose-100 text-rose-600", pillBg: "bg-rose-50 text-rose-700 border-rose-200", ring: "ring-rose-200", activeBorder: "border-rose-200/60" },
+  teal: { dot: "bg-teal-500", iconBg: "bg-teal-100 text-teal-600", pillBg: "bg-teal-50 text-teal-700 border-teal-200", ring: "ring-teal-200", activeBorder: "border-teal-200/60" },
+  fuchsia: { dot: "bg-fuchsia-500", iconBg: "bg-fuchsia-100 text-fuchsia-600", pillBg: "bg-fuchsia-50 text-fuchsia-700 border-fuchsia-200", ring: "ring-fuchsia-200", activeBorder: "border-fuchsia-200/60" },
 };
 
 /* ═══════════════════════════════════════════════════════════════
@@ -173,7 +189,7 @@ function IndustryCard({
       onClick={onClick}
       aria-pressed={isActive}
       className={`
-        group relative w-full text-left rounded-2xl transition-all duration-300 cursor-pointer
+        group relative w-full shrink-0 text-left rounded-2xl transition-all duration-300 cursor-pointer
         border overflow-hidden
         ${isActive
           ? `bg-white/90 shadow-lg backdrop-blur-2xl ${c.activeBorder}`
@@ -317,7 +333,7 @@ function DetailPanel({ industry }: { industry: (typeof industries)[0] }) {
               </div>
               <div>
                 <p className="text-lg font-extrabold text-slate-900 leading-tight">{industry.label}</p>
-                <p className="text-xs font-semibold text-slate-400 mt-0.5">{industry.tagline}</p>
+                <p className="text-xs font-semibold text-slate-500 mt-0.5">{industry.tagline}</p>
               </div>
             </div>
             <button
@@ -387,6 +403,25 @@ function IndustrySection() {
   const activeIndustry = industries.find((i) => i.id === activeId)!;
   const detailPanelRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
+
+  // Scrollable industry list — the list is height-capped and scrolls, so any
+  // number of industries can be added in the JSON without breaking the layout.
+  const listRef = useRef<HTMLDivElement>(null);
+  const [listAtTop, setListAtTop] = useState(true);
+  const [listAtBottom, setListAtBottom] = useState(false);
+
+  const measureList = useCallback(() => {
+    const el = listRef.current;
+    if (!el) return;
+    setListAtTop(el.scrollTop <= 4);
+    setListAtBottom(el.scrollTop + el.clientHeight >= el.scrollHeight - 4);
+  }, []);
+
+  useEffect(() => {
+    measureList();
+    window.addEventListener("resize", measureList);
+    return () => window.removeEventListener("resize", measureList);
+  }, [measureList]);
 
   // Detect mobile/tablet viewport
   useEffect(() => {
@@ -501,19 +536,51 @@ function IndustrySection() {
           transition={{ delay: 0.2, duration: 0.55, ease: "easeOut" }}
           className="grid grid-cols-1 lg:grid-cols-5 gap-3 lg:gap-5 items-start"
         >
-          {/* Left list */}
-          <div className="lg:col-span-2 flex flex-col gap-2">
-            {industries.map((industry, index) => (
-              <IndustryCard
-                key={industry.id}
-                industry={industry}
-                isActive={activeId === industry.id}
-                onClick={() => handleSelect(industry.id)}
-                index={index}
-                hasInteracted={hasInteracted}
-                isMobile={isMobile}
+          {/* Left list — height-capped scroll area so any number of industries fits */}
+          <div className="lg:col-span-2 flex flex-col gap-2 min-w-0">
+            <div className="relative">
+              {/* Top fade — appears once the list has been scrolled */}
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-x-0 top-0 z-20 h-10 bg-gradient-to-b from-[#f0f2fc] to-transparent transition-opacity duration-300"
+                style={{ opacity: listAtTop ? 0 : 1 }}
               />
-            ))}
+              {/* Bottom fade + hint — visible while more industries remain below */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex h-14 items-end justify-center bg-gradient-to-t from-[#f0f2fc] to-transparent transition-opacity duration-300"
+                style={{ opacity: listAtBottom ? 0 : 1 }}
+              >
+                <motion.span
+                  animate={{ y: [0, 3, 0] }}
+                  transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+                  className="mb-1 flex items-center gap-1 rounded-full border border-violet-200/60 bg-white/80 px-2.5 py-0.5 text-[10px] font-bold text-violet-500 shadow-sm backdrop-blur-sm"
+                >
+                  <ChevronDown className="h-3 w-3" />
+                  more industries
+                </motion.span>
+              </div>
+
+              <div
+                ref={listRef}
+                onScroll={measureList}
+                role="listbox"
+                aria-label="Industries we support — scroll for more"
+                className="eb-no-scrollbar flex max-h-[360px] flex-col gap-2 overflow-y-auto scroll-smooth pr-1 sm:max-h-[420px] lg:max-h-[430px]"
+              >
+                {industries.map((industry, index) => (
+                  <IndustryCard
+                    key={industry.id}
+                    industry={industry}
+                    isActive={activeId === industry.id}
+                    onClick={() => handleSelect(industry.id)}
+                    index={index}
+                    hasInteracted={hasInteracted}
+                    isMobile={isMobile}
+                  />
+                ))}
+              </div>
+            </div>
 
             {/* On mobile: visual connector showing detail panel is below */}
             <AnimatePresence>
@@ -551,7 +618,7 @@ function IndustrySection() {
               <TrendingUp className="h-3.5 w-3.5 text-slate-400 shrink-0" />
               <div>
                 <p className="text-xs font-bold text-slate-500">{featuresData.industrySection.comingSoon.label}</p>
-                <p className="text-[11px] text-slate-400 font-medium mt-0.5">{featuresData.industrySection.comingSoon.subtitle}</p>
+                <p className="text-[11px] text-slate-500 font-medium mt-0.5">{featuresData.industrySection.comingSoon.subtitle}</p>
               </div>
             </motion.div>
           </div>

@@ -1,7 +1,7 @@
 {
-  "badge": "Why Expendesk",
+  "badge": "Your business deserves better expense management.",
   "heading": { "lead": "Why Businesses", "highlight": "Choose Expendesk" },
-  "subheading": "From spreadsheet chaos to complete financial control — compare the old way with Expendesk, line by line.",
+  "subheading": "Expense Management That Helps Your Business Grow Smarter.",
   "columns": {
     "aspect": "Capability",
     "before": { "label": "Traditional Process", "caption": "The manual way" },
@@ -9,71 +9,80 @@
   },
   "comparisons": [
     {
-      "id": "workflows",
-      "aspect": "Workflows",
-      "before": "Manual spreadsheets",
+      "id": "admin-work",
+      "aspect": "Reduce Administrative Work",
+      "before": "Repetitive processes",
       "after": "Automated workflows",
       "icon": "Workflow",
-      "detail": "Every expense flows through smart, rule-based automation — zero spreadsheet wrangling.",
+      "detail": "Automate repetitive expense processes so finance teams can focus on strategic priorities.",
       "metric": "90%",
       "metricLabel": "less manual work"
     },
     {
-      "id": "approvals",
-      "aspect": "Approvals",
-      "before": "Delayed approvals",
-      "after": "Instant routing",
-      "icon": "Zap",
-      "detail": "Claims reach the right approver in seconds, not days.",
-      "metric": "10×",
-      "metricLabel": "faster approvals"
+      "id": "employee-experience",
+      "aspect": "Improve Employee Experience",
+      "before": "Slow reimbursements",
+      "after": "Faster payouts",
+      "icon": "Wallet",
+      "detail": "Help employees submit expenses quickly and receive reimbursements faster.",
+      "metric": "3×",
+      "metricLabel": "faster payouts"
     },
     {
-      "id": "receipts",
-      "aspect": "Receipts",
-      "before": "Lost receipts",
-      "after": "Digital capture",
-      "icon": "Camera",
-      "detail": "Snap, upload, and never lose a single receipt again.",
-      "metric": "100%",
-      "metricLabel": "capture rate"
-    },
-    {
-      "id": "visibility",
-      "aspect": "Visibility",
+      "id": "spend-visibility",
+      "aspect": "Gain Complete Spend Visibility",
       "before": "Limited visibility",
-      "after": "Real-time dashboards",
+      "after": "One real-time dashboard",
       "icon": "BarChart3",
-      "detail": "See exactly where every rupee flows, the moment it moves.",
+      "detail": "Track expenses across teams, departments, projects, and locations from one dashboard.",
       "metric": "360°",
       "metricLabel": "spend visibility"
     },
     {
-      "id": "policy",
-      "aspect": "Policy control",
+      "id": "financial-control",
+      "aspect": "Improve Financial Control",
+      "before": "Budget overruns",
+      "after": "Proactive monitoring",
+      "icon": "Gauge",
+      "detail": "Monitor spending before it exceeds budgets and identify cost-saving opportunities.",
+      "metric": "24/7",
+      "metricLabel": "budget monitoring"
+    },
+    {
+      "id": "compliance",
+      "aspect": "Strengthen Compliance",
       "before": "Policy violations",
-      "after": "Automated enforcement",
+      "after": "Built-in enforcement",
       "icon": "ShieldCheck",
-      "detail": "Out-of-policy spend is flagged before it ever hits payout.",
+      "detail": "Ensure every expense follows company policies with built-in approval workflows.",
       "metric": "99.8%",
       "metricLabel": "compliance rate"
     },
     {
-      "id": "reimburse",
-      "aspect": "Reimbursements",
-      "before": "Slow reimbursements",
-      "after": "Faster processing",
-      "icon": "Wallet",
-      "detail": "Employees get paid faster with zero manual follow-ups.",
-      "metric": "3×",
-      "metricLabel": "faster payouts"
+      "id": "scale",
+      "aspect": "Scale with Confidence",
+      "before": "Growing manual effort",
+      "after": "Effortless scaling",
+      "icon": "TrendingUp",
+      "detail": "Support growing teams, multiple offices, and increasing expense volumes without increasing manual effort.",
+      "metric": "Zero",
+      "metricLabel": "extra manual effort"
     }
   ],
   "cta": {
-    "heading": "Stop Managing Expenses. Start Controlling Them.",
-    "body": "Your business deserves more than spreadsheets, emails, and reimbursement chaos. Expendesk gives growing businesses the visibility, automation, and control needed to scale confidently.",
-    "prompt": "Ready to see Expendesk in action?",
-    "button": "Book Your Free Demo",
+    "heading": "Every Expense Tells a Story.",
+    "subheading": "Make Sure Yours Leads to Better Business Decisions.",
+    "body": "Growing businesses shouldn't lose time and money to manual expense processes.",
+    "highlights": [
+      "Automate reimbursements",
+      "Improve visibility",
+      "Strengthen financial control",
+      "Scale with confidence"
+    ],
+    "prompt": "Ready to Transform Your Expense Management?",
+    "button": "Book a Free Demo",
+    "buttonHref": "/contact-us",
+    "secondaryButton": { "label": "Download the Free Expense Management Guide", "href": "/#lead-magnet" },
     "trustPoints": ["No obligation", "No complicated setup"],
     "note": "Just a smarter way to manage business expenses."
   }

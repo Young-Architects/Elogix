@@ -69,14 +69,14 @@
     ]
   },
   "industrySection": {
-    "badge": "By Industry",
-    "headline": "Built for the Way Your Industry Operates.",
-    "headlineParts": { "pre": "Built for the Way ", "accent": "Your Industry Operates." },
-    "subheading": "Every business manages expenses differently. Expendesk adapts to your workflow — not the other way around.",
+    "badge": "Built for Growing Businesses",
+    "headline": "Designed for the Way Modern Businesses Operate.",
+    "headlineParts": { "pre": "Designed for the Way ", "accent": "Modern Businesses Operate." },
+    "subheading": "Whether you're managing field teams, multiple branches, client projects, or distributed workforces, Expendesk adapts to your business.",
     "featurePills": ["Auto-approvals", "Real-time tracking", "Policy engine", "Audit logs"],
     "comingSoon": {
-      "label": "More industries coming soon",
-      "subtitle": "Healthcare, E-commerce, Non-profits & more"
+      "label": "…and more",
+      "subtitle": "Expendesk adapts to any growing business"
     },
     "interactionHints": {
       "mobile": "Tap any industry — details appear below",
@@ -85,14 +85,14 @@
     },
     "industries": [
       {
-        "id": "digital-agencies",
-        "iconKey": "monitor",
-        "label": "Digital Agencies",
-        "tagline": "Project-level expense clarity",
-        "description": "Track project expenses, client-related costs, and team spending — all scoped to individual engagements.",
+        "id": "pharmaceutical",
+        "iconKey": "pill",
+        "label": "Pharmaceutical Companies",
+        "tagline": "Field-force expenses, compliant",
+        "description": "Manage medical rep travel, field visits, and event spend — with policy checks built for regulated industries.",
         "stats": [
-          { "value": "40%",  "label": "Less admin time"     },
-          { "value": "100%", "label": "Project visibility"  }
+          { "value": "100%", "label": "Audit-ready claims"   },
+          { "value": "3×",   "label": "Faster field claims"  }
         ],
         "color": "violet",
         "accentFrom": "#7c3aed",
@@ -101,14 +101,30 @@
         "badge": "Most Popular"
       },
       {
-        "id": "it-tech",
-        "iconKey": "cpu",
-        "label": "IT & Technology",
-        "tagline": "Distributed-team finance ops",
-        "description": "Manage distributed teams, travel expenses, and operational budgets with automated policy enforcement.",
+        "id": "manufacturing",
+        "iconKey": "factory",
+        "label": "Manufacturing Companies",
+        "tagline": "Plant-to-plant spend control",
+        "description": "Track expenses across plants, warehouses, and procurement teams — every site inside one budget view.",
         "stats": [
-          { "value": "3×",  "label": "Faster reimbursements" },
-          { "value": "99%", "label": "Policy compliance"     }
+          { "value": "38%",  "label": "Lower overruns"  },
+          { "value": "100%", "label": "Site visibility" }
+        ],
+        "color": "amber",
+        "accentFrom": "#d97706",
+        "accentTo": "#fbbf24",
+        "glowColor": "rgba(245,158,11,0.15)",
+        "badge": null
+      },
+      {
+        "id": "fmcg",
+        "iconKey": "package",
+        "label": "FMCG Businesses",
+        "tagline": "High-volume expenses, automated",
+        "description": "Handle high-volume distributor visits, trade promotions, and field sales expenses without spreadsheet chaos.",
+        "stats": [
+          { "value": "10×",  "label": "Faster processing" },
+          { "value": "100%", "label": "Receipt capture"   }
         ],
         "color": "emerald",
         "accentFrom": "#059669",
@@ -117,19 +133,19 @@
         "badge": null
       },
       {
-        "id": "consulting",
-        "iconKey": "briefcase",
-        "label": "Consulting Firms",
-        "tagline": "Client profitability, in focus",
-        "description": "Control client expenses, reimbursements, and project profitability across every engagement.",
+        "id": "logistics",
+        "iconKey": "truck",
+        "label": "Logistics Companies",
+        "tagline": "On-the-road spend, tracked live",
+        "description": "Fuel, tolls, and driver allowances captured on the move — reconciled automatically at every hub.",
         "stats": [
-          { "value": "60%",  "label": "Faster approvals" },
-          { "value": "Zero", "label": "Missed receipts"  }
+          { "value": "24/7", "label": "Mobile capture"        },
+          { "value": "70%",  "label": "Faster reimbursements" }
         ],
-        "color": "amber",
-        "accentFrom": "#d97706",
-        "accentTo": "#fbbf24",
-        "glowColor": "rgba(245,158,11,0.15)",
+        "color": "blue",
+        "accentFrom": "#2563eb",
+        "accentTo": "#60a5fa",
+        "glowColor": "rgba(59,130,246,0.15)",
         "badge": null
       },
       {
@@ -142,10 +158,58 @@
           { "value": "5min", "label": "Avg. submission" },
           { "value": "Live", "label": "Budget tracking" }
         ],
-        "color": "blue",
-        "accentFrom": "#2563eb",
-        "accentTo": "#60a5fa",
-        "glowColor": "rgba(59,130,246,0.15)",
+        "color": "indigo",
+        "accentFrom": "#4f46e5",
+        "accentTo": "#818cf8",
+        "glowColor": "rgba(79,70,229,0.15)",
+        "badge": null
+      },
+      {
+        "id": "consulting",
+        "iconKey": "briefcase",
+        "label": "Consulting Firms",
+        "tagline": "Client profitability, in focus",
+        "description": "Control client expenses, reimbursements, and project profitability across every engagement.",
+        "stats": [
+          { "value": "60%",  "label": "Faster approvals" },
+          { "value": "Zero", "label": "Missed receipts"  }
+        ],
+        "color": "rose",
+        "accentFrom": "#e11d48",
+        "accentTo": "#fb7185",
+        "glowColor": "rgba(225,29,72,0.14)",
+        "badge": null
+      },
+      {
+        "id": "healthcare",
+        "iconKey": "heart-pulse",
+        "label": "Healthcare Organizations",
+        "tagline": "Multi-branch spend, unified",
+        "description": "Unify expenses across clinics, departments, and care teams — with approvals that respect your hierarchy.",
+        "stats": [
+          { "value": "100%", "label": "Policy compliance" },
+          { "value": "2×",   "label": "Faster closing"    }
+        ],
+        "color": "teal",
+        "accentFrom": "#0d9488",
+        "accentTo": "#2dd4bf",
+        "glowColor": "rgba(13,148,136,0.15)",
+        "badge": null
+      },
+      {
+        "id": "retail",
+        "iconKey": "shopping-bag",
+        "label": "Retail Businesses",
+        "tagline": "Every store, one dashboard",
+        "description": "Monitor store-level expenses, petty cash, and vendor payments across every outlet in real time.",
+        "stats": [
+          { "value": "Live", "label": "Store-level view" },
+          { "value": "40%",  "label": "Less admin time"  }
+        ],
+        "color": "fuchsia",
+        "accentFrom": "#c026d3",
+        "accentTo": "#e879f9",
+        "glowColor": "rgba(192,38,211,0.14)",
         "badge": null
       }
     ]

@@ -71,9 +71,13 @@ export interface WhyExpendeskData {
   comparisons: WhyComparison[];
   cta: {
     heading: string;
+    subheading: string;
     body: string;
+    highlights: string[];
     prompt: string;
     button: string;
+    buttonHref: string;
+    secondaryButton: { label: string; href: string };
     trustPoints: string[];
     note: string;
   };

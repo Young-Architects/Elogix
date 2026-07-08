@@ -88,7 +88,7 @@ const ITEM_VARIANTS: Variants = {
 /* ------------------------------------------------------------------ */
 
 function ActionPanel({ panel }: { panel: FinalCtaPanel }) {
-  const { isPrimary, iconKey, eyebrow, title, description, buttonLabel } = panel;
+  const { isPrimary, iconKey, eyebrow, title, description, buttonLabel, href } = panel;
   const Icon = finalCtaIcons[iconKey];
 
   return (
@@ -127,6 +127,7 @@ function ActionPanel({ panel }: { panel: FinalCtaPanel }) {
       {/* Shared MagneticButton (both panels use white text — the component's
           default — so only the fill/border comes from className). */}
       <MagneticButton
+        href={href}
         type="button"
         variant="ghost"
         icon={<ArrowRight className="h-4 w-4" />}
