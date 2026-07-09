@@ -29,7 +29,12 @@ import type {
   ChatWebhookResponse,
 } from "@/types";
 
-const WEBHOOK_URL = process.env.NEXT_PUBLIC_N8N_CHAT_WEBHOOK_URL!;
+/**
+ * Our own server route, not the n8n webhook. It attaches the `x-chat-secret`
+ * header server-side so the shared secret never reaches the browser.
+ * See `src/app/api/chat/route.ts`.
+ */
+const CHAT_ENDPOINT = "/api/chat";
 const RATE_LIMIT_MS = 2500;
 const STORAGE_KEY = "expendesk_visitor_id";
 /** How long the assistant "types" before revealing its greeting on load. */
@@ -156,15 +161,13 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
     setIsCoolingDown(true);
     setTimeout(() => setIsCoolingDown(false), RATE_LIMIT_MS);
 
-    const visitorId = visitorIdRef.current;
     const payload: ChatWebhookRequest = {
-      sessionId: visitorId,
+      sessionId: visitorIdRef.current,
       message: text,
-      visitorId,
     };
 
     try {
-      const res = await fetch(WEBHOOK_URL, {
+      const res = await fetch(CHAT_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

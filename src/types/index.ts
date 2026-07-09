@@ -40,7 +40,6 @@ export interface ChatMessage {
 export interface ChatWebhookRequest {
   sessionId: string;
   message: string;
-  visitorId: string;
 }
 
 export interface ChatWebhookResponse {
