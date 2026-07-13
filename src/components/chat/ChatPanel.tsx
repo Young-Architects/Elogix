@@ -16,6 +16,17 @@ import { motion } from "framer-motion";
 import { Send, X } from "lucide-react";
 import { useChat } from "./ChatProvider";
 
+/**
+ * Predefined conversation starters, shown under the greeting until the
+ * visitor sends their first message. Each chip submits its text as a normal
+ * user message via `sendQuickQuestion`.
+ */
+const QUICK_QUESTIONS = [
+  "What is Expendesk?",
+  "How does pricing work?",
+  "How do I book a free demo?",
+] as const;
+
 function TypingDots() {
   return (
     <div className="flex items-center gap-1 px-3 py-2.5">
@@ -41,10 +52,24 @@ export default function ChatPanel({
 }: {
   variant: "docked" | "floating";
 }) {
-  const { messages, input, setInput, isLoading, isBooting, canSend, sendMessage, setOpen } =
-    useChat();
+  const {
+    messages,
+    input,
+    setInput,
+    isLoading,
+    isBooting,
+    canSend,
+    sendMessage,
+    sendQuickQuestion,
+    setOpen,
+  } = useChat();
 
   const showTyping = isLoading || isBooting;
+
+  // Quick questions are conversation starters — hide them for good the moment
+  // the visitor sends anything themselves (typed or via a chip).
+  const showQuickQuestions =
+    !isBooting && !messages.some((m) => m.role === "user");
 
   const listRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -128,6 +153,28 @@ export default function ChatPanel({
           </div>
         ))}
 
+        {/* ── Predefined quick questions ── */}
+        {showQuickQuestions && (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-wrap gap-2 pt-1"
+          >
+            {QUICK_QUESTIONS.map((question) => (
+              <button
+                key={question}
+                type="button"
+                onClick={() => sendQuickQuestion(question)}
+                disabled={isLoading}
+                className="rounded-full border border-indigo-400/25 bg-indigo-500/[0.08] px-3 py-1.5 text-[11.5px] font-medium text-indigo-300 transition-colors duration-200 hover:border-indigo-400/50 hover:bg-indigo-500/[0.16] hover:text-indigo-200 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-400"
+              >
+                {question}
+              </button>
+            ))}
+          </motion.div>
+        )}
+
         {showTyping && (
           <div className="flex justify-start">
             <div className="rounded-xl border border-white/[0.06] bg-white/[0.03]">
@@ -161,8 +208,9 @@ export default function ChatPanel({
             <Send className="h-3.5 w-3.5" />
           </button>
         </div>
-        <p className="mt-1.5 text-center text-[10.5px] text-slate-600">
-          Powered by Expendesk AI
+        <p className="mt-1.5 text-center text-[11px] font-semibold text-slate-300">
+          Expendesk AI can make mistakes. Please verify important details with
+          our team.
         </p>
       </div>
     </div>

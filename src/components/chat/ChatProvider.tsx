@@ -69,6 +69,8 @@ interface ChatContextValue {
   isBooting: boolean;
   canSend: boolean;
   sendMessage: () => void;
+  /** Sends a predefined quick question as if the visitor had typed it. */
+  sendQuickQuestion: (text: string) => void;
   // Floating widget open/closed state
   isOpen: boolean;
   setOpen: (v: boolean) => void;
@@ -144,8 +146,13 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => () => observerRef.current?.disconnect(), []);
 
-  const sendMessage = useCallback(async () => {
-    const text = input.trim();
+  /**
+   * Core send path shared by the composer (`sendMessage`) and the predefined
+   * quick-question chips (`sendQuickQuestion`). Does NOT touch the input box —
+   * callers decide whether to clear it.
+   */
+  const submitText = useCallback(async (raw: string) => {
+    const text = raw.trim();
     if (!text || isLoading || isCoolingDown || isBooting) return;
 
     const userMsg: ChatMessage = {
@@ -156,7 +163,6 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
     };
 
     setMessages((prev) => [...prev, userMsg]);
-    setInput("");
     setIsLoading(true);
     setIsCoolingDown(true);
     setTimeout(() => setIsCoolingDown(false), RATE_LIMIT_MS);
@@ -197,7 +203,19 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
     } finally {
       setIsLoading(false);
     }
-  }, [input, isLoading, isCoolingDown, isBooting]);
+  }, [isLoading, isCoolingDown, isBooting]);
+
+  const sendMessage = useCallback(() => {
+    setInput("");
+    void submitText(input);
+  }, [input, submitText]);
+
+  const sendQuickQuestion = useCallback(
+    (text: string) => {
+      void submitText(text);
+    },
+    [submitText],
+  );
 
   const canSend =
     input.trim().length > 0 && !isLoading && !isCoolingDown && !isBooting;
@@ -211,13 +229,14 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
       isBooting,
       canSend,
       sendMessage,
+      sendQuickQuestion,
       isOpen,
       setOpen: setIsOpen,
       toggleOpen: () => setIsOpen((o) => !o),
       heroInView,
       registerDock,
     }),
-    [messages, input, isLoading, isBooting, canSend, sendMessage, isOpen, heroInView, registerDock],
+    [messages, input, isLoading, isBooting, canSend, sendMessage, sendQuickQuestion, isOpen, heroInView, registerDock],
   );
 
   return <ChatContext.Provider value={value}>{children}</ChatContext.Provider>;
