@@ -279,8 +279,10 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.58, delay: 0.88 }}
             >
-              {/* Primary CTA */}
-              <motion.button
+              {/* Primary CTA — downloads the audit checklist PDF */}
+              <motion.a
+                href={hero.ctaPrimaryHref}
+                download
                 className="group relative overflow-hidden px-7 py-[13px] rounded-xl font-semibold text-[13.5px] text-white flex items-center justify-center gap-2.5"
                 style={{
                   background:
@@ -317,10 +319,11 @@ export default function HeroSection() {
                   />
                 </svg>
                 <span className="relative z-10">{hero.ctaPrimary}</span>
-              </motion.button>
+              </motion.a>
 
-              {/* Secondary CTA */}
-              <motion.button
+              {/* Secondary CTA — checklist + schedule an assessment call */}
+              <motion.a
+                href={hero.ctaSecondaryHref}
                 className="px-7 py-[13px] rounded-xl font-semibold text-[13.5px] text-violet-700 flex items-center justify-center gap-2.5 transition-all duration-200"
                 style={{
                   border: "1.5px solid rgba(124,58,237,0.26)",
@@ -348,7 +351,7 @@ export default function HeroSection() {
                   />
                 </svg>
                 {hero.ctaSecondary}
-              </motion.button>
+              </motion.a>
             </motion.div>
 
             {/* Trust strip */}

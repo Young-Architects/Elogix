@@ -8,6 +8,11 @@ export const content = {
   description:
     "Keep every plant, facility, and department on budget. Expendesk gives manufacturing teams granular cost control without slowing down operations.",
   cta: { label: "Book a Demo", href: "/contact-us" },
+  comingSoon: {
+    title: "The full Manufacturing page is on its way",
+    message:
+      "We're building out the complete deep-dive for manufacturing teams — industry challenges, workflows, and resources. In the meantime, book a demo to see Expendesk in action today.",
+  },
   benefits: {
     heading: "Built for Manufacturing Operations",
     items: [

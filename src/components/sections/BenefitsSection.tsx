@@ -75,6 +75,7 @@ export interface SectionContent {
     eyebrow: string;
     body: string;
     buttonLabel: string;
+    buttonHref: string;
   };
 }
 
@@ -982,6 +983,7 @@ export default function BenefitsSection() {
           </div>
 
           <MagneticButton
+            href={SECTION_CONTENT.cta.buttonHref}
             variant="primary"
             className="shrink-0 whitespace-nowrap rounded-full px-5.5 py-2.75 text-[12px]"
             icon={<ArrowRight size={14} aria-hidden />}

@@ -45,18 +45,18 @@
         { "label": "Industries",  "href": "/solutions" },
         { "label": "Resources",   "href": "/resources" },
         { "label": "Blogs",       "href": "/resources/blogs" },
-        { "label": "Pricing",     "href": "/#pricing" },
+        { "label": "Pricing",     "href": "/pricing" },
         { "label": "Contact Us",  "href": "/contact-us" },
         { "label": "Book a Demo", "href": "/contact-us" }
       ]
     }
   ],
   "socials": [
-    { "iconKey": "linkedin",  "label": "LinkedIn",  "href": "#linkedin" },
-    { "iconKey": "youtube",   "label": "YouTube",   "href": "#youtube" },
-    { "iconKey": "facebook",  "label": "Facebook",  "href": "#facebook" },
-    { "iconKey": "instagram", "label": "Instagram", "href": "#instagram" },
-    { "iconKey": "x",         "label": "X",         "href": "#x" }
+    { "iconKey": "linkedin",  "label": "LinkedIn",  "href": "https://www.linkedin.com/company/expendesk" },
+    { "iconKey": "youtube",   "label": "YouTube",   "href": "https://www.youtube.com/@expendesk" },
+    { "iconKey": "facebook",  "label": "Facebook",  "href": "https://www.facebook.com/expendesk" },
+    { "iconKey": "instagram", "label": "Instagram", "href": "https://www.instagram.com/expendesk" },
+    { "iconKey": "x",         "label": "X",         "href": "https://x.com/expendesk" }
   ],
   "legal": [
     { "label": "Terms of Service", "href": "/legal/terms" },

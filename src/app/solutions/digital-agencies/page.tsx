@@ -10,6 +10,7 @@
  */
 import type { Metadata } from "next";
 import MagneticButton from "@/components/ui/MagneticButton";
+import ComingSoonSection from "@/components/ui/ComingSoonSection";
 import { content } from "./_data/content";
 
 export const metadata: Metadata = {
@@ -41,6 +42,12 @@ export default function DigitalAgenciesSolutionPage() {
           {content.cta.label}
         </MagneticButton>
       </section>
+
+      {/* Placeholder for the full industry deep-dive (still being built) */}
+      <ComingSoonSection
+        title={content.comingSoon.title}
+        message={content.comingSoon.message}
+      />
 
       {/* Key benefits */}
       <section className="mx-auto max-w-5xl px-6 py-20">

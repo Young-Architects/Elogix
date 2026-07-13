@@ -600,6 +600,7 @@ export default function ProblemSection() {
           </div>
  
           <MagneticButton
+            href={problemData.bottomCta.buttonHref}
             variant="primary"
             className="shrink-0 rounded-full px-7 py-3.5 text-sm shadow-lg shadow-violet-300/40"
             icon={<span className="inline-block">➤</span>}

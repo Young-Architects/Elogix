@@ -22,7 +22,11 @@ export interface HeroContent {
   };
   benefits: string[];
   ctaPrimary: string;
+  /** Where the primary CTA points (the checklist PDF — triggers a download). */
+  ctaPrimaryHref: string;
   ctaSecondary: string;
+  /** Where the secondary CTA points (the contact page, to schedule). */
+  ctaSecondaryHref: string;
   trustedByLabel: string;
   trustTags: string[];
   /** Micro-label on the scroll-down nudge. */

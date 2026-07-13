@@ -106,11 +106,15 @@ function DockIcon({
   const sizeSync = useTransform(distance, [-RANGE, 0, RANGE], [ICON_BASE, ICON_MAX, ICON_BASE]);
   const size = useSpring(sizeSync, DOCK_SPRING);
 
+  // Social profiles are external — open them in a new tab so the site stays up.
+  const isExternal = href.startsWith("http");
+
   return (
     <Link
       ref={ref}
       href={href}
       aria-label={label}
+      {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className="relative flex shrink-0 items-center justify-center outline-none"

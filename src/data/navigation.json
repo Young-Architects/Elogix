@@ -15,7 +15,7 @@
         { "iconKey": "message-circle", "label": "Testimonials",  "desc": "What customers say",           "href": "/#testimonials"   },
         { "iconKey": "help-circle",    "label": "FAQ",           "desc": "Answers to common questions",  "href": "/#faq"            },
         { "iconKey": "award",          "label": "Why Expendesk", "desc": "Our story & mission",          "href": "/#why-expendesk"  },
-        { "iconKey": "panel-bottom",   "label": "Footer",        "desc": "Links, contact & socials",     "href": "/#footer"         }
+        { "iconKey": "panel-bottom",   "label": "More Links",        "desc": "Links, contact & socials",     "href": "/#footer"         }
       ]
     },
     {
@@ -27,7 +27,7 @@
         { "iconKey": "bar-chart-2", "label": "Expense Management for Digital Agencies",          "desc": "Track project budgets & client billing with precision",   "href": "/solutions/digital-agencies" }
       ]
     },
-    { "label": "Pricing",  "href": "#pricing"  },
+    { "label": "Pricing",  "href": "/pricing"  },
     {
       "label": "Resources",
       "href": "/resources",

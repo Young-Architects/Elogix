@@ -8,6 +8,11 @@ export const content = {
   description:
     "Stop losing margin to untracked spend. Expendesk lets agencies link every expense to a project and client — so billing is accurate and profitability is always clear.",
   cta: { label: "Book a Demo", href: "/contact-us" },
+  comingSoon: {
+    title: "The full Digital Agencies page is on its way",
+    message:
+      "We're building out the complete deep-dive for agency teams — industry challenges, workflows, and resources. In the meantime, book a demo to see Expendesk in action today.",
+  },
   benefits: {
     heading: "Built for Agency Workflows",
     items: [

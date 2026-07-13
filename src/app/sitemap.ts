@@ -17,12 +17,33 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
+      url: `${SITE_URL}/pricing`,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: `${SITE_URL}/contact-us`,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${SITE_URL}/contact-sales`,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    // Industry landing pages (the /solutions hub itself is noindex'd until built)
+    {
+      url: `${SITE_URL}/solutions/pharmaceutical`,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/solutions/manufacturing`,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/solutions/digital-agencies`,
       changeFrequency: 'monthly',
       priority: 0.7,
     },

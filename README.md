@@ -34,7 +34,20 @@ src/
 │   ├── robots.ts                   # robots.txt (allow all, disallow /api/) + sitemap pointer
 │   ├── sitemap.ts                  # sitemap.xml: static routes + every published blog post (from the WP API)
 │   ├── api/
+│   │   ├── chat/route.ts           # POST endpoint the Expendesk AI chat widget talks to
 │   │   └── revalidate/route.ts     # POST webhook: WordPress → on-demand ISR purge (secret-guarded)
+│   ├── contact-us/                 # Contact hub: routing cards (Sales → /contact-sales, chat → AI widget)
+│   │   ├── _components/            # ContactHeroSection · ContactSupportSection
+│   │   ├── _data/content.ts        # Page copy
+│   │   └── page.tsx
+│   ├── contact-sales/              # Sales lead-capture page (the "Book a Free Demo" target)
+│   │   ├── _components/            # ContactSalesSection · SalesForm (webhook POST or simulated success)
+│   │   ├── _data/content.ts        # Page copy + form options
+│   │   └── page.tsx
+│   ├── pricing/                    # Plans page from the GTM sheet (placeholder prices flagged in _data)
+│   │   ├── _components/            # PricingHeroSection · PricingPlansSection · PricingFaqSection · PricingFinalCtaSection
+│   │   ├── _data/content.ts        # ALL pricing copy: hero, plan cards, FAQ, final CTA
+│   │   └── page.tsx
 │   ├── solutions/                  # Per-industry SEO landing pages (copy in each page's _data/)
 │   │   ├── page.tsx                # /solutions hub index → <ComingSoon /> (footer links here)
 │   │   ├── digital-agencies/
@@ -105,6 +118,7 @@ src/
 │   └── ui/
 │       ├── MagneticButton.tsx      # Shared magnetic CTA (cursor-follow, gradient variants)
 │       ├── ComingSoon.tsx          # Shared placeholder page body for unbuilt routes (title/message props)
+│       ├── ComingSoonSection.tsx   # Inline "coming soon" banner for partially built pages (manufacturing / digital-agencies)
 │       └── ScrollBeamDivider.tsx   # Shared animated section divider
 │
 ├── data/
@@ -123,6 +137,11 @@ src/
 └── types/
     ├── blog.ts                     # Blog-to-JSON API schema (ContentBlock union, BlogPost, list response)
     └── index.ts                    # Shared TypeScript interfaces (Testimonial, Chat*, Why*)
+
+public/
+├── placeholder-ebook.pdf           # PLACEHOLDER lead-magnet guide — swap for the real PDF before launch
+└── downloads/
+    └── pharma-expense-audit-checklist-demo.pdf   # PLACEHOLDER pharma checklist — swap before launch
 
 wordpress/
 └── blog-to-json-webhook.php        # WP plugin: pings /api/revalidate on publish/update/delete (install on the WP site)

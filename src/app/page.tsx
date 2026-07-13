@@ -66,8 +66,8 @@ export default function Home() {
       <LeadMagnetSection />
       <ComparisonSection />
       <TestimonialsSection />
-      <FaqSection />
       <WhyExpendesk />
+      <FaqSection />
     </main>
   );
 }
