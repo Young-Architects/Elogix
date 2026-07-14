@@ -89,13 +89,15 @@ export default function BookingCalendarSection() {
           {bookingHero.eyebrow}
         </motion.span>
 
+        {/* max-w-4xl (not 3xl) + no text-balance so the lead fits on a single
+            line at lg:text-6xl; the gradient accent gets its own line. */}
         <motion.h1
           id="booking-hero-heading"
           variants={ITEM_VARIANTS}
-          className="mt-5 max-w-3xl text-balance text-4xl font-extrabold leading-[1.08] tracking-tight text-slate-900 sm:text-5xl lg:text-6xl"
+          className="mt-5 max-w-4xl text-4xl font-extrabold leading-[1.08] tracking-tight text-slate-900 sm:text-5xl lg:text-6xl"
         >
           {bookingHero.heading.lead}
-          <span className="bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500 bg-clip-text text-transparent">
+          <span className="block bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500 bg-clip-text text-transparent">
             {bookingHero.heading.accent}
           </span>
         </motion.h1>
