@@ -10,7 +10,7 @@
  *
  * Tiers above Growth show an "Everything in X, plus:" lead-in before their
  * feature list (mirrors the GTM sheet's comparison table). Every card's CTA
- * is Book a Free Demo → /contact-sales (the sales form page).
+ * is Book a Free Demo → /contact-us (the demo booking calendar).
  *
  * All plan data (placeholder prices + features) lives in ../_data/content.ts;
  * this file is presentation only.

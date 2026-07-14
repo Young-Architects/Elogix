@@ -1,7 +1,8 @@
 /**
- * Copy + form configuration for the /contact-sales page, consumed by the
- * components in `../_components`. Keeping select options and copy here means
- * the form component stays pure presentation/validation logic.
+ * Copy + embed configuration for the /contact-sales page, consumed by the
+ * components in `../_components`. Lead capture runs through the embedded GHL
+ * "Contact Expendesk" form (see `salesFormEmbed`), so submissions land
+ * directly in the GHL CRM — no custom form/webhook code on our side.
  */
 
 /* ------------------------------------------------------------------ */
@@ -25,71 +26,14 @@ export const salesIntro = {
 } as const;
 
 /* ------------------------------------------------------------------ */
-/* Form configuration                                                  */
+/* Form embed                                                          */
 /* ------------------------------------------------------------------ */
 
-export const companySizeOptions = [
-  "1–10 employees",
-  "11–50 employees",
-  "51–200 employees",
-  "201–500 employees",
-  "500+ employees",
-] as const;
-
-export const countryOptions = [
-  "India",
-  "United States",
-  "United Kingdom",
-  "Australia",
-  "Belgium",
-  "Brazil",
-  "Canada",
-  "France",
-  "Germany",
-  "Ireland",
-  "Italy",
-  "Japan",
-  "Mexico",
-  "Netherlands",
-  "New Zealand",
-  "Poland",
-  "Portugal",
-  "Singapore",
-  "South Africa",
-  "Spain",
-  "Sweden",
-  "Switzerland",
-  "United Arab Emirates",
-  "Other",
-] as const;
-
-export const salesForm = {
-  consentLabel:
-    "I agree to be contacted by Expendesk for informational and marketing purposes according to the",
-  consentLinkLabel: "Privacy Policy",
-  consentLinkHref: "/legal/privacy",
-  submitLabel: "Submit form",
-  footnote: "No credit card required. No need to install software.",
-  success: {
-    heading: "Request received!",
-    body: "Thanks for reaching out — a market specialist will get back to you within 24 hours. In the meantime, feel free to explore how other teams use Expendesk.",
-    ctaLabel: "Explore case studies",
-    ctaHref: "/resources/case-studies",
-  },
-  errorBanner:
-    "Something went wrong while sending your request. Please try again in a moment.",
+/** GHL "Contact Expendesk" form embed config (LeadConnector widget). */
+export const salesFormEmbed = {
+  src: "https://link.youngarchitects.in/widget/form/rk4yf4oo9XFsnFZpo0cT",
+  formId: "rk4yf4oo9XFsnFZpo0cT",
+  iframeId: "inline-rk4yf4oo9XFsnFZpo0cT",
+  embedScriptSrc: "https://link.youngarchitects.in/js/form_embed.js",
+  title: "Contact Expendesk",
 } as const;
-
-/** Shape of the lead payload sent to the sales webhook. */
-export interface SalesLeadPayload {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  companySize: string;
-  country: string;
-  message: string;
-  consent: boolean;
-  submittedAt: string;
-  source: "contact-sales";
-}

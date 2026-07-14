@@ -1,9 +1,10 @@
 /**
- * /contact-sales — the sales lead-capture page, reached from the "Talk to
- * sales" card on /contact-us (mirrors the Spendesk contact-sales pattern).
+ * /contact-sales — the contact/lead-capture page, reached from the "Contact"
+ * links in the navbar and footer. Leads are captured by the embedded GHL
+ * "Contact Expendesk" form (demo bookings happen on /contact-us instead).
  *
  * Layout/copy structure matches the other marketing pages: components in
- * `./_components`, copy + form options in `./_data/content.ts`.
+ * `./_components`, copy + embed config in `./_data/content.ts`.
  */
 import type { Metadata } from "next";
 import ContactSalesSection from "./_components/ContactSalesSection";

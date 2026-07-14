@@ -6,7 +6,7 @@
  * "Start with the essentials. Scale as you grow." on the same dark canvas as
  * the solutions pages' final CTAs, so every marketing page closes with the
  * familiar dark bookend before the Footer. One centered CTA:
- * Book a Free Demo → /contact-sales.
+ * Book a Free Demo → /contact-us (the demo booking calendar).
  *
  * Copy lives in ../_data/content.ts; this file is presentation only.
  */

@@ -46,7 +46,7 @@
         { "label": "Resources",   "href": "/resources" },
         { "label": "Blogs",       "href": "/resources/blogs" },
         { "label": "Pricing",     "href": "/pricing" },
-        { "label": "Contact Us",  "href": "/contact-us" },
+        { "label": "Contact Us",  "href": "/contact-sales" },
         { "label": "Book a Demo", "href": "/contact-us" }
       ]
     }

@@ -1,114 +1,38 @@
 /**
- * Copy for the /contact-us hub page — one exported object per section,
- * consumed by the matching component in `../_components`.
+ * Copy for the /contact-us demo-booking page — one exported object per
+ * section, consumed by the matching component in `../_components`.
  *
- * Icons are referenced by string `iconKey` (mapped to Lucide components
- * inside the section components) so this file stays serialisable and never
- * imports React.
+ * This page is the "Book a Demo" destination: every demo CTA across the site
+ * lands here, on the GHL booking calendar. General contact enquiries go to
+ * /contact-sales (the form page) instead.
  */
 
 /* ------------------------------------------------------------------ */
-/* Types                                                               */
+/* Hero + calendar                                                     */
 /* ------------------------------------------------------------------ */
 
-export type ContactChannelIconKey = "sales" | "chat";
-
-export interface ContactChannelCard {
-  iconKey: ContactChannelIconKey;
-  eyebrow: string;
-  title: string;
-  description: string;
-  ctaLabel: string;
-  /**
-   * What the card's CTA does:
-   *  - `link`  → client-side navigation to `href`
-   *  - `chat`  → opens the floating Expendesk AI chat (General Queries)
-   */
-  action: { type: "link"; href: string } | { type: "chat" };
-}
-
-export type SupportLinkIconKey = "mail" | "faq" | "resources";
-
-export interface SupportLink {
-  iconKey: SupportLinkIconKey;
-  title: string;
-  description: string;
-  ctaLabel: string;
-  href: string;
-}
-
-/* ------------------------------------------------------------------ */
-/* Hero + channel cards                                                */
-/* ------------------------------------------------------------------ */
-
-export const contactHero = {
-  eyebrow: "Contact us",
+export const bookingHero = {
+  eyebrow: "Book a demo",
   heading: {
-    lead: "Talk to an ",
-    accent: "expense management",
-    tail: " expert",
+    lead: "Schedule your personalized ",
+    accent: "Expendesk demo",
   },
-  subheading:
-    "Our team of expense management specialists is here to fix issues and provide expert advice.",
+  subheading: "Choose a date and time that works best for you.",
+  description:
+    "During this 30-minute session, one of our product specialists will walk you through how Expendesk can help automate expense management, streamline approvals, and improve visibility into your business spending.",
 } as const;
 
-export const contactChannels: ContactChannelCard[] = [
-  {
-    iconKey: "sales",
-    eyebrow: "Sales",
-    title: "Talk to sales",
-    description:
-      "Want to build the perfect expense management processes for your business? Our market specialists will walk you through it.",
-    ctaLabel: "Talk to sales",
-    action: { type: "link", href: "/contact-sales" },
-  },
-  {
-    iconKey: "chat",
-    eyebrow: "General queries",
-    title: "Chat with us",
-    description:
-      "Have a question or request which doesn't fit the other option? Our AI assistant answers instantly, day or night.",
-    ctaLabel: "Chat with us",
-    action: { type: "chat" },
-  },
-];
+/** GHL booking-calendar embed config (LeadConnector widget). */
+export const bookingCalendar = {
+  src: "https://link.youngarchitects.in/widget/booking/atLJxFrgGiAVgeECFMpV",
+  iframeId: "atLJxFrgGiAVgeECFMpV_1784055561258",
+  embedScriptSrc: "https://link.youngarchitects.in/js/form_embed.js",
+  title: "Schedule your Expendesk demo",
+} as const;
 
-/** Small trust line under the cards. */
-export const contactReassurance = [
-  "Instant answers on chat",
-  "Sales replies within 24 hours",
+/** Small trust line under the calendar. */
+export const bookingReassurance = [
+  "30-minute session, tailored to you",
+  "No credit card required",
   "No obligation, no pressure",
 ] as const;
-
-/* ------------------------------------------------------------------ */
-/* Secondary "other ways to reach us" strip                            */
-/* ------------------------------------------------------------------ */
-
-export const contactSupport = {
-  heading: "Prefer another way to reach us?",
-  subheading:
-    "Not ready for a conversation yet? These are good places to start.",
-  links: [
-    {
-      iconKey: "mail",
-      title: "Email us",
-      description: "Drop us a line and we'll get back to you within one business day.",
-      ctaLabel: "hello@expendesk.com",
-      href: "mailto:hello@expendesk.com",
-    },
-    {
-      iconKey: "faq",
-      title: "Browse the FAQs",
-      description: "Quick answers to the questions we hear most often.",
-      ctaLabel: "Read FAQs",
-      href: "/resources/faqs",
-    },
-    {
-      iconKey: "resources",
-      title: "Explore resources",
-      description: "Whitepapers, case studies and guides from our finance experts.",
-      ctaLabel: "View resources",
-      href: "/resources/blogs",
-    },
-  ] satisfies SupportLink[],
-} as const;

@@ -7,7 +7,7 @@
  * an animated height reveal (AnimatePresence); the toggle "+" rotates to "×".
  * Buttons carry aria-expanded/aria-controls for accessibility, and a FAQPage
  * JSON-LD script is emitted for rich search results. A "Still have questions?"
- * row linking to /contact-us closes the section. All copy comes from
+ * row linking to /contact-sales closes the section. All copy comes from
  * `src/data/sections/faq.json`.
  */
 

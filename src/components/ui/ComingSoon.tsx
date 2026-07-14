@@ -110,7 +110,7 @@ export default function ComingSoon({
           className="mt-9 flex flex-col items-center gap-3 sm:flex-row"
         >
           <MagneticButton
-            href="/contact-us"
+            href="/contact-sales"
             variant="primary"
             className="rounded-full px-7 py-3.5 text-sm shadow-lg shadow-violet-300/40"
             icon={<Sparkles className="h-4 w-4" />}

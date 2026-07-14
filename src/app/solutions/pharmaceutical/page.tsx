@@ -7,8 +7,7 @@
  * `./_components/`, composed here, with all copy in `./_data/` (one file per
  * section, re-exported from `./_data/index.ts`).
  *
- * Demo / "Schedule" CTAs point at `/contact-us` for now (no dedicated demo
- * booking flow yet).
+ * Demo / "Schedule" CTAs point at `/contact-us` (the demo booking calendar).
  */
 import type { Metadata } from "next";
 import HeroSection from "./_components/HeroSection";

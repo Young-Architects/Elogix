@@ -5,16 +5,16 @@
  *
  * Two-column grid on lg+ (intro left, form card right) that stacks to a
  * single column on mobile/tablet with the intro first so the form always has
- * context. Includes a breadcrumb-style back link to /contact-us.
+ * context.
  *
- * Copy lives in ../_data/content.ts; the form is ./SalesForm.
+ * Copy lives in ../_data/content.ts; the form is the embedded GHL
+ * "Contact Expendesk" form in ./GhlContactForm.
  */
 
-import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
-import { ArrowLeft, CheckCircle2 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { salesIntro } from "../_data/content";
-import SalesForm from "./SalesForm";
+import GhlContactForm from "./GhlContactForm";
 
 const CONTAINER_VARIANTS: Variants = {
   hidden: {},
@@ -71,18 +71,9 @@ export default function ContactSalesSection() {
         animate="visible"
         className="relative mx-auto max-w-6xl px-6 pb-16 pt-28 sm:pb-20 sm:pt-32 lg:px-8"
       >
-        {/* Back link */}
-        <motion.div variants={ITEM_VARIANTS}>
-          <Link
-            href="/contact-us"
-            className="group inline-flex items-center gap-1.5 rounded-full border border-slate-200/80 bg-white/70 px-3.5 py-1.5 text-[12px] font-semibold text-slate-600 shadow-sm backdrop-blur-sm transition-colors duration-200 hover:border-indigo-200 hover:text-indigo-600"
-          >
-            <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-x-0.5" />
-            All contact options
-          </Link>
-        </motion.div>
-
-        <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_minmax(0,480px)] lg:items-start lg:gap-14">
+        {/* items-center (not items-start) so the shorter intro column sits
+            vertically centered beside the much taller form card on lg+. */}
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_minmax(0,480px)] lg:items-center lg:gap-14">
           {/* ── Intro column ── */}
           <div className="max-w-xl">
             <motion.span
@@ -134,7 +125,7 @@ export default function ContactSalesSection() {
 
           {/* ── Form column ── */}
           <motion.div variants={ITEM_VARIANTS}>
-            <SalesForm />
+            <GhlContactForm />
           </motion.div>
         </div>
       </motion.div>

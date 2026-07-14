@@ -10,7 +10,7 @@
  * Sections live in `./_components`, copy in `./_data/content.ts` — same
  * structure as the contact + solutions pages. Plan prices/features are
  * placeholders (flagged in the data file) until the GTM numbers are final.
- * Every "Book a Free Demo" CTA points at /contact-sales (the sales form).
+ * Every "Book a Free Demo" CTA points at /contact-us (the demo booking calendar).
  */
 import type { Metadata } from "next";
 import PricingHeroSection from "./_components/PricingHeroSection";

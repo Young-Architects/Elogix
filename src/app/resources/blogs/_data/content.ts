@@ -76,7 +76,7 @@ export const sidebar: BlogSidebarContent = {
     button: 'Book a Demo',
     buttonHref: '/contact-us',
     secondary: 'Talk to our team',
-    secondaryHref: '/contact-us',
+    secondaryHref: '/contact-sales',
   },
   recentHeading: 'Recent Posts',
   categoriesHeading: 'Categories',

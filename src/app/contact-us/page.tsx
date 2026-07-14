@@ -1,28 +1,29 @@
 /**
- * /contact-us — the contact hub.
+ * /contact-us — the "Book a Demo" calendar page.
  *
- * Two routing cards (mirroring the Spendesk contact pattern, minus Support):
- *   - Sales           → /contact-sales (form page)
- *   - General queries → opens the floating Expendesk AI chat
+ * Every demo CTA across the site (navbar "Book a Demo", hero, section CTAs,
+ * pricing plans, footer) lands here, on the embedded GHL booking calendar
+ * where visitors pick a date and time for their 30-minute walkthrough.
+ *
+ * General contact enquiries go to /contact-sales (the form page), which the
+ * navbar/footer "Contact" links point at.
  *
  * Sections live in `./_components`, copy in `./_data/content.ts` — same
  * structure as the `solutions/*` pages.
  */
 import type { Metadata } from "next";
-import ContactHeroSection from "./_components/ContactHeroSection";
-import ContactSupportSection from "./_components/ContactSupportSection";
+import BookingCalendarSection from "./_components/BookingCalendarSection";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Book a Demo",
   description:
-    "Talk to an Expendesk expense management expert — reach our sales team or get instant answers from our AI assistant.",
+    "Schedule your personalized Expendesk demo — a 30-minute session where a product specialist walks you through automating expense management for your business.",
 };
 
 export default function ContactUsPage() {
   return (
     <main className="min-h-screen bg-white">
-      <ContactHeroSection />
-      <ContactSupportSection />
+      <BookingCalendarSection />
     </main>
   );
 }

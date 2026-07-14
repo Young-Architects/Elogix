@@ -5,7 +5,7 @@
  *
  * Centered heading block (eyebrow pill → H1 with gradient accent → sub copy)
  * followed by the "Talk to our Expert" helper line, the Book-a-Free-Demo CTA
- * (→ /contact-sales, where the sales form lives) and a small reassurance row.
+ * (→ /contact-us, where the demo booking calendar lives) and a small reassurance row.
  *
  * Sits on the same soft violet canvas as the contact/solutions heroes so the
  * page feels native to the rest of the site. The gradient fades to white at
