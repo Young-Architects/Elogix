@@ -7,6 +7,7 @@
  */
 import type { Metadata } from "next";
 import ComingSoon from "@/components/ui/ComingSoon";
+import { comingSoon } from "./_data/content";
 
 export const metadata: Metadata = {
   title: "Solutions",
@@ -16,10 +17,6 @@ export const metadata: Metadata = {
 
 export default function SolutionsPage() {
   return (
-    <ComingSoon
-      eyebrow="Solutions"
-      title="Solutions Hub"
-      message="A unified overview of Expendesk across every industry is on the way. For now, explore our industry pages from the Solutions menu, or talk to our team about your business."
-    />
+    <ComingSoon {...comingSoon} />
   );
 }

@@ -1,4 +1,8 @@
 {
+  "brand": {
+    "logoSrc": "/logo.png",
+    "logoAlt": "Expendesk — Expenses · Simplified"
+  },
   "items": [
     {
       "label": "Home",

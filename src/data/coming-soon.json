@@ -1,0 +1,5 @@
+{
+  "badge": "Coming Soon",
+  "primaryCta": { "label": "Contact Us", "href": "/contact-sales" },
+  "secondaryCta": { "label": "Back to Home", "href": "/" }
+}

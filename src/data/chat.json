@@ -1,0 +1,25 @@
+{
+  "assistant": {
+    "name": "Expendesk AI",
+    "status": "Online",
+    "avatarLetter": "E"
+  },
+  "greeting": "Hi there! I'm the Expendesk assistant. Ask me anything about expense management, reimbursements, or policies.",
+  "quickQuestions": [
+    "What is Expendesk?",
+    "How does pricing work?",
+    "How do I book a free demo?"
+  ],
+  "errorMessage": "I'm having trouble connecting. Please try again in a moment.",
+  "input": {
+    "placeholder": "Ask about expense management…",
+    "typeAriaLabel": "Type your message",
+    "sendAriaLabel": "Send message"
+  },
+  "aria": {
+    "closeChat": "Close chat",
+    "dialogLabel": "Expendesk AI chat assistant",
+    "openLauncher": "Open Expendesk AI chat",
+    "closeLauncher": "Close AI chat"
+  }
+}

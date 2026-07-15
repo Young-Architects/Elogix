@@ -6,15 +6,17 @@
  * and the /solutions + /resources hub indexes).
  *
  * It renders the full page `<main>` (the persistent Navbar + Footer come from the
- * root layout), matching the site's light gradient / dot-grid aesthetic. All copy
- * is passed in as props by the thin route page that uses it — nothing is
- * hardcoded here. The primary CTA points at the contact page.
+ * root layout), matching the site's light gradient / dot-grid aesthetic. Page
+ * copy (eyebrow/title/message) is passed in as props by the thin route page
+ * that uses it (from the route's `_data/content.ts`); the shared badge + CTA
+ * copy lives in `src/data/coming-soon.json` — nothing is hardcoded here.
  */
 
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Sparkles, Clock, ArrowLeft } from "lucide-react";
 import MagneticButton from "@/components/ui/MagneticButton";
+import comingSoonData from "@/data/coming-soon.json";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -77,7 +79,9 @@ export default function ComingSoon({
             />
           ))}
           <Clock className="h-3.5 w-3.5 text-violet-600" />
-          <span className="text-xs font-bold tracking-wide text-violet-800">Coming Soon</span>
+          <span className="text-xs font-bold tracking-wide text-violet-800">
+            {comingSoonData.badge}
+          </span>
         </motion.div>
 
         {/* Title */}
@@ -110,19 +114,19 @@ export default function ComingSoon({
           className="mt-9 flex flex-col items-center gap-3 sm:flex-row"
         >
           <MagneticButton
-            href="/contact-sales"
+            href={comingSoonData.primaryCta.href}
             variant="primary"
             className="rounded-full px-7 py-3.5 text-sm shadow-lg shadow-violet-300/40"
             icon={<Sparkles className="h-4 w-4" />}
           >
-            Contact Us
+            {comingSoonData.primaryCta.label}
           </MagneticButton>
           <Link
-            href="/"
+            href={comingSoonData.secondaryCta.href}
             className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/70 px-6 py-3.5 text-sm font-semibold text-slate-600 shadow-sm backdrop-blur-sm transition-colors hover:border-violet-300 hover:text-violet-600"
           >
             <ArrowLeft className="h-4 w-4" />
-            Back to Home
+            {comingSoonData.secondaryCta.label}
           </Link>
         </motion.div>
       </section>

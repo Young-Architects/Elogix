@@ -1,6 +1,8 @@
 {
   "brand": {
     "name": "Expendesk",
+    "logoSrc": "/logo-white.png",
+    "logoAlt": "Expendesk — Expenses · Simplified",
     "subheading": "Expense & Reimbursement Management Software for SMEs & Mid-Market Businesses",
     "tagline": "Automate Expenses. Accelerate Reimbursements. Improve Business Control."
   },

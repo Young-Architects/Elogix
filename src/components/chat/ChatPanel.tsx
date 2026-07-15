@@ -14,18 +14,15 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Send, X } from "lucide-react";
+import chatData from "@/data/chat.json";
 import { useChat } from "./ChatProvider";
 
 /**
  * Predefined conversation starters, shown under the greeting until the
  * visitor sends their first message. Each chip submits its text as a normal
- * user message via `sendQuickQuestion`.
+ * user message via `sendQuickQuestion`. Copy lives in src/data/chat.json.
  */
-const QUICK_QUESTIONS = [
-  "What is Expendesk?",
-  "How does pricing work?",
-  "How do I book a free demo?",
-] as const;
+const QUICK_QUESTIONS = chatData.quickQuestions;
 
 function TypingDots() {
   return (
@@ -104,22 +101,26 @@ export default function ChatPanel({
             aria-hidden
             className="absolute inset-0 -translate-x-full skew-x-12 bg-gradient-to-r from-transparent via-white/20 to-transparent"
           />
-          <span className="relative z-10 text-[11px] font-bold text-white">E</span>
+          <span className="relative z-10 text-[11px] font-bold text-white">
+            {chatData.assistant.avatarLetter}
+          </span>
         </div>
         <div className="flex flex-col">
-          <span className="text-[13px] font-semibold text-white">Expendesk AI</span>
+          <span className="text-[13px] font-semibold text-white">
+            {chatData.assistant.name}
+          </span>
           <span className="flex items-center gap-1.5 text-[11px] text-slate-400">
             <span className="relative flex h-1.5 w-1.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-60" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
             </span>
-            Online
+            {chatData.assistant.status}
           </span>
         </div>
         {variant === "floating" && (
           <button
             onClick={() => setOpen(false)}
-            aria-label="Close chat"
+            aria-label={chatData.aria.closeChat}
             className="ml-auto flex h-7 w-7 items-center justify-center rounded-lg text-slate-500 transition-colors duration-200 hover:bg-white/[0.06] hover:text-slate-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-500"
           >
             <X className="h-4 w-4" />
@@ -193,8 +194,8 @@ export default function ChatPanel({
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             onInput={handleTextareaInput}
-            placeholder="Ask about expense management…"
-            aria-label="Type your message"
+            placeholder={chatData.input.placeholder}
+            aria-label={chatData.input.typeAriaLabel}
             rows={1}
             className="flex-1 resize-none bg-transparent text-[13px] leading-relaxed text-white placeholder-slate-500 outline-none"
             style={{ maxHeight: "80px", overflowY: "auto" }}
@@ -202,7 +203,7 @@ export default function ChatPanel({
           <button
             onClick={sendMessage}
             disabled={!canSend}
-            aria-label="Send message"
+            aria-label={chatData.input.sendAriaLabel}
             className="mb-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 text-white shadow-[0_2px_8px_rgba(99,102,241,0.28)] transition-all duration-200 hover:shadow-[0_4px_14px_rgba(99,102,241,0.4)] disabled:cursor-not-allowed disabled:opacity-35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-400"
           >
             <Send className="h-3.5 w-3.5" />

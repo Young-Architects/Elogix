@@ -7,6 +7,7 @@
  */
 import type { Metadata } from "next";
 import ComingSoon from "@/components/ui/ComingSoon";
+import { comingSoon } from "./_data/content";
 
 export const metadata: Metadata = {
   title: "Case Studies",
@@ -16,10 +17,6 @@ export const metadata: Metadata = {
 
 export default function CaseStudiesPage() {
   return (
-    <ComingSoon
-      eyebrow="Resources"
-      title="Case Studies"
-      message="Real customer success stories are on the way. In the meantime, explore our blog or talk to our team about your use case."
-    />
+    <ComingSoon {...comingSoon} />
   );
 }

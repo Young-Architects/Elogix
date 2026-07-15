@@ -21,6 +21,7 @@
  * `useTransform` + `useSpring`). Honours `prefers-reduced-motion`.
  */
 
+import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState, type ReactNode } from "react";
 import {
@@ -173,23 +174,19 @@ function SocialDock() {
 }
 
 /* ───────────────────────── brand logo mark ───────────────────────── */
-/* Same gradient "E" tile the Navbar uses, so the footer reads as one system. */
+/* White variant of the brand lockup (public/logo-white.png) — the Navbar
+   uses the dark variant (public/logo.png), so the two read as one system. */
 
 function BrandMark() {
   return (
-    <Link href="/" className="group inline-flex items-center gap-2.5">
-      <span className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 shadow-[0_6px_20px_rgba(99,102,241,0.4)]">
-        <span className="absolute inset-0 -translate-x-full skew-x-12 bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-        <span className="relative z-10 text-sm font-bold tracking-tight text-white">E</span>
-      </span>
-      <span className="flex flex-col leading-none">
-        <span className="text-lg font-bold tracking-tight text-white">
-          {footerData.brand.name}
-        </span>
-        <span className="mt-1 text-[8px] font-semibold uppercase tracking-[0.25em] text-indigo-300/70">
-          Intelligence
-        </span>
-      </span>
+    <Link href="/" className="group inline-flex items-center">
+      <Image
+        src={footerData.brand.logoSrc}
+        alt={footerData.brand.logoAlt}
+        width={900}
+        height={290}
+        className="h-10 w-auto transition-opacity duration-300 group-hover:opacity-85 sm:h-11"
+      />
     </Link>
   );
 }

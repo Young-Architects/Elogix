@@ -40,7 +40,7 @@
 import { useEffect } from "react";
 import Script from "next/script";
 import GhlEmbedLoader from "@/components/ui/GhlEmbedLoader";
-import { useGhlEmbedLoaded } from "@/lib/use-ghl-embed-loaded";
+import { useGhlEmbedLoaded } from "@/hooks/use-ghl-embed-loaded";
 import { salesFormEmbed } from "../_data/content";
 
 /** Extra iframe height beyond what form_embed.js reports — see docblock. */

@@ -15,6 +15,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
+import chatData from "@/data/chat.json";
 import { useChat } from "@/components/chat/ChatProvider";
 import ChatPanel from "@/components/chat/ChatPanel";
 
@@ -34,7 +35,7 @@ export default function ChatWidget() {
           <motion.div
             id="chat-panel"
             role="dialog"
-            aria-label="Expendesk AI chat assistant"
+            aria-label={chatData.aria.dialogLabel}
             aria-modal="true"
             initial={{ opacity: 0, y: 16, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -51,7 +52,7 @@ export default function ChatWidget() {
       {/* ─── Launcher button (springs in once the hero is scrolled past) ─── */}
       <motion.button
         onClick={toggleOpen}
-        aria-label={isOpen ? "Close AI chat" : "Open Expendesk AI chat"}
+        aria-label={isOpen ? chatData.aria.closeLauncher : chatData.aria.openLauncher}
         aria-expanded={isOpen}
         aria-controls="chat-panel"
         initial={{ scale: 0, y: 24, opacity: 0 }}

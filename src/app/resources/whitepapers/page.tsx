@@ -7,6 +7,7 @@
  */
 import type { Metadata } from "next";
 import ComingSoon from "@/components/ui/ComingSoon";
+import { comingSoon } from "./_data/content";
 
 export const metadata: Metadata = {
   title: "Whitepapers",
@@ -16,10 +17,6 @@ export const metadata: Metadata = {
 
 export default function WhitepapersPage() {
   return (
-    <ComingSoon
-      eyebrow="Resources"
-      title="Whitepapers"
-      message="In-depth research and insights on expense management are on the way. In the meantime, explore our blog or talk to our team."
-    />
+    <ComingSoon {...comingSoon} />
   );
 }

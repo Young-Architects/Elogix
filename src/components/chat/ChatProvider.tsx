@@ -28,6 +28,7 @@ import type {
   ChatWebhookRequest,
   ChatWebhookResponse,
 } from "@/types";
+import chatData from "@/data/chat.json";
 
 /**
  * Our own server route, not the n8n webhook. It attaches the `x-chat-secret`
@@ -43,8 +44,7 @@ const BOOT_TYPING_MS = 1300;
 const GREETING: ChatMessage = {
   id: "greeting",
   role: "bot",
-  content:
-    "Hi there! I'm the Expendesk assistant. Ask me anything about expense management, reimbursements, or policies.",
+  content: chatData.greeting,
   timestamp: 0,
 };
 
@@ -195,8 +195,7 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
         {
           id: crypto.randomUUID(),
           role: "error",
-          content:
-            "I'm having trouble connecting. Please try again in a moment.",
+          content: chatData.errorMessage,
           timestamp: Date.now(),
         },
       ]);

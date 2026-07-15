@@ -17,6 +17,7 @@
  * serialisable and never imports React components.
  */
 
+import Image from "next/image";
 import Link from "next/link";
 import {
   motion,
@@ -408,42 +409,21 @@ export default function Navbar(): ReactNode {
         >
 
           {/* ── Logo ── */}
-          <Link href="/" className="group relative z-20 flex items-center gap-2 pl-0.5">
+          <Link href="/" className="group relative z-20 flex items-center pl-0.5">
             <motion.div
-              animate={{ scale: scrolled ? 0.92 : 1 }}
+              animate={{ scale: scrolled ? 0.88 : 1 }}
               transition={{ duration: 0.3 }}
-              className="relative"
+              className="origin-left"
             >
-              <div className="absolute -inset-1 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-500 opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-30" />
-              <div className="relative flex h-8.5 w-8.5 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 shadow-[0_6px_20px_rgba(99,102,241,0.38)]">
-                <div className="absolute inset-0 -translate-x-full skew-x-12 bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-                <span className="relative z-10 text-[11.5px] font-bold tracking-tight text-white">
-                  E
-                </span>
-              </div>
+              <Image
+                src={navData.brand.logoSrc}
+                alt={navData.brand.logoAlt}
+                width={900}
+                height={290}
+                priority
+                className="h-9 w-auto transition-opacity duration-300 group-hover:opacity-80 sm:h-10"
+              />
             </motion.div>
-
-            <div className="flex flex-col">
-              <motion.span
-                animate={{ fontSize: scrolled ? "14px" : "14.5px" }}
-                className="font-bold tracking-tight text-slate-800 transition-colors duration-300 group-hover:text-indigo-600"
-              >
-                Expendesk
-              </motion.span>
-              <AnimatePresence>
-                {!scrolled && (
-                  <motion.span
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="text-[7.5px] uppercase tracking-[0.25em] font-semibold text-indigo-500/70"
-                  >
-                    Intelligence
-                  </motion.span>
-                )}
-              </AnimatePresence>
-            </div>
           </Link>
 
           {/* ── Desktop nav ── */}

@@ -7,6 +7,7 @@
  */
 import type { Metadata } from "next";
 import ComingSoon from "@/components/ui/ComingSoon";
+import { comingSoon } from "./_data/content";
 
 export const metadata: Metadata = {
   title: "Resources",
@@ -16,10 +17,6 @@ export const metadata: Metadata = {
 
 export default function ResourcesPage() {
   return (
-    <ComingSoon
-      eyebrow="Resources"
-      title="Resources Hub"
-      message="We're bringing our whitepapers, case studies, blog, and FAQs together in one place. For now, browse them from the Resources menu or read the latest on our blog."
-    />
+    <ComingSoon {...comingSoon} />
   );
 }

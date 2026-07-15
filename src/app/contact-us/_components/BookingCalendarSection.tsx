@@ -19,7 +19,7 @@ import Script from "next/script";
 import { motion, type Variants } from "framer-motion";
 import { ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
 import GhlEmbedLoader from "@/components/ui/GhlEmbedLoader";
-import { useGhlEmbedLoaded } from "@/lib/use-ghl-embed-loaded";
+import { useGhlEmbedLoaded } from "@/hooks/use-ghl-embed-loaded";
 import {
   bookingAlternative,
   bookingCalendar,

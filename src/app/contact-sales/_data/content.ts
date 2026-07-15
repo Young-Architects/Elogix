@@ -38,8 +38,8 @@ export const salesAlternatives = [
   },
   {
     iconKey: "mail",
-    label: "hello@expendesk.com",
-    href: "mailto:hello@expendesk.com",
+    label: "info@expendesk.com",
+    href: "mailto:info@expendesk.com",
   },
 ] as const;
 
