@@ -25,6 +25,27 @@ export const salesIntro = {
   },
 } as const;
 
+/**
+ * Alternative contact routes shown under the "What to expect" card, so
+ * visitors who'd rather see the product live or write an email aren't
+ * dead-ended at the form.
+ */
+export const salesAlternatives = [
+  {
+    iconKey: "calendar",
+    label: "Prefer a live walkthrough? Book a demo",
+    href: "/contact-us",
+  },
+  {
+    iconKey: "mail",
+    label: "hello@expendesk.com",
+    href: "mailto:hello@expendesk.com",
+  },
+] as const;
+
+export type SalesAlternativeIconKey =
+  (typeof salesAlternatives)[number]["iconKey"];
+
 /* ------------------------------------------------------------------ */
 /* Form embed                                                          */
 /* ------------------------------------------------------------------ */
@@ -36,4 +57,6 @@ export const salesFormEmbed = {
   iframeId: "inline-rk4yf4oo9XFsnFZpo0cT",
   embedScriptSrc: "https://link.youngarchitects.in/js/form_embed.js",
   title: "Contact Expendesk",
+  /** The widget's own `data-height` from the GHL embed snippet. */
+  dataHeight: "864",
 } as const;
