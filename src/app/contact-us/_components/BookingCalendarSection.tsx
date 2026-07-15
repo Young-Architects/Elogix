@@ -14,10 +14,12 @@
  * to the rest of the site. Copy + embed config live in ../_data/content.ts.
  */
 
+import Link from "next/link";
 import Script from "next/script";
 import { motion, type Variants } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
 import {
+  bookingAlternative,
   bookingCalendar,
   bookingHero,
   bookingReassurance,
@@ -76,11 +78,15 @@ export default function BookingCalendarSection() {
         />
       </div>
 
+      {/* max-w-7xl (not 5xl) — the GHL calendar only renders its wide
+          sidebar layout (details left, date picker + slots right) when the
+          iframe is ≥1000px wide; the heading blocks below cap their own
+          width, so only the card actually widens. */}
       <motion.div
         variants={CONTAINER_VARIANTS}
         initial="hidden"
         animate="visible"
-        className="relative mx-auto flex max-w-5xl flex-col items-center px-4 pb-16 pt-32 text-center sm:px-6 sm:pb-20 sm:pt-36 lg:px-8"
+        className="relative mx-auto flex max-w-7xl flex-col items-center px-4 pb-16 pt-32 text-center sm:px-6 sm:pb-20 sm:pt-36 lg:px-8"
       >
         <motion.span
           variants={ITEM_VARIANTS}
@@ -151,6 +157,20 @@ export default function BookingCalendarSection() {
             </li>
           ))}
         </motion.ul>
+
+        {/* Alternative route: contact form for visitors not ready to book */}
+        <motion.div variants={ITEM_VARIANTS} className="mt-7">
+          <Link
+            href={bookingAlternative.href}
+            className="group inline-flex items-center gap-2 text-[13px] font-semibold text-indigo-600 transition-colors duration-200 hover:text-violet-600"
+          >
+            <span className="flex h-7 w-7 items-center justify-center rounded-lg border border-indigo-100 bg-white/80 text-indigo-500 shadow-sm transition-colors duration-200 group-hover:border-indigo-200 group-hover:text-violet-600">
+              <MessageCircle className="h-3.5 w-3.5" />
+            </span>
+            {bookingAlternative.label}
+            <ArrowRight className="h-3.5 w-3.5 -translate-x-0.5 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100" />
+          </Link>
+        </motion.div>
       </motion.div>
 
       {/* Auto-resizes the LeadConnector iframe to its content height */}

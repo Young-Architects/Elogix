@@ -36,3 +36,12 @@ export const bookingReassurance = [
   "No credit card required",
   "No obligation, no pressure",
 ] as const;
+
+/**
+ * Alternative route under the trust line — visitors who aren't ready to pick
+ * a slot can reach the contact form instead of bouncing.
+ */
+export const bookingAlternative = {
+  label: "Not ready to book? Talk to a market specialist",
+  href: "/contact-sales",
+} as const;
