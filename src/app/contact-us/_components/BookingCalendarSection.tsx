@@ -18,6 +18,8 @@ import Link from "next/link";
 import Script from "next/script";
 import { motion, type Variants } from "framer-motion";
 import { ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
+import GhlEmbedLoader from "@/components/ui/GhlEmbedLoader";
+import { useGhlEmbedLoaded } from "@/lib/use-ghl-embed-loaded";
 import {
   bookingAlternative,
   bookingCalendar,
@@ -48,6 +50,8 @@ const ITEM_VARIANTS: Variants = {
 /* ------------------------------------------------------------------ */
 
 export default function BookingCalendarSection() {
+  const loaded = useGhlEmbedLoaded(bookingCalendar.iframeId);
+
   return (
     <section
       aria-labelledby="booking-hero-heading"
@@ -127,8 +131,9 @@ export default function BookingCalendarSection() {
             to a sliver while the widget loads or if the booking URL is down */}
         <motion.div
           variants={ITEM_VARIANTS}
-          className="mt-12 min-h-[420px] w-full overflow-hidden rounded-3xl border border-slate-200/80 bg-white p-2 shadow-[0_20px_48px_rgba(99,102,241,0.10),0_6px_20px_rgba(0,0,0,0.05)] sm:p-4"
+          className="relative mt-12 min-h-[420px] w-full overflow-hidden rounded-3xl border border-slate-200/80 bg-white p-2 shadow-[0_20px_48px_rgba(99,102,241,0.10),0_6px_20px_rgba(0,0,0,0.05)] sm:p-4"
         >
+          <GhlEmbedLoader loaded={loaded} label={bookingCalendar.loadingLabel} />
           {/* Small min-height only as a boot fallback — form_embed.js sets the
               real height inline, and a large CSS min-height would beat it and
               pad the card with empty space (see GhlContactForm). */}

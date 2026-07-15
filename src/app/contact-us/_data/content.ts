@@ -28,6 +28,8 @@ export const bookingCalendar = {
   iframeId: "atLJxFrgGiAVgeECFMpV_1784055561258",
   embedScriptSrc: "https://link.youngarchitects.in/js/form_embed.js",
   title: "Schedule your Expendesk demo",
+  /** Shown in the loading overlay while the widget boots. */
+  loadingLabel: "Loading live calendar…",
 } as const;
 
 /** Small trust line under the calendar. */

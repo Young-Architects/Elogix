@@ -59,4 +59,6 @@ export const salesFormEmbed = {
   title: "Contact Expendesk",
   /** The widget's own `data-height` from the GHL embed snippet. */
   dataHeight: "864",
+  /** Shown in the loading overlay while the widget boots. */
+  loadingLabel: "Loading secure contact form…",
 } as const;

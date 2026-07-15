@@ -39,12 +39,16 @@
 
 import { useEffect } from "react";
 import Script from "next/script";
+import GhlEmbedLoader from "@/components/ui/GhlEmbedLoader";
+import { useGhlEmbedLoaded } from "@/lib/use-ghl-embed-loaded";
 import { salesFormEmbed } from "../_data/content";
 
 /** Extra iframe height beyond what form_embed.js reports — see docblock. */
 const HEIGHT_BUFFER_PX = 60;
 
 export default function GhlContactForm() {
+  const loaded = useGhlEmbedLoaded(salesFormEmbed.iframeId);
+
   useEffect(() => {
     const iframe = document.getElementById(
       salesFormEmbed.iframeId
@@ -67,8 +71,12 @@ export default function GhlContactForm() {
     return () => observer.disconnect();
   }, []);
 
+  // min-height on the card: form_embed.js collapses the iframe while the
+  // widget boots, and without it the card shrinks to a sliver and hides the
+  // loading overlay. The loaded form is always taller than this.
   return (
-    <div className="overflow-hidden rounded-3xl border border-slate-200/80 bg-white p-2 shadow-[0_20px_48px_rgba(99,102,241,0.10),0_6px_20px_rgba(0,0,0,0.05)] sm:p-3">
+    <div className="relative min-h-[420px] overflow-hidden rounded-3xl border border-slate-200/80 bg-white p-2 shadow-[0_20px_48px_rgba(99,102,241,0.10),0_6px_20px_rgba(0,0,0,0.05)] sm:p-3">
+      <GhlEmbedLoader loaded={loaded} label={salesFormEmbed.loadingLabel} />
       <iframe
         src={salesFormEmbed.src}
         id={salesFormEmbed.iframeId}
