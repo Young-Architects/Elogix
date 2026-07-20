@@ -52,8 +52,12 @@ import {
   HeartPulse,
   ShoppingBag,
 } from "lucide-react";
+import Link from "next/link";
 import ScrollBeamDivider from "../ui/ScrollBeamDivider";
 import featuresData from "@/data/sections/features.json";
+
+/** Where every industry "Explore" button sends the visitor — the contact form. */
+const CONTACT_FORM_HREF = "/contact-sales";
 
 /* ═══════════════════════════════════════════════════════════════
    SHARED COLOR MAP
@@ -336,12 +340,13 @@ function DetailPanel({ industry }: { industry: (typeof industries)[0] }) {
                 <p className="text-xs font-semibold text-slate-500 mt-0.5">{industry.tagline}</p>
               </div>
             </div>
-            <button
+            <Link
+              href={CONTACT_FORM_HREF}
               className="hidden sm:flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-bold text-white shadow-md transition-all hover:opacity-90 hover:scale-[1.02] active:scale-[0.98]"
               style={{ background: `linear-gradient(135deg, ${industry.accentFrom}, ${industry.accentTo})` }}
             >
               Explore <ArrowUpRight className="h-3.5 w-3.5" />
-            </button>
+            </Link>
           </div>
 
           <div className="my-4 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
@@ -376,12 +381,13 @@ function DetailPanel({ industry }: { industry: (typeof industries)[0] }) {
 
           {/* Mobile CTA */}
           <div className="mt-5 sm:hidden">
-            <button
+            <Link
+              href={CONTACT_FORM_HREF}
               className="w-full flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-bold text-white shadow-md"
               style={{ background: `linear-gradient(135deg, ${industry.accentFrom}, ${industry.accentTo})` }}
             >
               Explore {industry.label} <ArrowUpRight className="h-4 w-4" />
-            </button>
+            </Link>
           </div>
 
           {/* Watermark */}

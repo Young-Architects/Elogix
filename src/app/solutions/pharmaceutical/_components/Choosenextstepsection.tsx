@@ -35,6 +35,7 @@ import {
 } from "lucide-react";
 import ScrollBeamDivider from "@/components/ui/ScrollBeamDivider";
 import MagneticButton from "@/components/ui/MagneticButton";
+import { openAndDownloadLeadMagnet } from "@/lib/lead-magnet";
 import { chooseNextStep } from "../_data";
 import type { ChooseNextStepIconKey, ChooseNextStepOption } from "../_data";
 
@@ -125,6 +126,9 @@ function ShimmerSweep({
 function CtaCard({ option, index }: { option: ChooseNextStepOption; index: number }) {
   const Icon = chooseNextStepIcons[option.iconKey];
   const isPrimary = index === 1; // "Book a Demo" gets the bolder treatment
+  // The "Download the checklist" card opens the guide in a new tab AND downloads it.
+  const onCtaClick =
+    option.iconKey === "download" ? openAndDownloadLeadMagnet : undefined;
   const cardRef = useRef<HTMLDivElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
   const inView = useInView(cardRef, { once: true, margin: "-60px" });
@@ -232,6 +236,7 @@ function CtaCard({ option, index }: { option: ChooseNextStepOption; index: numbe
         {isPrimary ? (
           <MagneticButton
             href={option.href}
+            onClick={onCtaClick}
             type="button"
             variant="ghost"
             icon={<ArrowRight className="h-4 w-4 text-purple-700" />}
@@ -242,6 +247,7 @@ function CtaCard({ option, index }: { option: ChooseNextStepOption; index: numbe
         ) : (
           <MagneticButton
             href={option.href}
+            onClick={onCtaClick}
             type="button"
             variant="ghost"
             icon={<ArrowRight className="h-4 w-4" />}

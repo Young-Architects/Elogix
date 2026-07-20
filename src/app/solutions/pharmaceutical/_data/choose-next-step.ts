@@ -24,6 +24,7 @@ export const chooseNextStep: ChooseNextStepContent = {
       title: "Download the Audit Checklist",
       description: "Identify weaknesses in your current expense process.",
       buttonLabel: "Download Checklist",
+      href: "/downloads/msme-lead-magnet.pdf",
       iconKey: "download",
     },
     {

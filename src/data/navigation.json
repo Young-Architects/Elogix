@@ -14,7 +14,7 @@
         { "iconKey": "star",           "label": "Benefits",      "desc": "What you gain",                "href": "/#benefits"       },
         { "iconKey": "play",           "label": "Features",      "desc": "See it in action",             "href": "/#features-video" },
         { "iconKey": "route",          "label": "How It Works",  "desc": "Get started in 3 steps",       "href": "/#how-it-works"   },
-        { "iconKey": "mail",           "label": "Free Guide",    "desc": "Download the expense guide",   "href": "/#lead-magnet"    },
+        { "iconKey": "mail",           "label": "Free Guide",    "desc": "Download the expense guide",   "href": "/downloads/msme-lead-magnet.pdf" },
         { "iconKey": "git-compare",    "label": "Compare",       "desc": "Traditional vs Expendesk",     "href": "/#comparison"     },
         { "iconKey": "message-circle", "label": "Testimonials",  "desc": "What customers say",           "href": "/#testimonials"   },
         { "iconKey": "help-circle",    "label": "FAQ",           "desc": "Answers to common questions",  "href": "/#faq"            },
@@ -46,7 +46,7 @@
   ],
   "login": {
     "label": "Login",
-    "href": "#login"
+    "href": "https://product.expendesk.com/auth/login"
   },
   "cta": {
     "label": "Book a Demo",

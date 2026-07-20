@@ -82,7 +82,7 @@
     "prompt": "Ready to Transform Your Expense Management?",
     "button": "Book a Free Demo",
     "buttonHref": "/contact-us",
-    "secondaryButton": { "label": "Download the Free Expense Management Guide", "href": "/#lead-magnet" },
+    "secondaryButton": { "label": "Download the Free Expense Management Guide", "href": "/downloads/msme-lead-magnet.pdf" },
     "trustPoints": ["No obligation", "No complicated setup"],
     "note": "Just a smarter way to manage business expenses."
   }

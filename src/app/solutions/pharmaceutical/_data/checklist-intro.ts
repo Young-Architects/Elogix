@@ -36,8 +36,8 @@ export const checklistIntro: ChecklistIntroContent = {
 
   cta: {
     label: "Download the Checklist",
-    href: "/downloads/pharma-expense-audit-checklist-demo.pdf",
-    downloadName: "Pharma-Expense-Audit-Checklist.pdf",
+    href: "/downloads/msme-lead-magnet.pdf",
+    downloadName: "MSME-Lead-Magnet.pdf",
     subtext: "Instant PDF · No spam · Built for pharma finance teams",
   },
 

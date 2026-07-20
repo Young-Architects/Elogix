@@ -24,7 +24,7 @@ export const hero: HeroContent = {
     "Discover where automation can improve efficiency",
   ],
   ctaPrimary: "Download Free Checklist",
-  ctaPrimaryHref: "/downloads/pharma-expense-audit-checklist-demo.pdf",
+  ctaPrimaryHref: "/downloads/msme-lead-magnet.pdf",
   ctaSecondary: "Checklist + Schedule Assessment",
   ctaSecondaryHref: "/contact-us",
   trustedByLabel: "Trusted by",

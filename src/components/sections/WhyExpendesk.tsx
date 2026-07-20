@@ -51,6 +51,7 @@ import {
 } from "lucide-react";
 import ScrollBeamDivider from "../ui/ScrollBeamDivider";
 import MagneticButton from "@/components/ui/MagneticButton";
+import { LEAD_MAGNET_HREF, openAndDownloadLeadMagnet } from "@/lib/lead-magnet";
 import type { WhyExpendeskData } from "@/types";
 import rawContent from "@/data/sections/why-expendesk.json";
 
@@ -797,7 +798,8 @@ function CtaPanel() {
               {cta.button}
             </MagneticButton>
             <MagneticButton
-              href={cta.secondaryButton.href}
+              href={LEAD_MAGNET_HREF}
+              onClick={openAndDownloadLeadMagnet}
               variant="secondary"
               className="w-full rounded-full px-6 py-3.5 text-[13.5px] text-violet-100 sm:w-auto"
               icon={<BookOpen className="h-4 w-4" strokeWidth={2.2} />}

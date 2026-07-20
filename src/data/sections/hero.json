@@ -19,7 +19,7 @@
   ],
   "ctas": {
     "primary":   { "label": "Book a Free Demo", "href": "/contact-us"  },
-    "secondary": { "label": "Download the Free Expense Management Guide",    "href": "/#lead-magnet" }
+    "secondary": { "label": "Download the Free Expense Management Guide",    "href": "/downloads/msme-lead-magnet.pdf" }
   },
   "stats": [
     { "value": 94, "suffix": "%",        "label": "Faster closures" },

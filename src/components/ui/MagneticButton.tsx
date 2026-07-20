@@ -501,6 +501,7 @@ const MagneticButton = React.forwardRef<HTMLButtonElement, MagneticButtonProps>(
           <Link
             href={href}
             className={btnCls}
+            onClick={onClick as React.MouseEventHandler<HTMLAnchorElement> | undefined}
             {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
           >
             {layers}

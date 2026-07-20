@@ -64,6 +64,11 @@ import {
 } from "lucide-react";
 import navData from "@/data/navigation.json";
 import { IN_PAGE_NAV_EVENT } from "./ScrollToHash";
+import { openAndDownloadLeadMagnet } from "@/lib/lead-magnet";
+
+/** True for links that point at a downloadable PDF asset (e.g. the lead magnet). */
+const isPdfHref = (href: string): boolean =>
+  href.toLowerCase().endsWith(".pdf");
 
 /* ───────────────────────── animation ───────────────────────── */
 
@@ -162,7 +167,15 @@ function DropdownItem({ item, i, isMultiCol, onClose }: { item: DropdownItem; i:
     <MotionLink
       key={item.label}
       href={item.href}
-      onClick={onClose}
+      // PDF items (e.g. "Free Guide") open in a new tab AND download; the helper
+      // preventDefaults so the Link doesn't also try to route to the file.
+      onClick={(e) => {
+        if (isPdfHref(item.href)) openAndDownloadLeadMagnet(e);
+        onClose();
+      }}
+      {...(isPdfHref(item.href)
+        ? { target: "_blank", rel: "noopener noreferrer" }
+        : {})}
       initial={{ opacity: 0, x: -6 }}
       animate={{ opacity: 1, x: 0 }}
       whileTap={{ scale: 0.97 }}
@@ -287,7 +300,13 @@ function MobileNavItem({ item, idx, isOpen, onToggle, onClick }: MobileNavItemPr
                       <Link
                         key={sub.label}
                         href={sub.href}
-                        onClick={onClick}
+                        onClick={(e) => {
+                          if (isPdfHref(sub.href)) openAndDownloadLeadMagnet(e);
+                          onClick();
+                        }}
+                        {...(isPdfHref(sub.href)
+                          ? { target: "_blank", rel: "noopener noreferrer" }
+                          : {})}
                         className="group flex items-center gap-3 rounded-lg px-3 py-2 transition-all duration-200 hover:bg-white hover:shadow-sm"
                       >
                         <div className="flex h-6 w-6 items-center justify-center rounded-md bg-indigo-100 text-indigo-600 transition-all duration-200 group-hover:bg-indigo-600 group-hover:text-white">

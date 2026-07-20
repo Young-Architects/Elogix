@@ -29,6 +29,7 @@ export const finalCta: FinalCtaContent = {
         tail: " today.",
       },
       buttonLabel: "Download Checklist",
+      href: "/downloads/msme-lead-magnet.pdf",
     },
     {
       isPrimary: false,

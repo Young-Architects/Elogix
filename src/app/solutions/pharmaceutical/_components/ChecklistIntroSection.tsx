@@ -13,6 +13,7 @@ import type { SVGProps, ReactElement } from "react";
 import { useId } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import ScrollBeamDivider from "@/components/ui/ScrollBeamDivider";
+import { openAndDownloadLeadMagnet } from "@/lib/lead-magnet";
 import { checklistIntro } from "../_data";
 import type {
   ChecklistIconKey,
@@ -523,6 +524,9 @@ export default function ChecklistIntroSection() {
             <motion.a
               href={checklistIntro.cta.href}
               download={checklistIntro.cta.downloadName}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={openAndDownloadLeadMagnet}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
