@@ -427,7 +427,7 @@ export default function Navbar(): ReactNode {
           </Link>
 
           {/* ── Desktop nav ── */}
-          <nav className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-0.5 md:flex">
+          <nav className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-0.5 lg:flex">
             {NAV_ITEMS.map((item) => {
               const hasDropdown = Boolean(item.dropdown?.length);
               const isOpen = openDropdown === item.label;
@@ -472,7 +472,7 @@ export default function Navbar(): ReactNode {
           </nav>
 
           {/* ── Desktop CTA ── */}
-          <div className="hidden items-center gap-2 md:flex pr-0.5">
+          <div className="hidden items-center gap-2 lg:flex pr-0.5">
             <motion.a
               whileHover={{ scale: 1.025, y: -0.5 }}
               whileTap={{ scale: 0.975 }}
@@ -515,7 +515,7 @@ export default function Navbar(): ReactNode {
               setMobileOpenDropdown(null); // Clear open menus when closing container
             }}
             aria-label="Toggle menu"
-            className="relative z-[90] flex h-8.5 w-8.5 items-center justify-center rounded-xl transition-all duration-300 md:hidden hover:bg-indigo-50"
+            className="relative z-[90] flex h-8.5 w-8.5 items-center justify-center rounded-xl transition-all duration-300 lg:hidden hover:bg-indigo-50"
           >
             <div className="relative flex h-3 w-4 flex-col justify-between">
               <motion.span
@@ -544,7 +544,7 @@ export default function Navbar(): ReactNode {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 8, scale: 0.96 }}
                 transition={{ duration: 0.22, ease: SMOOTH_EASE }}
-                className="absolute right-1 top-[70px] z-50 w-full max-w-[270px] overflow-hidden rounded-[24px] border border-slate-200/70 bg-white p-2.5 shadow-[0_20px_50px_rgba(99,102,241,0.13),0_6px_20px_rgba(0,0,0,0.07)] md:hidden padding-x-400"
+                className="absolute right-1 top-[70px] z-50 w-full max-w-[270px] overflow-hidden rounded-[24px] border border-slate-200/70 bg-white p-2.5 shadow-[0_20px_50px_rgba(99,102,241,0.13),0_6px_20px_rgba(0,0,0,0.07)] lg:hidden"
               >
                 <div className="max-h-[55vh] space-y-0.5 overflow-y-auto pr-0.5">
                   {NAV_ITEMS.map((item, idx) => (

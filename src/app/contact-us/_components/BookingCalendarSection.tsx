@@ -20,6 +20,7 @@ import { motion, type Variants } from "framer-motion";
 import { ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
 import GhlEmbedLoader from "@/components/ui/GhlEmbedLoader";
 import { useGhlEmbedLoaded } from "@/hooks/use-ghl-embed-loaded";
+import { useGhlEmbedResizer } from "@/hooks/use-ghl-embed-resizer";
 import {
   bookingAlternative,
   bookingCalendar,
@@ -51,6 +52,11 @@ const ITEM_VARIANTS: Variants = {
 
 export default function BookingCalendarSection() {
   const loaded = useGhlEmbedLoaded(bookingCalendar.iframeId);
+
+  // Wire up the calendar's auto-resize after a client-side *return*
+  // navigation, where form_embed.js's one-time DOM scan won't re-run. No-op on
+  // full page loads / first navigation (the script handles those itself).
+  useGhlEmbedResizer(bookingCalendar.iframeId);
 
   return (
     <section

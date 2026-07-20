@@ -20,7 +20,6 @@ import { useChat } from "@/components/chat/ChatProvider";
 import ChatPanel from "@/components/chat/ChatPanel";
 
 const SMOOTH_EASE = [0.16, 1, 0.3, 1] as const;
-
 export default function ChatWidget() {
   const { isOpen, toggleOpen, heroInView } = useChat();
 
