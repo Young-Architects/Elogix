@@ -54,11 +54,10 @@
     }
   ],
   "socials": [
-    { "iconKey": "linkedin",  "label": "LinkedIn",  "href": "https://www.linkedin.com/company/expendesk" },
-    { "iconKey": "youtube",   "label": "YouTube",   "href": "https://www.youtube.com/@expendesk" },
     { "iconKey": "facebook",  "label": "Facebook",  "href": "https://www.facebook.com/expendesk" },
-    { "iconKey": "instagram", "label": "Instagram", "href": "https://www.instagram.com/expendesk" },
-    { "iconKey": "x",         "label": "X",         "href": "https://x.com/expendesk" }
+    { "iconKey": "instagram", "label": "Instagram", "href": "https://www.instagram.com/expendesk.ai/?hl=en" },
+    { "iconKey": "linkedin",  "label": "LinkedIn",  "href": "https://www.linkedin.com/company/expendesk-ai" },
+    { "iconKey": "youtube",   "label": "YouTube",   "href": "https://www.youtube.com/@Expendeskai" }
   ],
   "legal": [
     { "label": "Terms of Service", "href": "/legal/terms" },

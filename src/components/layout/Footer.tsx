@@ -62,11 +62,11 @@ const SOCIAL_ICONS: Record<string, ReactNode> = {
       <line x1="17.5" y1="6.5" x2="17.5" y2="6.5" />
     </svg>
   ),
-  x: (
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="h-[45%] w-[45%]">
-      <path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.22-6.82-5.96 6.82H1.66l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23Zm-1.16 17.52h1.83L7.02 4.13H5.06l12.02 15.64Z" />
-    </svg>
-  ),
+  // x: (
+  //   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="h-[45%] w-[45%]">
+  //     <path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.22-6.82-5.96 6.82H1.66l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23Zm-1.16 17.52h1.83L7.02 4.13H5.06l12.02 15.64Z" />
+  //   </svg>
+  // ),
 };
 
 /* ───────────────────────── magnetic social dock ───────────────────────── */

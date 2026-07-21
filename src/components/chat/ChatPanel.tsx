@@ -168,7 +168,7 @@ export default function ChatPanel({
                 type="button"
                 onClick={() => sendQuickQuestion(question)}
                 disabled={isLoading}
-                className="rounded-full border border-indigo-400/25 bg-indigo-500/[0.08] px-3 py-1.5 text-[11.5px] font-medium text-indigo-300 transition-colors duration-200 hover:border-indigo-400/50 hover:bg-indigo-500/[0.16] hover:text-indigo-200 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-400"
+                className="rounded-full cursor-pointer border border-indigo-400/25 bg-indigo-500/[0.08] px-3 py-1.5 text-[11.5px] font-medium text-indigo-300 transition-colors duration-200 hover:border-indigo-400/50 hover:bg-indigo-500/[0.16] hover:text-indigo-200 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-400"
               >
                 {question}
               </button>
@@ -204,7 +204,7 @@ export default function ChatPanel({
             onClick={sendMessage}
             disabled={!canSend}
             aria-label={chatData.input.sendAriaLabel}
-            className="mb-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 text-white shadow-[0_2px_8px_rgba(99,102,241,0.28)] transition-all duration-200 hover:shadow-[0_4px_14px_rgba(99,102,241,0.4)] disabled:cursor-not-allowed disabled:opacity-35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-400"
+            className="mb-0.5 flex h-7 w-7 shrink-0 cursor-pointer items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 text-white shadow-[0_2px_8px_rgba(99,102,241,0.28)] transition-all duration-200 hover:shadow-[0_4px_14px_rgba(99,102,241,0.4)] disabled:cursor-not-allowed disabled:opacity-35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-400"
           >
             <Send className="h-3.5 w-3.5" />
           </button>
