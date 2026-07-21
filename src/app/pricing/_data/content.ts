@@ -75,7 +75,7 @@ export const pricingPlans: PricingPlan[] = [
     name: "Growth",
     tagline: "For small teams bringing order to expenses for the first time.",
     price: {
-      amount: "$49",
+      amount: "₹3,999",
       period: "/month",
       note: "Billed annually · placeholder pricing",
     },
@@ -95,7 +95,7 @@ export const pricingPlans: PricingPlan[] = [
     name: "Business",
     tagline: "For growing companies that need policy control and visibility.",
     price: {
-      amount: "$99",
+      amount: "₹7,999",
       period: "/month",
       note: "Billed annually · placeholder pricing",
     },

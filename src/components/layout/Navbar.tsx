@@ -64,7 +64,7 @@ import {
 } from "lucide-react";
 import navData from "@/data/navigation.json";
 import { IN_PAGE_NAV_EVENT } from "./ScrollToHash";
-import { openAndDownloadLeadMagnet } from "@/lib/lead-magnet";
+import { openLeadMagnet } from "@/lib/lead-magnet";
 
 /** True for links that point at a downloadable PDF asset (e.g. the lead magnet). */
 const isPdfHref = (href: string): boolean =>
@@ -170,7 +170,7 @@ function DropdownItem({ item, i, isMultiCol, onClose }: { item: DropdownItem; i:
       // PDF items (e.g. "Free Guide") open in a new tab AND download; the helper
       // preventDefaults so the Link doesn't also try to route to the file.
       onClick={(e) => {
-        if (isPdfHref(item.href)) openAndDownloadLeadMagnet(e);
+        if (isPdfHref(item.href)) openLeadMagnet(e);
         onClose();
       }}
       {...(isPdfHref(item.href)
@@ -301,7 +301,7 @@ function MobileNavItem({ item, idx, isOpen, onToggle, onClick }: MobileNavItemPr
                         key={sub.label}
                         href={sub.href}
                         onClick={(e) => {
-                          if (isPdfHref(sub.href)) openAndDownloadLeadMagnet(e);
+                          if (isPdfHref(sub.href)) openLeadMagnet(e);
                           onClick();
                         }}
                         {...(isPdfHref(sub.href)

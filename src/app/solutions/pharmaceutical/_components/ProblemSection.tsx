@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -768,29 +769,33 @@ export default function ProblemSection() {
                   </p>
 
                   <motion.div
-                    className="inline-flex items-center gap-2 text-violet-400 text-[12.5px] font-semibold cursor-pointer group"
-                    whileHover={{ x: 2 }}
+                    className="inline-flex w-fit"
                     animate={{ x: [0, 4, 0] }}
                     transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
                   >
-                    <span className="group-hover:text-violet-300 transition-colors">
-                      {problem.closing.cta}
-                    </span>
-                    <svg
-                      width="13"
-                      height="13"
-                      viewBox="0 0 15 15"
-                      fill="none"
-                      className="group-hover:translate-x-1 transition-transform"
+                    <Link
+                      href="/contact-sales"
+                      className="inline-flex items-center gap-2 text-violet-400 text-[12.5px] font-semibold cursor-pointer group transition-transform hover:translate-x-0.5"
                     >
-                      <path
-                        d="M2.5 7.5H12.5M12.5 7.5L8.5 3.5M12.5 7.5L8.5 11.5"
-                        stroke="currentColor"
-                        strokeWidth="1.7"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+                      <span className="group-hover:text-violet-300 transition-colors">
+                        {problem.closing.cta}
+                      </span>
+                      <svg
+                        width="13"
+                        height="13"
+                        viewBox="0 0 15 15"
+                        fill="none"
+                        className="group-hover:translate-x-1 transition-transform"
+                      >
+                        <path
+                          d="M2.5 7.5H12.5M12.5 7.5L8.5 3.5M12.5 7.5L8.5 11.5"
+                          stroke="currentColor"
+                          strokeWidth="1.7"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </Link>
                   </motion.div>
                 </div>
               </div>

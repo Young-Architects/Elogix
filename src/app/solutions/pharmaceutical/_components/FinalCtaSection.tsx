@@ -23,7 +23,7 @@ import { motion, useReducedMotion, type Variants } from "framer-motion";
 import gsap from "gsap";
 import { ArrowRight, CalendarCheck2, Download, type LucideIcon } from "lucide-react";
 import MagneticButton from "@/components/ui/MagneticButton";
-import { openAndDownloadLeadMagnet } from "@/lib/lead-magnet";
+import { openLeadMagnet } from "@/lib/lead-magnet";
 import { finalCta } from "../_data";
 import type { FinalCtaIconKey, FinalCtaPanel } from "../_data";
 
@@ -92,7 +92,7 @@ function ActionPanel({ panel }: { panel: FinalCtaPanel }) {
   const { isPrimary, iconKey, eyebrow, title, description, buttonLabel, href } = panel;
   const Icon = finalCtaIcons[iconKey];
   // The "Download the checklist" panel opens the guide in a new tab AND downloads it.
-  const onCtaClick = iconKey === "download" ? openAndDownloadLeadMagnet : undefined;
+  const onCtaClick = iconKey === "download" ? openLeadMagnet : undefined;
 
   return (
     <motion.div

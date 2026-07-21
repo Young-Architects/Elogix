@@ -31,11 +31,7 @@ import { useEffect, useRef, useState } from "react";
 import heroData from "@/data/sections/hero.json";
 import MagneticButton from "@/components/ui/MagneticButton";
 import HeroChatDock from "@/components/chat/HeroChatDock";
-import {
-  LEAD_MAGNET_HREF,
-  LEAD_MAGNET_FILENAME,
-  openAndDownloadLeadMagnet,
-} from "@/lib/lead-magnet";
+import { LEAD_MAGNET_HREF, openLeadMagnet } from "@/lib/lead-magnet";
 
 /* ─────────────────────── helpers ─────────────────────── */
 
@@ -394,10 +390,9 @@ export default function HeroSection() {
 
               <a
                 href={LEAD_MAGNET_HREF}
-                download={LEAD_MAGNET_FILENAME}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={openAndDownloadLeadMagnet}
+                onClick={openLeadMagnet}
                 className="group inline-flex items-center gap-2 rounded-xl border border-black/[0.06] bg-white/60 px-7 py-3.5 text-[13.5px] font-semibold text-slate-700 backdrop-blur-sm shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-all duration-300 hover:border-indigo-500/30 hover:bg-white hover:text-slate-900"
               >
                 {heroData.ctas.secondary.label}

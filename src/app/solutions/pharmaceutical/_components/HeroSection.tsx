@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { Sparkles } from "lucide-react";
 import HeroChatDock from "@/components/chat/HeroChatDock";
-import { openAndDownloadLeadMagnet } from "@/lib/lead-magnet";
+import { openLeadMagnet } from "@/lib/lead-magnet";
 import { hero } from "../_data";
 
 // ─── Hex grid background ─────────────────────────────────────────────────
@@ -286,7 +286,7 @@ export default function HeroSection() {
                 download
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={openAndDownloadLeadMagnet}
+                onClick={openLeadMagnet}
                 className="group relative overflow-hidden px-7 py-[13px] rounded-xl font-semibold text-[13.5px] text-white flex items-center justify-center gap-2.5"
                 style={{
                   background:

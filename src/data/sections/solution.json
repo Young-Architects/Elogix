@@ -156,12 +156,12 @@
   "dashboardPreview": {
     "title": "Dashboard",
     "totalLabel": "Total Spending",
-    "totalSpending": "$187,540",
+    "totalSpending": "₹1,55,65,820",
     "trend": "↑ +12.9% vs last month",
     "transactions": [
-      { "name": "Cloud Services", "amount": "$1,230.00", "dept": "Engineering", "status": "Approved" },
-      { "name": "Designing",      "amount": "$340.00",   "dept": "Design",      "status": "Approved" },
-      { "name": "Transportation", "amount": "$48.90",    "dept": "Sales",       "status": "Approved" }
+      { "name": "Cloud Services", "amount": "₹1,02,090.00", "dept": "Engineering", "status": "Approved" },
+      { "name": "Designing",      "amount": "₹28,220.00",   "dept": "Design",      "status": "Approved" },
+      { "name": "Transportation", "amount": "₹4,058.70",    "dept": "Sales",       "status": "Approved" }
     ]
   }
 }

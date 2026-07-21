@@ -251,11 +251,13 @@ function MarqueeRow({ items, direction, duration }: MarqueeRowProps) {
 // CONSTANTS
 // ─────────────────────────────────────────────────────────────────────────────
 
-const AVATAR_GRADIENTS = [
-  "from-violet-500 to-purple-700",
-  "from-fuchsia-500 to-pink-600",
-  "from-emerald-500 to-teal-600",
-  "from-orange-500 to-amber-600",
+// Decorative avatar cluster for the "Join 140+ businesses" pill — gradient +
+// initials so the circles read as real customers instead of empty dots.
+const AVATAR_BADGES = [
+  { gradient: "from-violet-500 to-purple-700", initials: "RM" },
+  { gradient: "from-fuchsia-500 to-pink-600",  initials: "PN" },
+  { gradient: "from-emerald-500 to-teal-600",  initials: "AS" },
+  { gradient: "from-orange-500 to-amber-600",  initials: "KR" },
 ] as const;
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -374,12 +376,14 @@ export default function TestimonialsSection() {
         >
           <div className="flex items-center gap-3 rounded-full border border-violet-200/50 bg-white/60 px-5 py-2.5 shadow-sm backdrop-blur-md">
             <div className="flex -space-x-2">
-              {AVATAR_GRADIENTS.map((g, i) => (
+              {AVATAR_BADGES.map((a, i) => (
                 <div
                   key={i}
-                  className={`h-8 w-8 flex-shrink-0 rounded-full bg-gradient-to-br ${g} border-2 border-white`}
+                  className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${a.gradient} border-2 border-white text-[10px] font-bold tracking-wide text-white`}
                   aria-hidden="true"
-                />
+                >
+                  {a.initials}
+                </div>
               ))}
             </div>
             <p className="text-sm text-gray-500">

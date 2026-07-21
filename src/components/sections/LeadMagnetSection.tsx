@@ -24,7 +24,7 @@ import {
 } from "framer-motion";
 import ScrollBeamDivider from "../ui/ScrollBeamDivider";
 import leadMagnetData from "@/data/sections/lead-magnet.json";
-import { openAndDownloadLeadMagnet } from "@/lib/lead-magnet";
+import { openLeadMagnet } from "@/lib/lead-magnet";
 
 /* ──────────────────────────────────────────────────────────────────────────
    DATA — imported from @/data/sections/lead-magnet.json
@@ -459,9 +459,9 @@ export default function LeadMagnetSection() {
     []
   );
 
-  // Opens the guide in a new tab AND downloads it — shared across every
-  // download CTA on the site. See src/lib/lead-magnet.ts.
-  const handleDownload = () => openAndDownloadLeadMagnet();
+  // Opens the guide in a new tab — shared across every guide CTA on the site.
+  // See src/lib/lead-magnet.ts.
+  const handleDownload = () => openLeadMagnet();
 
   return (
     <section
