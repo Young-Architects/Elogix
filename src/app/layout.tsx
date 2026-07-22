@@ -36,10 +36,20 @@ export const metadata: Metadata = {
   description:
     "Track expenses, automate reimbursements, enforce policies, and gain real-time visibility into company spending — all from one powerful platform built for SMEs.",
   keywords: ["expense management", "finance", "reimbursements", "SME", "expense tracking"],
+  // `images` is injected automatically from opengraph-image.tsx / twitter-image.tsx,
+  // so it isn't repeated here.
   openGraph: {
     title: "Expendesk — Expense Intelligence Platform",
     description: "Control every business expense without the spreadsheet chaos.",
+    url: SITE_URL,
+    siteName: "Expendesk",
     type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Expendesk — Expense Intelligence Platform",
+    description: "Control every business expense without the spreadsheet chaos.",
   },
 };
 
