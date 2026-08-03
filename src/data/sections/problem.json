@@ -14,13 +14,13 @@
     "More manual work"
   ],
   "closingLine": "Eventually, finance teams spend more time chasing receipts than making financial decisions.",
-  "resultLead": "The result?",
+  "resultLead": "The Result?",
   "chaosPoint": { "icon": "⚠️", "label": "CHAOS POINT" },
   "causes": [
     {
       "id": "c1",
       "icon": "🧾",
-      "title": "Lost receipts",
+      "title": "Receipts Lost",
       "sub": "Finance teams chase paperwork, not decisions",
       "tag": "Manual Processes",
       "tagColor": "bg-amber-100 text-amber-600 border-amber-200"
@@ -28,15 +28,15 @@
     {
       "id": "c2",
       "icon": "⏳",
-      "title": "Manual expense approvals",
+      "title": "Approval Delays",
       "sub": "Every claim waits on a manager",
       "tag": null,
       "tagColor": ""
     },
     {
       "id": "c3",
-      "icon": "📊",
-      "title": "More spreadsheets, more manual work",
+      "icon": "👥",
+      "title": "Reimbursement Queue",
       "sub": "Growth multiplies the busywork",
       "tag": "No Policy Enforcement",
       "tagColor": "bg-violet-100 text-violet-600 border-violet-200"
@@ -44,7 +44,7 @@
     {
       "id": "c4",
       "icon": "🔍",
-      "title": "Poor spend visibility",
+      "title": "Visibility Missing",
       "sub": "No real-time view of company spend",
       "tag": null,
       "tagColor": ""

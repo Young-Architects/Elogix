@@ -15,8 +15,9 @@
  *
  * Floating-badge and industry icons map from string `iconKey`s
  * (`FLOATING_BADGE_ICON_MAP` / `INDUSTRY_ICON_MAP`); all copy/figures come from
- * `src/data/sections/features.json`. The <video> element is an intentional
- * placeholder (no `src` yet) — wire up a real source when available.
+ * `src/data/sections/features.json`. The <video> source comes from
+ * `featuresVideo.featureVideoUrl` and MUST be a browser-playable container
+ * (MP4/H.264, WebM or Ogg) — see the FEATURE VIDEO SOURCE block below.
  */
 
 import { useRef, useState, useEffect, useCallback } from "react";
@@ -115,6 +116,47 @@ const floatingBadges: Badge[] = featuresData.featuresVideo.floatingBadges.map((b
 }));
 
 const featureStats = featuresData.featuresVideo.stats;
+
+/* ═══════════════════════════════════════════════════════════════
+   FEATURE VIDEO SOURCE
+   ───────────────────────────────────────────────────────────────
+   <video> can only decode a handful of containers. MKV (Matroska),
+   MOV and AVI are NOT among them in any browser — they need to be
+   re-encoded to MP4 (H.264 + AAC) or WebM. The dev warning below
+   catches that mistake at the source instead of leaving a silent
+   black box on the page.
+═══════════════════════════════════════════════════════════════ */
+const FEATURE_VIDEO_SRC = featuresData.featuresVideo.featureVideoUrl;
+
+/** Optional — add `featureVideoPosterUrl` to the JSON to show a still frame
+ *  before playback starts (strongly recommended: it removes the black box
+ *  while the file loads and costs nothing on mobile data). */
+const FEATURE_VIDEO_POSTER = (
+  featuresData.featuresVideo as { featureVideoPosterUrl?: string }
+).featureVideoPosterUrl;
+
+/** Containers a browser will actually decode in a <video> element. */
+const PLAYABLE_VIDEO_RE = /\.(mp4|m4v|webm|ogv|ogg)(?:[?#]|$)/i;
+
+/** MIME type for <source type="…">, derived from the file extension. Letting
+ *  the browser reject an unsupported type up front gives us a real `error`
+ *  event to react to, rather than an element that just never paints. */
+function videoMimeType(url: string): string | undefined {
+  const ext = url.split(/[?#]/)[0].split(".").pop()?.toLowerCase();
+  if (ext === "webm") return "video/webm";
+  if (ext === "ogv" || ext === "ogg") return "video/ogg";
+  if (ext === "mp4" || ext === "m4v") return "video/mp4";
+  return undefined; // unknown/unsupported — let the browser attempt to sniff it
+}
+
+if (process.env.NODE_ENV !== "production" && !PLAYABLE_VIDEO_RE.test(FEATURE_VIDEO_SRC)) {
+  console.warn(
+    `[FeaturesVideo] featureVideoUrl points at "${FEATURE_VIDEO_SRC}", which is not a ` +
+    `browser-playable video container. <video> supports MP4 (H.264/AAC), WebM and Ogg — ` +
+    `.mkv / .mov / .avi will not play in ANY browser. Re-encode the file to MP4 and ` +
+    `update featureVideoUrl in src/data/sections/features.json.`
+  );
+}
 
 /* ═══════════════════════════════════════════════════════════════
    BADGE PILL
@@ -679,7 +721,48 @@ function IndustrySection() {
 ═══════════════════════════════════════════════════════════════ */
 export default function FeaturesVideoWithIndustry() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  /** Set when the browser cannot load/decode the file, so we can show a real
+   *  message instead of an inert black rectangle. */
+  const [videoFailed, setVideoFailed] = useState(false);
+
+  /* ── Drive playback imperatively ──────────────────────────────────────
+     `autoPlay` is only honoured when the element mounts — flipping it as a
+     prop afterwards does nothing at all, which is why toggling `isPlaying`
+     never started the video. Playback has to be driven through the DOM node.
+
+     play() returns a promise that REJECTS when the browser blocks autoplay
+     (iOS Low Power Mode, data-saver, no prior user gesture) or when the file
+     can't be decoded. Without the catch, the UI would claim to be playing
+     while nothing happened — and an unhandled rejection would hit the console. */
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+
+    if (isPlaying) {
+      v.play().catch(() => setIsPlaying(false));
+    } else {
+      v.pause();
+    }
+  }, [isPlaying]);
+
+  /* ── Pause once it scrolls out of sight ───────────────────────────────
+     Matters most on phones: a looping video decoding off-screen burns
+     battery and mobile data for something nobody is looking at. */
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting && !v.paused) setIsPlaying(false);
+      },
+      { threshold: 0.25 }
+    );
+    io.observe(v);
+    return () => io.disconnect();
+  }, []);
 
   const rotateX = useMotionValue(0);
   const rotateY = useMotionValue(0);
@@ -832,21 +915,57 @@ export default function FeaturesVideoWithIndustry() {
 
                       <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-slate-900 shadow-2xl border border-slate-800 flex items-center justify-center group">
                         <video
+                          ref={videoRef}
                           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isPlaying ? "opacity-100" : "opacity-40"}`}
                           muted
                           loop
+                          // playsInline is REQUIRED on iOS — without it Safari
+                          // hijacks the video into a fullscreen native player
+                          // instead of playing it inside the mockup.
                           playsInline
-                        />
+                          // preload="none" keeps the file off the wire until
+                          // the visitor actually asks for it. The clip is ~11 MB;
+                          // preloading it would spend that on every mobile
+                          // visitor who never presses play.
+                          preload="none"
+                          poster={FEATURE_VIDEO_POSTER}
+                          onError={() => {
+                            setVideoFailed(true);
+                            setIsPlaying(false);
+                          }}
+                          onPause={() => setIsPlaying(false)}
+                          onPlaying={() => setIsPlaying(true)}
+                          aria-label={featuresData.featuresVideo.headline}
+                        >
+                          {/* An explicit type lets the browser reject an
+                              unsupported container immediately and fire `error`,
+                              instead of silently rendering nothing. */}
+                          <source src={FEATURE_VIDEO_SRC} type={videoMimeType(FEATURE_VIDEO_SRC)} />
+                        </video>
                         <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(255,255,255,0.03)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.03)_50%,rgba(255,255,255,0.03)_75%,transparent_75%,transparent)] bg-[length:24px_24px] pointer-events-none" />
+
+                        {/* Click anywhere on the frame to pause — without this
+                            there is no way to stop playback once it starts. */}
+                        {isPlaying && !videoFailed && (
+                          <button
+                            type="button"
+                            onClick={() => setIsPlaying(false)}
+                            aria-label="Pause video"
+                            className="absolute inset-0 z-10 cursor-pointer"
+                          />
+                        )}
+
                         <AnimatePresence>
-                          {!isPlaying && (
+                          {!isPlaying && !videoFailed && (
                             <motion.button
+                              type="button"
                               initial={{ scale: 0.8, opacity: 0 }}
                               animate={{ scale: 1, opacity: 1 }}
                               exit={{ scale: 0.8, opacity: 0 }}
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
                               onClick={() => setIsPlaying(true)}
+                              aria-label="Play product demo video"
                               className="relative z-10 flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-2xl transition-all hover:bg-white/20"
                             >
                               <span className="absolute inset-0 rounded-full animate-ping bg-white/20 duration-1000" />
@@ -854,6 +973,19 @@ export default function FeaturesVideoWithIndustry() {
                             </motion.button>
                           )}
                         </AnimatePresence>
+
+                        {/* Graceful failure — a black rectangle with a dead play
+                            button reads as a broken page; this reads as a state. */}
+                        {videoFailed && (
+                          <div className="relative z-10 flex flex-col items-center gap-1.5 px-6 text-center">
+                            <span className="text-[13px] font-semibold text-white/90 sm:text-[14px]">
+                              Preview unavailable
+                            </span>
+                            <span className="text-[11px] leading-relaxed text-white/50 sm:text-[12px]">
+                              This video couldn&apos;t be played in your browser.
+                            </span>
+                          </div>
+                        )}
                       </div>
 
                       <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-2">

@@ -17,7 +17,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import { ArrowDown, Sparkles } from "lucide-react";
 import ScrollBeamDivider from "../ui/ScrollBeamDivider";
 import MagneticButton from "@/components/ui/MagneticButton";
 import problemData from "@/data/sections/problem.json";
@@ -280,14 +280,24 @@ export default function ProblemSection() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-        {/* Section label */}
+        {/* Section label — matches the "THE SOLUTION" badge in SolutionSection
+            exactly (uppercase, widely tracked, same tint/border/ink) so the two
+            paired sections read as one system. `uppercase` is applied in CSS,
+            so the JSON copy stays sentence-case and editable. */}
         <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center mt-20 mb-4 gap-2 rounded-full border border-violet-200/60 bg-violet-100/50 px-4 py-1.5 backdrop-blur-md shadow-sm"
+            className="mt-20 mb-4"
           >
-            <Sparkles className="h-4 w-4 text-violet-600" />
-            <span className="text-[14px] font-bold text-violet-800 tracking-wide">
+            <span
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[14px] font-semibold tracking-widest uppercase"
+              style={{
+                background: "rgba(124,58,237,0.07)",
+                border: "1px solid rgba(139,92,246,0.25)",
+                color: "#7c3aed",
+              }}
+            >
+              <Sparkles className="w-4 h-4" />
               {problemData.sectionLabel}
             </span>
           </motion.div>
@@ -367,25 +377,37 @@ export default function ProblemSection() {
         </div>
 
 
-        {/* "The result?" lead-in pointing into the diagram */}
-        <motion.p
+        {/* ── "The result?" — the hinge between the copy above and the diagram
+             below. Promoted from a plain line of text to a highlighted pill so
+             it reads as a deliberate transition marker rather than another
+             paragraph. Borrows the section's existing language: the rounded-full
+             pill shape of the badge + escalation chips, and the violet→rose
+             gradient used by the connector lines and bottom CTA — so it feels
+             highlighted without introducing a new visual idea.
+             `w-fit` keeps the pill hugging its text at every width. */}
+        <motion.div
           custom={0.38}
           variants={fadeUp}
           initial="hidden"
           animate={isInView ? "show" : "hidden"}
-          className="mb-6 flex items-center gap-2 text-[17px] font-extrabold tracking-tight text-slate-900 sm:text-[19px]"
+          className="mb-6 flex w-fit items-center gap-2.5 rounded-full border border-violet-200/70 bg-gradient-to-r from-violet-100/90 via-fuchsia-50/80 to-rose-100/70 px-4 py-2 shadow-[0_2px_10px_rgba(124,58,237,0.10)] backdrop-blur-sm sm:gap-3 sm:px-5 sm:py-2.5"
         >
-          {problemData.resultLead}
+          <span className="text-[17px] font-extrabold tracking-tight text-slate-900 sm:text-[19px] lg:text-[20px]">
+            {problemData.resultLead}
+          </span>
 
+          {/* Filled chip instead of a bare "↓" glyph — a solid arrow reads as a
+              direction cue at a glance and keeps its weight at small sizes,
+              where a text arrow gets thin and easy to miss. */}
           <motion.span
             aria-hidden
-            animate={{ y: [0, 4, 0] }}
+            animate={{ y: [0, 3, 0] }}
             transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
-            className="text-violet-500"
+            className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-rose-500 text-white shadow-sm sm:h-7 sm:w-7"
           >
-            ↓
+            <ArrowDown className="h-3.5 w-3.5 sm:h-4 sm:w-4" strokeWidth={3} />
           </motion.span>
-        </motion.p>
+        </motion.div>
 
         {/* ═══ DIAGRAM CARD ═══ */}
         <motion.div
@@ -425,18 +447,18 @@ export default function ProblemSection() {
               {/* ── Column header bar ── */}
               <div className="grid grid-cols-[minmax(0,1fr)_66px_minmax(0,1fr)] sm:grid-cols-[minmax(0,1fr)_120px_minmax(0,1fr)] lg:grid-cols-[minmax(0,1fr)_156px_minmax(0,1fr)] xl:grid-cols-[minmax(0,1fr)_176px_minmax(0,1fr)] border-b border-white/40">
                 <div className="flex items-center min-w-0 gap-1.5 sm:gap-2.5 px-2 sm:px-7 py-2.5 sm:py-3.5">
-                  <span className="flex h-[17px] w-[17px] sm:h-[22px] sm:w-[22px] flex-shrink-0 items-center justify-center rounded-full bg-violet-100/80 text-[8px] sm:text-[10px] font-black text-violet-600 shadow-sm">←</span>
-                  <span className="text-[10px] sm:text-[13.5px] font-extrabold uppercase tracking-[.01em] sm:tracking-[.14em] text-slate-700 truncate">
+                  {/* <span className="flex h-[17px] w-[17px] sm:h-[22px] sm:w-[22px] flex-shrink-0 items-center justify-center rounded-full bg-violet-100/80 text-[8px] sm:text-[10px] font-black text-violet-600 shadow-sm">←</span> */}
+                  <span className="text-[16px] sm:text-[20px] font-extrabold uppercase text-slate-700 truncate">
                     Root Causes
                   </span>
                 </div>
                 {/* centre spacer */}
                 <div className="border-x border-white/40" />
                 <div className="flex items-center min-w-0 justify-end md:justify-start gap-1.5 sm:gap-2.5 border-l border-white/40 px-2 sm:px-7 py-2.5 sm:py-3.5">
-                  <span className="text-[10px] sm:text-[13.5px] font-extrabold uppercase tracking-[.01em] sm:tracking-[.14em] text-slate-700 truncate">
+                  <span className="text-[16px] sm:text-[20px] font-extrabold uppercase text-slate-700 truncate">
                     Consequences
                   </span>
-                  <span className="flex h-[17px] w-[17px] sm:h-[22px] sm:w-[22px] flex-shrink-0 items-center justify-center rounded-full bg-rose-100/80 text-[8px] sm:text-[10px] font-black text-rose-500 shadow-sm">→</span>
+                  {/* <span className="flex h-[17px] w-[17px] sm:h-[22px] sm:w-[22px] flex-shrink-0 items-center justify-center rounded-full bg-rose-100/80 text-[8px] sm:text-[10px] font-black text-rose-500 shadow-sm">→</span> */}
                 </div>
               </div>
 
@@ -459,7 +481,7 @@ export default function ProblemSection() {
                   <div className="flex flex-col gap-2 sm:gap-3 pr-1 sm:pr-2 min-w-0">
                     {CAUSES.map((c, i) => (
                       <div key={c.id} className="relative w-full min-w-0">
-                        {c.tag && (
+                        {/* {c.tag && (
                           <motion.div
                             initial={{ opacity: 0, y: -5 }}
                             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -469,7 +491,7 @@ export default function ProblemSection() {
                             <span className="flex-shrink-0 h-1 w-1 sm:h-1.5 sm:w-1.5 rounded-full bg-current opacity-70" />
                             <span className="truncate">{c.tag}</span>
                           </motion.div>
-                        )}
+                        )} */}
                         <motion.div
                           ref={(el) => { causeEls.current[i] = el; }}
                           {...slideLeft(i)}

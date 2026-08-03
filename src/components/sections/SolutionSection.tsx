@@ -209,17 +209,17 @@ function NodeDiagram() {
         }}
       >
         <div className="flex items-center justify-between px-4 sm:px-6 pt-4 pb-2.5 border-b border-slate-100/80">
-          <span className="flex items-center gap-2 text-[13px] sm:text-[14.5px] font-extrabold tracking-[0.14em] uppercase text-rose-500">
+          <span className="flex items-center gap-2 text-[16px] sm:text-[20px] font-extrabold uppercase text-rose-500">
             <span className="w-2 h-2 rounded-full bg-rose-400" />
             {solutionData.nodeDiagram.chaosLabel}
           </span>
-          <span className="flex items-center gap-2 text-[13px] sm:text-[14.5px] font-extrabold tracking-[0.14em] uppercase text-indigo-600">
+          <span className="flex items-center gap-2 text-[16px] sm:text-[20px] font-extrabold uppercase text-indigo-600">
             {solutionData.nodeDiagram.controlLabel}
             <span className="w-2 h-2 rounded-full bg-indigo-400" />
           </span>
         </div>
 
-        <div className="grid grid-cols-[1fr_auto_1fr] gap-x-2 sm:gap-x-5 md:gap-x-7 px-2 sm:px-5 py-4 sm:py-5 items-center">
+        <div className="grid grid-cols-[1fr_auto_1fr] gap-x-2 sm:gap-x-4 md:gap-x-5 px-2 sm:px-5 py-4 sm:py-5 items-center">
 
           <div className="flex flex-col gap-2 min-w-0">
             {chaosNodes.map((node, i) => (
@@ -233,10 +233,10 @@ function NodeDiagram() {
                   <span className="flex-shrink-0 w-5 h-5 sm:w-7 sm:h-7 rounded-md sm:rounded-lg bg-rose-50 flex items-center justify-center text-[10px] sm:text-sm leading-none">
                     {node.icon}
                   </span>
-                  <span className="text-[12.5px] sm:text-[14px] md:text-[15px] font-semibold text-slate-800 leading-snug flex-1 min-w-0 break-words">
+                  <span className="text-[12.5px] sm:text-[14px] md:text-[15px] font-semibold text-slate-800 leading-snug flex-1 min-w-0 hyphens-auto">
                     {node.label}
                   </span>
-                  <span className="flex-shrink-0 w-[18px] h-[18px] rounded-full bg-rose-50 border border-rose-200 items-center justify-center ml-1 hidden sm:flex">
+                  <span className="flex-shrink-0 w-[18px] h-[18px] rounded-full bg-rose-50 border border-rose-200 items-center justify-center hidden sm:flex">
                     <span className="text-rose-500 text-[8px] font-black leading-none">✕</span>
                   </span>
                 </div>
@@ -265,7 +265,7 @@ function NodeDiagram() {
                 className="absolute inset-0 rounded-full animate-ping"
                 style={{ background: "rgba(124,58,237,0.1)", animationDuration: "2.5s" }}
               />
-              <span className="relative z-10 text-white font-black text-xl sm:text-2xl leading-none">{solutionData.nodeDiagram.brandName.charAt(0)}</span>
+              {/* <span className="relative z-10 text-white font-black text-xl sm:text-2xl leading-none">{solutionData.nodeDiagram.brandName.charAt(0)}</span> */}
               <span className="relative z-10 text-white/90 font-bold text-[8.5px] sm:text-[10px] tracking-[1px] mt-0.5 leading-none">
                 {solutionData.nodeDiagram.brandName}
               </span>
@@ -286,10 +286,10 @@ function NodeDiagram() {
                   <span className="flex-shrink-0 w-5 h-5 sm:w-7 sm:h-7 rounded-md sm:rounded-lg bg-indigo-50 flex items-center justify-center text-[10px] sm:text-sm leading-none">
                     {node.icon}
                   </span>
-                  <span className="text-[12.5px] sm:text-[14px] md:text-[15px] font-semibold text-slate-800 leading-snug flex-1 min-w-0 break-words">
+                  <span className="text-[12.5px] sm:text-[14px] md:text-[15px] font-semibold text-slate-800 leading-snug flex-1 min-w-0 hyphens-auto">
                     {node.label}
                   </span>
-                  <span className="flex-shrink-0 w-[18px] h-[18px] rounded-full bg-emerald-50 border border-emerald-200 items-center justify-center ml-1 hidden sm:flex">
+                  <span className="flex-shrink-0 w-[18px] h-[18px] rounded-full bg-emerald-50 border border-emerald-200 items-center justify-center hidden sm:flex">
                     <span className="text-emerald-500 text-[8px] font-black leading-none">✓</span>
                   </span>
                   <span className="absolute right-0 top-2 bottom-2 w-[3px] rounded-l-full bg-indigo-400" />
@@ -650,7 +650,7 @@ export default function SolutionSection() {
       </div>
 
       {/* ════ FEATURES ════ */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+      {/* <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
         <motion.div {...fadeUp(0)} className="text-center mb-12">
           <h3 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
             {solutionData.featuresSection.headingParts.pre}
@@ -662,11 +662,11 @@ export default function SolutionSection() {
           <p className="mt-3 text-slate-500 text-[15px] max-w-lg mx-auto">
             {solutionData.featuresSection.subheading}
           </p>
-        </motion.div>
+        </motion.div> */}
 
         {/* ── Carousel on mobile/tablet, grid on desktop ── */}
-        <FeaturesSection />
-      </div>
+        {/* <FeaturesSection /> */}
+      {/* </div> */}
 
       {/* Divider */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -13,7 +13,7 @@
     "description": "Expendesk centralizes your entire expense management process—from expense submission to reimbursement, approvals, reporting, and compliance.",
     "bullets": [
       { "text": "No spreadsheets.",                "positive": false },
-      { "text": "No manual follow-ups.",           "positive": false },
+      { "text": "No lengthy follow-ups.",           "positive": false },
       { "text": "No endless email threads.",                   "positive": false },
       { "text": "Just complete visibility and control over business spending.", "positive": true  }
     ],
@@ -30,7 +30,7 @@
       { "label": "Receipts Lost",       "icon": "🧾" },
       { "label": "Approval Delays",     "icon": "⏱"  },
       { "label": "Reimbursement Queue", "icon": "👥" },
-      { "label": "Visibility Missing",  "icon": "👁"  }
+      { "label": "Visibility Missing",  "icon": "👁️‍🗨️"  }
     ],
     "controlNodes": [
       { "label": "Expense Captured Instantly", "icon": "📸" },

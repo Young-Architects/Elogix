@@ -519,7 +519,7 @@ export default function HeroSection() {
             </div>
             <span className="text-[12px] font-medium text-slate-500">
               <span className="font-bold text-slate-700">
-                {heroData.socialProof.businessCount} finance teams
+                {heroData.socialProof.businessCount}
               </span>{" "}
               {heroData.socialProof.businessText}
             </span>
@@ -528,7 +528,7 @@ export default function HeroSection() {
           <div className="hidden h-4 w-px bg-black/[0.08] sm:block" />
 
           {/* Stars */}
-          <div className="flex items-center gap-1.5">
+          {/* <div className="flex items-center gap-1.5">
             {[...Array(5)].map((_, i) => (
               <svg
                 key={i}
@@ -542,7 +542,7 @@ export default function HeroSection() {
             <span className="text-[12px] font-medium text-slate-500 ml-1">
               {heroData.socialProof.rating} / 5 {heroData.socialProof.ratingText}
             </span>
-          </div>
+          </div> */}
         </motion.div>
       </div>
     </section>
