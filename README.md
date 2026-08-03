@@ -15,7 +15,7 @@ Marketing landing page for **Expendesk**, an expense intelligence platform built
 | Styling | Tailwind CSS v4 |
 | Animations | Framer Motion 12 (most of the site) + GSAP 3 / ScrollTrigger (pharmaceutical scroll sequences) + hand-written CSS keyframes |
 | Icons | Lucide React |
-| Fonts | System sans-serif stack (body) · Syne self-hosted via `next/font` (Hero headings) |
+| Fonts | Poppins (400/500/600/700/800/900) self-hosted via `next/font/google`, applied site-wide |
 | Content | Headless WordPress ("Blog to JSON" plugin) for `/resources/blogs`; all marketing copy in local JSON/TS data files |
 | Lead capture & booking | GoHighLevel (LeadConnector) embedded booking calendar + contact form, auto-sized by GHL's `form_embed.js` |
 | Runtime | React 19 |
@@ -327,14 +327,14 @@ The home page is split for fast first paint:
 
 Other measures:
 
-- The only web font is Syne, self-hosted by `next/font/google` with `display: "swap"` and scoped to the Hero headings (no runtime request to Google). Body copy uses the native system sans-serif stack, so there is no blocking font fetch for the bulk of the page.
+- The only web font is Poppins, self-hosted by `next/font/google` with `display: "swap"` (no runtime request to Google, no layout shift). Six weights are loaded — 400/500/600/700/800/900 — matching exactly the `font-*` utilities the codebase uses, so nothing is faux-bolded and no unused cut is shipped.
 - `next.config.ts` enables `compress`, `optimizeCss`, AVIF/WebP image formats, and strips the `x-powered-by` header.
 - The navbar logo is served through `next/image` with `priority`; the footer logo lazy-loads.
 - **Blog images are optimised through `next/image`.** `next.config.ts` allowlists the WordPress host under `images.remotePatterns` (scoped to `/wp-content/uploads/**`). The host is derived from `WORDPRESS_API_URL` at build with a hardcoded fallback, so **changing the CMS domain is a single env edit** — no code change. A WordPress image on a non-allowlisted host will throw at render, so update the env if the CMS moves.
 - `prefers-reduced-motion` is honoured across the heavier animations (LeadMagnet, Testimonials, WhyExpendesk, the global scroll engine, and the GSAP/ScrollTrigger pharmaceutical sequences).
 - Marquees/carousels use `will-change: transform` and pause on hover/touch.
 
-> **Typography note:** body text renders in the native system sans-serif stack by design. The Hero applies Syne directly via `syne.className`.
+> **Typography note:** the whole site renders in Poppins. It is loaded once in [`layout.tsx`](src/app/layout.tsx) and exposed as `--font-poppins`, which [`globals.css`](src/app/globals.css) maps onto Tailwind's `--font-sans`. Because Tailwind's preflight derives the document font from that variable, every element inherits Poppins — do **not** set `font-family` (or a `font-['…']` arbitrary utility) in components.
 
 ---
 

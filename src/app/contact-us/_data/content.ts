@@ -19,7 +19,7 @@ export const bookingHero = {
   },
   subheading: "Choose a date and time that works best for you.",
   description:
-    "During this 45-minute session, one of our product specialists will walk you through how Expendesk can help automate expense management, streamline approvals, and improve visibility into your business spending.",
+    "During this 30-minute session, one of our product specialists will walk you through how Expendesk can help automate expense management, streamline approvals, and improve visibility into your business spending.",
 } as const;
 
 /** GHL booking-calendar embed config (LeadConnector widget). */
@@ -34,7 +34,7 @@ export const bookingCalendar = {
 
 /** Small trust line under the calendar. */
 export const bookingReassurance = [
-  "45-minute session, tailored to you",
+  "30-minute session, tailored to you",
   "No credit card required",
   "No obligation, no pressure",
 ] as const;

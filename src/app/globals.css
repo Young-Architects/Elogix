@@ -25,6 +25,40 @@
  * ========================================================================== */
 @import "tailwindcss";
 
+/* =============================================================================
+ * TYPOGRAPHY — Poppins, site-wide.
+ *
+ * The font itself is loaded once in src/app/layout.tsx via `next/font/google`,
+ * which self-hosts it and exposes it as `--font-poppins` on <html>.
+ *
+ * Overriding Tailwind's `--font-sans` here is what makes it apply to
+ * EVERYTHING: Tailwind's preflight sets the document font from this variable,
+ * so every element inherits Poppins without touching a single component, and
+ * the `font-sans` utility resolves to it too.
+ *
+ * The system fonts after it are fallbacks for the brief moment before the
+ * font file lands (and if it ever fails to load).
+ * ========================================================================== */
+@theme {
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Belt-and-braces: set the family on the document root explicitly as well, so
+   the site does not depend on Tailwind's preflight internals staying the same
+   across minor versions. `inherit` on form controls is the part browsers get
+   wrong by default — without it buttons/inputs fall back to the OS UI font. */
+html {
+  font-family: var(--font-sans);
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
 /* Smooth scrolling is driven by the JS engine in src/lib/scroll.ts so it can
    track lazy-loaded sections whose height is still settling. A CSS
    `scroll-behavior: smooth` here would fight that engine (it turns every

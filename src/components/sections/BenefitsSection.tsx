@@ -842,7 +842,7 @@ export default function BenefitsSection() {
     <section
       id="benefits"
       ref={sectionRef}
-      className="relative overflow-hidden font-['Inter',sans-serif]"
+      className="relative overflow-hidden"
       style={{
         background:      '#F4F2FE',
         backgroundImage: 'radial-gradient(circle, rgba(167,139,250,0.18) 1px, transparent 1px)',
