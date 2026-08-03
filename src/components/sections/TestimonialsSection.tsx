@@ -314,12 +314,12 @@ export default function TestimonialsSection() {
             <span className="flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white shadow-sm">
               <QuoteGlyph className="h-2.5 w-2.5" />
             </span>
-            <span className="text-[11px] font-semibold uppercase tracking-widest text-violet-600">
+            <span className="text-[13px] font-semibold uppercase tracking-widest text-violet-600">
               {rawTestData.section.badge.label}
             </span>
-            <span className="h-3 w-px bg-violet-200" aria-hidden="true" />
-            <span className="flex items-center gap-1 text-[11px] font-semibold text-amber-500">
-              <StarIcon className="h-3 w-3" />
+            <span className="h-3.5 w-px bg-violet-200" aria-hidden="true" />
+            <span className="flex items-center gap-1 text-[13px] font-semibold text-amber-500">
+              <StarIcon className="h-3.5 w-3.5" />
               {rawTestData.section.badge.rating}
             </span>
           </motion.div>

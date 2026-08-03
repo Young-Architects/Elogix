@@ -329,7 +329,7 @@ export default function ProblemSection() {
           transition={{ duration: 0.78, ease: [0.22, 0.61, 0.36, 1] }}
         >
           <motion.span
-            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-[10.5px] font-black tracking-[0.18em] uppercase mb-8"
+            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-[12.5px] font-black tracking-[0.18em] uppercase mb-8"
             style={{
               background: "rgba(239,68,68,0.08)",
               border: "1px solid rgba(239,68,68,0.22)",

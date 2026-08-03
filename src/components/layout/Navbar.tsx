@@ -498,7 +498,7 @@ export default function Navbar(): ReactNode {
               animate={{
                 paddingTop: scrolled ? "6px" : "8px",
                 paddingBottom: scrolled ? "6px" : "8px",
-                fontSize: scrolled ? "12px" : "12.5px",
+                fontSize: scrolled ? "14.5px" : "15px",
               }}
               transition={FAST_SPRING}
               href={navData.login.href}
@@ -512,7 +512,7 @@ export default function Navbar(): ReactNode {
               animate={{
                 paddingTop: scrolled ? "6px" : "8px",
                 paddingBottom: scrolled ? "6px" : "8px",
-                fontSize: scrolled ? "12px" : "12.5px",
+                fontSize: scrolled ? "14.5px" : "15px",
               }}
               transition={FAST_SPRING}
               href={navData.cta.href}
@@ -522,7 +522,7 @@ export default function Navbar(): ReactNode {
               <div className="absolute inset-0 -translate-x-full skew-x-12 bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               <span className="relative z-10 flex items-center gap-1.5">
                 {navData.cta.label}
-                <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </span>
             </motion.a>
           </div>
@@ -594,7 +594,7 @@ export default function Navbar(): ReactNode {
                       setMobileOpen(false);
                       setMobileOpenDropdown(null);
                     }}
-                    className="flex w-full items-center justify-center rounded-xl border border-slate-200 py-2.5 text-[12px] font-semibold text-slate-700 transition-colors hover:border-violet-300 hover:text-violet-600"
+                    className="flex w-full items-center justify-center rounded-xl border border-slate-200 py-3 text-[16px] font-semibold text-slate-700 transition-colors hover:border-violet-300 hover:text-violet-600"
                   >
                     {navData.login.label}
                   </motion.a>
@@ -606,7 +606,7 @@ export default function Navbar(): ReactNode {
                       setMobileOpen(false);
                       setMobileOpenDropdown(null);
                     }}
-                    className="group relative flex w-full items-center justify-center gap-1.5 overflow-hidden rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 py-2.5 text-[12px] font-semibold text-white shadow-lg shadow-indigo-500/20"
+                    className="group relative flex w-full items-center justify-center gap-1.5 overflow-hidden rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 py-3 text-[16px] font-semibold text-white shadow-lg shadow-indigo-500/20"
                   >
                     <div className="absolute inset-0 -translate-x-full skew-x-12 bg-gradient-to-r from-transparent via-white/15 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
                     <span className="relative z-10">{navData.cta.label}</span>

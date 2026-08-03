@@ -69,13 +69,36 @@ const cx = (...c: (string | false | null | undefined)[]): string =>
 // Size token map
 // ─────────────────────────────────────────────────────────────────────────────
 
+// ─────────────────────────────────────────────────────────────────────────────
+// CTA type scale — THE single source of truth for call-to-action label size.
+//
+// Sizes step up with the viewport instead of being pinned to one value: a fixed
+// large size cannot fit long labels ("Download the Free Expense Management
+// Guide") on one line inside a narrow column, which is what forces the ugly
+// two-line break. These values are the largest that keep every label in the
+// site's copy on a single line down to a 1280px laptop.
+//
+// Exported so CTAs that can't be a MagneticButton (plain <a>/<Link>/<button>)
+// import the same constants and stay visually identical — tune here, not there.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/** Default CTA label size. Matches SIZES.md — use for standalone anchor CTAs. */
+export const CTA_TEXT = "text-[15px] sm:text-[16px] lg:text-[17px]";
+
+/**
+ * Keeps a label on one line from `sm` up, where there is room for it.
+ * Below `sm` buttons are typically full-width and centred, so a natural wrap
+ * reads as intentional — and forcing nowrap there would overflow the viewport.
+ */
+export const CTA_NOWRAP = "whitespace-normal sm:whitespace-nowrap";
+
 const SIZES = {
-  xs:    { pad: "px-3 py-1.5",  text: "text-xs",   gap: "gap-1.5", r: "rounded-lg"   },
-  sm:    { pad: "px-4 py-2",    text: "text-sm",   gap: "gap-2",   r: "rounded-xl"   },
-  md:    { pad: "px-5 py-2.5",  text: "text-sm",   gap: "gap-2",   r: "rounded-xl"   },
-  lg:    { pad: "px-6 py-3",    text: "text-base", gap: "gap-2.5", r: "rounded-xl"   },
-  xl:    { pad: "px-8 py-4",    text: "text-lg",   gap: "gap-3",   r: "rounded-2xl"  },
-  "2xl": { pad: "px-10 py-5",   text: "text-xl",   gap: "gap-3",   r: "rounded-2xl"  },
+  xs:    { pad: "px-3.5 py-2",  text: "text-[13px] sm:text-[13.5px]",             gap: "gap-1.5", r: "rounded-lg"   },
+  sm:    { pad: "px-4 py-2.5",  text: "text-[14px] sm:text-[15px]",               gap: "gap-2",   r: "rounded-xl"   },
+  md:    { pad: "px-5 py-3",    text: CTA_TEXT,                                   gap: "gap-2",   r: "rounded-xl"   },
+  lg:    { pad: "px-6 py-3.5",  text: "text-[15.5px] sm:text-[17px] lg:text-[18px]", gap: "gap-2.5", r: "rounded-xl"   },
+  xl:    { pad: "px-8 py-4",    text: "text-[16px] sm:text-[18px] lg:text-[19px]",   gap: "gap-3",   r: "rounded-2xl"  },
+  "2xl": { pad: "px-10 py-5",   text: "text-[17px] sm:text-[19px] lg:text-[20px]",   gap: "gap-3",   r: "rounded-2xl"  },
 } as const;
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -314,6 +337,13 @@ const MagneticButton = React.forwardRef<HTMLButtonElement, MagneticButtonProps>(
       "outline-none",
       "focus-visible:ring-2 focus-visible:ring-blue-400/70",
       "focus-visible:ring-offset-2 focus-visible:ring-offset-black",
+      // Label integrity: a CTA must never be squeezed into two lines by a
+      // flex-row sibling. `shrink-0` stops the flex algorithm stealing width
+      // from the button, and CTA_NOWRAP holds the label on one line from `sm`
+      // up. Rows containing several CTAs should carry `flex-wrap` so they
+      // stack instead of squashing once they genuinely run out of room.
+      "shrink-0 text-center leading-tight",
+      CTA_NOWRAP,
       // Size tokens
       s.pad, s.text, s.r,
       // Variant base classes (bg, border, backdrop)
@@ -492,6 +522,11 @@ const MagneticButton = React.forwardRef<HTMLButtonElement, MagneticButtonProps>(
       return (
         <motion.div
           {...magneticProps}
+          // The wrapper — not the <Link> — is the flex item when this button
+          // sits in a CTA row, so `shrink-0` has to live here or the row will
+          // squeeze the wrapper and wrap the label onto a second line.
+          // `w-full` keeps fullWidth buttons filling their container.
+          className={cx("shrink-0", fullWidth && "w-full")}
           style={{
             x:       sx,
             y:       sy,

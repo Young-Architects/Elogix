@@ -62,7 +62,7 @@ function PlanCard({ plan }: { plan: PricingPlan }) {
     >
       {/* "Most Popular" badge on the highlighted card */}
       {plan.highlighted && (
-        <span className="absolute -top-3.5 left-1/2 inline-flex -translate-x-1/2 items-center gap-1.5 whitespace-nowrap rounded-full bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-white shadow-[0_8px_20px_rgba(99,102,241,0.4)]">
+        <span className="absolute -top-3.5 left-1/2 inline-flex -translate-x-1/2 items-center gap-1.5 whitespace-nowrap rounded-full bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500 px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.16em] text-white shadow-[0_8px_20px_rgba(99,102,241,0.4)]">
           <Sparkles className="h-3 w-3" />
           Most Popular
         </span>
@@ -141,8 +141,8 @@ function PlanCard({ plan }: { plan: PricingPlan }) {
           icon={<ArrowRight className="h-4 w-4" />}
           className={
             plan.highlighted
-              ? "rounded-full bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500 py-3 text-sm font-bold shadow-[0_10px_28px_rgba(99,102,241,0.35)]"
-              : "rounded-full bg-slate-900 py-3 text-sm font-bold shadow-[0_8px_20px_rgba(15,23,42,0.18)]"
+              ? "rounded-full bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500 py-3 font-bold shadow-[0_10px_28px_rgba(99,102,241,0.35)]"
+              : "rounded-full bg-slate-900 py-3 font-bold shadow-[0_8px_20px_rgba(15,23,42,0.18)]"
           }
         >
           {plan.ctaLabel}
@@ -181,8 +181,8 @@ export default function PricingPlansSection() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             className="inline-flex items-center gap-2 rounded-full border border-violet-200/60 bg-violet-100/50 px-4 py-1.5 shadow-sm backdrop-blur-md"
           >
-            <Sparkles className="h-3.5 w-3.5 text-violet-600" />
-            <span className="text-xs font-bold tracking-wide text-violet-800">
+            <Sparkles className="h-4 w-4 text-violet-600" />
+            <span className="text-[14px] font-bold tracking-wide text-violet-800">
               {pricingPlansHeader.badge}
             </span>
           </motion.div>

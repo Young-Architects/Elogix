@@ -70,8 +70,8 @@ export default function PricingFaqSection() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             className="inline-flex items-center gap-2 rounded-full border border-violet-200/60 bg-violet-100/50 px-4 py-1.5 shadow-sm backdrop-blur-md"
           >
-            <Sparkles className="h-3.5 w-3.5 text-violet-600" />
-            <span className="text-xs font-bold tracking-wide text-violet-800">
+            <Sparkles className="h-4 w-4 text-violet-600" />
+            <span className="text-[14px] font-bold tracking-wide text-violet-800">
               {pricingFaq.badge}
             </span>
           </motion.div>

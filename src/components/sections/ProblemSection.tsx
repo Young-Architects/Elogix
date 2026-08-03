@@ -275,8 +275,8 @@ export default function ProblemSection() {
             animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center mt-20 mb-4 gap-2 rounded-full border border-violet-200/60 bg-violet-100/50 px-4 py-1.5 backdrop-blur-md shadow-sm"
           >
-            <Sparkles className="h-3.5 w-3.5 text-violet-600" />
-            <span className="text-xs font-bold text-violet-800 tracking-wide">
+            <Sparkles className="h-4 w-4 text-violet-600" />
+            <span className="text-[14px] font-bold text-violet-800 tracking-wide">
               {problemData.sectionLabel}
             </span>
           </motion.div>
@@ -353,6 +353,7 @@ export default function ProblemSection() {
           className="mb-6 flex items-center gap-2 text-[15px] font-extrabold tracking-tight text-slate-800"
         >
           {problemData.resultLead}
+
           <motion.span
             aria-hidden
             animate={{ y: [0, 4, 0] }}
@@ -400,19 +401,19 @@ export default function ProblemSection() {
 
               {/* ── Column header bar ── */}
               <div className="grid grid-cols-[minmax(0,1fr)_66px_minmax(0,1fr)] sm:grid-cols-[minmax(0,1fr)_120px_minmax(0,1fr)] lg:grid-cols-[minmax(0,1fr)_156px_minmax(0,1fr)] xl:grid-cols-[minmax(0,1fr)_176px_minmax(0,1fr)] border-b border-white/40">
-                <div className="flex items-center min-w-0 gap-1 sm:gap-2 px-2 sm:px-7 py-2 sm:py-3">
-                  <span className="flex h-[14px] w-[14px] sm:h-[18px] sm:w-[18px] flex-shrink-0 items-center justify-center rounded-full bg-violet-100/80 text-[6px] sm:text-[8px] font-black text-violet-600 shadow-sm">←</span>
-                  <span className="text-[7px] sm:text-[9.5px] font-bold uppercase tracking-[.1em] sm:tracking-[.18em] text-slate-500 truncate">
+                <div className="flex items-center min-w-0 gap-1.5 sm:gap-2.5 px-2 sm:px-7 py-2.5 sm:py-3.5">
+                  <span className="flex h-[17px] w-[17px] sm:h-[22px] sm:w-[22px] flex-shrink-0 items-center justify-center rounded-full bg-violet-100/80 text-[8px] sm:text-[10px] font-black text-violet-600 shadow-sm">←</span>
+                  <span className="text-[10px] sm:text-[13.5px] font-extrabold uppercase tracking-[.01em] sm:tracking-[.14em] text-slate-700 truncate">
                     Root Causes
                   </span>
                 </div>
                 {/* centre spacer */}
                 <div className="border-x border-white/40" />
-                <div className="flex items-center min-w-0 justify-end md:justify-start gap-1 sm:gap-2 border-l border-white/40 px-2 sm:px-7 py-2 sm:py-3">
-                  <span className="text-[7px] sm:text-[9.5px] font-bold uppercase tracking-[.1em] sm:tracking-[.18em] text-slate-500 truncate">
+                <div className="flex items-center min-w-0 justify-end md:justify-start gap-1.5 sm:gap-2.5 border-l border-white/40 px-2 sm:px-7 py-2.5 sm:py-3.5">
+                  <span className="text-[10px] sm:text-[13.5px] font-extrabold uppercase tracking-[.01em] sm:tracking-[.14em] text-slate-700 truncate">
                     Consequences
                   </span>
-                  <span className="flex h-[14px] w-[14px] sm:h-[18px] sm:w-[18px] flex-shrink-0 items-center justify-center rounded-full bg-rose-100/80 text-[6px] sm:text-[8px] font-black text-rose-500 shadow-sm">→</span>
+                  <span className="flex h-[17px] w-[17px] sm:h-[22px] sm:w-[22px] flex-shrink-0 items-center justify-center rounded-full bg-rose-100/80 text-[8px] sm:text-[10px] font-black text-rose-500 shadow-sm">→</span>
                 </div>
               </div>
 
@@ -440,7 +441,7 @@ export default function ProblemSection() {
                             initial={{ opacity: 0, y: -5 }}
                             animate={isInView ? { opacity: 1, y: 0 } : {}}
                             transition={{ delay: 0.28 + i * 0.08, duration: 0.32 }}
-                            className={`mb-1 sm:mb-1.5 inline-flex items-center gap-1 sm:gap-1.5 rounded-full border px-1.5 sm:px-2.5 py-[2px] sm:py-[3px] text-[6.5px] sm:text-[9.5px] font-semibold tracking-wide max-w-full ${c.tagColor}`}
+                            className={`mb-1 sm:mb-1.5 inline-flex items-center gap-1 sm:gap-1.5 rounded-full border px-2 sm:px-2.5 py-[2.5px] sm:py-[3.5px] text-[8.5px] sm:text-[11.5px] font-bold tracking-wide max-w-full ${c.tagColor}`}
                           >
                             <span className="flex-shrink-0 h-1 w-1 sm:h-1.5 sm:w-1.5 rounded-full bg-current opacity-70" />
                             <span className="truncate">{c.tag}</span>
@@ -456,8 +457,8 @@ export default function ProblemSection() {
                             {c.icon}
                           </div>
                           <div className="min-w-0 flex-1">
-                            <p className="text-[8.5px] sm:text-[13px] font-bold leading-[1.1] sm:leading-tight text-slate-800 break-words whitespace-normal">{c.title}</p>
-                            <p className="hidden sm:block mt-0.5 text-[11.5px] leading-snug text-slate-500 break-words">{c.sub}</p>
+                            <p className="text-[10.5px] sm:text-[15px] font-bold leading-[1.15] sm:leading-tight text-slate-800 break-words whitespace-normal">{c.title}</p>
+                            <p className="hidden sm:block mt-0.5 text-[13px] leading-snug text-slate-500 break-words">{c.sub}</p>
                           </div>
                         </motion.div>
                       </div>
@@ -497,8 +498,8 @@ export default function ProblemSection() {
                           transition={{ repeat: Infinity, duration: 3.8, ease: "easeInOut" }}
                           className="relative z-10 mb-0.5 sm:mb-1 text-[12px] sm:text-[20px]"
                         >⚠️</motion.span>
-                        <span className="relative z-10 text-[4px] sm:text-[7.5px] font-black tracking-[.1em] sm:tracking-[.3em] text-rose-500">CHAOS</span>
-                        <span className="relative z-10 text-[4px] sm:text-[7.5px] font-black tracking-[.1em] sm:tracking-[.3em] text-rose-500">POINT</span>
+                        <span className="relative z-10 text-[6px] sm:text-[9.5px] font-black tracking-[.08em] sm:tracking-[.24em] text-rose-500">CHAOS</span>
+                        <span className="relative z-10 text-[6px] sm:text-[9.5px] font-black tracking-[.08em] sm:tracking-[.24em] text-rose-500">POINT</span>
                       </div>
                     </motion.div>
                   </div>
@@ -516,8 +517,8 @@ export default function ProblemSection() {
                           {e.icon}
                         </div>
                         <div className="flex-1 min-w-0 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1 sm:gap-2">
-                          <p className="w-full text-[8.5px] sm:text-[12.5px] font-bold leading-[1.1] sm:leading-tight text-slate-800 break-words whitespace-normal">{e.title}</p>
-                          <span className={`flex-shrink-0 rounded-full border px-1.5 sm:px-2 py-[1.5px] sm:py-[2px] text-[5px] sm:text-[9px] font-black tracking-wide ${e.badgeStyle}`}>
+                          <p className="w-full text-[10.5px] sm:text-[14.5px] font-bold leading-[1.15] sm:leading-tight text-slate-800 break-words whitespace-normal">{e.title}</p>
+                          <span className={`flex-shrink-0 rounded-full border px-1.5 sm:px-2.5 py-[2px] sm:py-[3px] text-[7.5px] sm:text-[10.5px] font-black tracking-wide ${e.badgeStyle}`}>
                             {e.badge}
                           </span>
                         </div>
@@ -558,7 +559,7 @@ export default function ProblemSection() {
           variants={fadeUp}
           initial="hidden"
           animate={isInView ? "show" : "hidden"}
-          className="mt-9 flex flex-col items-center justify-between gap-5 sm:flex-row"
+          className="mt-9 flex flex-col items-center justify-between gap-5 sm:flex-row sm:flex-wrap"
         >
           {/* Redesigned bottom text */}
           <div className="relative max-w-lg">
@@ -602,7 +603,7 @@ export default function ProblemSection() {
           <MagneticButton
             href={problemData.bottomCta.buttonHref}
             variant="primary"
-            className="shrink-0 rounded-full px-7 py-3.5 text-sm shadow-lg shadow-violet-300/40"
+            className="shrink-0 rounded-full px-7 py-3.5 shadow-lg shadow-violet-300/40"
             icon={<span className="inline-block">➤</span>}
           >
             {problemData.bottomCta.buttonLabel}

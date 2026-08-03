@@ -907,8 +907,8 @@ export default function BenefitsSection() {
         {/* ── Header ── */}
         <motion.div {...headerAnim}>
           {/* Badge */}
-          <div className="inline-flex items-center gap-1.5 bg-[rgba(124,58,237,0.08)] border border-[rgba(124,58,237,0.22)] rounded-full px-[14px] py-[5px] text-[11px] font-bold text-[#7C3AED] tracking-[0.08em] uppercase mb-[22px]">
-            <Sparkles size={11} aria-hidden />
+          <div className="inline-flex items-center gap-1.5 bg-[rgba(124,58,237,0.08)] border border-[rgba(124,58,237,0.22)] rounded-full px-[16px] py-[6px] text-[13px] font-bold text-[#7C3AED] tracking-[0.08em] uppercase mb-[22px]">
+            <Sparkles size={13} aria-hidden />
             {SECTION_CONTENT.badge}
           </div>
 
@@ -985,7 +985,7 @@ export default function BenefitsSection() {
           <MagneticButton
             href={SECTION_CONTENT.cta.buttonHref}
             variant="primary"
-            className="shrink-0 whitespace-nowrap rounded-full px-5.5 py-2.75 text-[12px]"
+            className="shrink-0 whitespace-nowrap rounded-full px-6 py-3"
             icon={<ArrowRight size={14} aria-hidden />}
           >
             {SECTION_CONTENT.cta.buttonLabel}

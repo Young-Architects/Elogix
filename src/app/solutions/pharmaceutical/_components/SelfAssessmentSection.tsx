@@ -11,6 +11,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { CTA_TEXT, CTA_NOWRAP } from "@/components/ui/MagneticButton";
 import { selfAssessment } from "../_data";
 import type { AssessmentIconKey, ScoreTier } from "../_data";
 
@@ -284,7 +285,7 @@ function MobileCtaFooter() {
     <div className="shrink-0 border-t border-gray-100 bg-white px-5 py-3 lg:hidden">
       <a
         href="/contact-us"
-        className="flex w-full items-center justify-center rounded-xl border border-gray-200 px-4 py-3 text-sm font-medium text-gray-700 transition-colors hover:border-purple-300 hover:bg-purple-50 hover:text-purple-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/40"
+        className={`flex w-full items-center justify-center rounded-xl border border-gray-200 px-4 py-3 text-center font-semibold leading-tight text-gray-700 transition-colors hover:border-purple-300 hover:bg-purple-50 hover:text-purple-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/40 ${CTA_TEXT} ${CTA_NOWRAP}`}
       >
         {selfAssessment.scheduleCta}
       </a>
@@ -391,7 +392,7 @@ function DesktopScorePanel({
         {/* ── "Schedule a Free Assessment" as a static button ── */}
         <a
           href="/contact-us"
-          className="mt-6 flex w-full items-center justify-center rounded-xl border border-gray-200 px-4 py-3 text-sm font-medium text-gray-700 transition-all hover:border-purple-300 hover:bg-purple-50 hover:text-purple-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/40"
+          className={`mt-6 flex w-full items-center justify-center rounded-xl border border-gray-200 px-4 py-3 text-center font-semibold leading-tight text-gray-700 transition-all hover:border-purple-300 hover:bg-purple-50 hover:text-purple-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/40 ${CTA_TEXT} ${CTA_NOWRAP}`}
         >
           {selfAssessment.scheduleCta}
         </a>
@@ -466,9 +467,9 @@ export default function SelfAssessmentSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="mx-auto flex w-fit items-center gap-2 rounded-full border border-purple-200 bg-purple-50 px-4 py-1.5 text-xs font-semibold tracking-wide text-purple-700"
+          className="mx-auto flex w-fit items-center gap-2 rounded-full border border-purple-200 bg-purple-50 px-4 py-1.5 text-[14px] font-semibold tracking-wide text-purple-700"
         >
-          <IconClipboard className="h-3.5 w-3.5" />
+          <IconClipboard className="h-4 w-4" />
           {selfAssessment.badge}
         </motion.div>
 

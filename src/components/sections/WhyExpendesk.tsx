@@ -788,11 +788,11 @@ function CtaPanel() {
             {cta.prompt}
           </p>
 
-          <div className="mt-4 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div className="mt-4 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:items-center">
             <MagneticButton
               href={cta.buttonHref}
               variant="primary"
-              className="w-full rounded-full px-7 py-3.5 text-[15px] shadow-[0_8px_24px_rgba(0,0,0,0.35)] sm:w-auto"
+              className="w-full rounded-full px-7 py-3.5 shadow-[0_8px_24px_rgba(0,0,0,0.35)] sm:w-auto"
               icon={<ArrowRight className="h-4 w-4" strokeWidth={2.6} />}
             >
               {cta.button}
@@ -801,7 +801,7 @@ function CtaPanel() {
               href={LEAD_MAGNET_HREF}
               onClick={openLeadMagnet}
               variant="secondary"
-              className="w-full rounded-full px-6 py-3.5 text-[13.5px] text-violet-100 sm:w-auto"
+              className="w-full rounded-full px-6 py-3.5 text-violet-100 sm:w-auto"
               icon={<BookOpen className="h-4 w-4" strokeWidth={2.2} />}
             >
               {cta.secondaryButton.label}
@@ -889,9 +889,9 @@ export default function WhyExpendesk() {
           <div className="mx-auto max-w-2xl text-center">
             <motion.span
               variants={fade}
-              className="eb-shimmer mt-8 inline-flex items-center gap-2 rounded-full border border-violet-200 bg-white px-4 py-1.5 text-sm font-semibold text-violet-700 shadow-lg shadow-violet-200/50"
+              className="eb-shimmer mt-8 inline-flex items-center gap-2 rounded-full border border-violet-200 bg-white px-4 py-1.5 text-[16px] font-semibold text-violet-700 shadow-lg shadow-violet-200/50"
             >
-              <Sparkles className="h-4 w-4 text-fuchsia-500" />
+              <Sparkles className="h-[18px] w-[18px] text-fuchsia-500" />
               {badge}
             </motion.span>
 

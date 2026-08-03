@@ -23,7 +23,7 @@ export default function DigitalAgenciesSolutionPage() {
     <main className="min-h-screen bg-white">
       {/* Hero */}
       <section className="flex flex-col items-center justify-center px-6 py-32 text-center bg-gradient-to-b from-fuchsia-50 to-white">
-        <span className="mb-4 inline-block rounded-full bg-fuchsia-100 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-fuchsia-600">
+        <span className="mb-4 inline-block rounded-full bg-fuchsia-100 px-4 py-1.5 text-[14px] font-semibold uppercase tracking-widest text-fuchsia-600">
           {content.eyebrow}
         </span>
         <h1 className="max-w-3xl text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
@@ -36,7 +36,7 @@ export default function DigitalAgenciesSolutionPage() {
         <MagneticButton
           href={content.cta.href}
           variant="primary"
-          className="mt-8 rounded-full px-7 py-3 text-sm shadow-lg shadow-fuchsia-500/30"
+          className="mt-8 rounded-full px-7 py-3 shadow-lg shadow-fuchsia-500/30"
         >
           {content.cta.label}
         </MagneticButton>

@@ -100,7 +100,7 @@ export default function BookingCalendarSection() {
       >
         <motion.span
           variants={ITEM_VARIANTS}
-          className="inline-flex items-center rounded-full border border-indigo-200/70 bg-white/70 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-indigo-500 shadow-sm backdrop-blur-sm"
+          className="inline-flex items-center rounded-full border border-indigo-200/70 bg-white/70 px-4 py-1.5 text-[13px] font-bold uppercase tracking-[0.22em] text-indigo-500 shadow-sm backdrop-blur-sm"
         >
           {bookingHero.eyebrow}
         </motion.span>

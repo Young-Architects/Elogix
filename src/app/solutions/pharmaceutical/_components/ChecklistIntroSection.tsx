@@ -13,6 +13,7 @@ import type { SVGProps, ReactElement } from "react";
 import { useId } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import ScrollBeamDivider from "@/components/ui/ScrollBeamDivider";
+import { CTA_TEXT, CTA_NOWRAP } from "@/components/ui/MagneticButton";
 import { openLeadMagnet } from "@/lib/lead-magnet";
 import { checklistIntro } from "../_data";
 import type {
@@ -454,9 +455,9 @@ export default function ChecklistIntroSection() {
             viewport={{ once: true }}
             style={{ willChange: "transform, opacity" }}
             transition={{ duration: 0.4 }}
-            className="flex w-fit items-center gap-2 rounded-full border border-purple-200/70 bg-white/60 px-4 py-1.5 text-xs font-semibold tracking-wide text-purple-700 backdrop-blur-md"
+            className="flex w-fit items-center gap-2 rounded-full border border-purple-200/70 bg-white/60 px-4 py-1.5 text-[14px] font-semibold tracking-wide text-purple-700 backdrop-blur-md"
           >
-            <IconDocument className="h-3.5 w-3.5" />
+            <IconDocument className="h-4 w-4" />
             {checklistIntro.badge}
           </motion.div>
 
@@ -530,7 +531,7 @@ export default function ChecklistIntroSection() {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="group inline-flex items-center gap-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-fuchsia-500 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-purple-500/25 transition-shadow hover:shadow-xl hover:shadow-purple-500/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/60 focus-visible:ring-offset-2"
+              className={`group inline-flex shrink-0 items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-fuchsia-500 px-6 py-3.5 text-center font-bold leading-tight text-white shadow-lg shadow-purple-500/25 transition-shadow hover:shadow-xl hover:shadow-purple-500/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/60 focus-visible:ring-offset-2 ${CTA_TEXT} ${CTA_NOWRAP}`}
             >
               <IconDownload className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
               {checklistIntro.cta.label}

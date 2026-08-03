@@ -208,14 +208,14 @@ function NodeDiagram() {
           boxShadow:      "0 8px 40px rgba(124,58,237,0.08), 0 2px 8px rgba(0,0,0,0.04)",
         }}
       >
-        <div className="flex items-center justify-between px-4 sm:px-6 pt-4 pb-2 border-b border-slate-100/80">
-          <span className="flex items-center gap-1.5 text-[11px] sm:text-xs font-bold tracking-widest uppercase text-rose-500">
-            <span className="w-1.5 h-1.5 rounded-full bg-rose-400" />
+        <div className="flex items-center justify-between px-4 sm:px-6 pt-4 pb-2.5 border-b border-slate-100/80">
+          <span className="flex items-center gap-2 text-[13px] sm:text-[14.5px] font-extrabold tracking-[0.14em] uppercase text-rose-500">
+            <span className="w-2 h-2 rounded-full bg-rose-400" />
             {solutionData.nodeDiagram.chaosLabel}
           </span>
-          <span className="flex items-center gap-1.5 text-[11px] sm:text-xs font-bold tracking-widest uppercase text-indigo-600">
+          <span className="flex items-center gap-2 text-[13px] sm:text-[14.5px] font-extrabold tracking-[0.14em] uppercase text-indigo-600">
             {solutionData.nodeDiagram.controlLabel}
-            <span className="w-1.5 h-1.5 rounded-full bg-indigo-400" />
+            <span className="w-2 h-2 rounded-full bg-indigo-400" />
           </span>
         </div>
 
@@ -233,7 +233,7 @@ function NodeDiagram() {
                   <span className="flex-shrink-0 w-5 h-5 sm:w-7 sm:h-7 rounded-md sm:rounded-lg bg-rose-50 flex items-center justify-center text-[10px] sm:text-sm leading-none">
                     {node.icon}
                   </span>
-                  <span className="text-[11px] sm:text-[12px] md:text-[13px] font-semibold text-slate-800 leading-snug flex-1 min-w-0 break-words">
+                  <span className="text-[12.5px] sm:text-[14px] md:text-[15px] font-semibold text-slate-800 leading-snug flex-1 min-w-0 break-words">
                     {node.label}
                   </span>
                   <span className="flex-shrink-0 w-[18px] h-[18px] rounded-full bg-rose-50 border border-rose-200 items-center justify-center ml-1 hidden sm:flex">
@@ -266,10 +266,10 @@ function NodeDiagram() {
                 style={{ background: "rgba(124,58,237,0.1)", animationDuration: "2.5s" }}
               />
               <span className="relative z-10 text-white font-black text-xl sm:text-2xl leading-none">{solutionData.nodeDiagram.brandName.charAt(0)}</span>
-              <span className="relative z-10 text-white/90 font-bold text-[7px] sm:text-[8px] tracking-[1px] mt-0.5 leading-none">
+              <span className="relative z-10 text-white/90 font-bold text-[8.5px] sm:text-[10px] tracking-[1px] mt-0.5 leading-none">
                 {solutionData.nodeDiagram.brandName}
               </span>
-              <span className="relative z-10 text-violet-200/80 text-[5.5px] sm:text-[7px] text-center leading-tight mt-1 px-1 hidden sm:block">
+              <span className="relative z-10 text-violet-200/80 text-[7px] sm:text-[8.5px] text-center leading-tight mt-1 px-1 hidden sm:block">
                 {solutionData.nodeDiagram.brandTaglineParts[0]}<br />{solutionData.nodeDiagram.brandTaglineParts[1]}
               </span>
             </div>
@@ -286,7 +286,7 @@ function NodeDiagram() {
                   <span className="flex-shrink-0 w-5 h-5 sm:w-7 sm:h-7 rounded-md sm:rounded-lg bg-indigo-50 flex items-center justify-center text-[10px] sm:text-sm leading-none">
                     {node.icon}
                   </span>
-                  <span className="text-[11px] sm:text-[12px] md:text-[13px] font-semibold text-slate-800 leading-snug flex-1 min-w-0 break-words">
+                  <span className="text-[12.5px] sm:text-[14px] md:text-[15px] font-semibold text-slate-800 leading-snug flex-1 min-w-0 break-words">
                     {node.label}
                   </span>
                   <span className="flex-shrink-0 w-[18px] h-[18px] rounded-full bg-emerald-50 border border-emerald-200 items-center justify-center ml-1 hidden sm:flex">
@@ -560,9 +560,9 @@ export default function SolutionSection() {
 
         {/* Badge */}
         <motion.div {...fadeUp(0)} className="mb-8">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase"
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[14px] font-semibold tracking-widest uppercase"
             style={{ background: "rgba(124,58,237,0.07)", border: "1px solid rgba(139,92,246,0.25)", color: "#7c3aed" }}>
-            <Sparkles className="w-3.5 h-3.5" />
+            <Sparkles className="w-4 h-4" />
             {solutionData.badge}
           </span>
         </motion.div>
@@ -623,7 +623,7 @@ export default function SolutionSection() {
               <MagneticButton
                 href={solutionData.hero.ctaHref}
                 variant="primary"
-                className="rounded-xl px-7 py-3.5 text-[13.5px]"
+                className="rounded-xl px-7 py-3.5"
                 icon={
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-4 h-4">
                     <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
@@ -765,7 +765,7 @@ export default function SolutionSection() {
                   href={solutionData.dashboardCta.buttonHref}
                   variant="primary"
                   fullWidth
-                  className="rounded-xl py-3 text-[13.5px]"
+                  className="rounded-xl py-3"
                   icon={
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-4 h-4">
                       <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />

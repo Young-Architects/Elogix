@@ -176,8 +176,8 @@ export default function HowItWorksSection() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             className="mt-16 inline-flex items-center gap-2 rounded-full border border-violet-200/60 bg-violet-100/50 px-4 py-1.5 shadow-sm backdrop-blur-md md:mt-20"
           >
-            <Sparkles className="h-3.5 w-3.5 text-violet-600" />
-            <span className="text-xs font-bold tracking-wide text-violet-800">
+            <Sparkles className="h-4 w-4 text-violet-600" />
+            <span className="text-[14px] font-bold tracking-wide text-violet-800">
               {howItWorksData.badge}
             </span>
           </motion.div>
@@ -230,7 +230,7 @@ export default function HowItWorksSection() {
           <MagneticButton
             href={howItWorksData.cta.buttonHref}
             variant="primary"
-            className="rounded-full px-7 py-3.5 text-sm shadow-lg shadow-violet-300/40"
+            className="rounded-full px-7 py-3.5 shadow-lg shadow-violet-300/40"
             icon={<ArrowRight className="h-4 w-4" />}
           >
             {howItWorksData.cta.buttonLabel}

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { Sparkles } from "lucide-react";
 import HeroChatDock from "@/components/chat/HeroChatDock";
+import { CTA_TEXT, CTA_NOWRAP } from "@/components/ui/MagneticButton";
 import { openLeadMagnet } from "@/lib/lead-magnet";
 import { hero } from "../_data";
 
@@ -175,7 +176,7 @@ export default function HeroSection() {
               transition={{ duration: 0.48, ease: "easeOut" }}
             >
               <span
-                className="inline-flex items-center gap-2 px-4 py-[9px] rounded-full text-[10.5px] font-semibold tracking-[0.13em] uppercase"
+                className="inline-flex items-center gap-2 px-4 py-[9px] rounded-full text-[12.5px] font-semibold tracking-[0.13em] uppercase"
                 style={{
                   background: "rgba(124,58,237,0.07)",
                   border: "1px solid rgba(124,58,237,0.22)",
@@ -275,7 +276,7 @@ export default function HeroSection() {
 
             {/* CTA buttons */}
             <motion.div
-              className="flex flex-col sm:flex-row gap-3 pt-0.5"
+              className="flex flex-col items-stretch gap-3 pt-0.5 sm:flex-row sm:flex-wrap sm:items-center"
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.58, delay: 0.88 }}
@@ -287,7 +288,7 @@ export default function HeroSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={openLeadMagnet}
-                className="group relative overflow-hidden px-7 py-[13px] rounded-xl font-semibold text-[13.5px] text-white flex items-center justify-center gap-2.5"
+                className={`group relative shrink-0 overflow-hidden px-7 py-3.5 rounded-xl font-semibold leading-tight text-center text-white flex items-center justify-center gap-2.5 ${CTA_TEXT} ${CTA_NOWRAP}`}
                 style={{
                   background:
                     "linear-gradient(135deg,#7C3AED 0%,#A855F7 60%,#C026D3 100%)",
@@ -310,7 +311,7 @@ export default function HeroSection() {
                   transition={{ duration: 0.58, ease: "easeInOut" }}
                 />
                 <svg
-                  className="w-[15px] h-[15px] relative z-10 flex-shrink-0"
+                  className="w-[17px] h-[17px] relative z-10 shrink-0"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -328,7 +329,7 @@ export default function HeroSection() {
               {/* Secondary CTA — checklist + schedule an assessment call */}
               <motion.a
                 href={hero.ctaSecondaryHref}
-                className="px-7 py-[13px] rounded-xl font-semibold text-[13.5px] text-violet-700 flex items-center justify-center gap-2.5 transition-all duration-200"
+                className={`shrink-0 px-7 py-3.5 rounded-xl font-semibold leading-tight text-center text-violet-700 flex items-center justify-center gap-2.5 transition-all duration-200 ${CTA_TEXT} ${CTA_NOWRAP}`}
                 style={{
                   border: "1.5px solid rgba(124,58,237,0.26)",
                   background: "rgba(124,58,237,0.05)",
@@ -342,7 +343,7 @@ export default function HeroSection() {
                 transition={{ type: "spring", stiffness: 380, damping: 22 }}
               >
                 <svg
-                  className="w-[15px] h-[15px] flex-shrink-0"
+                  className="w-[17px] h-[17px] shrink-0"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"

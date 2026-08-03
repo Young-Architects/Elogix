@@ -66,8 +66,8 @@ export default function FaqSection() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             className="mt-16 inline-flex items-center gap-2 rounded-full border border-violet-200/60 bg-violet-100/50 px-4 py-1.5 shadow-sm backdrop-blur-md md:mt-20"
           >
-            <Sparkles className="h-3.5 w-3.5 text-violet-600" />
-            <span className="text-xs font-bold tracking-wide text-violet-800">
+            <Sparkles className="h-4 w-4 text-violet-600" />
+            <span className="text-[14px] font-bold tracking-wide text-violet-800">
               {faqData.badge}
             </span>
           </motion.div>
@@ -198,7 +198,7 @@ export default function FaqSection() {
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.7, duration: 0.55, ease: EASE }}
-          className="mt-10 flex flex-col items-center justify-between gap-5 rounded-3xl border border-white/80 bg-white/70 px-6 py-6 text-center shadow-sm backdrop-blur-xl sm:flex-row sm:px-8 sm:text-left md:mt-12"
+          className="mt-10 flex flex-col items-center justify-between gap-5 rounded-3xl border border-white/80 bg-white/70 px-6 py-6 text-center shadow-sm backdrop-blur-xl sm:flex-row sm:flex-wrap sm:px-8 sm:text-left md:mt-12"
         >
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
             <span
@@ -222,7 +222,7 @@ export default function FaqSection() {
           <MagneticButton
             href={faqData.support.buttonHref}
             variant="primary"
-            className="shrink-0 rounded-full px-6 py-3 text-sm shadow-lg shadow-violet-300/40"
+            className="shrink-0 rounded-full px-6 py-3 shadow-lg shadow-violet-300/40"
           >
             {faqData.support.buttonLabel}
           </MagneticButton>

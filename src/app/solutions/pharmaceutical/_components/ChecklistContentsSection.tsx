@@ -385,8 +385,8 @@ function IntroPanel() {
       className="lg:sticky lg:top-28 lg:self-start"
     >
       <span className="inline-flex items-center gap-2 rounded-full border border-purple-200 bg-white px-4 py-1.5 shadow-sm shadow-purple-100">
-        <Sparkles className="h-3.5 w-3.5 text-purple-600" />
-        <span className="text-xs font-bold tracking-[0.16em] text-purple-700">
+        <Sparkles className="h-4 w-4 text-purple-600" />
+        <span className="text-[14px] font-bold tracking-[0.16em] text-purple-700">
           {badge}
         </span>
       </span>

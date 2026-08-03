@@ -240,7 +240,7 @@ function CtaCard({ option, index }: { option: ChooseNextStepOption; index: numbe
             type="button"
             variant="ghost"
             icon={<ArrowRight className="h-4 w-4 text-purple-700" />}
-            className="mt-8 w-fit rounded-full bg-white px-6 py-3 text-sm font-bold text-purple-700 shadow-lg shadow-purple-950/20"
+            className="mt-8 w-fit rounded-full bg-white px-6 py-3 font-bold text-purple-700 shadow-lg shadow-purple-950/20"
           >
             <span className="text-purple-700">{option.buttonLabel}</span>
           </MagneticButton>
@@ -251,7 +251,7 @@ function CtaCard({ option, index }: { option: ChooseNextStepOption; index: numbe
             type="button"
             variant="ghost"
             icon={<ArrowRight className="h-4 w-4" />}
-            className="mt-8 w-fit rounded-full bg-gradient-to-r from-purple-600 to-pink-500 px-6 py-3 text-sm font-bold shadow-lg shadow-purple-200"
+            className="mt-8 w-fit rounded-full bg-gradient-to-r from-purple-600 to-pink-500 px-6 py-3 font-bold shadow-lg shadow-purple-200"
           >
             {option.buttonLabel}
           </MagneticButton>
@@ -505,8 +505,8 @@ export default function ChooseNextStepSection() {
           className="flex justify-center"
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-purple-200 bg-white px-4 py-1.5 shadow-sm shadow-purple-100">
-            <Sparkles className="h-3.5 w-3.5 text-purple-600" />
-            <span className="text-xs font-bold tracking-[0.16em] text-purple-700">
+            <Sparkles className="h-4 w-4 text-purple-600" />
+            <span className="text-[14px] font-bold tracking-[0.16em] text-purple-700">
               {badge}
             </span>
           </span>

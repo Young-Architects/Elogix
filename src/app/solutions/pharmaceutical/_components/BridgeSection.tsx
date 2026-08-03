@@ -158,7 +158,7 @@ export default function BridgeToExpendeskSection() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mx-auto max-w-3xl text-center"
         >
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-violet-200/50 bg-white/60 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-violet-700 shadow-sm backdrop-blur-md">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-violet-200/50 bg-white/60 px-4 py-1.5 text-[14px] font-bold uppercase tracking-widest text-violet-700 shadow-sm backdrop-blur-md">
             <ArrowRightLeft className="h-4 w-4" aria-hidden />
             {bridge.badge}
           </div>

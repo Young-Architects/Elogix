@@ -6,6 +6,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Calendar, Clock } from 'lucide-react';
+import { CTA_TEXT, CTA_NOWRAP } from '@/components/ui/MagneticButton';
 import type { BlogPost } from '@/types/blog';
 import {
   displayAuthorName,
@@ -87,7 +88,7 @@ export default function FeaturedPost({ post }: { post: BlogPost }) {
             </span>
           </div>
 
-          <span className="mt-2 inline-flex w-fit items-center gap-2 rounded-full bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 group-hover:bg-indigo-600 group-hover:shadow-[0_10px_25px_-8px_rgba(99,102,241,0.6)]">
+          <span className={`mt-2 inline-flex w-fit shrink-0 items-center gap-2 rounded-full bg-slate-900 px-5 py-3 font-semibold leading-tight text-white transition-all duration-300 group-hover:bg-indigo-600 group-hover:shadow-[0_10px_25px_-8px_rgba(99,102,241,0.6)] ${CTA_TEXT} ${CTA_NOWRAP}`}>
             Read article
             <ArrowRight
               className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"

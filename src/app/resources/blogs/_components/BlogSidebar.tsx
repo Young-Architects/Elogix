@@ -51,7 +51,7 @@ function CtaCard() {
           variant="ghost"
           fullWidth
           icon={<ArrowRight className="h-4 w-4" aria-hidden />}
-          className="rounded-full bg-white px-5 py-3 text-sm font-bold text-indigo-700! shadow-lg focus-visible:ring-white/70 focus-visible:ring-offset-0"
+          className="rounded-full bg-white px-5 py-3 font-bold text-indigo-700! shadow-lg focus-visible:ring-white/70 focus-visible:ring-offset-0"
         >
           {cta.button}
         </MagneticButton>

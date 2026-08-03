@@ -23,6 +23,7 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import ScrollBeamDivider from "../ui/ScrollBeamDivider";
+import { CTA_TEXT, CTA_NOWRAP } from "@/components/ui/MagneticButton";
 import leadMagnetData from "@/data/sections/lead-magnet.json";
 import { openLeadMagnet } from "@/lib/lead-magnet";
 
@@ -365,7 +366,7 @@ function DownloadButton({
       whileHover={{ scale: state === "idle" && !reduceMotion ? 1.02 : 1 }}
       whileTap={{ scale: 0.97 }}
       aria-live="polite"
-      className="relative inline-flex h-[52px] w-full min-w-0 cursor-pointer items-center justify-center overflow-hidden rounded-xl border-0 px-7 text-[15px] font-bold text-white outline-none transition-shadow focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#f8f9ff] sm:w-auto sm:min-w-[230px]"
+      className={`relative inline-flex h-[56px] w-full min-w-0 cursor-pointer items-center justify-center overflow-hidden rounded-xl border-0 px-7 text-center font-bold leading-tight text-white outline-none transition-shadow focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#f8f9ff] sm:w-auto sm:min-w-[240px] ${CTA_TEXT} ${CTA_NOWRAP}`}
       style={{
         background: "linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)",
         boxShadow:
@@ -510,7 +511,7 @@ export default function LeadMagnetSection() {
           transition={{ duration: 0.45 }}
         >
           <span
-            className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-bold uppercase tracking-[0.09em] text-violet-700"
+            className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-[13px] font-bold uppercase tracking-[0.09em] text-violet-700"
             style={{
               background:
                 "linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(135deg, rgba(168,85,247,0.45), rgba(236,72,153,0.3), rgba(124,58,237,0.45)) border-box",
@@ -521,8 +522,8 @@ export default function LeadMagnetSection() {
           >
             {/* Open-book icon */}
             <svg
-              width="13"
-              height="13"
+              width="15"
+              height="15"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"

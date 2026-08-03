@@ -79,7 +79,7 @@ export default function PricingHeroSection() {
       >
         <motion.span
           variants={ITEM_VARIANTS}
-          className="inline-flex items-center rounded-full border border-indigo-200/70 bg-white/70 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-indigo-500 shadow-sm backdrop-blur-sm"
+          className="inline-flex items-center rounded-full border border-indigo-200/70 bg-white/70 px-4 py-1.5 text-[13px] font-bold uppercase tracking-[0.22em] text-indigo-500 shadow-sm backdrop-blur-sm"
         >
           {pricingHero.eyebrow}
         </motion.span>
@@ -114,7 +114,7 @@ export default function PricingHeroSection() {
             href={pricingHero.ctaHref}
             variant="ghost"
             icon={<ArrowRight className="h-4 w-4" />}
-            className="rounded-full bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500 px-7 py-3.5 text-sm font-bold shadow-[0_10px_30px_rgba(99,102,241,0.35)] sm:text-[15px]"
+            className="rounded-full bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500 px-7 py-3.5 font-bold shadow-[0_10px_30px_rgba(99,102,241,0.35)]"
           >
             {pricingHero.ctaLabel}
           </MagneticButton>

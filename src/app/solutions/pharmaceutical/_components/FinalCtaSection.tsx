@@ -100,7 +100,7 @@ function ActionPanel({ panel }: { panel: FinalCtaPanel }) {
       className="group relative flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:border-white/25 hover:bg-white/[0.05] sm:p-7"
     >
       {eyebrow && (
-        <span className="mb-3 inline-flex w-fit items-center rounded-full border border-white/15 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white/50">
+        <span className="mb-3 inline-flex w-fit items-center rounded-full border border-white/15 px-3.5 py-1.5 text-[12px] font-bold uppercase tracking-[0.14em] text-white/60">
           {eyebrow}
         </span>
       )}
@@ -137,8 +137,8 @@ function ActionPanel({ panel }: { panel: FinalCtaPanel }) {
         icon={<ArrowRight className="h-4 w-4" />}
         className={
           isPrimary
-            ? "mt-5 w-fit rounded-full bg-gradient-to-r from-purple-600 via-fuchsia-600 to-pink-600 px-6 py-3 text-sm font-bold shadow-lg shadow-purple-900/40"
-            : "mt-5 w-fit rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-bold"
+            ? "mt-5 w-fit rounded-full bg-gradient-to-r from-purple-600 via-fuchsia-600 to-pink-600 px-6 py-3 font-bold shadow-lg shadow-purple-900/40"
+            : "mt-5 w-fit rounded-full border border-white/20 bg-white/5 px-6 py-3 font-bold"
         }
       >
         {buttonLabel}

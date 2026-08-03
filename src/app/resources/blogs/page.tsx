@@ -72,7 +72,7 @@ export default async function BlogsPage({ searchParams }: Props) {
           className="pointer-events-none absolute -top-24 left-1/2 h-72 w-[42rem] -translate-x-1/2 rounded-full bg-gradient-to-r from-indigo-200/40 via-violet-200/40 to-fuchsia-200/40 blur-3xl"
         />
         <div className="relative mx-auto w-full max-w-7xl px-4 pb-14 pt-16 text-center sm:px-6 lg:px-8">
-          <p className="text-sm font-bold uppercase tracking-[0.2em] text-indigo-600">
+          <p className="text-[16px] font-bold uppercase tracking-[0.2em] text-indigo-600">
             {listing.eyebrow}
           </p>
           <h1 className="mx-auto mt-3 max-w-3xl text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">

@@ -54,6 +54,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import ScrollBeamDivider from "../ui/ScrollBeamDivider";
+import { CTA_TEXT, CTA_NOWRAP } from "@/components/ui/MagneticButton";
 import featuresData from "@/data/sections/features.json";
 
 /** Where every industry "Explore" button sends the visitor — the contact form. */
@@ -342,7 +343,7 @@ function DetailPanel({ industry }: { industry: (typeof industries)[0] }) {
             </div>
             <Link
               href={CONTACT_FORM_HREF}
-              className="hidden sm:flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-bold text-white shadow-md transition-all hover:opacity-90 hover:scale-[1.02] active:scale-[0.98]"
+              className={`hidden shrink-0 sm:flex items-center gap-1.5 rounded-xl px-4 py-2.5 font-bold leading-tight text-white shadow-md transition-all hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] ${CTA_TEXT} ${CTA_NOWRAP}`}
               style={{ background: `linear-gradient(135deg, ${industry.accentFrom}, ${industry.accentTo})` }}
             >
               Explore <ArrowUpRight className="h-3.5 w-3.5" />
@@ -383,7 +384,7 @@ function DetailPanel({ industry }: { industry: (typeof industries)[0] }) {
           <div className="mt-5 sm:hidden">
             <Link
               href={CONTACT_FORM_HREF}
-              className="w-full flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-bold text-white shadow-md"
+              className={`w-full flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-center font-bold leading-tight text-white shadow-md ${CTA_TEXT} ${CTA_NOWRAP}`}
               style={{ background: `linear-gradient(135deg, ${industry.accentFrom}, ${industry.accentTo})` }}
             >
               Explore {industry.label} <ArrowUpRight className="h-4 w-4" />
@@ -476,8 +477,8 @@ function IndustrySection() {
             animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 rounded-full border border-violet-200/60 bg-violet-100/50 px-3.5 py-1 backdrop-blur-md shadow-sm mb-4"
           >
-            <Layers className="h-3 w-3 text-violet-500" />
-            <span className="text-[11px] font-bold text-violet-700 tracking-wide uppercase">{featuresData.industrySection.badge}</span>
+            <Layers className="h-3.5 w-3.5 text-violet-500" />
+            <span className="text-[13px] font-bold text-violet-700 tracking-wide uppercase">{featuresData.industrySection.badge}</span>
           </motion.div>
 
           <motion.h3
@@ -727,8 +728,8 @@ export default function FeaturesVideoWithIndustry() {
               animate={{ opacity: 1, y: 0 }}
               className="inline-flex items-center gap-2 rounded-full border border-violet-200/60 bg-violet-100/50 px-4 py-1.5 backdrop-blur-md shadow-sm"
             >
-              <Sparkles className="h-3.5 w-3.5 text-violet-600" />
-              <span className="text-xs font-bold text-violet-800 tracking-wide">{featuresData.featuresVideo.badge}</span>
+              <Sparkles className="h-4 w-4 text-violet-600" />
+              <span className="text-[14px] font-bold text-violet-800 tracking-wide">{featuresData.featuresVideo.badge}</span>
             </motion.div>
 
             <motion.h2

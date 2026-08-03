@@ -115,7 +115,7 @@ export default function IntroducingExpendeskSection() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="mx-auto max-w-4xl text-center"
         >
-          <div className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-violet-200/80 bg-white/90 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-violet-700 shadow-sm backdrop-blur-md">
+          <div className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-violet-200/80 bg-white/90 px-4 py-1.5 text-[14px] font-bold uppercase tracking-widest text-violet-700 shadow-sm backdrop-blur-md">
             <Sparkles className="h-4 w-4 animate-pulse text-fuchsia-500" aria-hidden />
             {introducingExpendesk.badge}
           </div>
@@ -241,7 +241,7 @@ export default function IntroducingExpendeskSection() {
                 href={introducingExpendesk.cta.href}
                 variant="ghost"
                 icon={<ArrowRight className="h-5 w-5" aria-hidden />}
-                className="rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-600 to-violet-600 bg-[length:200%_auto] px-8 py-4 text-base font-bold shadow-[0_0_35px_rgba(139,92,246,0.4)]"
+                className="rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-600 to-violet-600 bg-[length:200%_auto] px-8 py-4 font-bold shadow-[0_0_35px_rgba(139,92,246,0.4)]"
               >
                 {introducingExpendesk.cta.label}
               </MagneticButton>

@@ -29,7 +29,7 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import heroData from "@/data/sections/hero.json";
-import MagneticButton from "@/components/ui/MagneticButton";
+import MagneticButton, { CTA_TEXT, CTA_NOWRAP } from "@/components/ui/MagneticButton";
 import HeroChatDock from "@/components/chat/HeroChatDock";
 import { LEAD_MAGNET_HREF, openLeadMagnet } from "@/lib/lead-magnet";
 
@@ -293,11 +293,11 @@ export default function HeroSection() {
               {...fadeUp(0.05)}
               className="mb-6 inline-flex items-center gap-2 rounded-full border border-indigo-500/15 bg-indigo-500/[0.04] px-4 py-1.5 backdrop-blur-md"
             >
-              <Sparkles className="h-3.5 w-3.5 text-indigo-600" />
-              <span className="text-[11.5px] font-semibold tracking-wide text-indigo-700">
+              <Sparkles className="h-4 w-4 text-indigo-600" />
+              <span className="text-[13.5px] font-semibold tracking-wide text-indigo-700">
                 {heroData.badge.text}
               </span>
-              <span className="ml-1 rounded-full bg-indigo-600/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-indigo-700">
+              <span className="ml-1 rounded-full bg-indigo-600/10 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-indigo-700">
                 {heroData.badge.tag}
               </span>
             </motion.div>
@@ -377,12 +377,12 @@ export default function HeroSection() {
             {/* CTAs */}
             <motion.div
               {...fadeUp(0.33)}
-              className="mt-8 flex flex-col items-center gap-3.5 sm:flex-row lg:items-start"
+              className="mt-8 flex w-full flex-col items-stretch gap-3.5 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center lg:items-start lg:justify-start"
             >
               <MagneticButton
                 href={heroData.ctas.primary.href}
                 variant="primary"
-                className="px-7 py-3.5 text-[13.5px] rounded-xl shadow-[0_10px_30px_rgba(99,102,241,0.25)]"
+                className="px-7 py-3.5 rounded-xl shadow-[0_10px_30px_rgba(99,102,241,0.25)] "
                 icon={<ArrowUpRight className="h-4 w-4" />}
               >
                 {heroData.ctas.primary.label}
@@ -393,7 +393,7 @@ export default function HeroSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={openLeadMagnet}
-                className="group inline-flex items-center gap-2 rounded-xl border border-black/[0.06] bg-white/60 px-7 py-3.5 text-[13.5px] font-semibold text-slate-700 backdrop-blur-sm shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-all duration-300 hover:border-indigo-500/30 hover:bg-white hover:text-slate-900"
+                className={`group inline-flex shrink-0 items-center justify-center gap-2 rounded-xl border border-black/[0.06] bg-white/60 px-7 py-3.5 text-center font-semibold leading-tight text-slate-700 backdrop-blur-sm shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-all duration-300 hover:border-indigo-500/30 hover:bg-white hover:text-slate-900 ${CTA_TEXT} ${CTA_NOWRAP}`}
               >
                 {heroData.ctas.secondary.label}
                 <ArrowUpRight className="h-3.5 w-3.5 opacity-0 -translate-x-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-indigo-600" />

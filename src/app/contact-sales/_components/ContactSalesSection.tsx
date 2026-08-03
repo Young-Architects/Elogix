@@ -97,7 +97,7 @@ export default function ContactSalesSection() {
           <div className="max-w-xl">
             <motion.span
               variants={ITEM_VARIANTS}
-              className="inline-flex items-center rounded-full border border-indigo-200/70 bg-white/70 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-indigo-500 shadow-sm backdrop-blur-sm"
+              className="inline-flex items-center rounded-full border border-indigo-200/70 bg-white/70 px-4 py-1.5 text-[13px] font-bold uppercase tracking-[0.22em] text-indigo-500 shadow-sm backdrop-blur-sm"
             >
               {salesIntro.eyebrow}
             </motion.span>
@@ -125,7 +125,7 @@ export default function ContactSalesSection() {
               variants={ITEM_VARIANTS}
               className="mt-10 rounded-2xl border border-indigo-100/80 bg-white/60 p-5 backdrop-blur-sm sm:p-6"
             >
-              <h2 className="text-[11px] font-bold uppercase tracking-[0.18em] text-indigo-500">
+              <h2 className="text-[13px] font-bold uppercase tracking-[0.18em] text-indigo-500">
                 {salesIntro.expectations.heading}
               </h2>
               <ul className="mt-4 space-y-3">

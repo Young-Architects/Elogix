@@ -76,7 +76,7 @@ export default function PricingFinalCtaSection() {
             href={pricingFinalCta.ctaHref}
             variant="ghost"
             icon={<ArrowRight className="h-4 w-4" />}
-            className="rounded-full bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500 px-8 py-3.5 text-sm font-bold shadow-lg shadow-indigo-900/40 sm:text-[15px]"
+            className="rounded-full bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500 px-8 py-3.5 font-bold shadow-lg shadow-indigo-900/40"
           >
             {pricingFinalCta.ctaLabel}
           </MagneticButton>
