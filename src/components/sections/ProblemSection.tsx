@@ -17,7 +17,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { Sparkles, TrendingUp } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import ScrollBeamDivider from "../ui/ScrollBeamDivider";
 import MagneticButton from "@/components/ui/MagneticButton";
 import problemData from "@/data/sections/problem.json";
@@ -47,6 +47,17 @@ interface EffectItem {
 
 const CAUSES = problemData.causes as unknown as CauseItem[];
 const EFFECTS = problemData.effects as unknown as EffectItem[];
+
+// The bottom-CTA headline is authored as ONE sentence in the JSON
+// ("<setup>, <payoff>") so the CMS keeps a single editable field. We split on
+// the first comma so the setup and the payoff can each own a line — the payoff
+// is the part that carries the gradient. Falls back to a single line if the
+// copy is ever edited to drop the comma.
+const [BOTTOM_CTA_LEAD, BOTTOM_CTA_ACCENT] = (() => {
+  const h = problemData.bottomCta.heading;
+  const i = h.indexOf(",");
+  return i === -1 ? [h, ""] : [h.slice(0, i), h.slice(i + 1).trim()];
+})();
 
 /* ═══════════════════════════════════════
    SVG CONNECTOR LINES — responsive, always visible
@@ -305,28 +316,49 @@ export default function ProblemSection() {
           </span>
         </motion.h2>
 
-        <motion.p
-          custom={0.15}
-          variants={fadeUp}
-          initial="hidden"
-          animate={isInView ? "show" : "hidden"}
-          className="mb-4 max-w-xl text-[15px] leading-relaxed text-slate-500"
-        >
-          {problemData.description}
-        </motion.p>
+        {/* ── Sub-heading ──
+            Two-tone hierarchy: the lead statement carries the weight in
+            near-black, and the consequence trails behind it in a lighter grey
+            — so the eye lands on the claim first and reads the qualifier
+            second, instead of meeting one flat wall of grey.
+            `max-w-2xl` holds the measure to ~55-65 characters at these sizes,
+            which is the readable range; without it the lines run too long on
+            wide screens. */}
+        <div className="mb-6 max-w-2xl space-y-2.5 mt-8 sm:space-y-0">
+          <motion.p
+            custom={0.15}
+            variants={fadeUp}
+            initial="hidden"
+            animate={isInView ? "show" : "hidden"}
+            className="text-[17px] font-semibold leading-[1.45] tracking-[-0.01em] text-slate-900 sm:text-[22px] lg:text-[22px]"
+          >
+            {problemData.description}
+          </motion.p>
 
+          <motion.p
+            custom={0.3}
+            variants={fadeUp}
+            initial="hidden"
+            animate={isInView ? "show" : "hidden"}
+            className="text-[17px] leading-[1.45] tracking-[-0.01em] text-slate-500 sm:text-[19px] lg:text-[21px] mt-0"
+          >
+            {problemData.closingLine}
+          </motion.p>
+        </div>
         {/* Escalation pills — the "More…" build-up toward the chaos point */}
-        <div className="mb-4 flex max-w-2xl flex-wrap items-center gap-x-2 gap-y-2">
+        <div className="mb-5 flex max-w-2xl flex-wrap items-center gap-x-2.5 gap-y-2.5">
           {problemData.escalation.map((item, i) => (
             <motion.span
               key={item}
               initial={{ opacity: 0, y: 8, scale: 0.94 }}
               animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
               transition={{ delay: 0.22 + i * 0.09, duration: 0.38, ease: [0.25, 0.1, 0.25, 1] }}
-              className="inline-flex items-center gap-1.5 rounded-full border border-slate-200/80 bg-white/70 px-3 py-1 text-[12px] font-semibold text-slate-600 shadow-sm backdrop-blur-sm"
+              // whitespace-nowrap keeps each pill a single unit — a wrapped
+              // pill label reads as two broken chips. The row already wraps.
+              className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-200/80 bg-white/70 px-3.5 py-1.5 text-[14px] font-semibold text-slate-700 shadow-sm backdrop-blur-sm sm:text-[15px]"
             >
               <span
-                className="h-1.5 w-1.5 flex-shrink-0 rounded-full"
+                className="h-2 w-2 flex-shrink-0 rounded-full"
                 style={{ backgroundColor: ESCALATION_DOTS[i] ?? "#7c3aed" }}
               />
               {item}
@@ -334,15 +366,6 @@ export default function ProblemSection() {
           ))}
         </div>
 
-        <motion.p
-          custom={0.3}
-          variants={fadeUp}
-          initial="hidden"
-          animate={isInView ? "show" : "hidden"}
-          className="mb-5 max-w-xl text-[15px] leading-relaxed text-slate-500"
-        >
-          {problemData.closingLine}
-        </motion.p>
 
         {/* "The result?" lead-in pointing into the diagram */}
         <motion.p
@@ -350,7 +373,7 @@ export default function ProblemSection() {
           variants={fadeUp}
           initial="hidden"
           animate={isInView ? "show" : "hidden"}
-          className="mb-6 flex items-center gap-2 text-[15px] font-extrabold tracking-tight text-slate-800"
+          className="mb-6 flex items-center gap-2 text-[17px] font-extrabold tracking-tight text-slate-900 sm:text-[19px]"
         >
           {problemData.resultLead}
 
@@ -562,41 +585,43 @@ export default function ProblemSection() {
           className="mt-9 flex flex-col items-center justify-between gap-5 sm:flex-row sm:flex-wrap"
         >
           {/* Redesigned bottom text */}
-          <div className="relative max-w-lg">
-            {/* Decorative left bar */}
+          <div className="relative max-w-xl">
+            {/* Decorative left bar — now the only anchor on this block (the
+                icon was removed), so it carries a touch more weight. Stays
+                hidden below `sm`, where the text is centred and an off-edge
+                bar would have nothing to align to. */}
             <div
-              className="hidden sm:block absolute -left-4 top-1 bottom-1 w-[3px] rounded-full"
+              className="hidden sm:block absolute -left-5 top-0.5 bottom-0.5 w-[4px] rounded-full"
               style={{ background: "linear-gradient(to bottom, #7c3aed, #f43f5e)" }}
             />
-            <div className="flex items-start sm:items-center gap-3">
-              <div
-                className="flex-shrink-0 flex h-9 w-9 items-center justify-center rounded-xl text-[16px] sm:flex"
+            {/* Three lines, three jobs: the setup, the payoff (gradient), and
+                the supporting detail — which steps down a size so it reads as
+                support rather than competing with the two lines above it.
+
+                Spacing is deliberately uneven: lines 1-2 are one sentence
+                broken across two lines, so they sit tight (mt-0.5). Line 3 is a
+                separate thought and gets a small breath (mt-1.5) — just enough
+                to separate it without leaving it stranded. */}
+            <div className="min-w-0 text-center sm:text-left">
+              <p className="text-[17px] font-semibold leading-[1.3] tracking-[-0.01em] text-slate-800 sm:text-[19px] lg:text-[20px]">
+                {BOTTOM_CTA_LEAD},
+              </p>
+
+              <p
+                className="mt-0.5 text-[17px] font-black leading-[1.3] tracking-[-0.01em] sm:text-[19px] lg:text-[20px]"
                 style={{
-                  background: "linear-gradient(135deg, rgba(124,58,237,0.1), rgba(244,63,94,0.1))",
-                  border: "1px solid rgba(124,58,237,0.15)",
+                  background: "linear-gradient(90deg, #7c3aed, #f43f5e)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
                 }}
               >
-                <TrendingUp className="h-4 w-4 text-violet-600" />
-              </div>
-              <div>
-                <p className="text-[14px] sm:text-[15px] font-semibold leading-snug text-slate-700">
-                  {problemData.bottomCta.heading.split(",")[0]},
-                  <span
-                    className="ml-1.5 font-black"
-                    style={{
-                      background: "linear-gradient(90deg, #7c3aed, #f43f5e)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      backgroundClip: "text",
-                    }}
-                  >
-                    {problemData.bottomCta.heading.split(",").slice(1).join(",").trim()}
-                  </span>
-                </p>
-                <p className="mt-1 text-[11.5px] text-slate-500 font-medium">
-                  {problemData.bottomCta.subtext}
-                </p>
-              </div>
+                {BOTTOM_CTA_ACCENT}
+              </p>
+
+              <p className="mt-1.5 text-[14px] font-medium leading-[1.45] text-slate-500 sm:text-[15px]">
+                {problemData.bottomCta.subtext}
+              </p>
             </div>
           </div>
  
