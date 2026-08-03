@@ -28,7 +28,7 @@
     "brandTaglineParts": ["Financial", "Control Engine"],
     "chaosNodes": [
       { "label": "Receipts Lost",       "icon": "🧾" },
-      { "label": "Approval Delays",     "icon": "⏱"  },
+      { "label": "Approval Delays",     "icon": "⏳"  },
       { "label": "Reimbursement Queue", "icon": "👥" },
       { "label": "Visibility Missing",  "icon": "👁️‍🗨️"  }
     ],

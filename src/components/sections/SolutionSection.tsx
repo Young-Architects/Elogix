@@ -18,6 +18,7 @@
  */
 
 import React, { useCallback, useEffect, useRef } from "react";
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import ScrollBeamDivider from "../ui/ScrollBeamDivider";
@@ -257,7 +258,11 @@ function NodeDiagram() {
               ref={centerRef}
               className="relative flex-shrink-0 w-[68px] h-[68px] sm:w-[92px] sm:h-[92px] md:w-[116px] md:h-[116px] rounded-full flex flex-col items-center justify-center"
               style={{
-                background: "linear-gradient(145deg,#7c3aed 0%,#4f46e5 55%,#312e81 100%)",
+                // White, not the violet gradient: the logo now fills the whole
+                // circle, so any fill behind it would only ever show as a rim
+                // around the mark. White matches the logo's own background so
+                // the seam is invisible while the image loads.
+                background: "#ffffff",
                 boxShadow:  "0 0 0 8px rgba(124,58,237,0.07),0 0 28px rgba(124,58,237,0.28)",
               }}
             >
@@ -265,12 +270,20 @@ function NodeDiagram() {
                 className="absolute inset-0 rounded-full animate-ping"
                 style={{ background: "rgba(124,58,237,0.1)", animationDuration: "2.5s" }}
               />
-              {/* <span className="relative z-10 text-white font-black text-xl sm:text-2xl leading-none">{solutionData.nodeDiagram.brandName.charAt(0)}</span> */}
-              <span className="relative z-10 text-white/90 font-bold text-[8.5px] sm:text-[10px] tracking-[1px] mt-0.5 leading-none">
-                {solutionData.nodeDiagram.brandName}
-              </span>
-              <span className="relative z-10 text-violet-200/80 text-[7px] sm:text-[8.5px] text-center leading-tight mt-1 px-1 hidden sm:block">
-                {solutionData.nodeDiagram.brandTaglineParts[0]}<br />{solutionData.nodeDiagram.brandTaglineParts[1]}
+              {/* Brand mark — fills the node edge to edge (`inset-0`) so nothing
+                  sits behind it and no coloured rim can show around the logo.
+                  Sizing follows the parent automatically, which keeps it exact
+                  at every breakpoint.
+                  `scale-[1.04]` crops the faint grey border baked into the source
+                  JPEG, so the logo's own white reaches the rim with no halo. */}
+              <span className="absolute inset-0 z-10 block overflow-hidden rounded-full bg-white">
+                <Image
+                  src="/expendesk-mark.jpg"
+                  alt={solutionData.nodeDiagram.brandName}
+                  fill
+                  sizes="(min-width: 768px) 116px, (min-width: 640px) 92px, 68px"
+                  className="scale-[1.04] object-cover"
+                />
               </span>
             </div>
           </div>

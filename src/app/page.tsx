@@ -64,7 +64,7 @@ export default function Home() {
       <FeaturesVideo />
       <HowItWorksSection />
       <LeadMagnetSection />
-      <ComparisonSection />
+      {/* <ComparisonSection /> */}
       <TestimonialsSection />
       <WhyExpendesk />
       <FaqSection />
