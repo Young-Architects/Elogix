@@ -10,7 +10,7 @@
     "description": "Expendesk brings every expense, reimbursement, approval, and spending policy into one centralized platform.",
     "bullets": [
       { "text": "No spreadsheets.", "positive": false },
-      { "text": "No manual follow-ups.", "positive": false },
+      { "text": "No lengthy follow-ups.", "positive": false },
       { "text": "No guesswork.", "positive": false },
       { "text": "Just complete financial control.", "positive": true }
     ],
@@ -39,7 +39,7 @@
     "subheading": "Everything your finance team needs, in one place.",
     "features": [
       { "icon": "camera", "title": "Capture expenses instantly", "desc": "Upload receipts on the go and never lose a single expense again." },
-      { "icon": "bolt", "title": "Automate approvals", "desc": "Set smart approval flows and eliminate manual follow-ups." },
+      { "icon": "bolt", "title": "Automate approvals", "desc": "Set smart approval flows and eliminate lengthy follow-ups." },
       { "icon": "shield", "title": "Enforce spending policies", "desc": "Ensure policy compliance before spend, not afterwards." },
       { "icon": "users", "title": "Track by team, dept. or location", "desc": "Get granular visibility into where and how money is being spent." },
       { "icon": "refresh", "title": "Accelerate reimbursements", "desc": "Reimburse employees faster and boost happiness." },

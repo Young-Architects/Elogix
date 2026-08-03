@@ -4,7 +4,7 @@
   "heading": "Once You Identify the Gaps, How Do You Fix Them?",
   "subheading": "Most pharma companies discover the same challenges:",
   "challenges": [
-    { "id": "manual-claims", "label": "Manual expense claims", "icon": "file-warning" },
+    { "id": "manual-claims", "label": "Lengthy expense claims", "icon": "file-warning" },
     { "id": "delayed-approvals", "label": "Delayed approvals", "icon": "clock" },
     { "id": "poor-visibility", "label": "Poor spend visibility", "icon": "eye-off" },
     { "id": "reimbursement-bottlenecks", "label": "Reimbursement bottlenecks", "icon": "hourglass" },

@@ -11,7 +11,7 @@
     "More reimbursements",
     "More approvals",
     "More spreadsheets",
-    "More manual work"
+    "More lengthy work"
   ],
   "closingLine": "Eventually, finance teams spend more time chasing receipts than making financial decisions.",
   "resultLead": "The Result?",
@@ -22,7 +22,7 @@
       "icon": "🧾",
       "title": "Receipts Lost",
       "sub": "Finance teams chase paperwork, not decisions",
-      "tag": "Manual Processes",
+      "tag": "Lengthy Processes",
       "tagColor": "bg-amber-100 text-amber-600 border-amber-200"
     },
     {

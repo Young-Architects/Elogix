@@ -5,9 +5,9 @@
   "description": "As businesses scale, expense management becomes increasingly difficult.",
   "chaosPoint": { "emoji": "⚠️", "label": "CHAOS POINT" },
   "causes": [
-    { "id": "c1", "emoji": "📂", "title": "Finance teams chase receipts", "sub": "Hours lost to manual receipt collection", "tag": "No Policy Enforcement" },
-    { "id": "c2", "emoji": "⏳", "title": "Managers approve manually", "sub": "Every expense needs intervention", "tag": null },
-    { "id": "c3", "emoji": "🕐", "title": "Weeks wait for payments", "sub": "Employees reimbursed too late", "tag": "Manual Processes" },
+    { "id": "c1", "emoji": "📂", "title": "Finance teams chase receipts", "sub": "Hours lost to lengthy receipt collection", "tag": "No Policy Enforcement" },
+    { "id": "c2", "emoji": "⏳", "title": "Managers run lengthy approvals", "sub": "Every expense needs intervention", "tag": null },
+    { "id": "c3", "emoji": "🕐", "title": "Weeks wait for payments", "sub": "Employees reimbursed too late", "tag": "Lengthy Processes" },
     { "id": "c4", "emoji": "📊", "title": "Leadership lacks visibility", "sub": "No real-time spend intelligence", "tag": null }
   ],
   "effects": [

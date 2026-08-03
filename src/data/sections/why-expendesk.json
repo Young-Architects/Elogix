@@ -4,7 +4,7 @@
   "subheading": "Expense Management That Helps Your Business Grow Smarter.",
   "columns": {
     "aspect": "Capability",
-    "before": { "label": "Traditional Process", "caption": "The manual way" },
+    "before": { "label": "Traditional Process", "caption": "The lengthy way" },
     "after": { "label": "Expendesk", "caption": "Fully in control", "tag": "Recommended" }
   },
   "comparisons": [
@@ -16,7 +16,7 @@
       "icon": "Workflow",
       "detail": "Automate repetitive expense processes so finance teams can focus on strategic priorities.",
       "metric": "90%",
-      "metricLabel": "less manual work"
+      "metricLabel": "less lengthy work"
     },
     {
       "id": "employee-experience",
@@ -61,18 +61,18 @@
     {
       "id": "scale",
       "aspect": "Scale with Confidence",
-      "before": "Growing manual effort",
+      "before": "Growing lengthy effort",
       "after": "Effortless scaling",
       "icon": "TrendingUp",
-      "detail": "Support growing teams, multiple offices, and increasing expense volumes without increasing manual effort.",
+      "detail": "Support growing teams, multiple offices, and increasing expense volumes without increasing lengthy effort.",
       "metric": "Zero",
-      "metricLabel": "extra manual effort"
+      "metricLabel": "extra lengthy effort"
     }
   ],
   "cta": {
     "heading": "Every Expense Tells a Story.",
     "subheading": "Make Sure Yours Leads to Better Business Decisions.",
-    "body": "Growing businesses shouldn't lose time and money to manual expense processes.",
+    "body": "Growing businesses shouldn't lose time and money to lengthy expense processes.",
     "highlights": [
       "Automate reimbursements",
       "Improve visibility",

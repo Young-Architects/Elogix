@@ -65,7 +65,7 @@
       {
         "iconKey": "bolt",
         "title": "Create multi-level approval workflows",
-        "desc": "Set smart approval flows and eliminate manual follow-ups.",
+        "desc": "Set smart approval flows and eliminate lengthy follow-ups.",
         "color": "from-indigo-500/10 to-indigo-600/5",
         "iconColor": "text-indigo-600",
         "dot": "bg-indigo-500",

@@ -5,16 +5,16 @@
   "subheading": "From spreadsheet chaos to complete financial control — compare the old way with Expendesk, line by line.",
   "columns": {
     "aspect": "Capability",
-    "before": { "label": "Traditional Process", "caption": "The manual way" },
+    "before": { "label": "Traditional Process", "caption": "The lengthy way" },
     "after": { "label": "Expendesk", "caption": "Fully in control", "tag": "Recommended" }
   },
   "comparisons": [
-    { "id": "workflows", "aspect": "Workflows", "before": "Manual spreadsheets", "after": "Automated workflows", "icon": "workflow", "detail": "Every expense flows through smart, rule-based automation — zero spreadsheet wrangling.", "metric": "90%", "metricLabel": "less manual work" },
+    { "id": "workflows", "aspect": "Workflows", "before": "Lengthy spreadsheets", "after": "Automated workflows", "icon": "workflow", "detail": "Every expense flows through smart, rule-based automation — zero spreadsheet wrangling.", "metric": "90%", "metricLabel": "less lengthy work" },
     { "id": "approvals", "aspect": "Approvals", "before": "Delayed approvals", "after": "Instant routing", "icon": "zap", "detail": "Claims reach the right approver in seconds, not days.", "metric": "10×", "metricLabel": "faster approvals" },
     { "id": "receipts", "aspect": "Receipts", "before": "Lost receipts", "after": "Digital capture", "icon": "camera", "detail": "Snap, upload, and never lose a single receipt again.", "metric": "100%", "metricLabel": "capture rate" },
     { "id": "visibility", "aspect": "Visibility", "before": "Limited visibility", "after": "Real-time dashboards", "icon": "bar-chart", "detail": "See exactly where every rupee flows, the moment it moves.", "metric": "360°", "metricLabel": "spend visibility" },
     { "id": "policy", "aspect": "Policy control", "before": "Policy violations", "after": "Automated enforcement", "icon": "shield-check", "detail": "Out-of-policy spend is flagged before it ever hits payout.", "metric": "99.8%", "metricLabel": "compliance rate" },
-    { "id": "reimburse", "aspect": "Reimbursements", "before": "Slow reimbursements", "after": "Faster processing", "icon": "wallet", "detail": "Employees get paid faster with zero manual follow-ups.", "metric": "3×", "metricLabel": "faster payouts" }
+    { "id": "reimburse", "aspect": "Reimbursements", "before": "Slow reimbursements", "after": "Faster processing", "icon": "wallet", "detail": "Employees get paid faster with zero lengthy follow-ups.", "metric": "3×", "metricLabel": "faster payouts" }
   ],
   "cta": {
     "heading": "Stop Managing Expenses. Start Controlling Them.",

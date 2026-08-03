@@ -19,7 +19,7 @@ export const bridge: BridgeContent = {
   subheading: "Most pharma companies discover the same challenges:",
 
   challenges: [
-    { id: "manual-claims", label: "Manual expense claims", iconKey: "fileWarning" },
+    { id: "manual-claims", label: "Lengthy expense claims", iconKey: "fileWarning" },
     { id: "delayed-approvals", label: "Delayed approvals", iconKey: "clock" },
     { id: "poor-visibility", label: "Poor spend visibility", iconKey: "eyeOff" },
     {

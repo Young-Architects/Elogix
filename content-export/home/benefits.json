@@ -51,7 +51,7 @@
       "id": "reimbursement",
       "icon": "timer",
       "title": "Eliminate reimbursement delays",
-      "description": "Automated reimbursements keep employees paid on time — no manual nudges required.",
+      "description": "Automated reimbursements keep employees paid on time — no lengthy nudges required.",
       "metric": { "value": 70, "suffix": "%", "label": "faster reimbursements" }
     },
     {

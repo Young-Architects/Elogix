@@ -29,7 +29,7 @@ export const problem: ProblemContent = {
     {
       value: 73,
       suffix: "%",
-      label: "of pharma companies still manage field expenses manually",
+      label: "of pharma companies still manage field expenses with lengthy processes",
       emoji: "📊",
       delay: 0,
     },
@@ -71,7 +71,7 @@ export const problem: ProblemContent = {
       emoji: "📊",
       name: "Spreadsheets",
       desc: "Version conflicts, formula errors, zero real-time visibility across your field teams.",
-      tag: "MANUAL",
+      tag: "LENGTHY",
       tagColor: "rgba(239,68,68,0.13)",
       tagBorder: "rgba(239,68,68,0.28)",
       tagText: "#FCA5A5",
@@ -96,7 +96,7 @@ export const problem: ProblemContent = {
     },
     {
       emoji: "✍️",
-      name: "Manual Approvals",
+      name: "Lengthy Approvals",
       desc: "Paper trails, human errors, weeks of delay before a rep sees any reimbursement.",
       tag: "BROKEN",
       tagColor: "rgba(239,68,68,0.13)",
@@ -129,7 +129,7 @@ export const problem: ProblemContent = {
     {
       emoji: "📉",
       label: "Finance teams get overwhelmed",
-      body: "Manual reconciliation consumes dozens of hours each month — hours that should be spent on growth.",
+      body: "Lengthy reconciliation consumes dozens of hours each month — hours that should be spent on growth.",
     },
     {
       emoji: "🔍",

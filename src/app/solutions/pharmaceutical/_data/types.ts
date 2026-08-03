@@ -46,7 +46,7 @@ export interface OldTool {
   emoji: string;
   name: string;
   desc: string;
-  /** Short status tag rendered top-right (e.g. MANUAL, SLOW, RISKY). */
+  /** Short status tag rendered top-right (e.g. LENGTHY, SLOW, RISKY). */
   tag: string;
   /** Inline style values for the tag pill (computed at runtime). */
   tagColor: string;

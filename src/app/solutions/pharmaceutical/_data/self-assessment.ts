@@ -76,7 +76,7 @@ export const selfAssessment: SelfAssessmentContent = {
     },
     atRisk: {
       label: "At risk",
-      message: "Manual gaps are quietly draining time and budget.",
+      message: "Lengthy gaps are quietly draining time and budget.",
       badgeClass: "border-amber-200 bg-amber-50 text-amber-600",
       barClass: "from-amber-400 to-orange-400",
       ring: ["#fbbf24", "#fb923c"],

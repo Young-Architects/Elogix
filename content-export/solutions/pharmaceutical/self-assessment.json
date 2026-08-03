@@ -22,7 +22,7 @@
   "tiers": {
     "idle": { "label": "Not started", "message": "Tap each question to see where your process stands." },
     "critical": { "label": "Critical gaps", "message": "There are real blind spots here actively costing you." },
-    "atRisk": { "label": "At risk", "message": "Manual gaps are quietly draining time and budget." },
+    "atRisk": { "label": "At risk", "message": "Lengthy gaps are quietly draining time and budget." },
     "strong": { "label": "Ahead of the curve", "message": "Solid foundation — a few refinements make it airtight." }
   }
 }

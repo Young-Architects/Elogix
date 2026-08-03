@@ -12,7 +12,7 @@
   "vsLabel": "VS",
   "rows": [
     { "id": "platform",   "before": "Spreadsheets",            "after": "Automated Platform",        "iconKey": "zap" },
-    { "id": "workflows",  "before": "Manual Approvals",        "after": "Smart Workflows",           "iconKey": "workflow" },
+    { "id": "workflows",  "before": "Lengthy Approvals",        "after": "Smart Workflows",           "iconKey": "workflow" },
     { "id": "processing", "before": "Delayed Reimbursements",  "after": "Faster Processing",         "iconKey": "timer" },
     { "id": "records",    "before": "Lost Receipts",           "after": "Digital Record Management", "iconKey": "folder-check" },
     { "id": "dashboards", "before": "Limited Visibility",      "after": "Real-Time Dashboards",      "iconKey": "bar-chart" },
