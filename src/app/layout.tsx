@@ -16,8 +16,9 @@
  */
 import type { Metadata, Viewport } from "next";
 import { Poppins } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, GTM_ID } from "@/lib/site";
 import { ChatProvider } from "@/components/chat/ChatProvider";
 import ChatWidget from "@/components/layout/ChatWidget";
 import Navbar from "@/components/layout/Navbar";
@@ -81,6 +82,45 @@ export default function RootLayout({
   return (
     <html lang="en" className={poppins.variable} suppressHydrationWarning>
       <body className="antialiased bg-black text-white min-h-screen">
+        {/* ── Google Tag Manager ──────────────────────────────────────────
+            GTM ships as two snippets. This project has no index.html — this
+            root layout wraps every route, so putting them here is the App
+            Router equivalent of "on every page".
+
+            Part 1, the loader. GTM's own instructions say "as high in <head>
+            as possible", but that guidance predates frameworks: a blocking
+            head script delays first paint. `next/script` with
+            `afterInteractive` (Next's documented choice for tag managers)
+            injects it right after hydration starts instead — GTM still fires
+            on the initial pageview, without holding up render.
+
+            `id` is required for inline scripts: it's how Next de-duplicates
+            them across client-side navigations, so GTM initialises exactly
+            once per session rather than on every route change. */}
+        {GTM_ID && (
+          <Script id="gtm-loader" strategy="afterInteractive">
+            {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${GTM_ID}');`}
+          </Script>
+        )}
+
+        {/* Part 2, the <noscript> fallback — must sit immediately inside
+            <body> so it still renders for visitors with JavaScript disabled. */}
+        {GTM_ID && (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+              title="Google Tag Manager"
+            />
+          </noscript>
+        )}
+
         <ChatProvider>
           <Navbar />
           <ScrollToHash />
