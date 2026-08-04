@@ -174,19 +174,27 @@ function SocialDock() {
 }
 
 /* ───────────────────────── brand logo mark ───────────────────────── */
-/* White variant of the brand lockup (public/logo-white.png) — the Navbar
-   uses the dark variant (public/logo.png), so the two read as one system. */
+/* White variant of the brand lockup (public/logo-wordmark-white.png) — mirrors
+   the Navbar exactly: wordmark as an image, tagline as live text. Baked into
+   the artwork the tagline is only 8.5% of the logo's height, which at this
+   size renders around 4px — unreadable. As real text it stays crisp and its
+   size is set in code rather than by the artwork's proportions. */
 
 function BrandMark() {
   return (
-    <Link href="/" className="group inline-flex items-center">
+    <Link href="/" className="group inline-flex flex-col items-start">
       <Image
         src={footerData.brand.logoSrc}
         alt={footerData.brand.logoAlt}
-        width={900}
-        height={290}
-        className="h-10 w-auto transition-opacity duration-300 group-hover:opacity-85 sm:h-11"
+        // Intrinsic size of the wordmark asset — keeps the aspect box correct.
+        width={1417}
+        height={366}
+        sizes="(min-width: 640px) 124px, 108px"
+        className="h-7 w-auto transition-opacity duration-300 group-hover:opacity-85 sm:h-8"
       />
+      <span className="mt-[3px] w-full text-center text-[7.5px] font-medium uppercase leading-none tracking-[0.1em] text-white/70 transition-opacity duration-300 group-hover:opacity-85 sm:text-[8px] sm:tracking-[0.145em]">
+        {footerData.brand.logoTagline}
+      </span>
     </Link>
   );
 }

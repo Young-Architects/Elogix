@@ -52,7 +52,7 @@ export type SalesAlternativeIconKey =
 
 /** GHL "Contact Expendesk" form embed config (LeadConnector widget). */
 export const salesFormEmbed = {
-  src: "https://link.youngarchitects.in/widget/form/rk4yf4oo9XFsnFZpo0cT",
+  src: "https://link.youngarchitects.in/widget/form/xcZp15N4D8Agprv3PaWC",
   formId: "rk4yf4oo9XFsnFZpo0cT",
   iframeId: "inline-rk4yf4oo9XFsnFZpo0cT",
   embedScriptSrc: "https://link.youngarchitects.in/js/form_embed.js",

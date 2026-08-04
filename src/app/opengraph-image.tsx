@@ -45,9 +45,12 @@ export default async function OpengraphImage() {
           }}
         />
 
-        {/* White wordmark — 900×290 source, scaled to keep aspect ratio */}
+        {/* Supplied light wordmark — 4248×1091 source (aspect 3.894), so 730
+            wide must pair with 187 tall or satori stretches it. The wordmark
+            still lands ~188px tall, exactly as before; only the tagline is
+            gone, since this asset is wordmark-only by design. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={logoSrc} width={730} height={235} alt="Expendesk" />
+        <img src={logoSrc} width={730} height={187} alt="Expendesk" />
 
         <div
           style={{

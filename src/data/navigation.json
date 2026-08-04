@@ -1,48 +1,150 @@
 {
   "brand": {
-    "logoSrc": "/logo.png",
-    "logoAlt": "Expendesk — Expenses · Simplified"
+    "logoSrc": "/logo-wordmark.png",
+    "logoAlt": "Expendesk",
+    "tagline": "Expenses · Simplified"
   },
   "items": [
     {
       "label": "Home",
       "href": "/",
       "dropdown": [
-        { "iconKey": "home",           "label": "Hero",          "desc": "Back to the top",              "href": "/#hero"           },
-        { "iconKey": "alert-triangle", "label": "Problem",       "desc": "The challenge we solve",       "href": "/#problem"        },
-        { "iconKey": "check-circle",   "label": "Solution",      "desc": "How we solve it",              "href": "/#solution"       },
-        { "iconKey": "star",           "label": "Benefits",      "desc": "What you gain",                "href": "/#benefits"       },
-        { "iconKey": "play",           "label": "Features",      "desc": "See it in action",             "href": "/#features-video" },
-        { "iconKey": "route",          "label": "How It Works",  "desc": "Get started in 3 steps",       "href": "/#how-it-works"   },
-        { "iconKey": "mail",           "label": "Free Guide",    "desc": "Download the expense guide",   "href": "/downloads/msme-lead-magnet.pdf" },
-        { "iconKey": "git-compare",    "label": "Compare",       "desc": "Traditional vs Expendesk",     "href": "/#comparison"     },
-        { "iconKey": "message-circle", "label": "Testimonials",  "desc": "What customers say",           "href": "/#testimonials"   },
-        { "iconKey": "help-circle",    "label": "FAQ",           "desc": "Answers to common questions",  "href": "/#faq"            },
-        { "iconKey": "award",          "label": "Why Expendesk", "desc": "Our story & mission",          "href": "/#why-expendesk"  },
-        { "iconKey": "panel-bottom",   "label": "More Links",        "desc": "Links, contact & socials",     "href": "/#footer"         }
+        {
+          "iconKey": "home",
+          "label": "Hero",
+          "desc": "Back to the top",
+          "href": "/#hero"
+        },
+        {
+          "iconKey": "alert-triangle",
+          "label": "Problem",
+          "desc": "The challenge we solve",
+          "href": "/#problem"
+        },
+        {
+          "iconKey": "check-circle",
+          "label": "Solution",
+          "desc": "How we solve it",
+          "href": "/#solution"
+        },
+        {
+          "iconKey": "star",
+          "label": "Benefits",
+          "desc": "What you gain",
+          "href": "/#benefits"
+        },
+        {
+          "iconKey": "play",
+          "label": "Features",
+          "desc": "See it in action",
+          "href": "/#features-video"
+        },
+        {
+          "iconKey": "route",
+          "label": "How It Works",
+          "desc": "Get started in 3 steps",
+          "href": "/#how-it-works"
+        },
+        {
+          "iconKey": "mail",
+          "label": "Free Guide",
+          "desc": "Download the expense guide",
+          "href": "/downloads/msme-lead-magnet.pdf"
+        },
+        {
+          "iconKey": "git-compare",
+          "label": "Compare",
+          "desc": "Traditional vs Expendesk",
+          "href": "/#comparison"
+        },
+        {
+          "iconKey": "message-circle",
+          "label": "Testimonials",
+          "desc": "What customers say",
+          "href": "/#testimonials"
+        },
+        {
+          "iconKey": "help-circle",
+          "label": "FAQ",
+          "desc": "Answers to common questions",
+          "href": "/#faq"
+        },
+        {
+          "iconKey": "award",
+          "label": "Why Expendesk",
+          "desc": "Our story & mission",
+          "href": "/#why-expendesk"
+        },
+        {
+          "iconKey": "panel-bottom",
+          "label": "More Links",
+          "desc": "Links, contact & socials",
+          "href": "/#footer"
+        }
       ]
     },
     {
       "label": "Solutions",
       "href": "/solutions",
       "dropdown": [
-        { "iconKey": "shield",      "label": "Expense Management for Pharmaceutical Industries", "desc": "Streamline compliance & audit-ready expense reporting",   "href": "/solutions/pharmaceutical"   },
-        { "iconKey": "zap",         "label": "Expense Management for Manufacturing Industries",  "desc": "Control factory & plant spend with real-time visibility", "href": "/solutions/manufacturing"    },
-        { "iconKey": "bar-chart-2", "label": "Expense Management for Digital Agencies",          "desc": "Track project budgets & client billing with precision",   "href": "/solutions/digital-agencies" }
+        {
+          "iconKey": "shield",
+          "label": "Expense Management for Pharmaceutical Industries",
+          "desc": "Streamline compliance & audit-ready expense reporting",
+          "href": "/solutions/pharmaceutical"
+        },
+        {
+          "iconKey": "zap",
+          "label": "Expense Management for Manufacturing Industries",
+          "desc": "Control factory & plant spend with real-time visibility",
+          "href": "/solutions/manufacturing"
+        },
+        {
+          "iconKey": "bar-chart-2",
+          "label": "Expense Management for Digital Agencies",
+          "desc": "Track project budgets & client billing with precision",
+          "href": "/solutions/digital-agencies"
+        }
       ]
     },
-    { "label": "Pricing",  "href": "/pricing"  },
+    {
+      "label": "Pricing",
+      "href": "/pricing"
+    },
     {
       "label": "Resources",
       "href": "/resources",
       "dropdown": [
-        { "iconKey": "file-text",     "label": "Whitepapers",  "desc": "In-depth research & insights",   "href": "/resources/whitepapers"  },
-        { "iconKey": "briefcase",     "label": "Case Studies", "desc": "Real customer success stories",  "href": "/resources/case-studies" },
-        { "iconKey": "book-open",     "label": "Blogs",        "desc": "Latest articles & updates",      "href": "/resources/blogs"        },
-        { "iconKey": "help-circle",   "label": "FAQs",         "desc": "Answers to common questions",    "href": "/#faq"                   }
+        {
+          "iconKey": "file-text",
+          "label": "Whitepapers",
+          "desc": "In-depth research & insights",
+          "href": "/resources/whitepapers"
+        },
+        {
+          "iconKey": "briefcase",
+          "label": "Case Studies",
+          "desc": "Real customer success stories",
+          "href": "/resources/case-studies"
+        },
+        {
+          "iconKey": "book-open",
+          "label": "Blogs",
+          "desc": "Latest articles & updates",
+          "href": "/resources/blogs"
+        },
+        {
+          "iconKey": "help-circle",
+          "label": "FAQs",
+          "desc": "Answers to common questions",
+          "href": "/#faq"
+        }
       ]
     },
-    { "label": "Contact",  "href": "/contact-sales"  }
+    {
+      "label": "Contact",
+      "href": "/contact-sales"
+    }
   ],
   "login": {
     "label": "Login",

@@ -434,14 +434,33 @@ export default function Navbar(): ReactNode {
               transition={{ duration: 0.3 }}
               className="origin-left"
             >
-              <Image
-                src={navData.brand.logoSrc}
-                alt={navData.brand.logoAlt}
-                width={900}
-                height={290}
-                priority
-                className="h-9 w-auto transition-opacity duration-300 group-hover:opacity-80 sm:h-10"
-              />
+              {/* Brand lockup = wordmark IMAGE + tagline as LIVE TEXT.
+                  The tagline is only 8.5% of the full logo's height, so baked
+                  into the image it rendered at ~3.7px here — below what any
+                  screen can resolve. As real text it gets font hinting and
+                  subpixel AA, so it stays crisp, and its size is controlled in
+                  code instead of being locked to the artwork's proportions. */}
+              <div className="flex flex-col items-start">
+                <Image
+                  src={navData.brand.logoSrc}
+                  alt={navData.brand.logoAlt}
+                  // Intrinsic size of public/logo-wordmark.png — keeps
+                  // next/image's aspect box right so the header can't shift.
+                  width={1417}
+                  height={366}
+                  priority
+                  // Without `sizes`, next/image ships the 1920px cut for a
+                  // ~124px slot — a 15x downscale that smears fine detail.
+                  sizes="(min-width: 640px) 124px, 108px"
+                  className="h-7 w-auto transition-opacity duration-300 group-hover:opacity-80 sm:h-8"
+                />
+                {/* Colour and tracking are taken from the original artwork
+                    (ink #5C5C5C, tagline spanning ~86% of the wordmark) so the
+                    lockup still reads as one designed unit. */}
+                <span className="mt-[3px] w-full text-center text-[7.5px] font-medium uppercase leading-none tracking-[0.1em] text-[#5C5C5C] transition-opacity duration-300 group-hover:opacity-80 sm:text-[8px] sm:tracking-[0.145em]">
+                  {navData.brand.tagline}
+                </span>
+              </div>
             </motion.div>
           </Link>
 
