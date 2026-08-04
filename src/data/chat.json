@@ -1,6 +1,6 @@
 {
   "assistant": {
-    "name": "Expendesk AI",
+    "name": "Expy AI",
     "status": "Online",
     "avatarLetter": "E"
   },
@@ -18,8 +18,8 @@
   },
   "aria": {
     "closeChat": "Close chat",
-    "dialogLabel": "Expendesk AI chat assistant",
-    "openLauncher": "Open Expendesk AI chat",
+    "dialogLabel": "Expy AI chat assistant",
+    "openLauncher": "Open Expy AI chat",
     "closeLauncher": "Close AI chat"
   }
 }

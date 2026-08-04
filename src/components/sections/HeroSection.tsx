@@ -80,7 +80,7 @@ const FEATURE_CARD_ICONS: Record<string, React.ElementType> = {
 
 /* ─────────────────────── hero right slot ───────────────────────
    The right-side "Live Expense Feed" card has been replaced by the
-   docked Expendesk AI chat — rendered via <HeroChatDock /> in the
+   docked Expy AI chat — rendered via <HeroChatDock /> in the
    right column below. The chat auto-opens here while the hero is in
    view, then hands off to the floating launcher once scrolled past. */
 
@@ -421,7 +421,7 @@ export default function HeroSection() {
             </motion.div>
           </div>
 
-          {/* ════ RIGHT COLUMN — docked Expendesk AI chat ════ */}
+          {/* ════ RIGHT COLUMN — docked Expy AI chat ════ */}
            <motion.div
                       className="relative flex w-full shrink-0 justify-center lg:w-[380px] lg:justify-end xl:w-[400px]"
                       initial={{ opacity: 0, x: 32, y: 8 }}

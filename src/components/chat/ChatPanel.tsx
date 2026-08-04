@@ -210,7 +210,7 @@ export default function ChatPanel({
           </button>
         </div>
         <p className="mt-1.5 text-center text-[11px] font-semibold text-slate-300">
-          Expendesk AI can make mistakes. Please verify important details with
+          Expy AI can make mistakes. Please verify important details with
           our team.
         </p>
       </div>

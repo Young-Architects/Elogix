@@ -36,7 +36,7 @@ src/
 │   ├── robots.ts                   # robots.txt (allow all, disallow /api/) + sitemap pointer
 │   ├── sitemap.ts                  # sitemap.xml: static routes + every published blog post (from the WP API)
 │   ├── api/
-│   │   ├── chat/route.ts           # POST endpoint the Expendesk AI chat widget talks to
+│   │   ├── chat/route.ts           # POST endpoint the Expy AI chat widget talks to
 │   │   └── revalidate/route.ts     # POST webhook: WordPress → on-demand ISR purge (secret-guarded)
 │   ├── contact-us/                 # "Book a Demo" page — every demo CTA on the site lands here
 │   │   ├── _components/            # BookingCalendarSection (hero copy + embedded GHL booking calendar + loader)
@@ -93,7 +93,7 @@ src/
 │   │   └── faqs/                   # Legacy route → redirect() to the on-page /#faq section
 │
 ├── components/
-│   ├── chat/                       # Expendesk AI chat — shared state, two render targets (copy in src/data/chat.json)
+│   ├── chat/                       # Expy AI chat — shared state, two render targets (copy in src/data/chat.json)
 │   │   ├── ChatProvider.tsx        # Context: conversation state, webhook, dock handoff
 │   │   ├── ChatPanel.tsx           # Shared panel UI (docked + floating variants)
 │   │   └── HeroChatDock.tsx        # One-line drop-in slot for a hero's right column
@@ -262,7 +262,7 @@ Used by: the Hero, Problem, Solution (×2), Benefits, How It Works, FAQ, and Why
 
 ## AI Chat — docked + floating
 
-The Expendesk AI chat posts visitor messages to an n8n webhook and renders the reply. It's one conversation rendered in two places, so history is never lost when it moves. **All chat copy lives in [`src/data/chat.json`](src/data/chat.json).**
+The Expy AI chat posts visitor messages to an n8n webhook and renders the reply. It's one conversation rendered in two places, so history is never lost when it moves. **All chat copy lives in [`src/data/chat.json`](src/data/chat.json).**
 
 - [`chat/ChatProvider.tsx`](src/components/chat/ChatProvider.tsx) — the single source of truth (messages, input, webhook call, rate-limit, per-visitor id) plus the **dock handoff**. It wraps the whole app in `layout.tsx`. On load it shows a brief "typing" animation, then reveals the greeting.
 - [`chat/ChatPanel.tsx`](src/components/chat/ChatPanel.tsx) — the panel UI, rendered as `variant="docked"` or `variant="floating"`.

@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * ChatProvider — single source of truth for the Expendesk AI chat.
+ * ChatProvider — single source of truth for the Expy AI chat.
  *
  * Owns the conversation state and webhook logic (moved out of ChatWidget) so the
  * exact same chat can be rendered in two places without losing history:
