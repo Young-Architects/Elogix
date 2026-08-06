@@ -22,6 +22,7 @@ export const metadata: Metadata = {
   title: "Pricing",
   description:
     "Flexible Expendesk plans for growing SMEs and mid-market businesses — start with the essentials and scale as you grow. Book a free demo to find your fit.",
+  alternates: { canonical: "/pricing" },
 };
 
 export default function PricingPage() {

@@ -18,7 +18,14 @@ import type { Metadata, Viewport } from "next";
 import { Poppins } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import { SITE_URL, GTM_ID } from "@/lib/site";
+import {
+  SITE_URL,
+  SITE_NAME,
+  GTM_ID,
+  IS_INDEXABLE_DEPLOY,
+  GOOGLE_SITE_VERIFICATION,
+} from "@/lib/site";
+import { siteStructuredData, jsonLd } from "@/lib/structured-data";
 import { ChatProvider } from "@/components/chat/ChatProvider";
 import ChatWidget from "@/components/layout/ChatWidget";
 import Navbar from "@/components/layout/Navbar";
@@ -55,22 +62,58 @@ export const metadata: Metadata = {
     template: "%s — Expendesk",
   },
   description:
-    "Track expenses, automate reimbursements, enforce policies, and gain real-time visibility into company spending — all from one powerful platform built for SMEs.",
-  keywords: ["expense management", "finance", "reimbursements", "SME", "expense tracking"],
+    "Expendesk is an expense intelligence platform for finance teams. Track expenses, automate reimbursements, enforce spend policies, and get real-time visibility into company spending — built for SMEs and mid-market businesses.",
+  applicationName: SITE_NAME,
+  // Names the publisher on the page itself, reinforcing the same brand string
+  // the Organization JSON-LD asserts.
+  authors: [{ name: SITE_NAME, url: `${SITE_URL}/` }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  // NOTE: `alternates.canonical` is deliberately NOT set here. Metadata is
+  // merged shallowly from the root layout downwards, so a canonical set at
+  // this level would be inherited by every page that doesn't override it —
+  // pointing the whole site at "/" and de-indexing each real page in favour of
+  // the home page. Canonicals are declared per route instead.
+  //
+  // Explicit crawl directives. Without `max-snippet` / `max-image-preview`,
+  // Google applies conservative defaults; `large` is what makes a result
+  // eligible for the big thumbnail treatment. `IS_INDEXABLE_DEPLOY` flips the
+  // whole site to noindex on preview builds so a *.vercel.app copy can never
+  // compete with the real domain for the same content.
+  robots: IS_INDEXABLE_DEPLOY
+    ? {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+          "max-video-preview": -1,
+          "max-image-preview": "large",
+          "max-snippet": -1,
+        },
+      }
+    : { index: false, follow: false },
+  // Search Console ownership. Emits nothing when the token is unset, since an
+  // empty verification tag fails verification rather than being ignored.
+  ...(GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: GOOGLE_SITE_VERIFICATION } }
+    : {}),
   // `images` is injected automatically from opengraph-image.tsx / twitter-image.tsx,
   // so it isn't repeated here.
   openGraph: {
-    title: "Expendesk — Expense Intelligence Platform",
-    description: "Control every business expense without the spreadsheet chaos.",
-    url: SITE_URL,
-    siteName: "Expendesk",
+    title: "Expendesk — Expense Intelligence Platform for Finance Teams",
+    description:
+      "Control every business expense without the spreadsheet chaos. Expense tracking, automated reimbursements and real-time spend visibility in one platform.",
+    url: `${SITE_URL}/`,
+    siteName: SITE_NAME,
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Expendesk — Expense Intelligence Platform",
-    description: "Control every business expense without the spreadsheet chaos.",
+    title: "Expendesk — Expense Intelligence Platform for Finance Teams",
+    description:
+      "Control every business expense without the spreadsheet chaos. Expense tracking, automated reimbursements and real-time spend visibility in one platform.",
   },
 };
 
@@ -82,6 +125,26 @@ export default function RootLayout({
   return (
     <html lang="en" className={poppins.variable} suppressHydrationWarning>
       <body className="antialiased bg-black text-white min-h-screen">
+        {/* ── Brand entity graph (JSON-LD) ─────────────────────────────────
+            Organization + WebSite + SoftwareApplication, cross-linked by @id.
+            This is what tells Google that the string "Expendesk" names a real
+            company that owns this domain — the signal whose absence makes the
+            engine offer "Showing results for spendesk" instead. See
+            lib/structured-data.ts for the reasoning and docs/SEO.md for how to
+            validate it.
+
+            Rendered as a script tag in the layout body, which is Next's
+            documented recommendation for JSON-LD (it is valid in either <head>
+            or <body>, and crawlers read both). `dangerouslySetInnerHTML` is
+            required because the payload must reach the document as raw script
+            text — React would otherwise escape the quotes into invalid JSON.
+            The content is developer-authored and passed through `jsonLd()`,
+            which escapes angle brackets so no value can break out of the
+            script element. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLd(siteStructuredData()) }}
+        />
         {/* ── Google Tag Manager ──────────────────────────────────────────
             GTM ships as two snippets. This project has no index.html — this
             root layout wraps every route, so putting them here is the App

@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   title: "Contact Sales",
   description:
     "Talk to an Expendesk market specialist — get your questions answered, see the platform live, and find the right plan for your business.",
+  alternates: { canonical: "/contact-sales" },
 };
 
 export default function ContactSalesPage() {

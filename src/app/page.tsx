@@ -11,6 +11,7 @@
  * Section order here is the visual order on the page. Each section is fully
  * self-contained and reads its copy from `src/data/sections/<name>.json`.
  */
+import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import HeroSection from "@/components/sections/HeroSection";
 import LeadMagnetSection from "@/components/sections/LeadMagnetSection";
@@ -53,6 +54,19 @@ const FaqSection = dynamic(
   () => import("@/components/sections/FaqSection"),
   { loading: () => <div className="min-h-50" />, ssr: true }
 );
+
+/**
+ * The home page inherits its title, description and OG tags from the root
+ * layout — it only needs to declare its own canonical URL.
+ *
+ * That declaration matters more than usual here: an identical copy of this
+ * site is also served on the platform's *.vercel.app deploy URL. A self-
+ * referencing canonical is what tells Google that every copy it encounters
+ * should consolidate onto the real domain.
+ */
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (

@@ -6,44 +6,62 @@
 
 import type { MetadataRoute } from 'next';
 import { getBlogPosts } from '@/lib/blog-api';
-import { SITE_URL } from '@/lib/site';
+import { absoluteUrl } from '@/lib/site';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const lastModified = new Date();
+
+  // Every URL goes through `absoluteUrl` rather than `${SITE_URL}${path}`.
+  // The old concatenation emitted `https://…//pricing` the moment SITE_URL
+  // carried a trailing slash, which is how the live sitemap ended up listing
+  // double-slashed URLs on the wrong host.
   const staticRoutes: MetadataRoute.Sitemap = [
-    { url: SITE_URL, changeFrequency: 'weekly', priority: 1 },
     {
-      url: `${SITE_URL}/resources/blogs`,
+      url: absoluteUrl('/'),
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 1,
+    },
+    {
+      url: absoluteUrl('/resources/blogs'),
+      lastModified,
       changeFrequency: 'daily',
       priority: 0.8,
     },
     {
-      url: `${SITE_URL}/pricing`,
+      url: absoluteUrl('/pricing'),
+      lastModified,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${SITE_URL}/contact-us`,
+      url: absoluteUrl('/contact-us'),
+      lastModified,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${SITE_URL}/contact-sales`,
+      url: absoluteUrl('/contact-sales'),
+      lastModified,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     // Industry landing pages (the /solutions hub itself is noindex'd until built)
     {
-      url: `${SITE_URL}/solutions/pharmaceutical`,
+      url: absoluteUrl('/solutions/pharmaceutical'),
+      lastModified,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${SITE_URL}/solutions/manufacturing`,
+      url: absoluteUrl('/solutions/manufacturing'),
+      lastModified,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${SITE_URL}/solutions/digital-agencies`,
+      url: absoluteUrl('/solutions/digital-agencies'),
+      lastModified,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
@@ -58,7 +76,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     if (!data) break;
     for (const post of data.posts) {
       blogRoutes.push({
-        url: `${SITE_URL}/resources/blogs/${post.slug}`,
+        url: absoluteUrl(`/resources/blogs/${post.slug}`),
         lastModified: new Date(post.modified),
         changeFrequency: 'weekly',
         priority: 0.6,

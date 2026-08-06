@@ -20,10 +20,15 @@ import ChecklistContentsSection from "./_components/ChecklistContentsSection";
 import Choosenextstepsection from "./_components/Choosenextstepsection";
 import FinalCtaSection from "./_components/FinalCtaSection";
 
+// Title carries no "| Expendesk" suffix: the root layout's title template
+// already appends " — Expendesk", and spelling the brand twice ("… |
+// Expendesk — Expendesk") both wastes pixels in the SERP and dilutes the
+// brand string Google is being asked to learn.
 export const metadata: Metadata = {
-  title: "Expense Management for Pharmaceutical Industries | Expendesk",
+  title: "Expense Management for Pharmaceutical Companies",
   description:
-    "Streamline compliance and audit-ready expense reporting for pharmaceutical companies with Expendesk.",
+    "Streamline compliance and audit-ready expense reporting for pharmaceutical companies with Expendesk — automated policy checks, approval trails and real-time spend visibility.",
+  alternates: { canonical: "/solutions/pharmaceutical" },
 };
 
 export default function PharmaceuticalSolutionPage() {

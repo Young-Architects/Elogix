@@ -19,15 +19,47 @@ import BlogPagination from './_components/BlogPagination';
 import FeaturedPost from './_components/FeaturedPost';
 import { listing } from './_data/content';
 
-export const metadata: Metadata = {
-  title: listing.metaTitle,
-  description: listing.metaDescription,
-};
-
 const POSTS_PER_PAGE = 9;
 
 interface Props {
   searchParams: Promise<{ page?: string; category?: string }>;
+}
+
+/**
+ * Metadata is per-request rather than static because this route's query string
+ * produces several crawlable URLs for near-identical content, and each needs a
+ * different canonical:
+ *
+ *  - `?page=N` — a genuinely distinct slice of the archive, so it canonicals
+ *    to itself. Pointing page 2 at page 1 (a common mistake) would tell Google
+ *    to drop the posts that only appear on page 2.
+ *  - `?category=X` — a filtered view of posts that are all reachable from the
+ *    unfiltered listing, so it canonicals to the bare listing to keep thin,
+ *    overlapping duplicates out of the index.
+ *
+ * The title reflects the page number too, so paginated results don't compete
+ * with each other under one identical title.
+ */
+export async function generateMetadata({
+  searchParams,
+}: Props): Promise<Metadata> {
+  const { page, category } = await searchParams;
+  const pageNumber = Number.parseInt(page ?? '1', 10);
+  const isValidPage = Number.isFinite(pageNumber) && pageNumber > 1;
+
+  const canonical = category
+    ? '/resources/blogs'
+    : isValidPage
+      ? `/resources/blogs?page=${pageNumber}`
+      : '/resources/blogs';
+
+  return {
+    title: isValidPage
+      ? `${listing.metaTitle} — Page ${pageNumber}`
+      : listing.metaTitle,
+    description: listing.metaDescription,
+    alternates: { canonical },
+  };
 }
 
 function StateCard({ heading, body }: { heading: string; body: string }) {

@@ -12,10 +12,13 @@ import MagneticButton from "@/components/ui/MagneticButton";
 import ComingSoonSection from "@/components/ui/ComingSoonSection";
 import { content } from "./_data/content";
 
+// No "| Expendesk" suffix — the root layout's title template appends the
+// brand already. See the pharmaceutical page for the full note.
 export const metadata: Metadata = {
-  title: "Expense Management for Manufacturing Industries | Expendesk",
+  title: "Expense Management for Manufacturing Companies",
   description:
-    "Control factory and plant spend with real-time visibility. Purpose-built expense management for manufacturing companies.",
+    "Control factory and plant spend with real-time visibility. Purpose-built expense management for manufacturing companies, from purchase to reimbursement.",
+  alternates: { canonical: "/solutions/manufacturing" },
 };
 
 export default function ManufacturingSolutionPage() {

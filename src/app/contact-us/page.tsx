@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   title: "Book a Demo",
   description:
     "Schedule your personalized Expendesk demo — a 45-minute session where a product specialist walks you through automating expense management for your business.",
+  alternates: { canonical: "/contact-us" },
 };
 
 export default function ContactUsPage() {

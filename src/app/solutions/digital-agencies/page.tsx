@@ -12,10 +12,13 @@ import MagneticButton from "@/components/ui/MagneticButton";
 import ComingSoonSection from "@/components/ui/ComingSoonSection";
 import { content } from "./_data/content";
 
+// No "| Expendesk" suffix — the root layout's title template appends the
+// brand already. See the pharmaceutical page for the full note.
 export const metadata: Metadata = {
-  title: "Expense Management for Digital Agencies | Expendesk",
+  title: "Expense Management for Digital Agencies",
   description:
-    "Track project budgets and client billing with precision. Expense management built for digital agencies and creative teams.",
+    "Track project budgets and client billing with precision. Expense management built for digital agencies and creative teams, from receipt to rebill.",
+  alternates: { canonical: "/solutions/digital-agencies" },
 };
 
 export default function DigitalAgenciesSolutionPage() {
