@@ -155,6 +155,52 @@ export const SOCIAL_PROFILES: string[] = footerData.socials
 /** Public contact address, surfaced in the Organization JSON-LD. */
 export const CONTACT_EMAIL = 'info@expendesk.com';
 
+/**
+ * The company that makes Expendesk.
+ *
+ * This is the strongest entity signal available to the site, and it is the one
+ * piece that was missing. Google *already* connects the two: the AI Overview
+ * for the query "expendesk" describes it as "an AI-powered expense management
+ * tool built for growing businesses in India by Elogix Software" — sourced from
+ * LinkedIn, not from this domain.
+ *
+ * So the association exists in Google's index but the site itself never states
+ * it. Declaring it here as `parentOrganization` closes that loop: an unknown
+ * brand name inherits credibility from a company that has existed since 2000
+ * and has its own independently-indexed footprint (own domain, LinkedIn,
+ * Crunchbase). That is precisely the corroboration a coined word needs before
+ * Google will stop treating it as a misspelling of "Spendesk".
+ *
+ * Every value below was verified against the live sources on 2026-08-18 —
+ * `elogixsoft.com` resolves and identifies itself as Elogix Software Pvt. Ltd.
+ * Do not add fields here that cannot be checked the same way; a `sameAs`
+ * pointing somewhere wrong is a negative signal, not a neutral one.
+ */
+export const PARENT_ORGANIZATION = {
+  name: 'Elogix Software Pvt. Ltd.',
+  shortName: 'Elogix Software',
+  url: 'https://www.elogixsoft.com/',
+  sameAs: [
+    'https://www.linkedin.com/company/elogix-software-pvt.-ltd',
+    'https://www.crunchbase.com/organization/elogix-software-pvt-ltd',
+  ],
+} as const;
+
+/**
+ * Spellings and casings people actually use for this brand, emitted as the
+ * Organization's `alternateName`.
+ *
+ * This is a direct counter-signal to the spelling correction. Each entry has to
+ * be a form that genuinely appears in the wild — "ExpenDesk" is the casing on
+ * the company's own Facebook page, "Expendesk AI" matches the Instagram and
+ * YouTube handles. Padding this list with invented variants would dilute it.
+ */
+export const BRAND_ALTERNATE_NAMES = [
+  'ExpenDesk',
+  'Expendesk AI',
+  'Expendesk.com',
+] as const;
+
 /** Google Tag Manager container ID, injected in the root layout.
  *
  *  The ID is public by design — it ends up in the page source either way — so

@@ -22,6 +22,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'weekly',
       priority: 1,
     },
+    // The brand entity page. Priority sits just under the home page because for
+    // the query that matters most here — the bare brand name — it is the page
+    // most likely to satisfy the search, and the one whose indexing should be
+    // requested first after the home page.
+    {
+      url: absoluteUrl('/about'),
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
     {
       url: absoluteUrl('/resources/blogs'),
       lastModified,

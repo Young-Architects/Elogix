@@ -99,6 +99,10 @@
       "heading": "Quick Links",
       "links": [
         {
+          "label": "About Expendesk",
+          "href": "/about"
+        },
+        {
           "label": "Features",
           "href": "/#features-video"
         },

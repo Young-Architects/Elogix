@@ -1,6 +1,23 @@
 # SEO — why the site wasn't ranking, and how it's wired now
 
-_Last updated: 2026-08-07_
+_Last updated: 2026-08-18_
+
+> **Status check, 2026-08-18.** The August 7 technical fixes are live and
+> verified against production: `robots.txt` and `sitemap.xml` both serve the
+> correct host, the home page carries a self-referencing canonical, and the
+> `Organization` / `WebSite` / `SoftwareApplication` graph renders on every page.
+>
+> The query has moved from _"Showing results for spendesk"_ to
+> _"**Did you mean:** spendesk"_ — Google now accepts "expendesk" as a real word
+> and returns results for it. But the results it returns are LinkedIn posts, not
+> this site. Two things are still missing, one fixed in this round and one that
+> cannot be fixed from the repository:
+>
+> 1. **No page on the site was about the brand.** Fixed — see
+>    [Round 2](#round-2--brand-entity-2026-08-18).
+> 2. **The site is almost certainly not in Search Console.** Not fixable here.
+>    This is now the single biggest blocker — see
+>    [Actions still required](#actions-still-required).
 
 ## TL;DR
 
@@ -123,41 +140,146 @@ since 2009; it has no effect on ranking either way.
 
 ---
 
+## Round 2 — brand entity (2026-08-18)
+
+The first round made the site *technically correct*. It was still not
+*findable*, and re-checking production surfaced why.
+
+### The gap: nothing on the site was about the brand
+
+Every page sold the product to someone who already knew the name. The home page
+H1 reads "Take Control of Every Business Expense Without the Spreadsheet Chaos"
+— the brand does not appear in it. `/pricing`, `/contact-us` and the three
+`/solutions/*` pages are all about *what the product does*.
+
+Nothing answered **"what is Expendesk?"**. So for a query that is nothing but
+the brand name, Google had no page to rank, and no passage to quote in an AI
+overview or featured snippet. It quoted LinkedIn instead — which is exactly what
+the current SERP shows.
+
+### The asset that wasn't being used: Elogix
+
+Google's own AI Overview for "expendesk" describes it as _"an AI-powered expense
+management tool built for growing businesses in India by **Elogix Software**"_.
+Google already knows who makes this product — it learned it from LinkedIn.
+
+**The site never said so.** A 25-year-old company with its own indexed domain
+([elogixsoft.com](https://www.elogixsoft.com/)), a LinkedIn company page and a
+Crunchbase profile stands behind this brand, and none of that credibility was
+being claimed on-domain. That is the corroboration a coined word needs.
+
+### What changed
+
+| File | Change |
+| --- | --- |
+| [src/app/about/page.tsx](../src/app/about/page.tsx) | **New.** `/about` — the brand entity page. H1 is literally "What is Expendesk?"; the definition, the spelling, the parent company and the official channels are all stated in prose. Pure server component, no client JS, no fade-in. |
+| [src/app/about/_data/content.ts](../src/app/about/_data/content.ts) | Its copy, with the editing rules that keep it aligned with the structured data. |
+| [src/lib/site.ts](../src/lib/site.ts) | Adds `PARENT_ORGANIZATION` (Elogix, verified against live sources) and `BRAND_ALTERNATE_NAMES`. |
+| [src/lib/structured-data.ts](../src/lib/structured-data.ts) | `Organization` gains `parentOrganization` + `disambiguatingDescription`; a second `Organization` node describes Elogix with its own `url` and `sameAs`; adds the reusable `webPageStructuredData()` helper. |
+| [src/app/sitemap.ts](../src/app/sitemap.ts) | `/about` added at priority 0.9. |
+| [src/data/footer.json](../src/data/footer.json) | "About Expendesk" added to Quick Links, so the page has a sitewide internal link. |
+
+### Why `/about` is built differently from every other page
+
+It renders as plain server-side HTML with no animation. The rest of the site
+initialises content at `opacity: 0` and fades it in on hydration — there are
+**180 `opacity:0` elements in the home page's server HTML**. Google does execute
+JavaScript, so this generally resolves, but on the one page whose entire purpose
+is to be read by a crawler on a domain with almost no crawl history, text that
+needs JS to become visible is a risk with no upside.
+
+### Why the disambiguation never names Spendesk
+
+`disambiguatingDescription` asserts a positive identity — who owns the name, who
+publishes the product. It deliberately does **not** say "not to be confused with
+Spendesk". Putting a competitor's brand into this site's entity data invites the
+association it is trying to break; only a positive claim separates two entities.
+
+---
+
 ## Actions still required
 
-The code is deployed-ready, but **indexing will not fix itself**. These two
-steps are the difference between "correct" and "ranking", and neither can be
-done from the repository.
+The code is deployed-ready, but **indexing will not fix itself**. Nothing in
+this repository can put the site into Google's index. These steps are the
+difference between "correct" and "ranking".
 
-### 1. Fix the `NEXT_PUBLIC_SITE_URL` environment variable — do this first
+### 1. Google Search Console — the single biggest blocker
 
-On Vercel → Project → Settings → Environment Variables, the Production value is
-currently `https://expendesk-v1.vercel.app/`.
+**Do this before anything else on this list.** Two rounds of on-page work are
+now live and the site still does not appear for its own name. The most likely
+explanation is the simplest one: nobody has ever told Google the site exists.
 
-**Either delete it, or set it to `https://www.expendesk.com`.**
+Evidence it isn't set up: `https://www.expendesk.com/` serves **no
+`google-site-verification` meta tag** (checked 2026-08-18), which means
+`NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` is unset. That is not proof — DNS
+verification leaves no trace in the HTML — so **check the account first**. If a
+property does exist, open **Pages** and read why URLs are excluded; that report
+answers the question directly and makes the rest of this guesswork unnecessary.
 
-The new code ignores the bad value, so the site is correct either way — but
-leaving a wrong value in the dashboard is a trap for the next person. Redeploy
-after changing it (env changes don't apply to existing builds).
-
-### 2. Google Search Console — this is what actually gets you indexed
+If there is no property:
 
 1. Go to [search.google.com/search-console](https://search.google.com/search-console)
    and add a **Domain property** for `expendesk.com` (a domain property covers
    `www`, apex, http and https in one; a URL-prefix property does not).
 2. Verify via DNS TXT record — add it wherever `expendesk.com`'s DNS is managed.
-   - If you'd rather verify with the HTML tag, set
+   - To verify with the HTML tag instead, set
      `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` to the token and redeploy; the
      layout emits the tag automatically.
 3. **Sitemaps** → submit `https://www.expendesk.com/sitemap.xml`.
-4. **URL Inspection** → paste `https://www.expendesk.com/` → **Request
-   Indexing**. Repeat for `/pricing`, `/contact-us`, and each `/solutions/*`
-   page. This is the fastest route into the index for a new domain.
-5. Check **Pages** after a few days for anything reported as
-   _"Duplicate, Google chose a different canonical"_ — that would mean the
-   `vercel.app` copy is still winning, which should now be impossible.
+4. **URL Inspection** → **Request Indexing**, in this order:
+   `https://www.expendesk.com/`, then `https://www.expendesk.com/about`, then
+   `/pricing`, `/contact-us` and each `/solutions/*` page. `/about` is second on
+   purpose — it is the page written to answer the brand query.
+5. After a few days, check **Pages** for _"Duplicate, Google chose a different
+   canonical"_ — that would mean the `vercel.app` copy is still winning, which
+   should now be impossible.
 
-### 3. Recommended, not required
+### 2. Four footer links 404 on every page
+
+`src/data/footer.json` links to `/legal/terms`, `/legal/privacy`,
+`/legal/cookies` and `/legal/notice`. **None of these routes exist** — there is
+no `src/app/legal/` directory, and all four return 404 in production (verified
+2026-08-18).
+
+That is four broken links in the footer of every single page: wasted crawl
+budget on a domain that has very little, and a poor trust signal for a finance
+product that handles company spend — exactly the category where a visitor looks
+for a privacy policy before signing up.
+
+These were left unbuilt deliberately: privacy and terms copy is a legal
+document, and generated placeholder text published as a company's real policy is
+worse than no page. **Either write the four pages, or remove the links from
+`footer.json` until they exist.** Leaving them pointing at 404s is the one
+option that helps nobody.
+
+### 3. Fix the `NEXT_PUBLIC_SITE_URL` environment variable
+
+On Vercel → Project → Settings → Environment Variables, the Production value was
+`https://expendesk-v1.vercel.app/`.
+
+**Either delete it, or set it to `https://www.expendesk.com`.**
+
+The code ignores the bad value — production now serves the correct host, so this
+is no longer urgent — but leaving a wrong value in the dashboard is a trap for
+the next person. Redeploy after changing it (env changes don't apply to existing
+builds).
+
+### 4. Link Expendesk from elogixsoft.com — highest-value item on this list
+
+[elogixsoft.com](https://www.elogixsoft.com/) does **not mention Expendesk
+anywhere** (checked 2026-08-18). This is the cheapest significant win available,
+and it needs no permission from anyone outside the company.
+
+The site now claims Elogix as its `parentOrganization`. That claim is one-way:
+Expendesk asserts it, and nothing on Elogix's side confirms it. A link and a
+product mention on elogixsoft.com closes the loop from an established, indexed
+domain — the exact corroboration a coined brand name needs, from a source Google
+already trusts.
+
+A product page or even a homepage mention linking to `https://www.expendesk.com/`
+is worth more than any further metadata work in this repository.
+
+### 5. Recommended, not required
 
 - **Bing Webmaster Tools** — import the Search Console property; it also feeds
   ChatGPT and Copilot search results.
@@ -165,25 +287,39 @@ after changing it (env changes don't apply to existing builds).
   strongest possible "this brand is real" signals for a new name.
 - **Keep the `sameAs` profiles live and branded.** The Facebook / Instagram /
   LinkedIn / YouTube profiles in `src/data/footer.json` are emitted as the
-  Organization's `sameAs`. They are load-bearing corroboration for the brand
-  name — make sure each one exists, is public, and says "Expendesk".
-- **Get mentioned off-site.** Entity recognition for a brand-new coined word
-  comes mostly from other domains using it. A Crunchbase / LinkedIn company
-  page, a G2 or Capterra listing, and any press mention all help more than
-  further on-page work.
+  Organization's `sameAs`, and are now also rendered as visible links on
+  `/about`. They are load-bearing corroboration — make sure each one exists, is
+  public, and says "Expendesk". (All four resolved when last checked.)
+- **Keep posting on LinkedIn, and link the site.** LinkedIn posts are currently
+  the *only* results Google returns for "expendesk" — that channel is already
+  working. Every post that links `expendesk.com` points that established
+  authority at the domain that should be ranking.
+- **Get listed off-site.** A Crunchbase entry for Expendesk (Elogix already has
+  one), and G2 / Capterra / Software Suggest listings, are how a product name
+  becomes an entity. These help more than further on-page work.
 
 ---
 
 ## Realistic timeline
 
+The 2026-08-07 prediction that `"Showing results for spendesk"` would soften to
+`"Did you mean: spendesk"` within 2–6 weeks landed in about ten days. That step
+is done. The remaining distance is getting the site itself into the results.
+
 | When | What to expect |
 | --- | --- |
-| Immediately after deploy | Correct sitemap, canonicals and entity data are live. |
-| 1–7 days after requesting indexing | Home page starts appearing for the exact query `expendesk`. |
-| 2–6 weeks | `"Showing results for spendesk"` becomes `"Did you mean: spendesk"` — i.e. Google now treats "expendesk" as a real word and shows your results first. |
+| ✅ Done | Correct sitemap, canonicals and entity data live; Google treats "expendesk" as a real word. |
+| 1–7 days after **requesting indexing in Search Console** | `/` and `/about` start appearing for the exact query `expendesk`. |
+| 2–6 weeks after that | The brand result stabilises above the LinkedIn posts; `/about` is the likely source for any AI-overview answer to "what is Expendesk". |
 | 1–3 months | Inner pages rank; possible sitelinks under the brand result. |
 
-Ranking for the **brand name** is achievable and is what this change targets.
+**Every row after the first depends on step 1 in
+[Actions still required](#actions-still-required).** The clock does not start
+when this code deploys — it starts when Google is told the site exists. If
+nothing changes 2–3 weeks after requesting indexing, the answer will be in
+Search Console's **Pages** report, not in this repository.
+
+Ranking for the **brand name** is achievable and is what these changes target.
 Ranking page 1 for competitive generic terms like _"expense management
 software"_ is a content-and-links problem, not a metadata problem — no
 technical change can deliver that, and anyone promising otherwise is guessing.
@@ -204,6 +340,10 @@ cat .next/server/app/sitemap.xml.body | head -20
 # Every indexable page should show a self-referencing canonical
 grep -o '<link rel="canonical"[^>]*>' .next/server/app/index.html
 grep -o '<link rel="canonical"[^>]*>' .next/server/app/pricing.html
+grep -o '<link rel="canonical"[^>]*>' .next/server/app/about.html
+
+# The brand page must state the brand in the H1 *without* JavaScript
+grep -o '<h1[^>]*>.\{0,120\}' .next/server/app/about.html
 ```
 
 Confirm preview builds de-index themselves:
@@ -226,13 +366,27 @@ curl -sI https://expendesk-v1.vercel.app/ | grep -i x-robots-tag
 
 ### Structured data
 
-Paste `https://www.expendesk.com/` into:
+Paste `https://www.expendesk.com/` and `https://www.expendesk.com/about` into:
 
 - [Rich Results Test](https://search.google.com/test/rich-results)
 - [Schema Markup Validator](https://validator.schema.org/)
 
-Expect `Organization`, `WebSite`, `SoftwareApplication` and `FAQPage` with no
-errors.
+Expect on `/`: two `Organization` nodes (Expendesk and its parent Elogix),
+`WebSite`, `SoftwareApplication` and `FAQPage`, with no errors. On `/about`:
+the same site graph plus `AboutPage` and `BreadcrumbList`.
+
+Every `@id` reference must resolve to a node in the same document — a dangling
+`parentOrganization` pointer is silently ignored rather than reported as an
+error, so check the graph is actually connected:
+
+```bash
+node -e "
+  const html = require('fs').readFileSync('.next/server/app/about.html','utf8');
+  for (const m of html.matchAll(/<script type=\"application\/ld\+json\">([\s\S]*?)<\/script>/g))
+    JSON.parse(m[1]);      // throws if any block is malformed
+  console.log('all ld+json blocks parse');
+"
+```
 
 ---
 
@@ -247,7 +401,17 @@ errors.
 3. **Add new indexable routes to `src/app/sitemap.ts`.** Blog posts are
    automatic; marketing pages are not.
 4. **Don't put the brand in a page `title`** — the root layout's template
-   appends `" — Expendesk"` already.
+   appends `" — Expendesk"` already. `/about` is the one deliberate exception,
+   and the reason is documented in the file.
 5. **Never add `aggregateRating`, `review` or `offers` to the structured data
    unless the numbers are real.** Fabricated review markup is a manual-action
    risk, and the pricing figures in `_data/` are still placeholders.
+6. **Every fact in `PARENT_ORGANIZATION` and on `/about` must be checkable
+   against a public source.** The same claims appear in JSON-LD and in the
+   rendered copy; Google cross-checks the two, and a mismatch gets the markup
+   discounted rather than merely ignored. If you add a founding date, address,
+   employee count or customer number, verify it first — see the header comment
+   in `src/app/about/_data/content.ts`.
+7. **Don't add a route to `footer.json` before the route exists.** The four
+   `/legal/*` links have been 404ing sitewide since launch precisely because
+   this happened once already.

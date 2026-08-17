@@ -34,6 +34,8 @@ import {
   SITE_URL,
   SOCIAL_PROFILES,
   CONTACT_EMAIL,
+  PARENT_ORGANIZATION,
+  BRAND_ALTERNATE_NAMES,
   absoluteUrl,
 } from '@/lib/site';
 
@@ -42,9 +44,27 @@ import {
 const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
 const SOFTWARE_ID = `${SITE_URL}/#software`;
+const PARENT_ORGANIZATION_ID = `${SITE_URL}/#parent-organization`;
 
 const DESCRIPTION =
   'Expendesk is an expense intelligence platform for finance teams. Track expenses, automate reimbursements, enforce spend policies, and get real-time visibility into company spending from one platform built for SMEs and mid-market businesses.';
+
+/**
+ * `disambiguatingDescription` exists in schema.org for exactly this situation:
+ * "a short description of the item used to disambiguate from other, similar
+ * items". The similar item here is Spendesk, and the confusion is not
+ * hypothetical — it is the literal failure mode this whole file was written to
+ * address.
+ *
+ * Note what this sentence does and does not do. It states, in the site's own
+ * structured data, who owns the name and who publishes the product. It does
+ * *not* name the competitor: "not to be confused with Spendesk" would put a
+ * rival's brand into this site's entity data and invite the association it is
+ * trying to break. Asserting a positive identity is what separates two
+ * entities; denying another one only links them.
+ */
+const DISAMBIGUATING_DESCRIPTION =
+  `Expendesk is an expense and reimbursement management platform published by ${PARENT_ORGANIZATION.name}, an IT company operating from Kolkata, India since 2000. Expendesk is the product's full and official name.`;
 
 /**
  * The site-wide entity graph, rendered once in the root layout.
@@ -66,10 +86,15 @@ export function siteStructuredData(): Record<string, unknown> {
         // Spellings people actually use for this brand. This is the direct
         // counter-signal to the "did you mean Spendesk" correction: it tells
         // Google the exact string "Expendesk" names a real organisation.
-        alternateName: ['Expendesk AI', 'Expendesk.com'],
+        alternateName: [...BRAND_ALTERNATE_NAMES],
         legalName: SITE_NAME,
         url: `${SITE_URL}/`,
         description: DESCRIPTION,
+        disambiguatingDescription: DISAMBIGUATING_DESCRIPTION,
+        // The brand is a product of a company that has been indexed for 25
+        // years. Naming that company here is what lets an unknown string
+        // inherit an established entity's credibility — see PARENT_ORGANIZATION.
+        parentOrganization: { '@id': PARENT_ORGANIZATION_ID },
         email: CONTACT_EMAIL,
         logo: {
           '@type': 'ImageObject',
@@ -91,6 +116,25 @@ export function siteStructuredData(): Record<string, unknown> {
           },
         ],
       },
+      /**
+       * The parent company, as a node of its own rather than an inline blob.
+       *
+       * Giving it an `@id` and its own `url` + `sameAs` makes it a first-class
+       * entity in the graph, which is what allows Google to reconcile it with
+       * the Elogix entity it already holds — the one behind the AI Overview's
+       * "by Elogix Software". An inline `parentOrganization: { name: "..." }`
+       * would be an unresolvable string; this is a claim it can verify against
+       * three independent sources.
+       */
+      {
+        '@type': 'Organization',
+        '@id': PARENT_ORGANIZATION_ID,
+        name: PARENT_ORGANIZATION.name,
+        alternateName: PARENT_ORGANIZATION.shortName,
+        url: PARENT_ORGANIZATION.url,
+        sameAs: [...PARENT_ORGANIZATION.sameAs],
+        subOrganization: { '@id': ORGANIZATION_ID },
+      },
       {
         '@type': 'WebSite',
         '@id': WEBSITE_ID,
@@ -110,6 +154,7 @@ export function siteStructuredData(): Record<string, unknown> {
         operatingSystem: 'Web',
         url: `${SITE_URL}/`,
         description: DESCRIPTION,
+        disambiguatingDescription: DISAMBIGUATING_DESCRIPTION,
         publisher: { '@id': ORGANIZATION_ID },
         provider: { '@id': ORGANIZATION_ID },
         featureList: [
@@ -146,6 +191,54 @@ export function breadcrumbStructuredData(
         item: absoluteUrl(crumb.path),
       })
     ),
+  };
+}
+
+/**
+ * `WebPage` (or a subtype) for a single route, wired back into the site-wide
+ * graph by `@id`.
+ *
+ * The root layout's graph describes the *site*. This describes *one page* and
+ * says which entity that page is about — `about` is the property Google reads
+ * to answer "what is this page's subject". On the brand page that subject is
+ * the Organization itself, which is the most explicit statement the site can
+ * make that "Expendesk" is the name of a company, not a typo.
+ *
+ * `type` accepts any WebPage subtype (`AboutPage`, `ContactPage`, …); the
+ * default plain `WebPage` is correct for everything else.
+ */
+export function webPageStructuredData({
+  path,
+  name,
+  description,
+  type = 'WebPage',
+  about = 'organization',
+}: {
+  path: string;
+  name: string;
+  description: string;
+  type?: string;
+  about?: 'organization' | 'software' | null;
+}): Record<string, unknown> {
+  const url = absoluteUrl(path);
+  const aboutId =
+    about === 'organization'
+      ? ORGANIZATION_ID
+      : about === 'software'
+        ? SOFTWARE_ID
+        : null;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': type,
+    '@id': `${url}#webpage`,
+    url,
+    name,
+    description,
+    isPartOf: { '@id': WEBSITE_ID },
+    publisher: { '@id': ORGANIZATION_ID },
+    inLanguage: 'en',
+    ...(aboutId ? { about: { '@id': aboutId }, mainEntity: { '@id': aboutId } } : {}),
   };
 }
 
