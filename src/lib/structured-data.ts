@@ -300,6 +300,64 @@ export function webPageStructuredData({
 }
 
 /**
+ * `Service` for an industry landing page, cross-linked to the Organization
+ * that provides it.
+ *
+ * `provider` is an `@id` reference rather than an inline object on purpose: it
+ * resolves to the Organization node the root layout already emits on every
+ * page, so the service is attached to the same entity Google is being asked to
+ * recognise as "Expendesk" — rather than introducing a second, unconnected
+ * company with the same name.
+ *
+ * `capabilities` becomes an `OfferCatalog`. Note that the `Offer` nodes carry
+ * **no price**, and must not: the pricing in `_data/` is still placeholder
+ * data, and a priced offer that does not match the page is the single
+ * highest-risk thing that can be put in this file (see the note on the
+ * SoftwareApplication node). A price-free Offer is a valid statement that the
+ * capability is available, and claims nothing about cost.
+ */
+export function serviceStructuredData({
+  path,
+  name,
+  serviceType,
+  description,
+  audience,
+  capabilities,
+  areaServed = 'Worldwide',
+}: {
+  path: string;
+  name: string;
+  serviceType: string;
+  description: string;
+  /** The business audience this page addresses, e.g. "Pharmaceutical companies". */
+  audience: string;
+  /** Capability names for the OfferCatalog. Each must be something the page states. */
+  capabilities: readonly string[];
+  areaServed?: string;
+}): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${absoluteUrl(path)}#service`,
+    name,
+    serviceType,
+    url: absoluteUrl(path),
+    description,
+    provider: { '@id': ORGANIZATION_ID },
+    audience: { '@type': 'BusinessAudience', name: audience },
+    areaServed,
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: `${serviceType} capabilities`,
+      itemListElement: capabilities.map((capability) => ({
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: capability },
+      })),
+    },
+  };
+}
+
+/**
  * Serialise JSON-LD for injection into a `<script type="application/ld+json">`.
  *
  * Every left angle bracket is replaced with its unicode escape, so a stray

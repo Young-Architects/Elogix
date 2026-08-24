@@ -351,6 +351,131 @@ verification step below checks this automatically.
 
 ---
 
+## Round 5 — /solutions/pharmaceutical (2026-08-25)
+
+The SEO team supplied a `<head>` block plus `Service` and `FAQPage` payloads for
+the pharmaceutical landing page. Implemented, with one structural change the
+brief did not anticipate and one deviation on the title.
+
+### The structural change: the FAQ needed a page section, not just markup
+
+The brief supplied six Q&As as `FAQPage` JSON-LD. **The page had no FAQ section
+at all** — the only "questions" on it belong to the interactive self-assessment
+widget, which is a scoring quiz, not an FAQ.
+
+Marking up six answers that appear nowhere on the page is a structured-data
+policy violation: Google requires FAQ markup to match text the visitor can read.
+The options were to drop the markup or to add the content.
+
+The content was added. These are real buyer questions, the page was missing an
+FAQ entirely, and shipping them gives the page both the markup and the substance
+the markup claims. Same single-source pattern as the home page:
+
+| File | Role |
+| --- | --- |
+| [`_data/faq.ts`](../src/app/solutions/pharmaceutical/_data/faq.ts) | The six entries — the only place they exist |
+| [`_components/FaqSection.tsx`](../src/app/solutions/pharmaceutical/_components/FaqSection.tsx) | Renders the accordion **and** builds the `FAQPage` JSON-LD from the same array |
+
+`npm run verify:seo` asserts every marked-up question appears in the rendered
+HTML, so this cannot silently drift.
+
+#### Why that section has no client JavaScript
+
+Every other section on this page is `'use client'` with Framer Motion, two with
+GSAP as well. The FAQ is a plain server component using native
+`<details>`/`<summary>`.
+
+The answers are the whole point of the section — they are the text the FAQPage
+markup asks Google to trust. Routing them through a client component with a
+scroll-triggered `opacity: 0` entrance would make the page's most
+SEO-load-bearing copy depend on hydration for no gain. `<details>` keeps all six
+answers in the server HTML, collapsed visually but always in the DOM, with
+correct keyboard and screen-reader behaviour for free.
+
+### The title deviation
+
+The brief asked for:
+
+```html
+<title>Pharma Expense Management Software | Expendesk</title>
+```
+
+Setting that string in `page.tsx` would have rendered:
+
+```
+Pharma Expense Management Software | Expendesk — Expendesk
+```
+
+The root layout's `template: "%s — Expendesk"` appends the brand to every child
+route. So the brand is omitted from the string and the template supplies it:
+
+```
+Pharma Expense Management Software — Expendesk      (45 chars)
+```
+
+The brief's intent — keyword head first, shorter than the previous 59-character
+title — with one brand mention and the site's standard separator. Description is
+now 149 characters, down from 172, so it renders without truncation.
+
+### `og:image` — built rather than declared
+
+The brief pointed `og:image` at
+`https://www.expendesk.com/og/solutions-pharmaceutical.png`, which does not
+exist. Rather than drop it, the card is now generated:
+
+- [`opengraph-image.tsx`](../src/app/solutions/pharmaceutical/opengraph-image.tsx) — page-specific 1200x630 card
+- `twitter-image.tsx` — re-exports it, so `og:image` and `twitter:image` never
+  show different cards for the same URL
+
+Next wires `og:image`, `:width`, `:height`, `:type` and `:alt` automatically for
+the segment. This gives the brief what it wanted — a page-specific share image
+instead of the generic site card — with no hardcoded path that can rot.
+
+### `Service` schema
+
+Implemented via the reusable
+[`serviceStructuredData()`](../src/lib/structured-data.ts) helper, so the two
+sibling solutions pages can adopt it without duplication.
+
+One change from the supplied payload: `provider` is an `@id` reference to the
+Organization node the root layout already emits, rather than a repeated inline
+object. That attaches the service to the entity Google is being asked to
+recognise as "Expendesk", instead of introducing a second unconnected company
+with the same name.
+
+All `Offer` nodes are **price-free**, and must stay that way while
+`pricing/_data/content.ts` is placeholder — see the Round 4 note. A price-free
+Offer validly states a capability is available and claims nothing about cost.
+
+`BreadcrumbList` (Home > Solutions > Pharmaceutical) added alongside it.
+
+### Not implemented
+
+The `<head>` block also listed `/favicon.ico`, `/icon.svg`,
+`/apple-touch-icon.png` and `/site.webmanifest`. Rejected for the third time,
+same reason: those paths do not exist, and Next already emits the correct icon
+links with content-hashed URLs from the file conventions in `src/app/`. See
+Round 4 and the icons section.
+
+### Claims to verify with product
+
+Three answers assert capabilities not confirmed anywhere in this repository.
+They are live as the SEO team wrote them, but they are claims:
+
+- **Duplicate detection** running automatically at submission
+- **Per-territory policies** and approval routing
+- **"Live within days"** implementation (same claim as the home page FAQ)
+
+One more worth a look: `field-submission` says reps submit "from mobile, web or
+upload". True of the mobile web app — but there is no native iOS/Android app,
+and `SoftwareApplication` correctly declares `operatingSystem: "Web"`. If
+marketing means a native app, the schema needs updating, not the copy.
+
+All four are edited in one place: `_data/faq.ts`. The visible page and the
+markup regenerate together.
+
+---
+
 ## Reading Search Console: which "errors" are not errors
 
 Search Console's Page Indexing report lists every URL Google did **not** index,

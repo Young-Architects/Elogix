@@ -418,3 +418,31 @@ export interface FinalCtaContent {
   subheading: string;
   panels: FinalCtaPanel[];
 }
+
+/* ── FAQ section ──────────────────────────────────────── */
+
+/** One question/answer pair. */
+export interface PharmaFaqItem {
+  /** Stable key — also used as the accordion's DOM id. */
+  id: string;
+  question: string;
+  /**
+   * Plain text only. This string is emitted verbatim into the FAQPage
+   * structured data as well as rendered on the page, and schema.org `Answer.text`
+   * must not contain markup.
+   */
+  answer: string;
+}
+
+/** Copy + entries for the page's FAQ section. */
+export interface PharmaFaqContent {
+  badge: string;
+  heading: {
+    plain: string;
+    /** Gradient-accented run. */
+    accent: string;
+  };
+  subheading: string;
+  /** Rendered on the page AND used to build the FAQPage JSON-LD — see faq.ts. */
+  items: readonly PharmaFaqItem[];
+}

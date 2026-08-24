@@ -13,6 +13,7 @@
  *   checklist-contents.ts    → "What's inside the checklist" copy + revealed categories
  *   choose-next-step.ts      → Dual-CTA + trust closer copy + options + trust points
  *   final-cta.ts             → Closing final-CTA copy + action panels
+ *   faq.ts                   → FAQ entries (rendered AND used for FAQPage JSON-LD)
  *   types.ts                 → shared interfaces
  *
  * As each new section is built, add a `<section>.ts` file here, add its
@@ -30,6 +31,7 @@ import { introducingExpendesk } from "./introducing-expendesk";
 import { checklistContents } from "./checklist-contents";
 import { chooseNextStep } from "./choose-next-step";
 import { finalCta } from "./final-cta";
+import { faq } from "./faq";
 
 /** Grouped section objects, one key per section. */
 export const content = {
@@ -42,6 +44,7 @@ export const content = {
   checklistContents,
   chooseNextStep,
   finalCta,
+  faq,
 } as const;
 
 export { hero } from "./hero";
@@ -53,4 +56,5 @@ export { introducingExpendesk } from "./introducing-expendesk";
 export { checklistContents } from "./checklist-contents";
 export { chooseNextStep } from "./choose-next-step";
 export { finalCta } from "./final-cta";
+export { faq } from "./faq";
 export type * from "./types";
