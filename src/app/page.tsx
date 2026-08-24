@@ -13,6 +13,7 @@
  */
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
+import { pageMetadata } from "@/lib/page-metadata";
 import HeroSection from "@/components/sections/HeroSection";
 import LeadMagnetSection from "@/components/sections/LeadMagnetSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
@@ -56,17 +57,46 @@ const FaqSection = dynamic(
 );
 
 /**
- * The home page inherits its title, description and OG tags from the root
- * layout — it only needs to declare its own canonical URL.
+ * Home page metadata.
  *
- * That declaration matters more than usual here: an identical copy of this
- * site is also served on the platform's *.vercel.app deploy URL. A self-
- * referencing canonical is what tells Google that every copy it encounters
- * should consolidate onto the real domain.
+ * The canonical declaration matters more than usual here: an identical copy of
+ * this site is also served on the platform's *.vercel.app deploy URL. A
+ * self-referencing canonical is what tells Google that every copy it
+ * encounters should consolidate onto the real domain. `pageMetadata` derives
+ * `og:url` from the same `path`, so the two can never disagree.
+ *
+ * ── On the title, and why the brand is written out in full here ──
+ *
+ * The brand suffix is spelled out literally instead of relying on the root
+ * layout's `template: "%s — Expendesk"`. That template does **not** apply to
+ * this file.
+ *
+ * Next only applies `title.template` to titles declared in *child* route
+ * segments. `app/page.tsx` is the page for the root segment — the same segment
+ * `app/layout.tsx` defines the template in — so a bare title here renders
+ * verbatim, with no suffix. It is `title.default` that normally covers this
+ * route, and setting an explicit `title` replaces it.
+ *
+ * That is easy to miss and expensive to get wrong: it silently dropped the
+ * word "Expendesk" from the home page `<title>` entirely, on a site whose
+ * central problem is that Google does not recognise the brand name. Every
+ * other route in the app gets the suffix automatically; this one, and only
+ * this one, must carry it in the string.
+ *
+ * The ordering is the deliberate trade-off: category first ("Expense
+ * Management Software…") is stronger for the generic query, brand first is
+ * marginally stronger for "expendesk". Brand recognition is carried by
+ * `/about`, the entity JSON-LD, and this suffix.
  */
-export const metadata: Metadata = {
-  alternates: { canonical: "/" },
-};
+export const metadata: Metadata = pageMetadata({
+  path: "/",
+  title: "Expense Management Software for Growing Businesses — Expendesk",
+  // The social title omits the suffix: OpenGraph cards render `og:site_name`
+  // ("Expendesk") next to the title already, so repeating it reads as a stutter.
+  socialTitle: "Expense Management Software for Growing Businesses",
+  description:
+    "Automate expense tracking, approvals and employee reimbursements in one platform. Real-time spend visibility for SME and mid-market finance teams.",
+});
 
 export default function Home() {
   return (

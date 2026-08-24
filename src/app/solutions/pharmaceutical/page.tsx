@@ -10,6 +10,7 @@
  * Demo / "Schedule" CTAs point at `/contact-us` (the demo booking calendar).
  */
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import HeroSection from "./_components/HeroSection";
 import ProblemSection from "./_components/ProblemSection";
 import SelfAssessmentSection from "./_components/SelfAssessmentSection";
@@ -24,12 +25,15 @@ import FinalCtaSection from "./_components/FinalCtaSection";
 // already appends " — Expendesk", and spelling the brand twice ("… |
 // Expendesk — Expendesk") both wastes pixels in the SERP and dilutes the
 // brand string Google is being asked to learn.
-export const metadata: Metadata = {
+// `pageMetadata` derives og:url from `path`, so it always matches the
+// canonical. Declaring `alternates` alone left og:url inheriting the root
+// layout's home-page URL — see lib/page-metadata.ts.
+export const metadata: Metadata = pageMetadata({
+  path: "/solutions/pharmaceutical",
   title: "Expense Management for Pharmaceutical Companies",
   description:
     "Streamline compliance and audit-ready expense reporting for pharmaceutical companies with Expendesk — automated policy checks, approval trails and real-time spend visibility.",
-  alternates: { canonical: "/solutions/pharmaceutical" },
-};
+});
 
 export default function PharmaceuticalSolutionPage() {
   return (

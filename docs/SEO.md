@@ -1,6 +1,6 @@
 # SEO — why the site wasn't ranking, and how it's wired now
 
-_Last updated: 2026-08-18_
+_Last updated: 2026-08-24_
 
 > **Status check, 2026-08-18.** The August 7 technical fixes are live and
 > verified against production: `robots.txt` and `sitemap.xml` both serve the
@@ -197,6 +197,160 @@ association it is trying to break; only a positive claim separates two entities.
 
 ---
 
+## Round 4 — SEO team's homepage spec (2026-08-24)
+
+An external SEO team supplied a full `<head>` block and four JSON-LD payloads to
+implement on the home page. Most of it was sound and is now live. Four items
+were **not** implemented, and three were implemented with corrected values.
+
+This section records the whole audit, because "why didn't you add the bit about
+pricing?" is a question that will otherwise be asked again in three months.
+
+### Implemented as specified
+
+| Item | Where |
+| --- | --- |
+| Home page `<title>` + `description` | [page.tsx](../src/app/page.tsx) |
+| `og:url` matching the canonical, per page | [page-metadata.ts](../src/lib/page-metadata.ts) |
+| `format-detection: telephone=no` | [layout.tsx](../src/app/layout.tsx) |
+| FAQPage expanded 5 to 8 questions | [faq.json](../src/data/sections/faq.json) |
+| `foundingDate` on both Organization nodes | [structured-data.ts](../src/lib/structured-data.ts) |
+| Updated `featureList`, WebSite description | [structured-data.ts](../src/lib/structured-data.ts) |
+
+Already present before this round and verified unchanged: `charset`, `viewport`,
+`canonical`, `robots`, `googlebot` (with `max-image-preview:large`), all Twitter
+card tags, `author`, `publisher`, `application-name`, `theme-color`.
+
+### Implemented, with corrected values
+
+| Spec said | Reality | Now |
+| --- | --- | --- |
+| `telephone`, `streetAddress`, `postalCode` set to `[CONFIRM WITH MARKETING]` | Literal placeholder strings that would have shipped as-is | Real verified values from `BUSINESS_ADDRESS` (added Round 3) |
+| `logo: width 512, height 512` | `public/logo.png` is **1423x458**, a wordmark | Real measured dimensions |
+| `operatingSystem: "Web, iOS, Android"` | **No mobile app exists.** No App Store or Play Store link anywhere in the repo; the only Android references are PWA manifest icons | `"Web"` |
+
+### Not implemented, and why
+
+**1. `AggregateOffer` (lowPrice 3999 / highPrice 7999 / offerCount 3) — rejected.**
+
+This is the highest-risk item in the spec. Those numbers come from
+`src/app/pricing/_data/content.ts`, which states at the top of the file that plan
+prices are **PLACEHOLDER data**, and renders each plan with the visible note
+"Billed annually · placeholder pricing".
+
+Google's structured-data policy requires prices in markup to match what the user
+sees. Price markup is rich-result-eligible, which is exactly the category that
+draws manual actions when it misrepresents — and it publishes a number the
+business has not committed to into a format aggregators scrape and cache.
+
+The shape the spec proposed is correct. Add it in the same commit that replaces
+the placeholder pricing with real launched figures. The full reasoning is inline
+in [structured-data.ts](../src/lib/structured-data.ts) so it is found at the
+moment someone tries to add it.
+
+**2. `VideoObject` — rejected, and the underlying asset is broken.**
+
+The spec marks up a video at `/video/product-tour.mp4` with poster
+`/video/tour-poster.jpg` and duration `PT2M30S`. None of that exists. What the
+home page actually references is:
+
+```
+https://youngarchitects.in/assets/client/expendesk/feat-video.mkv
+```
+
+Two separate problems, both real:
+
+- **It returns HTTP 404.** The product tour video on the live home page does not
+  load at all.
+- **It is `.mkv`** — a container no browser can play in a `<video>` element.
+  `FeaturesVideo.tsx` already logs a dev warning about exactly this.
+
+`VideoObject` requires a real `thumbnailUrl` and a resolvable `contentUrl`.
+Marking up a 404 would put an error in Search Console and nothing on the SERP.
+
+**Fix the asset first**: re-encode to MP4 (H.264/AAC), host it at a URL that
+resolves, add a poster image, and set `featureVideoUrl` in
+`src/data/sections/features.json`. Then add the `VideoObject` — with the real
+duration, not `PT2M30S`. This is a genuine bug worth fixing regardless of SEO:
+a headline product-tour video is currently dead on the home page.
+
+**3. Hardcoded icon and manifest links — rejected as unnecessary and broken.**
+
+The spec lists `/icon.svg`, `/apple-touch-icon.png` and `/site.webmanifest`.
+None of those paths exist in this project, so all three would 404.
+
+Next generates these from file conventions in `src/app/` and already emits them
+with content-hashed URLs that stay valid across deploys: `/manifest.webmanifest`,
+`/favicon.ico` (48x48), `/icon0.png` (16x16), `/icon1.png` (32x32) and
+`/apple-icon.png` (180x180).
+
+**4. Hardcoded `og:image` at `/og/home.png` — rejected, same reason.**
+
+That file does not exist. `opengraph-image.tsx` and `twitter-image.tsx` already
+generate the images and Next injects the complete tag set automatically —
+`og:image`, `:type`, `:width` (1200), `:height` (630) and `:alt`. Adding the
+spec's block would have produced duplicate tags pointing at a 404.
+
+`og:image:secure_url` is also skipped: it is a legacy Facebook field, redundant
+when `og:image` is already an https URL.
+
+### Two bugs found while implementing
+
+**`og:url` was wrong on every page except the home page.** The spec's own
+comment — "og:url MUST equal the canonical above. Never hardcode this sitewide"
+— was correct, and the site was doing exactly the wrong thing. `/pricing` shipped
+a canonical of `https://www.expendesk.com/pricing` alongside an `og:url` of
+`https://www.expendesk.com`.
+
+Cause: `openGraph` is one of the few metadata fields Next replaces *wholesale*
+rather than merging. Pages that set `alternates.canonical` without redeclaring
+the entire `openGraph` object inherited the root layout's home-page URL.
+
+Fixed by [`pageMetadata()`](../src/lib/page-metadata.ts), which takes `path`
+once and derives both values from it. All eight static routes now match.
+
+**The home page `<title>` silently lost the brand name.** Applying the spec's
+title verbatim rendered a title of "Expense Management Software for Growing
+Businesses" — with no "Expendesk" anywhere.
+
+Cause: `title.template` applies only to **child** route segments. `app/page.tsx`
+is the page for the root segment, the same one `app/layout.tsx` declares the
+template in, so the `" — Expendesk"` suffix is never appended there. Every other
+route gets it automatically; the home page must carry it in the string.
+
+On a site whose entire problem is that Google does not recognise the brand,
+dropping it from the single most weighted element would have actively worked
+against the previous three rounds. The title now reads
+"Expense Management Software for Growing Businesses — Expendesk".
+
+### Needs confirmation from marketing
+
+Two FAQ answers assert product capabilities that could not be verified anywhere
+in the codebase. They are live as the SEO team wrote them, but they are claims,
+not facts that were checked:
+
+- "Expendesk connects to existing accounting systems..." — also now listed as
+  `Accounting integrations` in the SoftwareApplication `featureList`.
+- "Most teams are live within days rather than months."
+
+If either is aspirational rather than shipped, edit `faq.json` — the visible
+page and the FAQ markup both regenerate from it.
+
+### Why FAQ content lives in one file
+
+`FaqSection.tsx` renders the visible accordion **and** builds the `FAQPage`
+JSON-LD from the same `faq.json` array. Google requires FAQ markup to match the
+answer text visible on the page; deriving both from one source makes a mismatch
+impossible. Never hand-write a parallel FAQ block in structured data — the
+verification step below checks this automatically.
+
+> **Worth knowing:** Google deprecated FAQ rich results in August 2023 — this
+> markup no longer produces the expandable SERP accordion for most sites. It is
+> retained because it still feeds AI overviews and answer extraction, and
+> because it costs nothing. Do not expect a visual SERP change from it.
+
+---
+
 ## Actions still required
 
 The code is deployed-ready, but **indexing will not fix itself**. Nothing in
@@ -364,6 +518,24 @@ curl -s https://www.expendesk.com/ | grep -o '<link rel="canonical"[^>]*>'
 curl -sI https://expendesk-v1.vercel.app/ | grep -i x-robots-tag
 ```
 
+### Automated output checks
+
+```bash
+npm run build
+npm run verify:seo
+```
+
+Asserts the three invariants that have each been broken at least once here and
+that are invisible in code review, because they are properties of the rendered
+HTML rather than of any one source file:
+
+1. every page's `og:url` equals its `rel=canonical`
+2. every FAQPage question in the markup also appears in the visible HTML
+3. every `ld+json` block parses, and no `SoftwareApplication` ships `offers`
+   while the pricing data still says placeholder
+
+Run it before any deploy that touches metadata.
+
 ### Structured data
 
 Paste `https://www.expendesk.com/` and `https://www.expendesk.com/about` into:
@@ -412,6 +584,16 @@ node -e "
    discounted rather than merely ignored. If you add a founding date, address,
    employee count or customer number, verify it first — see the header comment
    in `src/app/about/_data/content.ts`.
-7. **Don't add a route to `footer.json` before the route exists.** The four
+7. **Never mark up a price, rating, or media asset you have not verified.**
+   Prices must match what the page shows and must not be placeholders; a
+   `VideoObject` needs a `contentUrl` that actually resolves. `npm run
+   verify:seo` catches the pricing case; the rest is on you.
+8. **Build page metadata with `pageMetadata()`, not a bare object.** `openGraph`
+   is replaced wholesale rather than merged, so a hand-written `alternates`
+   block leaves `og:url` pointing at the home page.
+9. **The home page `<title>` must contain Expendesk literally.**
+   `title.template` does not apply to `app/page.tsx` — it is the root segment,
+   not a child of it. Every other route gets the suffix automatically.
+10. **Don't add a route to `footer.json` before the route exists.** The four
    `/legal/*` links have been 404ing sitewide since launch precisely because
    this happened once already.

@@ -8,18 +8,22 @@
  * The "Book a Demo" CTA points at `/contact-us` (the demo booking calendar).
  */
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import MagneticButton from "@/components/ui/MagneticButton";
 import ComingSoonSection from "@/components/ui/ComingSoonSection";
 import { content } from "./_data/content";
 
 // No "| Expendesk" suffix — the root layout's title template appends the
 // brand already. See the pharmaceutical page for the full note.
-export const metadata: Metadata = {
+// `pageMetadata` derives og:url from `path`, so it always matches the
+// canonical. Declaring `alternates` alone left og:url inheriting the root
+// layout's home-page URL — see lib/page-metadata.ts.
+export const metadata: Metadata = pageMetadata({
+  path: "/solutions/manufacturing",
   title: "Expense Management for Manufacturing Companies",
   description:
     "Control factory and plant spend with real-time visibility. Purpose-built expense management for manufacturing companies, from purchase to reimbursement.",
-  alternates: { canonical: "/solutions/manufacturing" },
-};
+});
 
 export default function ManufacturingSolutionPage() {
   return (

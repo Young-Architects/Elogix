@@ -64,6 +64,16 @@ export const metadata: Metadata = {
   description:
     "Expendesk is an expense intelligence platform for finance teams. Track expenses, automate reimbursements, enforce spend policies, and get real-time visibility into company spending — built for SMEs and mid-market businesses.",
   applicationName: SITE_NAME,
+  /**
+   * Stops iOS Safari auto-linking any digit string that looks like a phone
+   * number. Without it Safari turns figures in marketing copy — "94%",
+   * "3x", plan prices, dates — into blue tappable telephone links, which is
+   * both visually broken and a dead tap target.
+   *
+   * The real contact number is still reachable: it lives in the Organization
+   * JSON-LD and in explicit `tel:` links, neither of which this affects.
+   */
+  formatDetection: { telephone: false },
   // Names the publisher on the page itself, reinforcing the same brand string
   // the Organization JSON-LD asserts.
   authors: [{ name: SITE_NAME, url: `${SITE_URL}/` }],

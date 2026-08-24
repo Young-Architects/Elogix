@@ -12,14 +12,18 @@
  * structure as the `solutions/*` pages.
  */
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import BookingCalendarSection from "./_components/BookingCalendarSection";
 
-export const metadata: Metadata = {
+// `pageMetadata` derives og:url from `path`, so it always matches the
+// canonical. Declaring `alternates` alone left og:url inheriting the root
+// layout's home-page URL — see lib/page-metadata.ts.
+export const metadata: Metadata = pageMetadata({
+  path: "/contact-us",
   title: "Book a Demo",
   description:
     "Schedule your personalized Expendesk demo — a 45-minute session where a product specialist walks you through automating expense management for your business.",
-  alternates: { canonical: "/contact-us" },
-};
+});
 
 export default function ContactUsPage() {
   return (

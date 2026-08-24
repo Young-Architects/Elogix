@@ -13,17 +13,21 @@
  * Every "Book a Free Demo" CTA points at /contact-us (the demo booking calendar).
  */
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import PricingHeroSection from "./_components/PricingHeroSection";
 import PricingPlansSection from "./_components/PricingPlansSection";
 import PricingFaqSection from "./_components/PricingFaqSection";
 import PricingFinalCtaSection from "./_components/PricingFinalCtaSection";
 
-export const metadata: Metadata = {
+// `pageMetadata` derives og:url from `path`, so it always matches the
+// canonical. Declaring `alternates` alone left og:url inheriting the root
+// layout's home-page URL — see lib/page-metadata.ts.
+export const metadata: Metadata = pageMetadata({
+  path: "/pricing",
   title: "Pricing",
   description:
     "Flexible Expendesk plans for growing SMEs and mid-market businesses — start with the essentials and scale as you grow. Book a free demo to find your fit.",
-  alternates: { canonical: "/pricing" },
-};
+});
 
 export default function PricingPage() {
   return (

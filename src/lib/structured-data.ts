@@ -95,12 +95,26 @@ export function siteStructuredData(): Record<string, unknown> {
         // years. Naming that company here is what lets an unknown string
         // inherit an established entity's credibility — see PARENT_ORGANIZATION.
         parentOrganization: { '@id': PARENT_ORGANIZATION_ID },
+        // The Expendesk brand itself, not its parent — the product was
+        // announced publicly in July 2026 (the company behind it dates to
+        // 2000, declared on the parent node below). Stating the young date
+        // openly is correct and costs nothing: Google can see the domain's
+        // registration date anyway, and a brand claiming more history than its
+        // domain has is a contradiction, not a credential.
+        foundingDate: '2026',
         email: CONTACT_EMAIL,
         logo: {
           '@type': 'ImageObject',
           '@id': `${SITE_URL}/#logo`,
           url: absoluteUrl('/logo.png'),
           contentUrl: absoluteUrl('/logo.png'),
+          // Measured from the actual file, not assumed. public/logo.png is a
+          // 1423x458 wordmark; declaring a square 512x512 (as the reference
+          // spec did) would contradict the image Google fetches, and a
+          // dimension mismatch is a reason for it to discard the logo rather
+          // than merely ignore the numbers.
+          width: 1423,
+          height: 458,
           caption: SITE_NAME,
         },
         image: { '@id': `${SITE_URL}/#logo` },
@@ -133,6 +147,12 @@ export function siteStructuredData(): Record<string, unknown> {
         alternateName: PARENT_ORGANIZATION.shortName,
         url: PARENT_ORGANIZATION.url,
         sameAs: [...PARENT_ORGANIZATION.sameAs],
+        // elogixsoft.com states "began our journey in Kolkata, India, in 2000".
+        // Note the MCA record for CIN U72200WB2002PTC094194 shows incorporation
+        // in 2002; 2000 is used here because it is the company's own public
+        // claim and matches `disambiguatingDescription`. If marketing prefers
+        // the incorporation date, change both together.
+        foundingDate: '2000',
         subOrganization: { '@id': ORGANIZATION_ID },
       },
       {
@@ -141,7 +161,8 @@ export function siteStructuredData(): Record<string, unknown> {
         name: SITE_NAME,
         alternateName: 'Expendesk — Expense Intelligence Platform',
         url: `${SITE_URL}/`,
-        description: DESCRIPTION,
+        description:
+          'Expense and reimbursement management software for SMEs and mid-market businesses.',
         publisher: { '@id': ORGANIZATION_ID },
         inLanguage: 'en',
       },
@@ -151,6 +172,18 @@ export function siteStructuredData(): Record<string, unknown> {
         name: SITE_NAME,
         applicationCategory: 'BusinessApplication',
         applicationSubCategory: 'Expense Management Software',
+        /**
+         * 'Web' only — deliberately NOT 'Web, iOS, Android'.
+         *
+         * There is no iOS or Android app. The repository contains no App Store
+         * or Play Store link, and the only Android references are PWA manifest
+         * icons. Listing platforms the product does not ship on is a false
+         * claim in structured data, and the first thing a reviewer checks when
+         * a SoftwareApplication node is questioned.
+         *
+         * If native apps do ship, update this string and add their store URLs
+         * to the Organization's `sameAs` in the same change.
+         */
         operatingSystem: 'Web',
         url: `${SITE_URL}/`,
         description: DESCRIPTION,
@@ -158,13 +191,37 @@ export function siteStructuredData(): Record<string, unknown> {
         publisher: { '@id': ORGANIZATION_ID },
         provider: { '@id': ORGANIZATION_ID },
         featureList: [
-          'Expense tracking',
-          'Automated reimbursements',
-          'Spend policy enforcement',
-          'Approval workflows',
+          'Expense tracking and receipt management',
+          'Automated approval workflows',
+          'Employee reimbursements',
+          'Expense policy compliance',
           'Real-time spend visibility',
-          'Receipt capture and matching',
+          'Accounting integrations',
         ],
+        /**
+         * ── Why there is no `offers` / `AggregateOffer` node here ──
+         *
+         * The reference spec proposed one: lowPrice 3999, highPrice 7999,
+         * offerCount 3, in INR. Those numbers come from
+         * `src/app/pricing/_data/content.ts`, which states at the top of the
+         * file that plan prices are **PLACEHOLDER data**, and renders each
+         * plan with the visible note "Billed annually · placeholder pricing".
+         *
+         * Publishing placeholder prices as machine-readable offers is the
+         * highest-risk item in the whole spec, for three separate reasons:
+         *
+         *  1. Google's structured-data policy requires the price in markup to
+         *     match the price visible to the user. A price the page itself
+         *     labels as a placeholder cannot satisfy that.
+         *  2. Price markup is eligible for rich results, which is exactly the
+         *     category that attracts manual actions when it misrepresents.
+         *  3. It publishes a number the business has not committed to, in a
+         *     format aggregators and comparison sites scrape and cache.
+         *
+         * Add this node in the same commit that replaces the placeholder
+         * pricing with real, launched figures — not before. The shape the spec
+         * proposed is correct; only the timing is wrong.
+         */
       },
     ],
   };

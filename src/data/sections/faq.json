@@ -5,31 +5,47 @@
     "accent": "Questions"
   },
   "subheading": "Everything you need to know about Expendesk — straight answers, no jargon.",
+  "_comment": "IMPORTANT: FaqSection.tsx renders this list AND generates the FAQPage JSON-LD from it, from this one array. That is deliberate — Google requires FAQ markup to match the answer text visible on the page, and deriving both from one source makes a mismatch impossible. Never hand-write a parallel FAQ block in structured data. Adding an entry here adds it to both the page and the markup; editing an answer edits both.",
   "faqs": [
     {
       "id": "multiple-locations",
       "question": "Can Expendesk support businesses with multiple locations?",
-      "answer": "Yes. Expendesk helps manage expenses across branches, departments, and teams from one centralized platform."
+      "answer": "Yes. Expendesk helps manage expenses across branches, departments and teams from one centralised platform."
     },
     {
       "id": "custom-workflows",
-      "question": "Can approval workflows be customized?",
-      "answer": "Yes. Configure approval hierarchies based on departments, spending limits, or reporting structures."
+      "question": "Can approval workflows be customised?",
+      "answer": "Yes. Expenses route by team, department, manager or spend limit, with multi-level approval chains and automatic escalation when a claim stalls."
     },
     {
       "id": "growing-smes",
       "question": "Is Expendesk suitable for growing SMEs?",
-      "answer": "Absolutely. Expendesk is designed to scale alongside SMEs and Mid-Market Businesses."
+      "answer": "Expendesk is built for SMEs and mid-market businesses where spreadsheets and email approvals have stopped working, but that do not need an enterprise finance suite. It scales from 5 to 500+ people without a migration."
     },
     {
       "id": "track-reimbursements",
       "question": "Can employees track reimbursement status?",
-      "answer": "Yes. Employees can monitor the progress of submitted claims throughout the approval process."
+      "answer": "Yes. Employees see the live status of every claim from submission through approval to payout, so finance is not fielding status requests."
     },
     {
       "id": "policy-compliance",
       "question": "Does Expendesk support policy compliance?",
-      "answer": "Yes. Expense policies and approval workflows help ensure consistent compliance across the organization."
+      "answer": "Yes. Spend policies are enforced at the point of submission rather than discovered at audit. Out-of-policy claims are flagged immediately with a full approval trail retained."
+    },
+    {
+      "id": "pricing",
+      "question": "How much does expense management software cost?",
+      "answer": "Expendesk pricing is based on your business size, number of users and the features you need. Plans start with the essentials and scale as you grow."
+    },
+    {
+      "id": "accounting-integrations",
+      "question": "Does Expendesk integrate with our accounting software?",
+      "answer": "Yes. Expendesk connects to existing accounting systems so approved expenses and reimbursements flow through without re-keying."
+    },
+    {
+      "id": "implementation-time",
+      "question": "How long does implementation take?",
+      "answer": "Most teams are live within days rather than months. Setup is three steps: capture expenses, configure approval routing, then switch on reporting."
     }
   ],
   "support": {

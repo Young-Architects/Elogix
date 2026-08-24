@@ -7,14 +7,18 @@
  * `./_components`, copy + embed config in `./_data/content.ts`.
  */
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import ContactSalesSection from "./_components/ContactSalesSection";
 
-export const metadata: Metadata = {
+// `pageMetadata` derives og:url from `path`, so it always matches the
+// canonical. Declaring `alternates` alone left og:url inheriting the root
+// layout's home-page URL — see lib/page-metadata.ts.
+export const metadata: Metadata = pageMetadata({
+  path: "/contact-sales",
   title: "Contact Sales",
   description:
     "Talk to an Expendesk market specialist — get your questions answered, see the platform live, and find the right plan for your business.",
-  alternates: { canonical: "/contact-sales" },
-};
+});
 
 export default function ContactSalesPage() {
   return (
