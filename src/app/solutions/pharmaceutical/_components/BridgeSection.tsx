@@ -41,7 +41,10 @@ const bridgeIcons: Record<BridgeIconKey, LucideIcon> = {
 };
 
 // Cards rendered twice so the mobile marquee (.br-marquee) can loop seamlessly.
+// The second pass is a visual duplicate, not content — see `isLoopCopy` below.
 const marqueeChallenges = [...bridge.challenges, ...bridge.challenges];
+/** Index at which the seamless-loop duplicate begins. */
+const MARQUEE_LOOP_START = bridge.challenges.length;
 
 /* -------------------------------------------------------------------------- */
 /* Framer Motion variants                                                     */
@@ -223,6 +226,12 @@ export default function BridgeToExpendeskSection() {
             {marqueeChallenges.map((item, idx) => (
               <div
                 key={`${item.id}-${idx}`}
+                /* The loop copy exists only so the marquee can scroll without a
+                   visible seam. Hiding it from the accessibility tree stops
+                   screen readers announcing twelve cards where there are six,
+                   and keeps the page's heading outline honest — each of these
+                   cards contains an <h3>. */
+                aria-hidden={idx >= MARQUEE_LOOP_START || undefined}
                 className="group relative flex w-[280px] shrink-0 flex-col justify-center overflow-hidden rounded-2xl border border-gray-200/60 bg-white p-5 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] transition-colors duration-300 hover:border-violet-300 sm:w-[320px] sm:p-6"
               >
                 <CardContent item={item} />
