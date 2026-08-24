@@ -351,6 +351,116 @@ verification step below checks this automatically.
 
 ---
 
+## Reading Search Console: which "errors" are not errors
+
+Search Console's Page Indexing report lists every URL Google did **not** index,
+including every URL you deliberately told it not to index. Rows in that report
+are statuses, not defects. Three separate reports from this site have been
+escalated as bugs when two of them were the system working correctly.
+
+Check this table before "fixing" anything the report surfaces.
+
+| Report row | URLs here | Verdict |
+| --- | --- | --- |
+| **Page with redirect** | `http://expendesk.com/`, `https://expendesk.com/` | **Correct — do not fix.** The apex 308-redirects to `www`, which is the entire canonical strategy. Google excludes the source of a redirect and indexes the destination. Removing the redirect would split ranking signals across two hostnames. |
+| **Excluded by 'noindex' tag** | `/resources`, `/resources/case-studies`, `/resources/whitepapers`, `/solutions` | **Correct — do not fix.** All four are "Coming Soon" placeholders containing a single sentence. The tag is deliberate (`robots: { index: false, follow: true }`). Indexing near-empty pages is a quality negative, burns crawl budget, and Google would likely refuse them anyway as "Crawled – currently not indexed". Remove the tag in the same commit that adds real content, never before. |
+| **Video indexing / unsupported format** | `feat-video.mkv` | **A real bug.** See Round 4 — the file 404s and `.mkv` is not a browser-playable container. |
+
+### The rows that *would* matter
+
+If any of these appear for `https://www.expendesk.com/` or another page that is
+meant to rank, they are worth acting on:
+
+- **"Discovered – currently not indexed"** — Google knows the URL exists but has
+  not crawled it. Usually a crawl-budget/authority signal on a young domain.
+  Request indexing and build inbound links.
+- **"Crawled – currently not indexed"** — Google fetched the page and chose not
+  to index it. A content-quality judgement, not a technical fault.
+- **"Duplicate, Google chose a different canonical"** — the declared canonical is
+  being overridden. On this site that would most likely mean the `*.vercel.app`
+  copy is winning, which `next.config.ts` and the self-referencing canonicals
+  are designed to make impossible. Investigate immediately if it appears.
+- **"Blocked by robots.txt"** or **"noindex" on a page that should rank** — a
+  genuine misconfiguration. `npm run verify:seo` plus a live header check will
+  confirm.
+
+### Rule of thumb
+
+An exclusion is a defect only when the excluded URL is one you *want* indexed.
+For every other row, Search Console is reporting that your instructions were
+received and followed.
+
+---
+
+## Icons and favicon (2026-08-25)
+
+Regenerate the whole set with:
+
+```bash
+npm run icons     # node scripts/generate-icons.mjs
+npm run build     # picks up the new content hashes
+```
+
+### What was broken
+
+The set was hand-exported once and had three defects, none visible without
+inspecting pixels:
+
+| File | Defect | Consequence |
+| --- | --- | --- |
+| `src/app/apple-icon.png` | 87% transparent, fully transparent corners | iOS does not support alpha in home-screen icons — it composites transparency to **black**. Adding Expendesk to an iPhone home screen produced a violet mark on a black square. |
+| `public/android-chrome-*.png` | transparent, edge-to-edge | `manifest.ts` could only declare `purpose: "any"`; adaptive-icon launchers letterboxed instead of filling the shape. |
+| `src/app/icon0.png` | peak alpha 221, never fully opaque | the 16px tab favicon rendered washed out. |
+
+### The rule that was being missed
+
+Transparency is correct for some icons and wrong for others:
+
+- **Browser tab icons** — `favicon.ico`, `icon0.png`, `icon1.png` — **transparent**.
+  Tab strips are light or dark depending on theme; a baked-in plate looks like a
+  sticker on a dark tab.
+- **Apple touch icon** — **opaque, always.** iOS renders alpha as black and adds
+  its own rounded corners, so the source must be a full-bleed opaque square.
+- **Android maskable** — **opaque, full-bleed**, mark confined to the centred
+  safe-zone circle (80% of canvas). The launcher crops to an arbitrary shape, so
+  bare corners or an oversized mark both fail.
+
+### The master
+
+`brand/expendesk-mark-master.png` — the isometric symbol, 512x512, transparent.
+`brand/` is not served by Next and is never written by the generator, which is
+what makes regeneration idempotent. The first version of the script read its
+alpha master from `public/android-chrome-512x512.png`, one of its own outputs;
+a second run would have baked an opaque plate into the tab icons.
+
+**Do not use `public/expendesk-mark.jpg` as an icon source.** Despite the name it
+is the *wordmark* — "ExpenDesk" set in type on a white circle, sized for a social
+avatar. Generating icons from it yields a 180px square of unreadable
+four-pixel-tall lettering.
+
+### Known limitation: 16px legibility
+
+The symbol is 222x484 after trimming — an aspect ratio of about 0.46 — with fine
+interior linework (the coin stacks and inner rules). Scaled into a 16x16 canvas
+it fills the full height but occupies only **7 pixels of width**, and the
+interior detail is gone.
+
+That is inherent to the mark, not a generation fault; the icon is as faithful as
+16px allows. The only real fix is a **simplified square glyph** drawn
+specifically for small sizes — a designer's call, not something to approximate
+here. At 32px and 48px the mark reads correctly, which covers the Google Search
+result favicon (read at 48px) and hi-DPI tabs.
+
+### An SVG favicon is deliberately absent
+
+`icon.svg` would scale perfectly and is standard practice, but the brand mark
+exists here only as raster. Hand-tracing a company's logo produces something
+subtly wrong that then propagates everywhere. Ask the designer for the original
+vector and drop it in at `src/app/icon.svg` — Next picks it up automatically, no
+code change needed.
+
+---
+
 ## Actions still required
 
 The code is deployed-ready, but **indexing will not fix itself**. Nothing in

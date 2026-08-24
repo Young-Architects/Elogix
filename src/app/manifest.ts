@@ -27,13 +27,24 @@ export default function manifest(): MetadataRoute.Manifest {
     background_color: "#f8f9ff",
     theme_color: "#f8f9ff",
     icons: [
+      /**
+       * Two sets, because Android uses them for different things.
+       *
+       * `any` is drawn as-is (task switcher, install prompt, older launchers).
+       * `maskable` is cropped by the launcher to whatever shape the device
+       * uses — circle, squircle, rounded square — so the mark has to sit
+       * inside a centred "safe zone" circle 80% of the canvas wide, and the
+       * background must reach every edge or the crop reveals bare corners.
+       *
+       * Both sets are now opaque. The previous ones were transparent, which
+       * is why this file could only offer `any`: a transparent maskable icon
+       * gets composited on whatever the launcher chooses, commonly black.
+       * `scripts/generate-icons.mjs` regenerates both from one master.
+       */
       {
         src: "/android-chrome-192x192.png",
         sizes: "192x192",
         type: "image/png",
-        // "any" (not "maskable"): these were generated without the ~20% safe-zone
-        // padding Android crops to for maskable icons, so declaring them maskable
-        // would clip the logo on adaptive-icon launchers.
         purpose: "any",
       },
       {
@@ -41,6 +52,18 @@ export default function manifest(): MetadataRoute.Manifest {
         sizes: "512x512",
         type: "image/png",
         purpose: "any",
+      },
+      {
+        src: "/maskable-icon-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
+        purpose: "maskable",
+      },
+      {
+        src: "/maskable-icon-512x512.png",
+        sizes: "512x512",
+        type: "image/png",
+        purpose: "maskable",
       },
     ],
   };
