@@ -563,6 +563,21 @@ is the *wordmark* — "ExpenDesk" set in type on a white circle, sized for a soc
 avatar. Generating icons from it yields a 180px square of unreadable
 four-pixel-tall lettering.
 
+### Google Search favicon
+
+Google renders the icon beside a result from a separate pipeline to page
+crawling, and caches it hard — it refreshes only when the home page is
+recrawled and that pipeline runs. A generic globe in the SERP means "no favicon
+fetched yet", not a markup error. Days to weeks of lag on a newly indexed site
+is normal.
+
+Google's guidance asks for a square that is a **multiple of 48px**. The .ico
+tops out at 48, the bare minimum, so  (192x192 = 48x4) is
+generated purely to give the search pipeline a larger source. Browsers still
+pick 16/32 for the tab. It is transparent like the other tab icons, because
+Google renders result favicons on light *and* dark backgrounds and a baked-in
+plate would show as a visible tile in one of them.
+
 ### Known limitation: 16px legibility
 
 The symbol is 222x484 after trimming — an aspect ratio of about 0.46 — with fine

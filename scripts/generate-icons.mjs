@@ -182,6 +182,24 @@ async function buildIco(sizes, out) {
 console.log('Browser tab icons (transparent):');
 await transparentIcon(16, 'src/app/icon0.png');
 await transparentIcon(32, 'src/app/icon1.png');
+/**
+ * 192x192 for Google Search.
+ *
+ * Google's favicon guidance asks for a square that is a **multiple of 48px**
+ * (48, 96, 144, 192...). The .ico below tops out at exactly 48 — the minimum
+ * that qualifies — which leaves Google the least possible to work with when it
+ * renders the icon beside a result and gives it nothing to downscale from
+ * cleanly on a high-DPI screen.
+ *
+ * 192 is 48x4, matches the Android icon size, and is emitted by Next as its own
+ * `<link rel="icon" sizes="192x192">`. Browsers still pick 16/32 for the tab;
+ * this exists for the search result and for anything that wants a larger source.
+ *
+ * Transparent, like the other tab icons: Google renders result favicons on a
+ * light background in light mode and a dark one in dark mode, so a baked-in
+ * plate would show as a visible tile in one of the two.
+ */
+await transparentIcon(192, 'src/app/icon2.png');
 await buildIco([16, 32, 48], 'src/app/favicon.ico');
 
 console.log('\nApple touch icon (opaque — iOS renders alpha as black):');
