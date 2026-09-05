@@ -578,6 +578,26 @@ pick 16/32 for the tab. It is transparent like the other tab icons, because
 Google renders result favicons on light *and* dark backgrounds and a baked-in
 plate would show as a visible tile in one of them.
 
+### Clean, unhashed icon URLs
+
+Next's file conventions emit every icon link with a content-hash query string
+(`/favicon.ico?favicon.0zo1q079966bd.ico`). The hash is stable — verified
+unchanged across rebuilds — and browsers handle it fine, but it left the home
+page offering no plain canonical favicon URL.
+
+`layout.tsx` now declares the full set in `metadata.icons` with clean paths,
+plus a `rel="shortcut icon"` on `/favicon.ico`.
+
+> **Careful:** declaring `metadata.icons` **overrides** Next's file-based icon
+> tags. Adding only `shortcut` silently dropped `icon0`/`icon1`/`icon2` and the
+> apple-touch-icon from the rendered head. The set must be declared in full or
+> not at all — and the `sizes` values must match what
+> `scripts/generate-icons.mjs` actually produces.
+
+The trade-off is browser caching: without the hash a changed icon can serve
+stale for a while. That is correct for a favicon — Google asks for a stable URL,
+and stability matters more than instant propagation.
+
 ### Known limitation: 16px legibility
 
 The symbol is 222x484 after trimming — an aspect ratio of about 0.46 — with fine

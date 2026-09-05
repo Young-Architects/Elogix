@@ -74,6 +74,57 @@ export const metadata: Metadata = {
    * JSON-LD and in explicit `tel:` links, neither of which this affects.
    */
   formatDetection: { telephone: false },
+  /**
+   * A clean, unhashed `rel="shortcut icon"` pointing at the root favicon.
+   *
+   * Next's file conventions (src/app/favicon.ico, icon0/1/2.png) already emit
+   * `<link rel="icon">` tags, but every one of them carries a content-hash
+   * query string:
+   *
+   *     <link rel="icon" href="/favicon.ico?favicon.0zo1q079966bd.ico" ...>
+   *
+   * That hash is stable (it is derived from the file's contents, verified
+   * unchanged across rebuilds) and browsers handle it fine. But it means the
+   * home page offered Google no plain, canonical favicon URL — and
+   * `/favicon.ico` at the document root is the oldest and most universally
+   * honoured convention there is, the one every crawler falls back to.
+   *
+   * This adds that link explicitly. It costs one tag, can never go stale, and
+   * removes any dependence on a third party parsing a query-stringed icon URL
+   * correctly.
+   *
+   * ── Why every icon is listed here rather than left to the file convention ──
+   *
+   * Declaring `metadata.icons` at all *overrides* Next's file-based icon tags
+   * (verified: adding only `shortcut` silently dropped icon0/icon1/icon2 and the
+   * apple-touch-icon from the rendered head, leaving just two links). So the set
+   * has to be declared in full or not at all.
+   *
+   * Listing them explicitly is the better half of that trade, because it also
+   * removes the hash from every icon URL. Each path is served by the same
+   * file-convention files in src/app/ and resolves cleanly (all verified 200),
+   * so nothing moves — the URLs just become permanently stable, which is what
+   * Google asks for and what a hashed URL can never quite promise.
+   *
+   * The trade-off is browser caching: without the hash, a changed icon may be
+   * served stale from cache for a while. That is the correct trade for a
+   * favicon — a stable URL matters more than instant propagation, and the
+   * `sizes` attributes still let browsers pick the right file.
+   *
+   * Sizes must match the real pixel dimensions of each file. They are generated
+   * by scripts/generate-icons.mjs; if you change a size there, change it here.
+   */
+  icons: {
+    icon: [
+      { url: "/icon0.png", sizes: "16x16", type: "image/png" },
+      { url: "/icon1.png", sizes: "32x32", type: "image/png" },
+      // 192x192 (48x4) exists for Google Search, which asks for a square that
+      // is a multiple of 48px and otherwise had only the .ico's 48 to work from.
+      { url: "/icon2.png", sizes: "192x192", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   // Names the publisher on the page itself, reinforcing the same brand string
   // the Organization JSON-LD asserts.
   authors: [{ name: SITE_NAME, url: `${SITE_URL}/` }],
