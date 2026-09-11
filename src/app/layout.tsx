@@ -31,6 +31,7 @@ import ChatWidget from "@/components/layout/ChatWidget";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ScrollToHash from "@/components/layout/ScrollToHash";
+import { Analytics } from "@vercel/analytics/next";
 
 /**
  * Poppins has no variable-font build on Google Fonts, so each weight is a
@@ -252,6 +253,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <Footer />
           <ChatWidget />
         </ChatProvider>
+        <Analytics />
       </body>
     </html>
   );
