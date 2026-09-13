@@ -108,6 +108,10 @@
       ]
     },
     {
+      "label": "Pricing",
+      "href": "/pricing"
+    },
+    {
       "label": "Resources",
       "href": "/resources",
       "dropdown": [
