@@ -83,7 +83,7 @@ function PlanCard({ plan }: { plan: PricingPlan }) {
       </p>
 
       {/* Price row */}
-      <div className="mt-5">
+      {/* <div className="mt-5">
         {plan.price.custom ? (
           <span className="text-4xl font-extrabold tracking-tight text-slate-900">
             Custom
@@ -101,7 +101,7 @@ function PlanCard({ plan }: { plan: PricingPlan }) {
         <p className="mt-1.5 text-[11px] font-medium text-slate-400">
           {plan.price.note}
         </p>
-      </div>
+      </div> */}
 
       <div className="my-6 h-px w-full bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 

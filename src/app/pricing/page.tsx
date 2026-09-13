@@ -30,13 +30,13 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function PricingPage() {
-  return null;
-  // return (
-  //   <main className="min-h-screen bg-white">
-  //     <PricingHeroSection />
-  //     <PricingPlansSection />
-  //     <PricingFaqSection />
-  //     <PricingFinalCtaSection />
-  //   </main>
-  // );
+  // return null;
+  return (
+    <main className="min-h-screen bg-white">
+      <PricingHeroSection />
+      <PricingPlansSection />
+      <PricingFaqSection />
+      <PricingFinalCtaSection />
+    </main>
+  );
 }
