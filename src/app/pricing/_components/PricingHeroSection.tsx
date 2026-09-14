@@ -75,7 +75,7 @@ export default function PricingHeroSection() {
         variants={CONTAINER_VARIANTS}
         initial="hidden"
         animate="visible"
-        className="relative mx-auto flex max-w-4xl flex-col items-center px-6 pb-10 pt-32 text-center sm:pb-12 sm:pt-36 lg:px-8"
+        className="relative mx-auto flex max-w-4xl flex-col items-center px-6 pb-10 pt-16 text-center sm:pb-12 sm:pt-20 lg:px-8"
       >
         <motion.span
           variants={ITEM_VARIANTS}
@@ -87,7 +87,7 @@ export default function PricingHeroSection() {
         <motion.h1
           id="pricing-hero-heading"
           variants={ITEM_VARIANTS}
-          className="mt-5 max-w-3xl text-balance text-4xl font-extrabold leading-[1.08] tracking-tight text-slate-900 sm:text-5xl lg:text-6xl"
+          className="mt-5 max-w-3xl text-balance text-3xl font-extrabold leading-[1.1] tracking-tight text-slate-900 sm:text-4xl"
         >
           {pricingHero.heading.lead}
           <span className="bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500 bg-clip-text text-transparent">

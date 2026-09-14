@@ -165,7 +165,7 @@ export default function PricingPlansSection() {
       id="plans"
       ref={sectionRef}
       aria-labelledby="pricing-plans-heading"
-      className="relative overflow-hidden bg-white pb-16 pt-6 sm:pb-20 lg:pb-24"
+      className="relative overflow-hidden bg-white pb-16 pt-28 sm:pb-20 sm:pt-32 lg:pb-24"
     >
       {/* Ambient blobs */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
@@ -192,33 +192,20 @@ export default function PricingPlansSection() {
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.08, duration: 0.55, ease: EASE }}
-            className="mt-5 text-balance text-3xl font-extrabold leading-[1.1] tracking-tight text-slate-900 sm:text-4xl"
+            className="mt-3 text-balance text-2xl font-extrabold leading-[1.1] tracking-tight text-slate-900 sm:text-3xl"
           >
             {pricingPlansHeader.heading.lead}
             <span className="bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500 bg-clip-text text-transparent">
               {pricingPlansHeader.heading.accent}
             </span>
           </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.16, duration: 0.5, ease: EASE }}
-            className="mx-auto mt-4 max-w-lg text-pretty text-sm font-medium leading-relaxed text-slate-500 sm:text-base"
-          >
-            {pricingPlansHeader.subheading}
-          </motion.p>
         </div>
 
-        {/* ── Cards ──
-            Single centered column on mobile, 3-up grid from md.
-            Extra top padding leaves room for the floating "Most Popular"
-            badge + the raised highlighted card on lg. */}
         <motion.div
           variants={CONTAINER_VARIANTS}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="mx-auto mt-12 grid max-w-sm grid-cols-1 gap-6 md:mt-14 md:max-w-none md:grid-cols-3 md:gap-5 lg:mt-16 lg:gap-7"
+          className="mx-auto mt-8 grid max-w-sm grid-cols-1 gap-6 md:mt-10 md:max-w-none md:grid-cols-3 md:gap-5 lg:mt-12 lg:gap-7"
         >
           {pricingPlans.map((plan) => (
             <PlanCard key={plan.id} plan={plan} />
