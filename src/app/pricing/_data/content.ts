@@ -56,7 +56,7 @@ export const pricingHero = {
   subheading:
     "We all hate delays when it comes to reimbursement. Expendesk helps you keep a healthy smile on your Team, as the expenses get reimbursed faster.",
   helper: "Not sure about the plans? Talk to our Expert Today",
-  ctaLabel: "Book a Free Demo",
+  ctaLabel: "Get In Touch",
   ctaHref: "/contact-us",
   reassurance: [
     "No obligation after the demo",
@@ -87,7 +87,7 @@ export const pricingPlans: PricingPlan[] = [
       "Mobile app for on-the-go claims",
       "Email support",
     ],
-    ctaLabel: "Book a Free Demo",
+    ctaLabel: "Talk to Our Team",
     ctaHref: "/contact-us",
   },
   {
@@ -108,7 +108,7 @@ export const pricingPlans: PricingPlan[] = [
       "Advanced analytics & audit trail",
       "Priority email & chat support",
     ],
-    ctaLabel: "Book a Free Demo",
+    ctaLabel: "Talk to Our Team",
     ctaHref: "/contact-us",
     highlighted: true,
   },
@@ -129,7 +129,7 @@ export const pricingPlans: PricingPlan[] = [
       "Unlimited users & custom roles",
       "Tailored onboarding & training",
     ],
-    ctaLabel: "Book a Free Demo",
+    ctaLabel: "Talk to Our Team",
     ctaHref: "/contact-us",
   },
 ];
@@ -212,6 +212,6 @@ export const pricingFinalCta = {
     accent: "Scale as you grow.",
   },
   subheading: "Get Started with Expendesk Today",
-  ctaLabel: "Book a Free Demo",
+  ctaLabel: "Talk to Our Team",
   ctaHref: "/contact-us",
 } as const;
