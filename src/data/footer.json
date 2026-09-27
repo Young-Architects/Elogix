@@ -157,7 +157,7 @@
   ],
   "legal": [
     {
-      "label": "Terms of Service",
+      "label": "Terms and Conditions",
       "href": "/legal/terms"
     },
     {
@@ -165,12 +165,20 @@
       "href": "/legal/privacy"
     },
     {
-      "label": "Cookies Policy",
+      "label": "Cookie Policy",
       "href": "/legal/cookies"
     },
     {
-      "label": "Legal Notice",
-      "href": "/legal/notice"
+      "label": "Acceptable Use Policy",
+      "href": "/legal/acceptable-use"
+    },
+    {
+      "label": "Disclaimer",
+      "href": "/legal/disclaimer"
+    },
+    {
+      "label": "Copyright & DMCA",
+      "href": "/legal/copyright"
     }
   ]
 }

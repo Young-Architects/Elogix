@@ -476,6 +476,86 @@ markup regenerate together.
 
 ---
 
+## Legal pages (2026-09-28)
+
+Six legal documents are live under `/legal/*`, transcribed from the company's
+source PDFs (all last updated 21 September 2026):
+
+| Route | Document | Words |
+| --- | --- | --- |
+| `/legal/terms` | Terms and Conditions | 4,068 |
+| `/legal/privacy` | Privacy Policy | 5,336 |
+| `/legal/cookies` | Cookie Policy | 1,863 |
+| `/legal/acceptable-use` | Acceptable Use Policy | 1,908 |
+| `/legal/disclaimer` | Disclaimer | 1,849 |
+| `/legal/copyright` | Copyright and DMCA Policy | 1,751 |
+
+**This closed the four sitewide 404s** flagged in Round 4. The footer had linked
+`/legal/terms`, `/legal/privacy`, `/legal/cookies` and `/legal/notice` since
+launch with no such routes existing. There was never a "legal notice" document;
+the **Disclaimer** is its real counterpart, and the footer now lists all six
+documents by their actual names.
+
+### Architecture
+
+| File | Role |
+| --- | --- |
+| `_data/company.ts` | Entity, CIN, registered office, grievance officer, and `LEGAL_ROUTES` |
+| `_data/types.ts` | `LegalDocument` — sections, blocks, inline runs |
+| `_components/LegalPage.tsx` | Renders any document |
+| `_components/LegalDocumentPage.tsx` | Adds `WebPage` + `BreadcrumbList` schema |
+| `<route>/_data/content.ts` | One document's text |
+
+The documents **cross-reference each other** — the Terms incorporate the
+Privacy, Cookie and Acceptable Use policies by reference; the Acceptable Use
+Policy points at the Copyright and DMCA Policy; the Cookie and Privacy policies
+point at each other. Every one of those links goes through `LEGAL_ROUTES`, so a
+renamed route cannot leave a legal document citing a 404. The same applies to
+the registered address: it is declared once and never retyped.
+
+### Data correction
+
+An earlier draft of the Cookie Policy used **"Premises No. 07-0313"**, taken
+from the contact page of elogixsoft.com. All six of the company's own legal
+documents say **07-313**. The legal documents are authoritative for a registered
+office, so that is what is used throughout. If the public contact page is the
+one that is wrong, it should be corrected there too.
+
+### Rules for editing
+
+1. **Never paraphrase the policy text.** It is transcribed verbatim from the
+   source PDFs. Rewording a clause is how it quietly stops meaning what it was
+   drafted to mean. If the wording should change, the source document changes
+   first.
+2. **Never hardcode the address, the CIN or another policy's path** in a content
+   file — import from `_data/company.ts`.
+3. **Update `LEGAL_LAST_UPDATED`** when the source documents are revised, not
+   when the site is deployed. It is the document's revision date.
+4. **Add new routes to `sitemap.ts` and `scripts/verify-seo.mjs`** together.
+
+### Rendering notes
+
+- **Server components, no client JS.** These are reference documents, not
+  marketing. The full text is in the server response.
+- **The cookie-categories table** renders twice: stacked cards below `sm`
+  (`aria-hidden`, so a screen reader is not read the content twice) and a real
+  `<table>` at `sm` and up inside its own `overflow-x-auto`, so it scrolls
+  itself rather than making the page scroll sideways.
+- **Indexable at priority 0.3.** Published legal pages are among the cheapest
+  trust signals a young domain has, and are what a cautious visitor checks
+  before handing a finance tool their company's spend data.
+
+### Verification
+
+```bash
+npm run build && npm run verify:seo
+```
+
+All six pass: canonical matches `og:url`, three `ld+json` blocks parse per page,
+exactly one `<h1>` each, and every cross-document link resolves to a real route.
+
+---
+
 ## Reading Search Console: which "errors" are not errors
 
 Search Console's Page Indexing report lists every URL Google did **not** index,

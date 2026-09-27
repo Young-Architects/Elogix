@@ -1,0 +1,1233 @@
+[
+  {
+    "title": "Architecture pattern: nextjs",
+    "source": "layers",
+    "description": "Recognised nextjs from directory names: 45 of 47 typescript modules classified — 98% of this repository's 48 modules. All 99 imports between ordered layers run inward; none run against the order.",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "fact": "src/app",
+        "detail": "module \"src/app\" maps to layer \"pages\"",
+        "fact_id": "6a682daf17815b342cca9363d573fc48"
+      },
+      {
+        "fact": "src/app/about",
+        "detail": "module \"src/app/about\" maps to layer \"pages\"",
+        "fact_id": "32a35dcdb93e3ef72d8f92feefb83bc0"
+      },
+      {
+        "fact": "src/app/about/_data",
+        "detail": "module \"src/app/about/_data\" maps to layer \"pages\"",
+        "fact_id": "6164c87e51da4f1971ea65c5e22b0f7d"
+      },
+      {
+        "fact": "src/app/api/chat",
+        "detail": "module \"src/app/api/chat\" maps to layer \"pages\"",
+        "fact_id": "4348a447dceb0ce042e2a19c1c7f7fc5"
+      },
+      {
+        "fact": "src/app/api/revalidate",
+        "detail": "module \"src/app/api/revalidate\" maps to layer \"pages\"",
+        "fact_id": "5d279e29c099c792a41e3207a9b96324"
+      },
+      {
+        "fact": "src/app/contact-sales",
+        "detail": "module \"src/app/contact-sales\" maps to layer \"pages\"",
+        "fact_id": "16442235d04df7f5c7579d4d1a8a0602"
+      },
+      {
+        "fact": "src/app/contact-sales/_components",
+        "detail": "module \"src/app/contact-sales/_components\" maps to layer \"pages\"",
+        "fact_id": "98f126e456fef0eb5cb13c5a73640ebb"
+      },
+      {
+        "fact": "src/app/contact-sales/_data",
+        "detail": "module \"src/app/contact-sales/_data\" maps to layer \"pages\"",
+        "fact_id": "e4fbc99a65b96a49a06227ce7aef63cf"
+      },
+      {
+        "fact": "src/app/contact-us",
+        "detail": "module \"src/app/contact-us\" maps to layer \"pages\"",
+        "fact_id": "71308c0c5eb281ddca8f63700e07f9ed"
+      },
+      {
+        "fact": "src/app/contact-us/_components",
+        "detail": "module \"src/app/contact-us/_components\" maps to layer \"pages\"",
+        "fact_id": "963318af25eb5c2691fe0d358ebeb7f0"
+      },
+      {
+        "fact": "src/app/contact-us/_data",
+        "detail": "module \"src/app/contact-us/_data\" maps to layer \"pages\"",
+        "fact_id": "2e5d45e0838c19e7df746a0c10c8b62e"
+      },
+      {
+        "fact": "src/app/legal/_components",
+        "detail": "module \"src/app/legal/_components\" maps to layer \"pages\"",
+        "fact_id": "4b1282d1a7f81b8315476c8da3ac3704"
+      },
+      {
+        "fact": "src/app/legal/_data",
+        "detail": "module \"src/app/legal/_data\" maps to layer \"pages\"",
+        "fact_id": "ad16c2cc60d2ad1f26ec902851b4fa3d"
+      },
+      {
+        "fact": "src/app/legal/cookies",
+        "detail": "module \"src/app/legal/cookies\" maps to layer \"pages\"",
+        "fact_id": "e30072fc16a21f299fe6e0ab10518a6e"
+      },
+      {
+        "fact": "src/app/legal/cookies/_data",
+        "detail": "module \"src/app/legal/cookies/_data\" maps to layer \"pages\"",
+        "fact_id": "bdd8e680bbfc21545de0865a9fad832a"
+      },
+      {
+        "fact": "src/app/pricing",
+        "detail": "module \"src/app/pricing\" maps to layer \"pages\"",
+        "fact_id": "ebf882d618174f8cd696d20c8bc8a24d"
+      },
+      {
+        "fact": "src/app/pricing/_components",
+        "detail": "module \"src/app/pricing/_components\" maps to layer \"pages\"",
+        "fact_id": "f22ac570d6654bd3f41fc9626967bb36"
+      },
+      {
+        "fact": "src/app/pricing/_data",
+        "detail": "module \"src/app/pricing/_data\" maps to layer \"pages\"",
+        "fact_id": "b985e1210e9f4b3dd5c5461231390c79"
+      },
+      {
+        "fact": "src/app/resources",
+        "detail": "module \"src/app/resources\" maps to layer \"pages\"",
+        "fact_id": "11f7075581fa2bbd2e877df195621673"
+      },
+      {
+        "fact": "src/app/resources/_data",
+        "detail": "module \"src/app/resources/_data\" maps to layer \"pages\"",
+        "fact_id": "a3ae8ededd237377017e3daa96b03dfa"
+      },
+      {
+        "fact": "src/app/resources/blogs",
+        "detail": "module \"src/app/resources/blogs\" maps to layer \"pages\"",
+        "fact_id": "1947fdee45152596306697fba34cf6f2"
+      },
+      {
+        "fact": "src/app/resources/blogs/[slug]",
+        "detail": "module \"src/app/resources/blogs/[slug]\" maps to layer \"pages\"",
+        "fact_id": "c0fe2c77bc1cf081ff7914f324e3e2c2"
+      },
+      {
+        "fact": "src/app/resources/blogs/_components",
+        "detail": "module \"src/app/resources/blogs/_components\" maps to layer \"pages\"",
+        "fact_id": "0644c92ed3bc285f7439902eb8ce31c6"
+      },
+      {
+        "fact": "src/app/resources/blogs/_data",
+        "detail": "module \"src/app/resources/blogs/_data\" maps to layer \"pages\"",
+        "fact_id": "9d7c8449a05e04a6b9d1321573629564"
+      },
+      {
+        "fact": "src/app/resources/case-studies",
+        "detail": "module \"src/app/resources/case-studies\" maps to layer \"pages\"",
+        "fact_id": "0d6933b64ae1205f986297c606726d2a"
+      },
+      {
+        "fact": "src/app/resources/case-studies/_data",
+        "detail": "module \"src/app/resources/case-studies/_data\" maps to layer \"pages\"",
+        "fact_id": "0b52397611c5846203464dcd105f1aa2"
+      },
+      {
+        "fact": "src/app/resources/faqs",
+        "detail": "module \"src/app/resources/faqs\" maps to layer \"pages\"",
+        "fact_id": "f57f252bcccceb67edb716bc8da371ed"
+      },
+      {
+        "fact": "src/app/resources/whitepapers",
+        "detail": "module \"src/app/resources/whitepapers\" maps to layer \"pages\"",
+        "fact_id": "58e85927edc714be36ee5515cbb62cde"
+      },
+      {
+        "fact": "src/app/resources/whitepapers/_data",
+        "detail": "module \"src/app/resources/whitepapers/_data\" maps to layer \"pages\"",
+        "fact_id": "622496b465382854536c5fdc535497e9"
+      },
+      {
+        "fact": "src/app/solutions",
+        "detail": "module \"src/app/solutions\" maps to layer \"pages\"",
+        "fact_id": "0152c12ee42a9179f2bfc47082ba472e"
+      },
+      {
+        "fact": "src/app/solutions/_data",
+        "detail": "module \"src/app/solutions/_data\" maps to layer \"pages\"",
+        "fact_id": "61fbba3539c3cd1972fbd16b541161c3"
+      },
+      {
+        "fact": "src/app/solutions/digital-agencies",
+        "detail": "module \"src/app/solutions/digital-agencies\" maps to layer \"pages\"",
+        "fact_id": "ae3e5f6f37571879a851540a6a2c07fd"
+      },
+      {
+        "fact": "src/app/solutions/digital-agencies/_data",
+        "detail": "module \"src/app/solutions/digital-agencies/_data\" maps to layer \"pages\"",
+        "fact_id": "978fe993e821d177fc64af0b176b2f4a"
+      },
+      {
+        "fact": "src/app/solutions/manufacturing",
+        "detail": "module \"src/app/solutions/manufacturing\" maps to layer \"pages\"",
+        "fact_id": "af6b6187a1dd54e4d67a6f7f76c268e7"
+      },
+      {
+        "fact": "src/app/solutions/manufacturing/_data",
+        "detail": "module \"src/app/solutions/manufacturing/_data\" maps to layer \"pages\"",
+        "fact_id": "6357db378268030ccd2706ac21f0b0bd"
+      },
+      {
+        "fact": "src/app/solutions/pharmaceutical",
+        "detail": "module \"src/app/solutions/pharmaceutical\" maps to layer \"pages\"",
+        "fact_id": "5081d8841538f1c62671ebcb214a7d3a"
+      },
+      {
+        "fact": "src/app/solutions/pharmaceutical/_components",
+        "detail": "module \"src/app/solutions/pharmaceutical/_components\" maps to layer \"pages\"",
+        "fact_id": "ea021e35556d5f9aa4ec6ec8d70671e5"
+      },
+      {
+        "fact": "src/app/solutions/pharmaceutical/_data",
+        "detail": "module \"src/app/solutions/pharmaceutical/_data\" maps to layer \"pages\"",
+        "fact_id": "97ad760ee11980ab41c770af681929a7"
+      },
+      {
+        "fact": "src/components/chat",
+        "detail": "module \"src/components/chat\" maps to layer \"components\"",
+        "fact_id": "bc458c5618e869597f4c8c414c0f2590"
+      },
+      {
+        "fact": "src/components/layout",
+        "detail": "module \"src/components/layout\" maps to layer \"components\"",
+        "fact_id": "7a173e953cb27396ee8df4e5078d2191"
+      },
+      {
+        "fact": "src/components/sections",
+        "detail": "module \"src/components/sections\" maps to layer \"components\"",
+        "fact_id": "4aa6ff991ccc02f87357f8a8c3f65d59"
+      },
+      {
+        "fact": "src/components/ui",
+        "detail": "module \"src/components/ui\" maps to layer \"components\"",
+        "fact_id": "ee04bdc31e73e9b946a11225c27aa31a"
+      },
+      {
+        "fact": "src/hooks",
+        "detail": "module \"src/hooks\" maps to layer \"hooks\"",
+        "fact_id": "9651bd0d3ba7cf10299968001e067300"
+      },
+      {
+        "fact": "src/lib",
+        "detail": "module \"src/lib\" maps to layer \"lib\"",
+        "fact_id": "0acd48a1102e3168601a685120fa23ac"
+      },
+      {
+        "fact": "src/types",
+        "detail": "module \"src/types\" maps to layer \"types\"",
+        "fact_id": "fd7da0963120387de83c3dba5dab4720"
+      }
+    ],
+    "suggested_actions": [
+      "Ensure new code follows the detected layer structure",
+      "Review cross-layer dependencies for violations"
+    ],
+    "informational": true,
+    "metrics": {
+      "cohort_languages": [
+        "typescript"
+      ],
+      "imports_against": 0,
+      "imports_inward": 99,
+      "imports_same_level": 128,
+      "layer_examples": {
+        "components": "src/components/chat",
+        "hooks": "src/hooks",
+        "lib": "src/lib",
+        "pages": "src/app",
+        "types": "src/types"
+      },
+      "layer_levels": {
+        "components": 2,
+        "hooks": 1,
+        "lib": 0,
+        "pages": 3,
+        "types": 0
+      },
+      "layers_ordered": [
+        "pages",
+        "components",
+        "hooks",
+        "lib",
+        "types"
+      ],
+      "layers_unordered": null,
+      "modules_classified": 45,
+      "modules_graded": 45,
+      "modules_scanned": 47
+    }
+  },
+  {
+    "title": "Domain findings do not apply to this repository",
+    "source": "domain",
+    "description": "Three of this explainer's four findings read declarations only Rails writes — associations, controller#action handlers, and a model's table — and this repository declares none of them. That is not a clean result on those three; they were not asked. Outbound integrations, the fourth, is language-agnostic and did run.",
+    "confidence": 1,
+    "evidence": [
+      {
+        "detail": "examined: 0 associations, 0 controller handlers, 0 model tables"
+      }
+    ]
+  },
+  {
+    "title": "Large public surface: src/app/solutions/pharmaceutical/_data exports 43 of 43 symbols (100%)",
+    "source": "exported-surface",
+    "description": "Module \"src/app/solutions/pharmaceutical/_data\" exports 43 of its 43 symbols (100%). A large, near-fully-exported module hides little of its implementation, so consumers can couple to internals and it is hard to change without breaking them. Worth a visibility review — though a deliberate library API may legitimately export most of its surface.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "symbol": "src/app/solutions/pharmaceutical/_data.AssessmentIconKey",
+        "detail": "exported",
+        "fact_id": "6feac1fe02780b2821ea38af06836c29"
+      },
+      {
+        "symbol": "src/app/solutions/pharmaceutical/_data.AssessmentQuestion",
+        "detail": "exported",
+        "fact_id": "cb7b0640d362c94e94c8169af239ebb9"
+      },
+      {
+        "symbol": "src/app/solutions/pharmaceutical/_data.BridgeChallenge",
+        "detail": "exported",
+        "fact_id": "ed35e9248d25ffca9e30591fac2a71c7"
+      },
+      {
+        "symbol": "src/app/solutions/pharmaceutical/_data.BridgeContent",
+        "detail": "exported",
+        "fact_id": "929a3431b51305e71e99c5afd34d99c5"
+      },
+      {
+        "symbol": "src/app/solutions/pharmaceutical/_data.BridgeIconKey",
+        "detail": "exported",
+        "fact_id": "462986192ee1a6f5d9fb2d956645cebf"
+      },
+      {
+        "symbol": "src/app/solutions/pharmaceutical/_data.ChecklistContentsContent",
+        "detail": "exported",
+        "fact_id": "1664cab36269c817385c93b18880b93a"
+      },
+      {
+        "symbol": "src/app/solutions/pharmaceutical/_data.ChecklistContentsIconKey",
+        "detail": "exported",
+        "fact_id": "9408066f65f492d2d4a8846212fd4baa"
+      },
+      {
+        "symbol": "src/app/solutions/pharmaceutical/_data.ChecklistContentsItem",
+        "detail": "exported",
+        "fact_id": "5cd5dc1ea7ea5b0d5f3908d21680eb56"
+      }
+    ],
+    "suggested_actions": [
+      "Unexport symbols that are only used within the module",
+      "Define a small, intentional public API and hide the rest",
+      "Split the module if it has several independent public responsibilities"
+    ]
+  },
+  {
+    "title": "Large public surface: src/types exports 25 of 26 symbols (96%)",
+    "source": "exported-surface",
+    "description": "Module \"src/types\" exports 25 of its 26 symbols (96%). A large, near-fully-exported module hides little of its implementation, so consumers can couple to internals and it is hard to change without breaking them. Worth a visibility review — though a deliberate library API may legitimately export most of its surface.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "symbol": "src/types.BlockStyling",
+        "detail": "exported",
+        "fact_id": "74ba1d3c821d6b38cb78a28e6eef6e9f"
+      },
+      {
+        "symbol": "src/types.BlogAuthor",
+        "detail": "exported",
+        "fact_id": "e75dbfcef8a9d10e9cd84eecae6d1c9e"
+      },
+      {
+        "symbol": "src/types.BlogListResponse",
+        "detail": "exported",
+        "fact_id": "f08e3ef4faebbd237a057ae7ded19de4"
+      },
+      {
+        "symbol": "src/types.BlogPost",
+        "detail": "exported",
+        "fact_id": "a381b679c1d14a39ba01efac51be5cfe"
+      },
+      {
+        "symbol": "src/types.ChatMessage",
+        "detail": "exported",
+        "fact_id": "934f6964bff88d073d08889490437f1b"
+      },
+      {
+        "symbol": "src/types.ChatRole",
+        "detail": "exported",
+        "fact_id": "836c439bd0edb56f63d333fa1cdfdc09"
+      },
+      {
+        "symbol": "src/types.ChatWebhookRequest",
+        "detail": "exported",
+        "fact_id": "1340ff633d87de1a509607c1fbc56a9e"
+      },
+      {
+        "symbol": "src/types.ChatWebhookResponse",
+        "detail": "exported",
+        "fact_id": "270ea26e0bb31cf889eeda2279911651"
+      }
+    ],
+    "suggested_actions": [
+      "Unexport symbols that are only used within the module",
+      "Define a small, intentional public API and hide the rest",
+      "Split the module if it has several independent public responsibilities"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: src/components/ui.MagneticButton (36)",
+    "source": "complexity-outliers",
+    "description": "\"src/components/ui.MagneticButton\" has a cyclomatic complexity of 36 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "src/components/ui/MagneticButton.tsx",
+        "symbol": "src/components/ui.MagneticButton",
+        "detail": "cyclomatic complexity 36 at line 273",
+        "line": 273,
+        "fact_id": "29b7b89f94b2db96655a75b485291804"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: src/components/layout.Navbar (26)",
+    "source": "complexity-outliers",
+    "description": "\"src/components/layout.Navbar\" has a cyclomatic complexity of 26 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "src/components/layout/Navbar.tsx",
+        "symbol": "src/components/layout.Navbar",
+        "detail": "cyclomatic complexity 26 at line 344",
+        "line": 344,
+        "fact_id": "9c6c84c647b2a9149a216e8000d13891"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: src/components/sections.CardView (26)",
+    "source": "complexity-outliers",
+    "description": "\"src/components/sections.CardView\" has a cyclomatic complexity of 26 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "src/components/sections/WhyExpendesk.tsx",
+        "symbol": "src/components/sections.CardView",
+        "detail": "cyclomatic complexity 26 at line 452",
+        "line": 452,
+        "fact_id": "09620018d81ec5e4c68a937e0d4a4592"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: src/app/resources/blogs/_components.renderBlock (25)",
+    "source": "complexity-outliers",
+    "description": "\"src/app/resources/blogs/_components.renderBlock\" has a cyclomatic complexity of 25 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "src/app/resources/blogs/_components/BlogContent.tsx",
+        "symbol": "src/app/resources/blogs/_components.renderBlock",
+        "detail": "cyclomatic complexity 25 at line 167",
+        "line": 167,
+        "fact_id": "263c3b63e4bed38786ff9d07768ea37f"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: src/components/sections.FeaturesVideoWithIndustry (21)",
+    "source": "complexity-outliers",
+    "description": "\"src/components/sections.FeaturesVideoWithIndustry\" has a cyclomatic complexity of 21 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "src/components/sections/FeaturesVideo.tsx",
+        "symbol": "src/components/sections.FeaturesVideoWithIndustry",
+        "detail": "cyclomatic complexity 21 at line 722",
+        "line": 722,
+        "fact_id": "f7d018231f0c7602c81b5d3511faceb2"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: src/components/sections.TableView (21)",
+    "source": "complexity-outliers",
+    "description": "\"src/components/sections.TableView\" has a cyclomatic complexity of 21 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "src/components/sections/WhyExpendesk.tsx",
+        "symbol": "src/components/sections.TableView",
+        "detail": "cyclomatic complexity 21 at line 145",
+        "line": 145,
+        "fact_id": "572afb32155e85d8b2f68199ea3a2221"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: src/app/resources/blogs.BlogsPage (20)",
+    "source": "complexity-outliers",
+    "description": "\"src/app/resources/blogs.BlogsPage\" has a cyclomatic complexity of 20 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "src/app/resources/blogs/page.tsx",
+        "symbol": "src/app/resources/blogs.BlogsPage",
+        "detail": "cyclomatic complexity 20 at line 74",
+        "line": 74,
+        "fact_id": "fa090db1286c9e4c4a4ccafa58c995e7"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: src/components/sections.NodeDiagram (19)",
+    "source": "complexity-outliers",
+    "description": "\"src/components/sections.NodeDiagram\" has a cyclomatic complexity of 19 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "src/components/sections/SolutionSection.tsx",
+        "symbol": "src/components/sections.NodeDiagram",
+        "detail": "cyclomatic complexity 19 at line 127",
+        "line": 127,
+        "fact_id": "bd507827d7ccca7a06cbf388f9527b3e"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: src/app/pricing/_components.PricingFaqSection (18)",
+    "source": "complexity-outliers",
+    "description": "\"src/app/pricing/_components.PricingFaqSection\" has a cyclomatic complexity of 18 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "src/app/pricing/_components/PricingFaqSection.tsx",
+        "symbol": "src/app/pricing/_components.PricingFaqSection",
+        "detail": "cyclomatic complexity 18 at line 40",
+        "line": 40,
+        "fact_id": "abe28f8a29d2b3fc265cfb3eeb1f3309"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: src/app/solutions/pharmaceutical/_components.CtaCard (18)",
+    "source": "complexity-outliers",
+    "description": "\"src/app/solutions/pharmaceutical/_components.CtaCard\" has a cyclomatic complexity of 18 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "src/app/solutions/pharmaceutical/_components/Choosenextstepsection.tsx",
+        "symbol": "src/app/solutions/pharmaceutical/_components.CtaCard",
+        "detail": "cyclomatic complexity 18 at line 126",
+        "line": 126,
+        "fact_id": "24d857c08715d1c1743fb4282e347a84"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: src/components/layout.ScrollToHash (18)",
+    "source": "complexity-outliers",
+    "description": "\"src/components/layout.ScrollToHash\" has a cyclomatic complexity of 18 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "src/components/layout/ScrollToHash.tsx",
+        "symbol": "src/components/layout.ScrollToHash",
+        "detail": "cyclomatic complexity 18 at line 50",
+        "line": 50,
+        "fact_id": "84e38da9c62746b8825fd86e10530bc1"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: src/components/sections.ProblemSection (18)",
+    "source": "complexity-outliers",
+    "description": "\"src/components/sections.ProblemSection\" has a cyclomatic complexity of 18 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "src/components/sections/ProblemSection.tsx",
+        "symbol": "src/components/sections.ProblemSection",
+        "detail": "cyclomatic complexity 18 at line 220",
+        "line": 220,
+        "fact_id": "966b97a513453128945b156130bbbb1b"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: src/app/resources/blogs/[slug].BlogPostPage (17)",
+    "source": "complexity-outliers",
+    "description": "\"src/app/resources/blogs/[slug].BlogPostPage\" has a cyclomatic complexity of 17 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "src/app/resources/blogs/[slug]/page.tsx",
+        "symbol": "src/app/resources/blogs/[slug].BlogPostPage",
+        "detail": "cyclomatic complexity 17 at line 73",
+        "line": 73,
+        "fact_id": "ef132c981a572fca0f61b0ae99987753"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: src/components/sections.BentoCard (17)",
+    "source": "complexity-outliers",
+    "description": "\"src/components/sections.BentoCard\" has a cyclomatic complexity of 17 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "src/components/sections/BenefitsSection.tsx",
+        "symbol": "src/components/sections.BentoCard",
+        "detail": "cyclomatic complexity 17 at line 432",
+        "line": 432,
+        "fact_id": "f23a26511e568205332494b0f0309a48"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: src/components/sections.HeroSection (17)",
+    "source": "complexity-outliers",
+    "description": "\"src/components/sections.HeroSection\" has a cyclomatic complexity of 17 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "src/components/sections/HeroSection.tsx",
+        "symbol": "src/components/sections.HeroSection",
+        "detail": "cyclomatic complexity 17 at line 89",
+        "line": 89,
+        "fact_id": "9f901d8c451206d130872fe9ddb9ffb7"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "Most depended-upon package: src/lib (Ca=17)",
+    "source": "package-metrics",
+    "description": "\"src/lib\" is depended upon by 17 other packages — a change-risk concentrator. Edits ripple across dependents, so keep its public contract stable.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "fact": "src/lib",
+        "detail": "Ca=17 I=0.06",
+        "fact_id": "0acd48a1102e3168601a685120fa23ac"
+      }
+    ],
+    "suggested_actions": [
+      "Stabilize the package's public contract; split it if it spans multiple responsibilities"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function btj_on_delete",
+    "source": "dead-code",
+    "description": "function \"btj_on_delete\" is unreferenced — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "wordpress/blog-to-json-webhook.php",
+        "symbol": "btj_on_delete",
+        "detail": "function · unreferenced · wordpress/blog-to-json-webhook.php:69",
+        "line": 69,
+        "fact_id": "443fac9bb0a18b0517f57d1ee1992205"
+      },
+      {
+        "symbol": "btj_on_delete",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "443fac9bb0a18b0517f57d1ee1992205"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function btj_on_transition",
+    "source": "dead-code",
+    "description": "function \"btj_on_transition\" is unreferenced — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "wordpress/blog-to-json-webhook.php",
+        "symbol": "btj_on_transition",
+        "detail": "function · unreferenced · wordpress/blog-to-json-webhook.php:56",
+        "line": 56,
+        "fact_id": "8ee1ed621d2cbc117751d39bf6eb6cbf"
+      },
+      {
+        "symbol": "btj_on_transition",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "8ee1ed621d2cbc117751d39bf6eb6cbf"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function src/lib.fetchJson",
+    "source": "dead-code",
+    "description": "function \"src/lib.fetchJson\" is unreferenced — nothing in the snapshot graph references it (medium confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "src/lib/blog-api.ts",
+        "symbol": "src/lib.fetchJson",
+        "detail": "function · unreferenced · src/lib/blog-api.ts:76",
+        "line": 76,
+        "fact_id": "01a2c64e5a7b5c6cc03d97a5513301ae"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function src/app.manifest",
+    "source": "dead-code",
+    "description": "function \"src/app.manifest\" is isolated — nothing in the snapshot graph references it (medium confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "src/app/manifest.ts",
+        "symbol": "src/app.manifest",
+        "detail": "function · isolated · src/app/manifest.ts:19",
+        "line": 19,
+        "fact_id": "8ddb4ef94a401e61da969d88c3bcbad6"
+      },
+      {
+        "symbol": "src/app.manifest",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "8ddb4ef94a401e61da969d88c3bcbad6"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function src/app/resources/blogs.generateMetadata",
+    "source": "dead-code",
+    "description": "function \"src/app/resources/blogs.generateMetadata\" is isolated — nothing in the snapshot graph references it (medium confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "src/app/resources/blogs/page.tsx",
+        "symbol": "src/app/resources/blogs.generateMetadata",
+        "detail": "function · isolated · src/app/resources/blogs/page.tsx:43",
+        "line": 43,
+        "fact_id": "b2df7b59c555bccd73f32b6ecb3611f3"
+      },
+      {
+        "symbol": "src/app/resources/blogs.generateMetadata",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "b2df7b59c555bccd73f32b6ecb3611f3"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function src/app.robots",
+    "source": "dead-code",
+    "description": "function \"src/app.robots\" is unreferenced — nothing in the snapshot graph references it (medium confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "src/app/robots.ts",
+        "symbol": "src/app.robots",
+        "detail": "function · unreferenced · src/app/robots.ts:17",
+        "line": 17,
+        "fact_id": "2536c88fbf55c543a29cc7512a169be2"
+      },
+      {
+        "symbol": "src/app.robots",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "2536c88fbf55c543a29cc7512a169be2"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function src/app.sitemap",
+    "source": "dead-code",
+    "description": "function \"src/app.sitemap\" is unreferenced — nothing in the snapshot graph references it (medium confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "src/app/sitemap.ts",
+        "symbol": "src/app.sitemap",
+        "detail": "function · unreferenced · src/app/sitemap.ts:11",
+        "line": 11,
+        "fact_id": "0d2faf6aac5d050fc16d1120587b7731"
+      },
+      {
+        "symbol": "src/app.sitemap",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "0d2faf6aac5d050fc16d1120587b7731"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function src/app/resources/blogs/[slug].generateMetadata",
+    "source": "dead-code",
+    "description": "function \"src/app/resources/blogs/[slug].generateMetadata\" is unreferenced — nothing in the snapshot graph references it (medium confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "src/app/resources/blogs/[slug]/page.tsx",
+        "symbol": "src/app/resources/blogs/[slug].generateMetadata",
+        "detail": "function · unreferenced · src/app/resources/blogs/[slug]/page.tsx:44",
+        "line": 44,
+        "fact_id": "c83e71521724d7f0ac0023340dec04a5"
+      },
+      {
+        "symbol": "src/app/resources/blogs/[slug].generateMetadata",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "c83e71521724d7f0ac0023340dec04a5"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function src/app/resources/blogs/[slug].generateStaticParams",
+    "source": "dead-code",
+    "description": "function \"src/app/resources/blogs/[slug].generateStaticParams\" is unreferenced — nothing in the snapshot graph references it (medium confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "src/app/resources/blogs/[slug]/page.tsx",
+        "symbol": "src/app/resources/blogs/[slug].generateStaticParams",
+        "detail": "function · unreferenced · src/app/resources/blogs/[slug]/page.tsx:36",
+        "line": 36,
+        "fact_id": "6f3087b778566ceb4a8037e9e052e115"
+      },
+      {
+        "symbol": "src/app/resources/blogs/[slug].generateStaticParams",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "6f3087b778566ceb4a8037e9e052e115"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function src/lib.cn",
+    "source": "dead-code",
+    "description": "function \"src/lib.cn\" is unreferenced — nothing in the snapshot graph references it (medium confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "src/lib/utils.ts",
+        "symbol": "src/lib.cn",
+        "detail": "function · unreferenced · src/lib/utils.ts:12",
+        "line": 12,
+        "fact_id": "5b612a57d9c50cf13885321d0594223f"
+      },
+      {
+        "symbol": "src/lib.cn",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "5b612a57d9c50cf13885321d0594223f"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function src/lib.getBlogPostById",
+    "source": "dead-code",
+    "description": "function \"src/lib.getBlogPostById\" is unreferenced — nothing in the snapshot graph references it (medium confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "src/lib/blog-api.ts",
+        "symbol": "src/lib.getBlogPostById",
+        "detail": "function · unreferenced · src/lib/blog-api.ts:119",
+        "line": 119,
+        "fact_id": "d57051eb35429e462c73c4fd0acfc18c"
+      },
+      {
+        "symbol": "src/lib.getBlogPostById",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "d57051eb35429e462c73c4fd0acfc18c"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Additional dead-code candidates: 212 more (see find_orphans)",
+    "source": "dead-code",
+    "description": "0 further high/medium-confidence orphan(s) were omitted from individual insights and 212 low-confidence orphan(s) (methods/types/consts/vars — usage not edge-tracked) were not surfaced individually. Use the find_orphans tool (output_mode=full) for the complete list.",
+    "confidence": 0.4,
+    "evidence": null,
+    "suggested_actions": [
+      "Run find_orphans with confidence=high and visibility=unexported for the safest cleanup set"
+    ]
+  },
+  {
+    "title": "Performance risk (compounded, O(n³)): src/app/resources/blogs/_components.BlogContent",
+    "source": "performance",
+    "description": "Loops here call other looping functions; worst-case nesting compounds across the call graph to about O(n³). Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.55,
+    "evidence": [
+      {
+        "file": "src/app/resources/blogs/_components/BlogContent.tsx",
+        "symbol": "src/app/resources/blogs/_components.BlogContent",
+        "detail": "Loops here call other looping functions; worst-case nesting compounds across the call graph to about O(n³).",
+        "line": 287,
+        "fact_id": "25d726d4e1284d110e40c6709149d3a5"
+      },
+      {
+        "symbol": "src/app/resources/blogs/_components.BlogContent",
+        "detail": "src/app/resources/blogs/_components.renderBlock (loop_depth=2)",
+        "fact_id": "25d726d4e1284d110e40c6709149d3a5"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (compounded, O(n³)): src/app/resources/blogs/_components.renderListItems",
+    "source": "performance",
+    "description": "Loops here call other looping functions; worst-case nesting compounds across the call graph to about O(n³). Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.55,
+    "evidence": [
+      {
+        "file": "src/app/resources/blogs/_components/BlogContent.tsx",
+        "symbol": "src/app/resources/blogs/_components.renderListItems",
+        "detail": "Loops here call other looping functions; worst-case nesting compounds across the call graph to about O(n³).",
+        "line": 159,
+        "fact_id": "f4e0875998212207f319abd1910e80c7"
+      },
+      {
+        "symbol": "src/app/resources/blogs/_components.renderListItems",
+        "detail": "src/app/resources/blogs/_components.toReactStyle (loop_depth=1)",
+        "fact_id": "f4e0875998212207f319abd1910e80c7"
+      },
+      {
+        "symbol": "src/app/resources/blogs/_components.renderListItems",
+        "detail": "src/app/resources/blogs/_components.renderRuns (loop_depth=1)",
+        "fact_id": "f4e0875998212207f319abd1910e80c7"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (nested-loop, O(n²)): src/app.sitemap",
+    "source": "performance",
+    "description": "Loops nest 2 deep, so the body runs about O(n²) in the loop bounds. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "src/app/sitemap.ts",
+        "symbol": "src/app.sitemap",
+        "detail": "Loops nest 2 deep, so the body runs about O(n²) in the loop bounds.",
+        "line": 11,
+        "fact_id": "0d2faf6aac5d050fc16d1120587b7731"
+      },
+      {
+        "symbol": "src/app.sitemap",
+        "detail": "loop_depth=2, loop_count=2, cyclomatic=4",
+        "fact_id": "0d2faf6aac5d050fc16d1120587b7731"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (nested-loop, O(n²)): src/app/legal/_components.LegalPage",
+    "source": "performance",
+    "description": "Loops nest 2 deep, so the body runs about O(n²) in the loop bounds. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "src/app/legal/_components/LegalPage.tsx",
+        "symbol": "src/app/legal/_components.LegalPage",
+        "detail": "Loops nest 2 deep, so the body runs about O(n²) in the loop bounds.",
+        "line": 118,
+        "fact_id": "b8371d71c62947c6764b9ae18bb489b2"
+      },
+      {
+        "symbol": "src/app/legal/_components.LegalPage",
+        "detail": "loop_depth=2, loop_count=4, cyclomatic=5",
+        "fact_id": "b8371d71c62947c6764b9ae18bb489b2"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (nested-loop, O(n²)): src/app/pricing/_components.PricingFaqSection",
+    "source": "performance",
+    "description": "Loops nest 2 deep, so the body runs about O(n²) in the loop bounds. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "src/app/pricing/_components/PricingFaqSection.tsx",
+        "symbol": "src/app/pricing/_components.PricingFaqSection",
+        "detail": "Loops nest 2 deep, so the body runs about O(n²) in the loop bounds.",
+        "line": 40,
+        "fact_id": "abe28f8a29d2b3fc265cfb3eeb1f3309"
+      },
+      {
+        "symbol": "src/app/pricing/_components.PricingFaqSection",
+        "detail": "loop_depth=2, loop_count=2, cyclomatic=18",
+        "fact_id": "abe28f8a29d2b3fc265cfb3eeb1f3309"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (nested-loop, O(n²)): src/app/resources/blogs.BlogsPage",
+    "source": "performance",
+    "description": "Loops nest 2 deep, so the body runs about O(n²) in the loop bounds. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "src/app/resources/blogs/page.tsx",
+        "symbol": "src/app/resources/blogs.BlogsPage",
+        "detail": "Loops nest 2 deep, so the body runs about O(n²) in the loop bounds.",
+        "line": 74,
+        "fact_id": "fa090db1286c9e4c4a4ccafa58c995e7"
+      },
+      {
+        "symbol": "src/app/resources/blogs.BlogsPage",
+        "detail": "loop_depth=2, loop_count=3, cyclomatic=20",
+        "fact_id": "fa090db1286c9e4c4a4ccafa58c995e7"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (nested-loop, O(n²)): src/app/resources/blogs/[slug].BlogPostPage",
+    "source": "performance",
+    "description": "Loops nest 2 deep, so the body runs about O(n²) in the loop bounds. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "src/app/resources/blogs/[slug]/page.tsx",
+        "symbol": "src/app/resources/blogs/[slug].BlogPostPage",
+        "detail": "Loops nest 2 deep, so the body runs about O(n²) in the loop bounds.",
+        "line": 73,
+        "fact_id": "ef132c981a572fca0f61b0ae99987753"
+      },
+      {
+        "symbol": "src/app/resources/blogs/[slug].BlogPostPage",
+        "detail": "loop_depth=2, loop_count=6, cyclomatic=17",
+        "fact_id": "ef132c981a572fca0f61b0ae99987753"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (nested-loop, O(n²)): src/app/resources/blogs/_components.renderBlock",
+    "source": "performance",
+    "description": "Loops nest 2 deep, so the body runs about O(n²) in the loop bounds. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "src/app/resources/blogs/_components/BlogContent.tsx",
+        "symbol": "src/app/resources/blogs/_components.renderBlock",
+        "detail": "Loops nest 2 deep, so the body runs about O(n²) in the loop bounds.",
+        "line": 167,
+        "fact_id": "263c3b63e4bed38786ff9d07768ea37f"
+      },
+      {
+        "symbol": "src/app/resources/blogs/_components.renderBlock",
+        "detail": "loop_depth=2, loop_count=2, cyclomatic=25",
+        "fact_id": "263c3b63e4bed38786ff9d07768ea37f"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (nested-loop, O(n²)): src/components/sections.HeroSection",
+    "source": "performance",
+    "description": "Loops nest 2 deep, so the body runs about O(n²) in the loop bounds. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "src/components/sections/HeroSection.tsx",
+        "symbol": "src/components/sections.HeroSection",
+        "detail": "Loops nest 2 deep, so the body runs about O(n²) in the loop bounds.",
+        "line": 89,
+        "fact_id": "9f901d8c451206d130872fe9ddb9ffb7"
+      },
+      {
+        "symbol": "src/components/sections.HeroSection",
+        "detail": "loop_depth=2, loop_count=7, cyclomatic=17",
+        "fact_id": "9f901d8c451206d130872fe9ddb9ffb7"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (nested-loop, O(n²)): src/lib.getAllBlogSlugs",
+    "source": "performance",
+    "description": "Loops nest 2 deep, so the body runs about O(n²) in the loop bounds. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "src/lib/blog-api.ts",
+        "symbol": "src/lib.getAllBlogSlugs",
+        "detail": "Loops nest 2 deep, so the body runs about O(n²) in the loop bounds.",
+        "line": 125,
+        "fact_id": "56ea0d14983c124d4322da2078ac29ad"
+      },
+      {
+        "symbol": "src/lib.getAllBlogSlugs",
+        "detail": "loop_depth=2, loop_count=2, cyclomatic=4",
+        "fact_id": "56ea0d14983c124d4322da2078ac29ad"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (compounded, O(n²)): src/app/resources/blogs/_components.renderRuns",
+    "source": "performance",
+    "description": "Loops here call other looping functions; worst-case nesting compounds across the call graph to about O(n²). Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.55,
+    "evidence": [
+      {
+        "file": "src/app/resources/blogs/_components/BlogContent.tsx",
+        "symbol": "src/app/resources/blogs/_components.renderRuns",
+        "detail": "Loops here call other looping functions; worst-case nesting compounds across the call graph to about O(n²).",
+        "line": 139,
+        "fact_id": "2e58303afddfb6f84c9287fc50ac8725"
+      },
+      {
+        "symbol": "src/app/resources/blogs/_components.renderRuns",
+        "detail": "src/app/resources/blogs/_components.renderRun (loop_depth=1)",
+        "fact_id": "2e58303afddfb6f84c9287fc50ac8725"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  }
+]
