@@ -2,7 +2,7 @@
   {
     "title": "Architecture pattern: nextjs",
     "source": "layers",
-    "description": "Recognised nextjs from directory names: 45 of 47 typescript modules classified — 98% of this repository's 48 modules. All 99 imports between ordered layers run inward; none run against the order.",
+    "description": "Recognised nextjs from directory names: 55 of 57 typescript modules classified — 98% of this repository's 58 modules. All 103 imports between ordered layers run inward; none run against the order.",
     "confidence": 0.95,
     "evidence": [
       {
@@ -71,6 +71,16 @@
         "fact_id": "ad16c2cc60d2ad1f26ec902851b4fa3d"
       },
       {
+        "fact": "src/app/legal/acceptable-use",
+        "detail": "module \"src/app/legal/acceptable-use\" maps to layer \"pages\"",
+        "fact_id": "caa44a4c1e51a1eeb64e565b10926bc4"
+      },
+      {
+        "fact": "src/app/legal/acceptable-use/_data",
+        "detail": "module \"src/app/legal/acceptable-use/_data\" maps to layer \"pages\"",
+        "fact_id": "675094be0f101bebaa4f7ca404e4d7d2"
+      },
+      {
         "fact": "src/app/legal/cookies",
         "detail": "module \"src/app/legal/cookies\" maps to layer \"pages\"",
         "fact_id": "e30072fc16a21f299fe6e0ab10518a6e"
@@ -79,6 +89,46 @@
         "fact": "src/app/legal/cookies/_data",
         "detail": "module \"src/app/legal/cookies/_data\" maps to layer \"pages\"",
         "fact_id": "bdd8e680bbfc21545de0865a9fad832a"
+      },
+      {
+        "fact": "src/app/legal/copyright",
+        "detail": "module \"src/app/legal/copyright\" maps to layer \"pages\"",
+        "fact_id": "98219f27a2478ff59549e578c8a862ba"
+      },
+      {
+        "fact": "src/app/legal/copyright/_data",
+        "detail": "module \"src/app/legal/copyright/_data\" maps to layer \"pages\"",
+        "fact_id": "2e16f0cad13830e300fa1f67db4dfa1f"
+      },
+      {
+        "fact": "src/app/legal/disclaimer",
+        "detail": "module \"src/app/legal/disclaimer\" maps to layer \"pages\"",
+        "fact_id": "04f0282fa12542d3bc1b304c363d77f7"
+      },
+      {
+        "fact": "src/app/legal/disclaimer/_data",
+        "detail": "module \"src/app/legal/disclaimer/_data\" maps to layer \"pages\"",
+        "fact_id": "01f932d382dc3a60da44505d8db0321f"
+      },
+      {
+        "fact": "src/app/legal/privacy",
+        "detail": "module \"src/app/legal/privacy\" maps to layer \"pages\"",
+        "fact_id": "ec7bc9d7b765e812f951754684e2ad32"
+      },
+      {
+        "fact": "src/app/legal/privacy/_data",
+        "detail": "module \"src/app/legal/privacy/_data\" maps to layer \"pages\"",
+        "fact_id": "ca7450a7086f53ae4fedc4d6f326992b"
+      },
+      {
+        "fact": "src/app/legal/terms",
+        "detail": "module \"src/app/legal/terms\" maps to layer \"pages\"",
+        "fact_id": "86469b116189ad50b04dc45b1376bc4a"
+      },
+      {
+        "fact": "src/app/legal/terms/_data",
+        "detail": "module \"src/app/legal/terms/_data\" maps to layer \"pages\"",
+        "fact_id": "8d934d3651a40ee966882cd2ac34cf1f"
       },
       {
         "fact": "src/app/pricing",
@@ -241,8 +291,8 @@
         "typescript"
       ],
       "imports_against": 0,
-      "imports_inward": 99,
-      "imports_same_level": 128,
+      "imports_inward": 103,
+      "imports_same_level": 151,
       "layer_examples": {
         "components": "src/components/chat",
         "hooks": "src/hooks",
@@ -265,9 +315,9 @@
         "types"
       ],
       "layers_unordered": null,
-      "modules_classified": 45,
-      "modules_graded": 45,
-      "modules_scanned": 47
+      "modules_classified": 55,
+      "modules_graded": 55,
+      "modules_scanned": 57
     }
   },
   {
@@ -688,14 +738,14 @@
     ]
   },
   {
-    "title": "Most depended-upon package: src/lib (Ca=17)",
+    "title": "Most depended-upon package: src/lib (Ca=22)",
     "source": "package-metrics",
-    "description": "\"src/lib\" is depended upon by 17 other packages — a change-risk concentrator. Edits ripple across dependents, so keep its public contract stable.",
+    "description": "\"src/lib\" is depended upon by 22 other packages — a change-risk concentrator. Edits ripple across dependents, so keep its public contract stable.",
     "confidence": 0.6,
     "evidence": [
       {
         "fact": "src/lib",
-        "detail": "Ca=17 I=0.06",
+        "detail": "Ca=22 I=0.04",
         "fact_id": "0acd48a1102e3168601a685120fa23ac"
       }
     ],
@@ -952,9 +1002,9 @@
     ]
   },
   {
-    "title": "Additional dead-code candidates: 212 more (see find_orphans)",
+    "title": "Additional dead-code candidates: 225 more (see find_orphans)",
     "source": "dead-code",
-    "description": "0 further high/medium-confidence orphan(s) were omitted from individual insights and 212 low-confidence orphan(s) (methods/types/consts/vars — usage not edge-tracked) were not surfaced individually. Use the find_orphans tool (output_mode=full) for the complete list.",
+    "description": "0 further high/medium-confidence orphan(s) were omitted from individual insights and 225 low-confidence orphan(s) (methods/types/consts/vars — usage not edge-tracked) were not surfaced individually. Use the find_orphans tool (output_mode=full) for the complete list.",
     "confidence": 0.4,
     "evidence": null,
     "suggested_actions": [
@@ -1039,6 +1089,30 @@
     ]
   },
   {
+    "title": "Performance risk (nested-loop, O(n²)): src/app/legal/_components.Block",
+    "source": "performance",
+    "description": "Loops nest 2 deep, so the body runs about O(n²) in the loop bounds. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "src/app/legal/_components/LegalPage.tsx",
+        "symbol": "src/app/legal/_components.Block",
+        "detail": "Loops nest 2 deep, so the body runs about O(n²) in the loop bounds.",
+        "line": 92,
+        "fact_id": "9f9b29c75d5d48ca5186acc29b018d74"
+      },
+      {
+        "symbol": "src/app/legal/_components.Block",
+        "detail": "loop_depth=2, loop_count=7, cyclomatic=16",
+        "fact_id": "9f9b29c75d5d48ca5186acc29b018d74"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
     "title": "Performance risk (nested-loop, O(n²)): src/app/legal/_components.LegalPage",
     "source": "performance",
     "description": "Loops nest 2 deep, so the body runs about O(n²) in the loop bounds. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
@@ -1048,12 +1122,12 @@
         "file": "src/app/legal/_components/LegalPage.tsx",
         "symbol": "src/app/legal/_components.LegalPage",
         "detail": "Loops nest 2 deep, so the body runs about O(n²) in the loop bounds.",
-        "line": 118,
+        "line": 230,
         "fact_id": "b8371d71c62947c6764b9ae18bb489b2"
       },
       {
         "symbol": "src/app/legal/_components.LegalPage",
-        "detail": "loop_depth=2, loop_count=4, cyclomatic=5",
+        "detail": "loop_depth=2, loop_count=4, cyclomatic=7",
         "fact_id": "b8371d71c62947c6764b9ae18bb489b2"
       }
     ],

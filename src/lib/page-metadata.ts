@@ -40,13 +40,33 @@ export interface PageMetadataInput {
    * fall through to the layout's `title.default`.
    */
   title?: string;
-  /** Meta description. Also reused as the OpenGraph/Twitter description. */
+  /**
+   * Meta description, for search engines. Google truncates this at roughly 155
+   * characters, so write to that budget.
+   */
   description: string;
   /**
    * OpenGraph/Twitter title, when the social title should differ from the
    * `<title>` tag. Defaults to `title`.
    */
   socialTitle?: string;
+  /**
+   * Longer description for link previews, used for `og:description` and
+   * `twitter:description`. Falls back to `description`.
+   *
+   * These two genuinely have different consumers and different budgets, and
+   * collapsing them into one string costs you the difference. Google cuts a
+   * meta description at ~155 characters; WhatsApp renders roughly 300 in a link
+   * card, LinkedIn around 200, Slack more still. Writing one 155-character
+   * string for both means every link anyone pastes is capped at the shortest
+   * limit in the set — which is exactly why a shared link reads as a stub next
+   * to a competitor who wrote for the card.
+   *
+   * Aim for 200-300 characters: say what the product does, for whom, and what
+   * changes. It is the only paragraph most people will read before deciding
+   * whether to click.
+   */
+  socialDescription?: string;
 }
 
 export function pageMetadata({
@@ -54,9 +74,11 @@ export function pageMetadata({
   title,
   description,
   socialTitle,
+  socialDescription,
 }: PageMetadataInput): Metadata {
   const url = absoluteUrl(path);
   const ogTitle = socialTitle ?? title;
+  const ogDescription = socialDescription ?? description;
 
   return {
     ...(title ? { title } : {}),
@@ -64,7 +86,7 @@ export function pageMetadata({
     alternates: { canonical: path },
     openGraph: {
       ...(ogTitle ? { title: ogTitle } : {}),
-      description,
+      description: ogDescription,
       url,
       siteName: SITE_NAME,
       type: 'website',
@@ -73,7 +95,7 @@ export function pageMetadata({
     twitter: {
       card: 'summary_large_image',
       ...(ogTitle ? { title: ogTitle } : {}),
-      description,
+      description: ogDescription,
     },
   };
 }

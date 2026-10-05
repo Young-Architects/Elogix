@@ -184,4 +184,4 @@ This code is laid out as **nextjs**. A dependency runs from an outer layer to an
 
 ---
 
-*Generated at 2026-09-27T19:58:57Z in 1.6777851s. 1410 facts, 44 insights.*
+*Generated at 2026-10-05T09:36:32Z in 2.6493111s. 1410 facts, 44 insights.*

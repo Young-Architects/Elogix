@@ -1,82 +1,52 @@
 /**
- * opengraph-image — the social-share card shown when the site link is pasted
- * anywhere that reads Open Graph tags (WhatsApp, iMessage, Slack, LinkedIn,
- * Facebook, Discord, etc.). Next.js wires this file into `og:image` +
- * `og:image:width/height/alt` automatically for the root route.
+ * opengraph-image — the card shown wherever the site link is pasted
+ * (WhatsApp, Slack, iMessage, LinkedIn, Facebook, Discord, X). Next wires this
+ * file into `og:image` + `og:image:width/height/alt` automatically for the
+ * root route, and `twitter-image.tsx` re-exports it so both cards match.
  *
- * It's a generated 1200×630 PNG (the ratio social platforms expect) rather than
- * the raw transparent logo, which the various apps render inconsistently on
- * black/white. The white wordmark sits on the site's dark brand background.
+ * The layout lives in `@/lib/og-card` and is shared with the per-route cards,
+ * so there is one design to maintain rather than one per page.
+ *
+ * ── What changed and why ──
+ *
+ * This used to render the white wordmark and a tagline, centred on the dark
+ * brand field. It looked tidy and said nothing. A pasted link is frequently the
+ * first and only impression — the card has to answer "what is this", not "who
+ * made this" — so it now leads with the product proposition and shows a
+ * schematic of the thing itself, with the wordmark reduced to a signature.
  */
 import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
+import { ogCard } from "@/lib/og-card";
 
-export const alt = "Expendesk — Expense Intelligence for Finance Teams";
+/** Becomes `og:image:alt` / `twitter:image:alt`. Describes the card, which is
+ *  what a screen-reader user on a social client actually encounters. */
+export const alt =
+  "Expendesk — expense management software: automated claims, approvals and real-time spend visibility for finance teams";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function OpengraphImage() {
-  // Inline the logo as a data URI so satori can embed it without a network hop.
+  // Inlined as a data URI: satori has no network access, so a remote src
+  // silently renders nothing.
   const logo = await readFile(join(process.cwd(), "public", "logo-white.png"));
   const logoSrc = `data:image/png;base64,${logo.toString("base64")}`;
 
   return new ImageResponse(
-    (
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "#050816",
-          position: "relative",
-        }}
-      >
-        {/* Soft brand glow behind the logo */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "radial-gradient(650px 420px at 50% 42%, rgba(124,58,237,0.38), rgba(5,8,22,0) 62%)",
-          }}
-        />
-
-        {/* Supplied light wordmark — 4248×1091 source (aspect 3.894), so 730
-            wide must pair with 187 tall or satori stretches it. The wordmark
-            still lands ~188px tall, exactly as before; only the tagline is
-            gone, since this asset is wordmark-only by design. */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={logoSrc} width={730} height={187} alt="Expendesk" />
-
-        <div
-          style={{
-            marginTop: 30,
-            fontSize: 30,
-            letterSpacing: 6,
-            textTransform: "uppercase",
-            color: "rgba(199,210,254,0.78)",
-          }}
-        >
-          Expense Intelligence for Finance Teams
-        </div>
-
-        {/* Brand-gradient accent underline */}
-        <div
-          style={{
-            marginTop: 34,
-            width: 120,
-            height: 6,
-            borderRadius: 999,
-            background:
-              "linear-gradient(90deg, #6366f1 0%, #8b5cf6 60%, #a78bfa 100%)",
-          }}
-        />
-      </div>
-    ),
+    ogCard({
+      eyebrow: "Expense intelligence",
+      // Kept under ~48 characters — satori does not shrink text to fit.
+      headline: "Every business expense, under control.",
+      sub: "Automated claims, approvals and reimbursements for SME and mid-market finance teams.",
+      chips: [
+        "Receipt capture",
+        "Approval workflows",
+        "Policy compliance",
+        "Real-time spend visibility",
+      ],
+      logoSrc,
+    }),
     { ...size },
   );
 }

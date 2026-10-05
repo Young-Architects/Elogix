@@ -96,6 +96,14 @@ export const metadata: Metadata = pageMetadata({
   socialTitle: "Expense Management Software for Growing Businesses",
   description:
     "Automate expense tracking, approvals and employee reimbursements in one platform. Real-time spend visibility for SME and mid-market finance teams.",
+  /**
+   * Longer copy for link previews only. `description` above is written to
+   * Google's ~155-character budget; WhatsApp renders roughly 300 in a link
+   * card and LinkedIn around 200, so reusing the short string there threw away
+   * half the space a shared link gets. See lib/page-metadata.ts.
+   */
+  socialDescription:
+    "Expendesk replaces spreadsheets and email approvals with one platform for business expenses. Employees submit claims from anywhere, approvals route automatically, out-of-policy spend is flagged as it happens, and finance sees every rupee in real time.",
 });
 
 export default function Home() {

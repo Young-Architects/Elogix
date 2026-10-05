@@ -1,15 +1,15 @@
 {
-  "snapshot_id": "sha256:8f1584ee1ee72dc8889d908e9003bed6af388bed390dbae4b32e3b28982f41f2",
+  "snapshot_id": "sha256:a7cab3a78f8dbfe36839d7835d5b9197da04aed0f379114244505777aacb4011",
   "format_version": 1,
   "enola_version": "0.4.21",
   "extractor_version": "v270",
-  "generated_at": "2026-09-27T19:58:57Z",
-  "duration": "1.6777851s",
+  "generated_at": "2026-10-05T09:36:32Z",
+  "duration": "2.6493111s",
   "repo_path": "C:\\Users\\user\\OneDrive\\Desktop\\Elogix",
   "git": {
     "ref": "main",
-    "commit": "dddbcef04c7df380f393f5c35fdb2691452288b2",
-    "dirty": true,
+    "commit": "38d6285599cb1e393b382acf7ed47119818feab5",
+    "dirty": false,
     "remote": "github.com/young-architects/elogix"
   },
   "extractors": [
@@ -48,9 +48,9 @@
   "config_hash": "sha256:73d78ea79f51e19979d4c7d00bd9463ae684ebcb909116abad86675323c32c05",
   "ignore_glob_hash": "sha256:7523cc6397a498e151125a682d28fbf6df20c6f51f6dfaf18fd8f5239a20d2d8",
   "output_hashes": {
-    "facts.jsonl": "sha256:7872cc3d32915e963c42418d25136285c65e8dc97d07c40ea50773e927a32431",
+    "facts.jsonl": "sha256:f9807556a1ab24d8febe9cbf30ad78bcd02f4214d5491bc0d967825d331ef93f",
     "insights.json": "sha256:fff324af237b3150f8e0dad31df7b8092f31436c1d72c42ff79967271759acec",
-    "llm_context.md": "sha256:0ad8a6090ca251068d56716121a7108a64870e2ee34b37a7b50299ab4c7f905f"
+    "llm_context.md": "sha256:f2c3379a5f2ba0f372204277c9cb511e49e4c5ef02c269fe248feb3c333a9b66"
   },
   "fact_count": 1410,
   "insight_count": 44,
