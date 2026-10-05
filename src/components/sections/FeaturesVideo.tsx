@@ -15,12 +15,13 @@
  *
  * Floating-badge and industry icons map from string `iconKey`s
  * (`FLOATING_BADGE_ICON_MAP` / `INDUSTRY_ICON_MAP`); all copy/figures come from
- * `src/data/sections/features.json`. The <video> source comes from
- * `featuresVideo.featureVideoUrl` and MUST be a browser-playable container
- * (MP4/H.264, WebM or Ogg) — see the FEATURE VIDEO SOURCE block below.
+ * `src/data/sections/features.json`. The product demo is a YouTube video
+ * named by `featuresVideo.featureVideoUrl`, embedded as a click-to-load
+ * facade — see the PRODUCT DEMO VIDEO block below.
  */
 
 import { useRef, useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 import {
   motion,
   useMotionTemplate,
@@ -118,43 +119,60 @@ const floatingBadges: Badge[] = featuresData.featuresVideo.floatingBadges.map((b
 const featureStats = featuresData.featuresVideo.stats;
 
 /* ═══════════════════════════════════════════════════════════════
-   FEATURE VIDEO SOURCE
+   PRODUCT DEMO VIDEO
    ───────────────────────────────────────────────────────────────
-   <video> can only decode a handful of containers. MKV (Matroska),
-   MOV and AVI are NOT among them in any browser — they need to be
-   re-encoded to MP4 (H.264 + AAC) or WebM. The dev warning below
-   catches that mistake at the source instead of leaving a silent
-   black box on the page.
+   The demo is hosted on YouTube, so `featureVideoUrl` in features.json holds a
+   YouTube link rather than a media file. It previously pointed at a self-hosted
+   `.mkv` which both 404'd and is a container no browser can decode in a <video>
+   element — the player on the live site had been dead on arrival.
+
+   The embed is a *facade*: the poster frame renders as a plain image and the
+   YouTube iframe is only mounted once a visitor presses play. Two reasons. A
+   YouTube iframe pulls roughly a megabyte of player JavaScript on mount, which
+   is a lot to spend on every visitor for a video most will never start. And
+   YouTube sets its cookies the moment that iframe loads, so the facade keeps
+   the site's own Cookie Policy honest: social-media cookies drop when the
+   visitor chooses to play, not when the page happens to render.
 ═══════════════════════════════════════════════════════════════ */
-const FEATURE_VIDEO_SRC = featuresData.featuresVideo.featureVideoUrl;
 
-/** Optional — add `featureVideoPosterUrl` to the JSON to show a still frame
- *  before playback starts (strongly recommended: it removes the black box
- *  while the file loads and costs nothing on mobile data). */
-const FEATURE_VIDEO_POSTER = (
-  featuresData.featuresVideo as { featureVideoPosterUrl?: string }
-).featureVideoPosterUrl;
-
-/** Containers a browser will actually decode in a <video> element. */
-const PLAYABLE_VIDEO_RE = /\.(mp4|m4v|webm|ogv|ogg)(?:[?#]|$)/i;
-
-/** MIME type for <source type="…">, derived from the file extension. Letting
- *  the browser reject an unsupported type up front gives us a real `error`
- *  event to react to, rather than an element that just never paints. */
-function videoMimeType(url: string): string | undefined {
-  const ext = url.split(/[?#]/)[0].split(".").pop()?.toLowerCase();
-  if (ext === "webm") return "video/webm";
-  if (ext === "ogv" || ext === "ogg") return "video/ogg";
-  if (ext === "mp4" || ext === "m4v") return "video/mp4";
-  return undefined; // unknown/unsupported — let the browser attempt to sniff it
+/**
+ * Pull the 11-character video id out of any shape a YouTube URL takes:
+ * `youtu.be/ID`, `youtube.com/watch?v=ID`, `youtube.com/embed/ID`,
+ * `youtube.com/shorts/ID`, or a bare id pasted straight into the data file.
+ */
+function youtubeId(url: string): string | null {
+  if (/^[\w-]{11}$/.test(url)) return url;
+  const m = url.match(
+    /(?:youtu\.be\/|youtube(?:-nocookie)?\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/))([\w-]{11})/
+  );
+  return m ? m[1] : null;
 }
 
-if (process.env.NODE_ENV !== "production" && !PLAYABLE_VIDEO_RE.test(FEATURE_VIDEO_SRC)) {
+const FEATURE_VIDEO_ID = youtubeId(featuresData.featuresVideo.featureVideoUrl);
+
+/** Poster frame. `maxresdefault` is the largest still YouTube publishes and is
+ *  verified present for this video; not every upload has one, so the <Image>
+ *  below falls back to `hqdefault`, which always exists. */
+const ytThumb = (id: string, quality: "maxresdefault" | "hqdefault") =>
+  `https://i.ytimg.com/vi/${id}/${quality}.jpg`;
+
+/**
+ * `youtube-nocookie.com` is YouTube's privacy-enhanced host. Paired with the
+ * facade above, no YouTube cookie is set until playback actually starts.
+ *
+ * `autoplay=1` is safe here: the iframe only mounts as the direct result of a
+ * click, so the browser counts it as user-initiated and will not block it.
+ */
+const ytEmbed = (id: string) =>
+  `https://www.youtube-nocookie.com/embed/${id}` +
+  `?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+
+if (process.env.NODE_ENV !== "production" && !FEATURE_VIDEO_ID) {
   console.warn(
-    `[FeaturesVideo] featureVideoUrl points at "${FEATURE_VIDEO_SRC}", which is not a ` +
-    `browser-playable video container. <video> supports MP4 (H.264/AAC), WebM and Ogg — ` +
-    `.mkv / .mov / .avi will not play in ANY browser. Re-encode the file to MP4 and ` +
-    `update featureVideoUrl in src/data/sections/features.json.`
+    `[FeaturesVideo] featureVideoUrl is "${featuresData.featuresVideo.featureVideoUrl}", ` +
+      `which is not a recognisable YouTube URL. Expected youtu.be/<id>, ` +
+      `youtube.com/watch?v=<id> or youtube.com/embed/<id>. ` +
+      `Update featureVideoUrl in src/data/sections/features.json.`
   );
 }
 
@@ -721,48 +739,22 @@ function IndustrySection() {
 ═══════════════════════════════════════════════════════════════ */
 export default function FeaturesVideoWithIndustry() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  /** False until the visitor presses play. While false the frame shows only the
+   *  poster image — the YouTube iframe, its player script and its cookies are
+   *  not loaded at all. */
   const [isPlaying, setIsPlaying] = useState(false);
-  /** Set when the browser cannot load/decode the file, so we can show a real
-   *  message instead of an inert black rectangle. */
-  const [videoFailed, setVideoFailed] = useState(false);
+  /** maxres stills do not exist for every upload; `onError` on the poster drops
+   *  to hqdefault, which YouTube always generates. */
+  const [thumbQuality, setThumbQuality] = useState<"maxresdefault" | "hqdefault">(
+    "maxresdefault"
+  );
 
-  /* ── Drive playback imperatively ──────────────────────────────────────
-     `autoPlay` is only honoured when the element mounts — flipping it as a
-     prop afterwards does nothing at all, which is why toggling `isPlaying`
-     never started the video. Playback has to be driven through the DOM node.
-
-     play() returns a promise that REJECTS when the browser blocks autoplay
-     (iOS Low Power Mode, data-saver, no prior user gesture) or when the file
-     can't be decoded. Without the catch, the UI would claim to be playing
-     while nothing happened — and an unhandled rejection would hit the console. */
-  useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-
-    if (isPlaying) {
-      v.play().catch(() => setIsPlaying(false));
-    } else {
-      v.pause();
-    }
-  }, [isPlaying]);
-
-  /* ── Pause once it scrolls out of sight ───────────────────────────────
-     Matters most on phones: a looping video decoding off-screen burns
-     battery and mobile data for something nobody is looking at. */
-  useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting && !v.paused) setIsPlaying(false);
-      },
-      { threshold: 0.25 }
-    );
-    io.observe(v);
-    return () => io.disconnect();
-  }, []);
+  /* The previous implementation drove a <video> element imperatively and
+     paused it on scroll-out via IntersectionObserver. Neither is possible — or
+     needed — with a YouTube iframe: it lives in a cross-origin document, so the
+     parent page cannot call play() or pause() on it without loading the
+     YouTube IFrame API, which would defeat the point of the facade. Playback is
+     now simply "mounted or not". */
 
   const rotateX = useMotionValue(0);
   const rotateY = useMotionValue(0);
@@ -914,49 +906,47 @@ export default function FeaturesVideoWithIndustry() {
                       </div>
 
                       <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-slate-900 shadow-2xl border border-slate-800 flex items-center justify-center group">
-                        <video
-                          ref={videoRef}
-                          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isPlaying ? "opacity-100" : "opacity-40"}`}
-                          muted
-                          loop
-                          // playsInline is REQUIRED on iOS — without it Safari
-                          // hijacks the video into a fullscreen native player
-                          // instead of playing it inside the mockup.
-                          playsInline
-                          // preload="none" keeps the file off the wire until
-                          // the visitor actually asks for it. The clip is ~11 MB;
-                          // preloading it would spend that on every mobile
-                          // visitor who never presses play.
-                          preload="none"
-                          poster={FEATURE_VIDEO_POSTER}
-                          onError={() => {
-                            setVideoFailed(true);
-                            setIsPlaying(false);
-                          }}
-                          onPause={() => setIsPlaying(false)}
-                          onPlaying={() => setIsPlaying(true)}
-                          aria-label={featuresData.featuresVideo.headline}
-                        >
-                          {/* An explicit type lets the browser reject an
-                              unsupported container immediately and fire `error`,
-                              instead of silently rendering nothing. */}
-                          <source src={FEATURE_VIDEO_SRC} type={videoMimeType(FEATURE_VIDEO_SRC)} />
-                        </video>
-                        <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(255,255,255,0.03)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.03)_50%,rgba(255,255,255,0.03)_75%,transparent_75%,transparent)] bg-[length:24px_24px] pointer-events-none" />
-
-                        {/* Click anywhere on the frame to pause — without this
-                            there is no way to stop playback once it starts. */}
-                        {isPlaying && !videoFailed && (
-                          <button
-                            type="button"
-                            onClick={() => setIsPlaying(false)}
-                            aria-label="Pause video"
-                            className="absolute inset-0 z-10 cursor-pointer"
+                        {/* ── Facade ──
+                            Until the visitor presses play this is just a still
+                            image: no YouTube script, no YouTube cookie. The
+                            iframe below replaces it on click. */}
+                        {FEATURE_VIDEO_ID && !isPlaying && (
+                          <Image
+                            src={ytThumb(FEATURE_VIDEO_ID, thumbQuality)}
+                            alt={featuresData.featuresVideo.headline}
+                            fill
+                            sizes="(max-width: 1024px) 100vw, 760px"
+                            className="object-cover opacity-60 transition-opacity duration-500 group-hover:opacity-70"
+                            // Not every upload has a maxres still; fall back to
+                            // hqdefault, which YouTube always generates.
+                            onError={() => setThumbQuality("hqdefault")}
                           />
                         )}
 
+                        {/* ── Player ──
+                            Mounted only after a click, which is also what makes
+                            `autoplay=1` permissible: the browser treats it as
+                            user-initiated rather than blocking it. */}
+                        {FEATURE_VIDEO_ID && isPlaying && (
+                          <iframe
+                            className="absolute inset-0 h-full w-full"
+                            src={ytEmbed(FEATURE_VIDEO_ID)}
+                            title={featuresData.featuresVideo.headline}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerPolicy="strict-origin-when-cross-origin"
+                            allowFullScreen
+                          />
+                        )}
+
+                        {/* Diagonal sheen, kept above the poster but below the
+                            controls. Hidden during playback so it does not sit
+                            over the video. */}
+                        {!isPlaying && (
+                          <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(255,255,255,0.03)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.03)_50%,rgba(255,255,255,0.03)_75%,transparent_75%,transparent)] bg-[length:24px_24px] pointer-events-none" />
+                        )}
+
                         <AnimatePresence>
-                          {!isPlaying && !videoFailed && (
+                          {FEATURE_VIDEO_ID && !isPlaying && (
                             <motion.button
                               type="button"
                               initial={{ scale: 0.8, opacity: 0 }}
@@ -975,14 +965,16 @@ export default function FeaturesVideoWithIndustry() {
                         </AnimatePresence>
 
                         {/* Graceful failure — a black rectangle with a dead play
-                            button reads as a broken page; this reads as a state. */}
-                        {videoFailed && (
+                            button reads as a broken page; this reads as a state.
+                            Only reachable if featureVideoUrl stops parsing as a
+                            YouTube link. */}
+                        {!FEATURE_VIDEO_ID && (
                           <div className="relative z-10 flex flex-col items-center gap-1.5 px-6 text-center">
                             <span className="text-[13px] font-semibold text-white/90 sm:text-[14px]">
                               Preview unavailable
                             </span>
                             <span className="text-[11px] leading-relaxed text-white/50 sm:text-[12px]">
-                              This video couldn&apos;t be played in your browser.
+                              The product demo could not be loaded.
                             </span>
                           </div>
                         )}

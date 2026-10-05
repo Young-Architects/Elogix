@@ -2,7 +2,7 @@
   {
     "title": "Architecture pattern: nextjs",
     "source": "layers",
-    "description": "Recognised nextjs from directory names: 55 of 57 typescript modules classified — 98% of this repository's 58 modules. All 103 imports between ordered layers run inward; none run against the order.",
+    "description": "Recognised nextjs from directory names: 55 of 57 typescript modules classified — 98% of this repository's 58 modules. All 106 imports between ordered layers run inward; none run against the order.",
     "confidence": 0.95,
     "evidence": [
       {
@@ -291,7 +291,7 @@
         "typescript"
       ],
       "imports_against": 0,
-      "imports_inward": 103,
+      "imports_inward": 106,
       "imports_same_level": 151,
       "layer_examples": {
         "components": "src/components/chat",
@@ -518,26 +518,6 @@
     ]
   },
   {
-    "title": "High cyclomatic complexity: src/components/sections.FeaturesVideoWithIndustry (21)",
-    "source": "complexity-outliers",
-    "description": "\"src/components/sections.FeaturesVideoWithIndustry\" has a cyclomatic complexity of 21 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
-    "confidence": 0.7,
-    "evidence": [
-      {
-        "file": "src/components/sections/FeaturesVideo.tsx",
-        "symbol": "src/components/sections.FeaturesVideoWithIndustry",
-        "detail": "cyclomatic complexity 21 at line 722",
-        "line": 722,
-        "fact_id": "f7d018231f0c7602c81b5d3511faceb2"
-      }
-    ],
-    "suggested_actions": [
-      "Extract guard clauses and nested branches into helper functions",
-      "Replace deep conditionals with table/strategy dispatch where possible",
-      "Add tests covering the distinct branches before refactoring"
-    ]
-  },
-  {
     "title": "High cyclomatic complexity: src/components/sections.TableView (21)",
     "source": "complexity-outliers",
     "description": "\"src/components/sections.TableView\" has a cyclomatic complexity of 21 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
@@ -649,6 +629,26 @@
         "detail": "cyclomatic complexity 18 at line 50",
         "line": 50,
         "fact_id": "84e38da9c62746b8825fd86e10530bc1"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: src/components/sections.FeaturesVideoWithIndustry (18)",
+    "source": "complexity-outliers",
+    "description": "\"src/components/sections.FeaturesVideoWithIndustry\" has a cyclomatic complexity of 18 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "src/components/sections/FeaturesVideo.tsx",
+        "symbol": "src/components/sections.FeaturesVideoWithIndustry",
+        "detail": "cyclomatic complexity 18 at line 740",
+        "line": 740,
+        "fact_id": "f7d018231f0c7602c81b5d3511faceb2"
       }
     ],
     "suggested_actions": [
@@ -1002,9 +1002,9 @@
     ]
   },
   {
-    "title": "Additional dead-code candidates: 225 more (see find_orphans)",
+    "title": "Additional dead-code candidates: 226 more (see find_orphans)",
     "source": "dead-code",
-    "description": "0 further high/medium-confidence orphan(s) were omitted from individual insights and 225 low-confidence orphan(s) (methods/types/consts/vars — usage not edge-tracked) were not surfaced individually. Use the find_orphans tool (output_mode=full) for the complete list.",
+    "description": "0 further high/medium-confidence orphan(s) were omitted from individual insights and 226 low-confidence orphan(s) (methods/types/consts/vars — usage not edge-tracked) were not surfaced individually. Use the find_orphans tool (output_mode=full) for the complete list.",
     "confidence": 0.4,
     "evidence": null,
     "suggested_actions": [

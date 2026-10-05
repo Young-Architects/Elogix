@@ -25,6 +25,15 @@ const nextConfig: NextConfig = {
         hostname: wordpressHost,
         pathname: "/wp-content/uploads/**",
       },
+      // YouTube thumbnails, used as the poster frame for the product demo on
+      // the home page. The player itself is only loaded when a visitor presses
+      // play — see FeaturesVideo — so this host serves one still image, which
+      // next/image then optimises and serves as WebP/AVIF.
+      {
+        protocol: "https",
+        hostname: "i.ytimg.com",
+        pathname: "/vi/**",
+      },
     ],
   },
   experimental: {

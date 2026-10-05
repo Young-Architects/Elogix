@@ -556,6 +556,105 @@ exactly one `<h1>` each, and every cross-document link resolves to a real route.
 
 ---
 
+## Link previews and the product demo (2026-10-06)
+
+Two related rounds: making a pasted link look like something, and replacing the
+dead video it was meant to show.
+
+### Link previews were technically perfect and said nothing
+
+Nothing was broken. `og:image` returned 200 in 0.14s at 1200x630 with width,
+height and alt declared. The problem was content:
+
+| | Before | After |
+| --- | --- | --- |
+| Card | Wordmark + tagline on dark | Headline, value line, 4 capability chips, product panel |
+| `og:description` | 146 chars | 251 chars |
+
+The old card answered *who made this*. A pasted link is frequently the only
+impression someone gets before deciding whether to tap, and the question they
+are asking is *what is this*.
+
+**The description split is the part worth remembering.** `<meta name="description">`
+and `og:description` have different consumers and different budgets — Google
+truncates at ~155 characters, WhatsApp renders roughly 300, LinkedIn around 200.
+`pageMetadata()` forced them to be the same string, so every link anyone pasted
+was capped at the shortest limit in the set. `socialDescription` now feeds the
+OG and Twitter tags while `description` stays on the Google budget. See
+[page-metadata.ts](../src/lib/page-metadata.ts).
+
+The card layout lives in [og-card.tsx](../src/lib/og-card.tsx) and is shared
+with `/solutions/pharmaceutical`, so there is one design to maintain. Note the
+constraint that cost a build iteration: **satori sizes a flex item to its
+content**, so a `flexGrow: 1` panel grew past the 1200px canvas and silently
+clipped every figure on the right edge. Both columns are now pinned to explicit
+widths summing to 1200.
+
+> **Social caches are the reason this looks like it did not work.** WhatsApp,
+> LinkedIn and Facebook cache previews per-URL for days. After deploying, force
+> a re-scrape: [LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/)
+> and [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/)
+> → *Scrape Again* (WhatsApp uses Facebook's cache). They are separate systems;
+> clearing one does nothing for the other. A LinkedIn report showing the old
+> 146-character description after deploy was a cached scrape, not a defect.
+
+### The product demo was dead, and is now a YouTube facade
+
+Round 4 flagged that the home page pointed at
+`youngarchitects.in/.../feat-video.mkv`, which returned **404** and is a
+container no browser can decode in a `<video>` element. It had been a dead play
+button on the live site. `featureVideoUrl` now holds
+`https://youtu.be/ijrI2tlUtZo`.
+
+It is embedded as a **facade**: the poster frame is a plain image and the
+YouTube iframe only mounts on click. Verified — zero YouTube iframes in the
+server HTML. Two reasons, both real:
+
+- A YouTube iframe pulls roughly a megabyte of player JavaScript on mount.
+- YouTube sets its cookies the moment that iframe loads. The facade is what
+  makes the Cookie Policy's "embedded content such as videos" clause literally
+  true: those cookies drop when a visitor chooses to play. The embed also uses
+  `youtube-nocookie.com`.
+
+The old `<video>` machinery — the ref, the imperative play/pause effect, the
+IntersectionObserver that paused on scroll-out — was removed. None of it can
+apply to a cross-origin iframe without loading the YouTube IFrame API, which
+would defeat the facade.
+
+`i.ytimg.com` was added to `next.config.ts` `remotePatterns` so the poster goes
+through `next/image` as WebP/AVIF rather than a raw 116KB JPEG, with an
+automatic fallback to `hqdefault` if a maxres still is ever missing.
+
+### VideoObject, finally
+
+Round 4 rejected the SEO team's `VideoObject` because it described a video that
+did not exist. It does now, and every field was read off YouTube's own page
+rather than estimated:
+
+```
+name          Expendesk Product Demo Video
+description   Get a walkthrough of Expendesk, try it Today.
+uploadDate    2026-10-05T09:06:30-07:00
+duration      PT3M4S            (cross-checked against lengthSeconds: 184)
+thumbnailUrl  .../ijrI2tlUtZo/maxresdefault.jpg
+embedUrl      youtube.com/embed/ijrI2tlUtZo
+```
+
+All four of Google's required fields present. The figures live in
+`features.json` beside the URL on purpose: swap the video and they must change
+together. **Re-read the real values then — a duration that is close but wrong is
+still wrong, and that is the kind of mismatch that gets markup discounted
+rather than merely ignored.**
+
+### Build note
+
+`npm run build` can fail with `EPERM: operation not permitted, unlink` on a path
+under `.next/static`. The cause is a stale *directory* where Next expects a
+file; `unlink` on a directory returns EPERM on Windows. `rm -rf .next` clears
+it. Unrelated to any source change, and it recurs.
+
+---
+
 ## Reading Search Console: which "errors" are not errors
 
 Search Console's Page Indexing report lists every URL Google did **not** index,

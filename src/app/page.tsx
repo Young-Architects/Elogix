@@ -14,6 +14,8 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { pageMetadata } from "@/lib/page-metadata";
+import { videoStructuredData, jsonLd } from "@/lib/structured-data";
+import featuresData from "@/data/sections/features.json";
 import HeroSection from "@/components/sections/HeroSection";
 import LeadMagnetSection from "@/components/sections/LeadMagnetSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
@@ -106,9 +108,33 @@ export const metadata: Metadata = pageMetadata({
     "Expendesk replaces spreadsheets and email approvals with one platform for business expenses. Employees submit claims from anywhere, approvals route automatically, out-of-policy spend is flagged as it happens, and finance sees every rupee in real time.",
 });
 
+/**
+ * `VideoObject` for the product demo embedded in the FeaturesVideo section.
+ *
+ * Every value is read from `features.json`, which carries the figures taken off
+ * YouTube's own page for the video — see the note in lib/structured-data.ts.
+ * The id is parsed from the same `featureVideoUrl` the component embeds, so the
+ * markup cannot end up describing a different video than the one on the page.
+ */
+const { featureVideoUrl, featureVideoMeta } = featuresData.featuresVideo;
+const videoId = featureVideoUrl.match(
+  /(?:youtu\.be\/|v=|embed\/)([\w-]{11})/
+)?.[1];
+
+const videoSchema =
+  videoId && featureVideoMeta
+    ? videoStructuredData({ videoId, ...featureVideoMeta })
+    : null;
+
 export default function Home() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#050816] text-white">
+      {videoSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLd(videoSchema) }}
+        />
+      )}
       <HeroSection />
       <ProblemSection />
       <SolutionSection />

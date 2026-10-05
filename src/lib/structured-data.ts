@@ -252,6 +252,55 @@ export function breadcrumbStructuredData(
 }
 
 /**
+ * `VideoObject` for an embedded YouTube video.
+ *
+ * ── Why this is only being added now ──
+ *
+ * An earlier round specified a VideoObject for the home page and it was
+ * rejected, because the video it described did not exist: the page pointed at a
+ * self-hosted `.mkv` that returned 404 and that no browser can decode anyway.
+ * Marking up a video that is not there earns a Search Console error and nothing
+ * on the results page.
+ *
+ * The demo now exists on YouTube, and every field Google requires — name,
+ * description, thumbnailUrl, uploadDate — plus the recommended `duration` was
+ * read off YouTube's own page for the video rather than estimated. Keep it that
+ * way: if the video is replaced, re-read the real values. A duration that is
+ * close but wrong is still wrong.
+ */
+export function videoStructuredData({
+  videoId,
+  name,
+  description,
+  uploadDate,
+  duration,
+}: {
+  /** The 11-character YouTube id. */
+  videoId: string;
+  name: string;
+  description: string;
+  /** ISO 8601 datetime, exactly as YouTube reports it. */
+  uploadDate: string;
+  /** ISO 8601 duration, e.g. "PT3M4S". */
+  duration: string;
+}): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name,
+    description,
+    thumbnailUrl: [`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`],
+    uploadDate,
+    duration,
+    // `embedUrl` is the canonical youtube.com form on purpose. The page embeds
+    // the privacy-enhanced youtube-nocookie host, but Google matches the video
+    // against its index by the standard embed URL.
+    embedUrl: `https://www.youtube.com/embed/${videoId}`,
+    publisher: { '@id': ORGANIZATION_ID },
+  };
+}
+
+/**
  * `WebPage` (or a subtype) for a single route, wired back into the site-wide
  * graph by `@id`.
  *

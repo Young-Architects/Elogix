@@ -6,7 +6,7 @@
 |--------|----------|---------|----------|
 | `.` | typescript | 5 | 3 |
 | `scripts` | typescript | 9 | 0 |
-| `src/app` | typescript | 20 | 12 |
+| `src/app` | typescript | 22 | 12 |
 | `src/app/about` | typescript | 2 | 2 |
 | `src/app/about/_data` | typescript | 1 | 1 |
 | `src/app/api/chat` | typescript | 5 | 2 |
@@ -59,20 +59,20 @@
 | `src/components/sections` | typescript | 115 | 20 |
 | `src/components/ui` | typescript | 17 | 10 |
 | `src/hooks` | typescript | 8 | 2 |
-| `src/lib` | typescript | 56 | 31 |
+| `src/lib` | typescript | 61 | 34 |
 | `src/types` | typescript | 26 | 25 |
 | `wordpress` | php | 5 | 5 |
 
 ## Extraction Quality
 
-- Files parsed: **139** / 203 seen (0 file(s) + 3 directory tree(s) skipped by ignore globs)
+- Files parsed: **140** / 204 seen (0 file(s) + 3 directory tree(s) skipped by ignore globs)
 - Parse errors: 0
 
 ## Architecture Pattern
 
 **Architecture pattern: nextjs** (confidence: 95%)
 
-Recognised nextjs from directory names: 55 of 57 typescript modules classified — 98% of this repository's 58 modules. All 103 imports between ordered layers run inward; none run against the order.
+Recognised nextjs from directory names: 55 of 57 typescript modules classified — 98% of this repository's 58 modules. All 106 imports between ordered layers run inward; none run against the order.
 
 Layer mapping:
 - module "src/app" maps to layer "pages"
@@ -184,4 +184,4 @@ This code is laid out as **nextjs**. A dependency runs from an outer layer to an
 
 ---
 
-*Generated at 2026-10-05T09:36:32Z in 2.6493111s. 1410 facts, 44 insights.*
+*Generated at 2026-10-05T21:05:39Z in 315.7651ms. 1422 facts, 44 insights.*
