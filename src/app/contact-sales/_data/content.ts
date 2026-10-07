@@ -34,7 +34,7 @@ export const salesAlternatives = [
   {
     iconKey: "calendar",
     label: "Prefer a live walkthrough? Book a demo",
-    href: "/contact-us",
+    href: "/book-a-demo",
   },
   {
     iconKey: "mail",

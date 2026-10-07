@@ -2,9 +2,13 @@
  * Copy for the /contact-us demo-booking page — one exported object per
  * section, consumed by the matching component in `../_components`.
  *
- * This page is the "Book a Demo" destination: every demo CTA across the site
- * lands here, on the GHL booking calendar. General contact enquiries go to
- * /contact-sales (the form page) instead.
+ * This page is **step 3 of the demo funnel**, not its entry point. Demo CTAs
+ * across the site now go to /book-a-demo (the qualifying form); visitors reach
+ * this calendar from the thank-you page that follows it, or directly if they
+ * already have the link. General contact enquiries go to /contact-sales.
+ *
+ * It was previously the destination for every demo CTA, which asked a stranger
+ * to pick a slot before anything had been established.
  */
 
 /* ------------------------------------------------------------------ */
@@ -46,4 +50,49 @@ export const bookingReassurance = [
 export const bookingAlternative = {
   label: "Not ready to book? Talk to a market specialist",
   href: "/contact-sales",
+} as const;
+
+/* ------------------------------------------------------------------ */
+/* Below the calendar                                                  */
+/* ------------------------------------------------------------------ */
+
+/**
+ * The sections below sit under the calendar rather than above it. Someone who
+ * reached this page came to pick a time — the widget stays the first thing
+ * they see, and the detail that reassures them is there if they scroll.
+ */
+
+export const calendarCover = {
+  heading: "What You'll Cover",
+  subheading: "In Your Demo, You'll Discover",
+  items: [
+    "How to automate employee expense claims",
+    "How to reduce reimbursement turnaround time",
+    "How to eliminate manual approval bottlenecks",
+    "How to improve spend visibility across teams",
+    "How Expendesk fits into your existing finance workflows",
+    "Best practices tailored to your business",
+  ],
+} as const;
+
+export const calendarAttendees = {
+  heading: "Who Should Attend?",
+  intro: "This session is ideal for:",
+  items: [
+    "Founders & Business Owners",
+    "CFOs",
+    "Finance Heads",
+    "Finance Managers",
+    "Operations Managers",
+    "HR & Administration Teams",
+  ],
+} as const;
+
+export const calendarClosing = {
+  heading: "Looking Forward to Meeting You!",
+  lines: [
+    "Our goal isn't to give you a generic product tour.",
+    "We'll understand your current expense management process, discuss your operational challenges, and demonstrate how Expendesk can help your business gain better control over expenses, reimbursements, and financial visibility.",
+  ],
+  footerNote: "30-Minute Session • Personalized Walkthrough • No Obligation",
 } as const;

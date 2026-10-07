@@ -42,7 +42,7 @@ export const hero: HeroContent = {
   ctaPrimary: "Download Free Checklist",
   ctaPrimaryHref: "/downloads/msme-lead-magnet.pdf",
   ctaSecondary: "Checklist + Schedule Assessment",
-  ctaSecondaryHref: "/contact-us",
+  ctaSecondaryHref: "/book-a-demo",
   trustedByLabel: "Trusted by",
   trustTags: ["50+ Pharma Teams", "SOC 2 Aligned", "HIPAA Compatible"],
   scrollLabel: "Scroll",

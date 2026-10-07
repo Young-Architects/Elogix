@@ -18,7 +18,7 @@
     { "iconKey": "eye",          "label": "Full Audit Trail"  }
   ],
   "ctas": {
-    "primary":   { "label": "Book a Free Demo", "href": "/contact-us"  },
+    "primary":   { "label": "Book a Free Demo", "href": "/book-a-demo"  },
     "secondary": { "label": "Download the Free Expense Management Guide",    "href": "/downloads/msme-lead-magnet.pdf" }
   },
   "stats": [

@@ -15,7 +15,7 @@
 import { readFileSync, existsSync } from 'node:fs';
 
 const ROUTES = [
-  'index', 'about', 'pricing', 'contact-us', 'contact-sales',
+  'index', 'about', 'pricing', 'contact-us', 'contact-sales', 'book-a-demo',
   'solutions/pharmaceutical', 'solutions/manufacturing', 'solutions/digital-agencies',
   'legal/terms', 'legal/privacy', 'legal/cookies', 'legal/acceptable-use', 'legal/disclaimer', 'legal/copyright',
 ];

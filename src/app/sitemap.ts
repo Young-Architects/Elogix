@@ -44,6 +44,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    // Funnel entry. The thank-you page that follows it is deliberately absent:
+    // it is noindex, and listing a noindex URL in a sitemap is a contradiction
+    // Search Console reports as an error.
+    {
+      url: absoluteUrl('/book-a-demo'),
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
     {
       url: absoluteUrl('/contact-us'),
       lastModified,

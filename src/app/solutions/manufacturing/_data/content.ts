@@ -7,7 +7,7 @@ export const content = {
   headline: { pre: "Expense Management for", accent: "Manufacturing Industries" },
   description:
     "Keep every plant, facility, and department on budget. Expendesk gives manufacturing teams granular cost control without slowing down operations.",
-  cta: { label: "Book a Demo", href: "/contact-us" },
+  cta: { label: "Book a Demo", href: "/book-a-demo" },
   comingSoon: {
     title: "The full Manufacturing page is on its way",
     message:

@@ -34,7 +34,7 @@ export const chooseNextStep: ChooseNextStepContent = {
       description:
         "See how Expendesk can automate and streamline your entire reimbursement process.",
       buttonLabel: "Schedule Demo",
-      href: "/contact-us",
+      href: "/book-a-demo",
       iconKey: "calendar",
     },
   ],
