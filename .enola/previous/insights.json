@@ -2,7 +2,7 @@
   {
     "title": "Architecture pattern: nextjs",
     "source": "layers",
-    "description": "Recognised nextjs from directory names: 55 of 57 typescript modules classified — 98% of this repository's 58 modules. All 106 imports between ordered layers run inward; none run against the order.",
+    "description": "Recognised nextjs from directory names: 61 of 63 typescript modules classified — 98% of this repository's 64 modules. All 111 imports between ordered layers run inward; none run against the order.",
     "confidence": 0.95,
     "evidence": [
       {
@@ -29,6 +29,36 @@
         "fact": "src/app/api/revalidate",
         "detail": "module \"src/app/api/revalidate\" maps to layer \"pages\"",
         "fact_id": "5d279e29c099c792a41e3207a9b96324"
+      },
+      {
+        "fact": "src/app/book-a-demo",
+        "detail": "module \"src/app/book-a-demo\" maps to layer \"pages\"",
+        "fact_id": "5a464a1cb46461f138e2f80048349270"
+      },
+      {
+        "fact": "src/app/book-a-demo/_components",
+        "detail": "module \"src/app/book-a-demo/_components\" maps to layer \"pages\"",
+        "fact_id": "710cc2653a20537ea5bbb4a6da0e13bd"
+      },
+      {
+        "fact": "src/app/book-a-demo/_data",
+        "detail": "module \"src/app/book-a-demo/_data\" maps to layer \"pages\"",
+        "fact_id": "6ea9b5c87a5a9b833e1c77f5da6d18b8"
+      },
+      {
+        "fact": "src/app/book-a-demo/thank-you",
+        "detail": "module \"src/app/book-a-demo/thank-you\" maps to layer \"pages\"",
+        "fact_id": "530ff4960567ad1dd4e1c8ea060c89f9"
+      },
+      {
+        "fact": "src/app/book-a-demo/thank-you/_components",
+        "detail": "module \"src/app/book-a-demo/thank-you/_components\" maps to layer \"pages\"",
+        "fact_id": "e1486414e39ffe962864aac0c9750cec"
+      },
+      {
+        "fact": "src/app/book-a-demo/thank-you/_data",
+        "detail": "module \"src/app/book-a-demo/thank-you/_data\" maps to layer \"pages\"",
+        "fact_id": "9e2b26dc3d4f6c4fcb6150b3f5d57b0d"
       },
       {
         "fact": "src/app/contact-sales",
@@ -291,8 +321,8 @@
         "typescript"
       ],
       "imports_against": 0,
-      "imports_inward": 106,
-      "imports_same_level": 151,
+      "imports_inward": 111,
+      "imports_same_level": 158,
       "layer_examples": {
         "components": "src/components/chat",
         "hooks": "src/hooks",
@@ -315,9 +345,9 @@
         "types"
       ],
       "layers_unordered": null,
-      "modules_classified": 55,
-      "modules_graded": 55,
-      "modules_scanned": 57
+      "modules_classified": 61,
+      "modules_graded": 61,
+      "modules_scanned": 63
     }
   },
   {
@@ -329,6 +359,95 @@
       {
         "detail": "examined: 0 associations, 0 controller handlers, 0 model tables"
       }
+    ]
+  },
+  {
+    "title": "Call-graph hotspot: src/hooks.useGhlEmbedLoaded (fan-in 3, fan-out 8)",
+    "source": "hotspots",
+    "description": "\"src/hooks.useGhlEmbedLoaded\" is a pinch point: 3 symbols call into it and it calls out to 8 others, so a large share of call chains pass through it (degree-centrality proxy for betweenness). Such chokepoints are high-risk to change and high-value to test.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "src/hooks/use-ghl-embed-loaded.ts",
+        "symbol": "src/hooks.useGhlEmbedLoaded",
+        "detail": "fan-in 3 × fan-out 8 = score 24",
+        "line": 22,
+        "fact_id": "a5ac28a02ee957a9e54b751b226de957"
+      },
+      {
+        "symbol": "src/app/contact-sales/_components.GhlContactForm",
+        "detail": "calls into src/hooks.useGhlEmbedLoaded",
+        "fact_id": "a18d6b1939373c7c66baea1ec997454c"
+      },
+      {
+        "symbol": "src/app/contact-us/_components.BookingCalendarSection",
+        "detail": "calls into src/hooks.useGhlEmbedLoaded",
+        "fact_id": "7bd376de36dd796d335372225bb007a4"
+      },
+      {
+        "symbol": "src/components/ui.GhlFormEmbed",
+        "detail": "calls into src/hooks.useGhlEmbedLoaded",
+        "fact_id": "ee164d8f13880feec5bbd4c311ea1711"
+      },
+      {
+        "symbol": "src/hooks",
+        "detail": "called by src/hooks.useGhlEmbedLoaded",
+        "fact_id": "9651bd0d3ba7cf10299968001e067300"
+      },
+      {
+        "symbol": "src/hooks.clearTimeout",
+        "detail": "called by src/hooks.useGhlEmbedLoaded"
+      },
+      {
+        "symbol": "src/hooks.done",
+        "detail": "called by src/hooks.useGhlEmbedLoaded"
+      },
+      {
+        "symbol": "src/hooks.setLoaded",
+        "detail": "called by src/hooks.useGhlEmbedLoaded"
+      },
+      {
+        "symbol": "src/hooks.setTimeout",
+        "detail": "called by src/hooks.useGhlEmbedLoaded"
+      }
+    ],
+    "suggested_actions": [
+      "Add focused tests around this chokepoint before refactoring",
+      "Consider decomposing it so call paths don't all funnel through one symbol",
+      "Verify it isn't doing orchestration that belongs in callers"
+    ]
+  },
+  {
+    "title": "Deep dependency chain: src/app/book-a-demo (depth 5)",
+    "source": "dependency-depth",
+    "description": "Module \"src/app/book-a-demo\" has a longest dependency chain of 5 modules: src/app/book-a-demo -\u003e src/app/book-a-demo/_components -\u003e src/app/book-a-demo/_data -\u003e src/components/ui -\u003e src/hooks. Deep chains slow comprehension and widen rebuild/retest impact when a module near the bottom changes.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "fact": "src/app/book-a-demo",
+        "fact_id": "5a464a1cb46461f138e2f80048349270"
+      },
+      {
+        "fact": "src/app/book-a-demo/_components",
+        "fact_id": "710cc2653a20537ea5bbb4a6da0e13bd"
+      },
+      {
+        "fact": "src/app/book-a-demo/_data",
+        "fact_id": "6ea9b5c87a5a9b833e1c77f5da6d18b8"
+      },
+      {
+        "fact": "src/components/ui",
+        "fact_id": "ee04bdc31e73e9b946a11225c27aa31a"
+      },
+      {
+        "fact": "src/hooks",
+        "fact_id": "9651bd0d3ba7cf10299968001e067300"
+      }
+    ],
+    "suggested_actions": [
+      "Flatten the chain by depending on shared abstractions instead of deep transitive modules",
+      "Check whether intermediate modules are pass-through layers that can be removed",
+      "Introduce interfaces to decouple the deepest modules from their consumers"
     ]
   },
   {
@@ -738,14 +857,14 @@
     ]
   },
   {
-    "title": "Most depended-upon package: src/lib (Ca=22)",
+    "title": "Most depended-upon package: src/lib (Ca=23)",
     "source": "package-metrics",
-    "description": "\"src/lib\" is depended upon by 22 other packages — a change-risk concentrator. Edits ripple across dependents, so keep its public contract stable.",
+    "description": "\"src/lib\" is depended upon by 23 other packages — a change-risk concentrator. Edits ripple across dependents, so keep its public contract stable.",
     "confidence": 0.6,
     "evidence": [
       {
         "fact": "src/lib",
-        "detail": "Ca=22 I=0.04",
+        "detail": "Ca=23 I=0.04",
         "fact_id": "0acd48a1102e3168601a685120fa23ac"
       }
     ],
@@ -1002,9 +1121,9 @@
     ]
   },
   {
-    "title": "Additional dead-code candidates: 226 more (see find_orphans)",
+    "title": "Additional dead-code candidates: 233 more (see find_orphans)",
     "source": "dead-code",
-    "description": "0 further high/medium-confidence orphan(s) were omitted from individual insights and 226 low-confidence orphan(s) (methods/types/consts/vars — usage not edge-tracked) were not surfaced individually. Use the find_orphans tool (output_mode=full) for the complete list.",
+    "description": "0 further high/medium-confidence orphan(s) were omitted from individual insights and 233 low-confidence orphan(s) (methods/types/consts/vars — usage not edge-tracked) were not surfaced individually. Use the find_orphans tool (output_mode=full) for the complete list.",
     "confidence": 0.4,
     "evidence": null,
     "suggested_actions": [

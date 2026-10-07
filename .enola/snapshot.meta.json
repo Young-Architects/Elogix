@@ -1,8 +1,8 @@
 {
   "repo_path": "C:\\Users\\user\\OneDrive\\Desktop\\Elogix",
   "repo_label": "elogix",
-  "generated_at": "2026-10-05T21:05:39Z",
-  "duration": "315.7651ms",
+  "generated_at": "2026-10-07T20:32:47Z",
+  "duration": "384.5708ms",
   "extractors": [
     "manifests",
     "mdintent",
@@ -38,59 +38,99 @@
   ],
   "file_hashes": [
     {
-      "path": "scripts/verify-seo.mjs",
-      "hash": "a680276fe18861646e8ea57d8d4b8f5169cab77342418a735d833405ca8361dc",
-      "mod_time": "2026-09-27T19:54:19Z"
+      "path": "src/app/solutions/pharmaceutical/_data/faq.ts",
+      "hash": "87b034f8b0dcee8450e27f60b7e634ec19a875e65cbb8266c541b2c5a4ed0889",
+      "mod_time": "2026-08-24T19:44:00Z"
     },
     {
-      "path": "src/app/contact-sales/_components/ContactSalesSection.tsx",
-      "hash": "99a32a03dbd6780baa5391567e5f90e4df1eb60c502ebca1fbf18377b949d2f6",
-      "mod_time": "2026-08-03T07:16:37Z"
+      "path": "src/data/footer.json",
+      "hash": "fb0651dcbf6b835d69e5bc0a2a5effaf706aeb90905026c6b2114281991d052b",
+      "mod_time": "2026-10-07T19:53:06Z"
     },
     {
-      "path": "src/app/contact-us/_data/content.ts",
-      "hash": "db07d9530082a32a9317f536c75ad7494fc620650fe424a9262b56ac7c1dd09b",
-      "mod_time": "2026-08-03T10:45:21Z"
-    },
-    {
-      "path": "src/app/pricing/_components/PricingPlansSection.tsx",
-      "hash": "83e75f9d6d0ad2b43449482a451a6f7ab8786d3ea4649f00e1805e71921f0f8c",
-      "mod_time": "2026-09-15T17:51:44Z"
-    },
-    {
-      "path": "src/app/resources/blogs/_components/BlogContent.tsx",
-      "hash": "d451a579b7ff9149732b11f5687f1a8b904f3e98df22975e3a2fc3fa0d82a156",
+      "path": "content-export/solutions/pharmaceutical/choose-next-step.json",
+      "hash": "c34b87c456e77f0af7bbcb0d7bf183c0b205f3f5762d6edd56aab2c9e058449d",
       "mod_time": "2026-07-22T10:42:35Z"
     },
     {
-      "path": "src/app/solutions/pharmaceutical/_data/types.ts",
-      "hash": "7f75d14e4bec898f7d88ecd414d10ccdf56e92c36a567839fd5f9d39d4641c15",
-      "mod_time": "2026-08-24T19:44:17Z"
+      "path": "src/app/layout.tsx",
+      "hash": "fb2b1dc771c47e7a783958c3e0bd256bf02a826fb71d588d3ec59b449018cec8",
+      "mod_time": "2026-09-11T15:28:44Z"
     },
     {
-      "path": "src/components/sections/FeaturesVideo.tsx",
-      "hash": "a5e2a38b566d2319335090e4c33d89a8ff31cbb01abdddf0a5a54edb952ccfac",
-      "mod_time": "2026-10-05T20:36:55Z"
+      "path": "src/app/legal/cookies/page.tsx",
+      "hash": "b6949f07eb2be2f7351c225f73d2fc45eea92041a38614de57b5a8b570346846",
+      "mod_time": "2026-09-27T19:53:43Z"
     },
     {
-      "path": "content-export/solutions/digital-agencies.json",
-      "hash": "ede17986346bf638dc9d0e3197c222b19c260f8370864435f3e18f503ca7cbd1",
+      "path": "src/app/resources/blogs/_components/BlogCard.tsx",
+      "hash": "a58845af4ed1e90cebcc9990978ffd17768853c4972ffa009647955f85470d6b",
       "mod_time": "2026-07-22T10:42:35Z"
     },
     {
-      "path": "content-export/solutions/pharmaceutical/bridge.json",
-      "hash": "bb1e495894b6d10bd7bc3bb13cb34a83f30030590aa33583d911e7fd89ccb440",
-      "mod_time": "2026-08-03T11:13:30Z"
+      "path": "src/app/solutions/pharmaceutical/_components/BridgeSection.tsx",
+      "hash": "1b9cb2cd5d89f50f20e52f7cc39897dc57f85afb8a893303be1217da22753cac",
+      "mod_time": "2026-08-24T20:26:25Z"
     },
     {
-      "path": "content-export/solutions/pharmaceutical/self-assessment.json",
-      "hash": "4f533d2bb87a65e57befbc8084dc28d251a271042333b36f95be4da271c7e705",
-      "mod_time": "2026-08-03T11:12:20Z"
+      "path": "src/app/twitter-image.tsx",
+      "hash": "0203fa580b6eac1373e9bc38193245c691152e26f3e58d7731411ab71985fae0",
+      "mod_time": "2026-07-22T11:18:52Z"
     },
     {
-      "path": "next.config.ts",
-      "hash": "29b5fdb986530e0e000244893e552f03e4fdeeea18f23863e332be6275ced4a6",
-      "mod_time": "2026-10-05T20:34:21Z"
+      "path": "src/components/layout/ScrollToHash.tsx",
+      "hash": "558111567e4c781c48fd4bfbff7e7bfcda4614ff4faaae9e4997f58e3ab41004",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "src/components/sections/HeroSection.tsx",
+      "hash": "8004261a32980ff29c22d3d17313be7a237bf819dcda8bd80fa67bcebc8bf69f",
+      "mod_time": "2026-08-04T19:58:38Z"
+    },
+    {
+      "path": "src/app/book-a-demo/_data/content.ts",
+      "hash": "3ef12060063ec859108ea50fb8d6c9d2e4f5f7b2491cd9be99d742efa813fcfa",
+      "mod_time": "2026-10-07T19:50:10Z"
+    },
+    {
+      "path": "src/app/page.tsx",
+      "hash": "7eea48250f674b2b9ffe638b8586beff5c729e79686b0cc8385471ecc7739c5c",
+      "mod_time": "2026-10-05T20:39:32Z"
+    },
+    {
+      "path": "src/app/solutions/pharmaceutical/_data/final-cta.ts",
+      "hash": "8aaf8d89b2140fbf52135e1d92ef5ee8fc0ed8e44c813a81f307490874dc6927",
+      "mod_time": "2026-10-07T19:53:06Z"
+    },
+    {
+      "path": "src/components/sections/BenefitsSection.tsx",
+      "hash": "f617ed8c64c48c1d0c5962a1b4e68a940764b67e4ee675b8d509031245bbdb6d",
+      "mod_time": "2026-08-03T10:36:54Z"
+    },
+    {
+      "path": "src/components/sections/TestimonialsSection.tsx",
+      "hash": "5a11c6a8ce8b73698edb92b71ba6110467488c1c5ed5d0064b0b0f25f151ff4d",
+      "mod_time": "2026-08-03T07:15:39Z"
+    },
+    {
+      "path": "src/components/ui/GhlEmbedLoader.tsx",
+      "hash": "0797071a0525b95b9466b8fef25af20cea89078066234e4b5b766764e16a7490",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "src/data/sections/hero.json",
+      "hash": "0fd80de9da80686bbd516a7ad0094efb8ae31c406a4628dede1c93bc5ccba904",
+      "mod_time": "2026-10-07T19:53:06Z"
+    },
+    {
+      "path": "src/types/blog.ts",
+      "hash": "14f1faf34f8b96108b43e97ff96d4299bebe059538a218d8800a7fed2a17d9c3",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "public/downloads/pharma-expense-audit-checklist-demo.pdf",
+      "hash": "8e15e2a9cf5610e426a7d95e7117a9394d528099f8eeb2e5f00571712fb0f9d2",
+      "mod_time": "2026-07-22T10:42:35Z"
     },
     {
       "path": "src/app/legal/acceptable-use/page.tsx",
@@ -98,24 +138,69 @@
       "mod_time": "2026-09-27T19:53:43Z"
     },
     {
-      "path": "src/app/solutions/pharmaceutical/_data/faq.ts",
-      "hash": "87b034f8b0dcee8450e27f60b7e634ec19a875e65cbb8266c541b2c5a4ed0889",
-      "mod_time": "2026-08-24T19:44:00Z"
+      "path": "src/app/legal/copyright/_data/content.ts",
+      "hash": "ac6130b1d11da6466f9ae2d63f3cc88bedf85480025e1146ba6e33f03e7ed49f",
+      "mod_time": "2026-09-27T19:49:23Z"
     },
     {
-      "path": "src/components/sections/LeadMagnetSection.tsx",
-      "hash": "1643a04c068f690324885246acfa4f4f5d56ca4fc88fb56c8131eb272d7dfb5d",
-      "mod_time": "2026-08-03T07:53:50Z"
+      "path": "src/app/legal/disclaimer/_data/content.ts",
+      "hash": "0448f883b260fab8e66e7da285a3da623854be8fe64f9dab234d0e8534a20cd3",
+      "mod_time": "2026-09-27T19:47:35Z"
     },
     {
-      "path": "src/components/ui/ComingSoonSection.tsx",
-      "hash": "ea7bcb0f86e75847b4464833cf72643212eaaf3e678ef23fbfb6263ad5e52115",
+      "path": "src/app/resources/whitepapers/page.tsx",
+      "hash": "a547611d9ed0c44047d7dcef7d38a48b5e01525da9a886bd357ad02b829c04eb",
       "mod_time": "2026-07-22T10:42:35Z"
     },
     {
-      "path": "brand/expendesk-mark-master.png",
-      "hash": "cbf82c22348c28d5ea520159f660b3c9aa90485f39726e3942ad3d7985bdfd01",
-      "mod_time": "2026-08-24T19:15:26Z"
+      "path": "src/data/sections/faq.json",
+      "hash": "2494ce80207fa9417d70dced7680f24498eced9d17695eb65155f480648c6ace",
+      "mod_time": "2026-08-24T18:13:26Z"
+    },
+    {
+      "path": ".gitignore",
+      "hash": "af060020dc59c5fed43e32c0665c3f31a09a7e2d5f21faccff3a495b4543c971",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "CLAUDE.md",
+      "hash": "d631d88045f74623d568adfb4783b72e3d1b732330d749bc6c72e6648d4581d3",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "src/app/contact-us/page.tsx",
+      "hash": "6b7772d69b4918c3e386832132b7e546d79f397d975dcdb2c512fe70e29c64d2",
+      "mod_time": "2026-10-07T19:54:17Z"
+    },
+    {
+      "path": "src/app/solutions/pharmaceutical/page.tsx",
+      "hash": "7acf6174bc3f5aaf725b62d836da080ae1bbd85c8b1842c1871fd4c552ade375",
+      "mod_time": "2026-08-24T19:45:39Z"
+    },
+    {
+      "path": "tsconfig.json",
+      "hash": "dbacf04aa5f38c1ce4b0f030fbb84e5adff19306fb785b2e4aafef9c58705658",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "src/app/solutions/digital-agencies/_data/content.ts",
+      "hash": "55187539345a5396cf3f42e6a8e6e2daf40a7e33db6230e5c6a6ecbc3ed9dc9e",
+      "mod_time": "2026-10-07T19:53:06Z"
+    },
+    {
+      "path": "src/app/solutions/pharmaceutical/_data/bridge.ts",
+      "hash": "066ecc47d2af9597d24ebc9be95dc2e00c838d4efda84d2cf527efe84ddcfb89",
+      "mod_time": "2026-08-03T11:13:30Z"
+    },
+    {
+      "path": "src/data/chat.json",
+      "hash": "c13cc5e8efc700e80e53a3584b2d7b6601ee1be0704533e79920f484160729e3",
+      "mod_time": "2026-08-04T19:58:38Z"
+    },
+    {
+      "path": "MSME Lead Magnet.pdf",
+      "hash": "5f8a033588cc25b891b5cb67498cb567376da5c2beee4c594fee83eee57ffad4",
+      "mod_time": "2026-07-22T10:42:35Z"
     },
     {
       "path": "content-export/ACF-FIELD-MAP.md",
@@ -123,13 +208,133 @@
       "mod_time": "2026-07-22T10:42:35Z"
     },
     {
-      "path": "src/app/about/_data/content.ts",
-      "hash": "5df28ad3384c9dfb65175561ebe3232557640f07d1863859723056b1e1eb4888",
-      "mod_time": "2026-08-17T19:13:30Z"
+      "path": "next-env.d.ts",
+      "hash": "4e4da12aa061aac172fb1bcb48e9b6e4b293080d2f494327925fdba8f39632ac",
+      "mod_time": "2026-10-07T20:08:06Z"
     },
     {
-      "path": "src/app/apple-icon.png",
-      "hash": "60d1358567c29160dd902d025e822d6b2d214febef3200957491e6c6e1534ae9",
+      "path": "public/logo-wordmark.png",
+      "hash": "f0aa710457c6b24415ac26db219b98afb7903c53e5933bc478bb23e647fec619",
+      "mod_time": "2026-08-04T07:11:17Z"
+    },
+    {
+      "path": "src/app/book-a-demo/thank-you/_data/content.ts",
+      "hash": "8e85d584d13346c073ad13e7f3223ad0e6cb3fab5cc8ef47076c55f26f498179",
+      "mod_time": "2026-10-07T19:51:56Z"
+    },
+    {
+      "path": "src/app/pricing/_data/content.ts",
+      "hash": "3c66bbfafa6f44ad388a2d8fb2e69b7d8348337b80c70fc2bd3d3cb876b5596e",
+      "mod_time": "2026-10-07T19:53:06Z"
+    },
+    {
+      "path": "src/data/sections/comparison.json",
+      "hash": "50928a70aabfc5197f1a994b4b8fd91ee2205984813a03306ad23d178253d47c",
+      "mod_time": "2026-08-03T11:11:14Z"
+    },
+    {
+      "path": "content-export/home/lead-magnet.json",
+      "hash": "30fa31c44271355ae2a479eb9f5bb9d14710b1a791fef7ad4c381f6cda32dbe5",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "public/downloads/msme-lead-magnet.pdf",
+      "hash": "5f8a033588cc25b891b5cb67498cb567376da5c2beee4c594fee83eee57ffad4",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "src/app/globals.css",
+      "hash": "52f986bc70afc2d8bafc4147aefdbe862a6519fdaa94be9a51b89316c8cca9eb",
+      "mod_time": "2026-08-03T10:33:26Z"
+    },
+    {
+      "path": "src/app/opengraph-image.tsx",
+      "hash": "727b9425475e969f444c10c72b8b1bd8922f0546c9175b09d3e14b7af9bc9e64",
+      "mod_time": "2026-10-05T09:38:57Z"
+    },
+    {
+      "path": "src/components/chat/ChatProvider.tsx",
+      "hash": "7f157c6eae3a9173a5d6cf39fa105a61bc99e73efee5cb2eaedd6d3b7ec30886",
+      "mod_time": "2026-08-04T19:58:38Z"
+    },
+    {
+      "path": "src/components/layout/Footer.tsx",
+      "hash": "5c9c76255c6b37cf6c33d01361e5d85b6b47ebe5522c0791b55d2caf33fd49bc",
+      "mod_time": "2026-08-04T07:19:49Z"
+    },
+    {
+      "path": "src/data/sections/benefits.json",
+      "hash": "054671d257d8c4e6a00cad82a6041ee0520175ee9736660e013dcb69ed9c39be",
+      "mod_time": "2026-10-07T19:53:06Z"
+    },
+    {
+      "path": "src/data/sections/features.json",
+      "hash": "c73b87a51dec6dac6c118c6053e13c90315556eaf454d7b1aa38db361e8fe282",
+      "mod_time": "2026-10-05T20:39:14Z"
+    },
+    {
+      "path": "content-export/home/benefits.json",
+      "hash": "a556bdd15fb981748a2af1e4d83da46b2a3602edd2b26d28fbf6deea5df10d7b",
+      "mod_time": "2026-08-03T11:12:20Z"
+    },
+    {
+      "path": "public/android-chrome-512x512.png",
+      "hash": "d77c70bb69c62ffc0deab6d9aa710136cd436bd30927c35f2b9a88cedaaedb8b",
+      "mod_time": "2026-08-24T19:16:21Z"
+    },
+    {
+      "path": "scripts/generate-icons.mjs",
+      "hash": "304cccfa4e6d8e0e289ab9a9f89bef3b20eb2fe92962c9291750b3546eecdcec",
+      "mod_time": "2026-08-28T07:34:00Z"
+    },
+    {
+      "path": "src/app/resources/blogs/page.tsx",
+      "hash": "7d20272f8853369fbb957d30bf247a675758669f208b04b958d5f736b0856096",
+      "mod_time": "2026-08-06T19:28:14Z"
+    },
+    {
+      "path": "src/app/solutions/pharmaceutical/_components/HeroSection.tsx",
+      "hash": "51e42b842e5d3c92aeddd5c346761fe642b33c75601fcc6db8c467cc023081bc",
+      "mod_time": "2026-08-03T08:04:22Z"
+    },
+    {
+      "path": "src/app/solutions/pharmaceutical/_data/problem.ts",
+      "hash": "ae99286239bba089a2f312f3b0d623ee6b9b47fa934e34f097a9cb061e40b823",
+      "mod_time": "2026-08-03T11:11:59Z"
+    },
+    {
+      "path": "src/data/navigation.json",
+      "hash": "26041a78de014718205e513617be7ac58f5df83f08000fef27e07ceeb12c4de2",
+      "mod_time": "2026-10-07T19:53:06Z"
+    },
+    {
+      "path": "src/hooks/use-ghl-embed-resizer.ts",
+      "hash": "c888bca790e76558acf934341e7dedd7acf0a6a9f67b6cf3058405f6bb654d36",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "content-export/solutions/pharmaceutical/final-cta.json",
+      "hash": "f5861d333c7f93b174e2eb88eeffd63d431b5f1584b346dca54100bf20639bd9",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "package-lock.json",
+      "hash": "f2675cbd2aeddfe69a58059286526d3d9b61208b06df130f16ea0ce672bd37f1",
+      "mod_time": "2026-09-11T16:31:25Z"
+    },
+    {
+      "path": "scripts/verify-seo.mjs",
+      "hash": "baa0b38ed5da27fc430821809e19e0ad9c5a323c068b68fc272839d33d66f127",
+      "mod_time": "2026-10-07T19:54:27Z"
+    },
+    {
+      "path": "src/app/about/page.tsx",
+      "hash": "be154680fcce32c67819f175cd5b28569f5225229417b418c1f444a0e5118304",
+      "mod_time": "2026-08-17T19:14:46Z"
+    },
+    {
+      "path": "src/app/favicon.ico",
+      "hash": "16783540c5eb03cba66d362414c55740d78378d1467ca99fd8b8f44bc288f505",
       "mod_time": "2026-08-28T07:34:01Z"
     },
     {
@@ -138,158 +343,28 @@
       "mod_time": "2026-09-27T19:48:21Z"
     },
     {
-      "path": "src/app/twitter-image.tsx",
-      "hash": "0203fa580b6eac1373e9bc38193245c691152e26f3e58d7731411ab71985fae0",
-      "mod_time": "2026-07-22T11:18:52Z"
+      "path": "src/app/solutions/pharmaceutical/opengraph-image.tsx",
+      "hash": "6420b787fce99286abf01212bb7c0d09397291d7b5cd4aede94a4f525c834448",
+      "mod_time": "2026-10-05T09:39:19Z"
     },
     {
-      "path": "src/components/ui/ScrollBeamDivider.tsx",
-      "hash": "2ed6cc89ce20a10d25cb92f3bd690b207e1c13daece7ab0dcb00a87827730fd5",
+      "path": "src/components/ui/GhlFormEmbed.tsx",
+      "hash": "e30fed0194ae1a7b1f8442bd7828d391a1a9c6c1ef606e55ccb72c150d7d561b",
+      "mod_time": "2026-10-07T20:07:57Z"
+    },
+    {
+      "path": "src/app/api/revalidate/route.ts",
+      "hash": "4ed025f8372a41dfb69ff91177f639d79aa80afe530c583f69e55b466e92af7d",
       "mod_time": "2026-07-22T10:42:35Z"
     },
     {
-      "path": "src/data/README.md",
-      "hash": "a0e5f3d04a71c1cf6953eb176e3712b1e5aee71518566896a23b969afb039f89",
-      "mod_time": "2026-07-22T10:42:35Z"
+      "path": "src/app/book-a-demo/page.tsx",
+      "hash": "f82c12a875375cbb2578cceaaf48a2199f6234ba7c07118a6dfbdda1cfbc902f",
+      "mod_time": "2026-10-07T19:50:53Z"
     },
     {
-      "path": "src/app/icon2.png",
-      "hash": "0603cb6d05124b14c36588f20df33db9d3a763e6ce2e2fb83f47e049690d3235",
-      "mod_time": "2026-08-28T07:34:01Z"
-    },
-    {
-      "path": "src/components/layout/Navbar.tsx",
-      "hash": "31107ad0dd4e4afa148a8b2174c5358986277d2cecc90bb57b44c4d31ac29196",
-      "mod_time": "2026-08-04T07:13:14Z"
-    },
-    {
-      "path": "src/components/ui/MagneticButton.tsx",
-      "hash": "2b38ffc290633dcd0a337cbb9698fbb9fb836c636813338c210579817aeda44c",
-      "mod_time": "2026-08-03T07:55:39Z"
-    },
-    {
-      "path": "src/data/sections/faq.json",
-      "hash": "2494ce80207fa9417d70dced7680f24498eced9d17695eb65155f480648c6ace",
-      "mod_time": "2026-08-24T18:13:26Z"
-    },
-    {
-      "path": "src/data/sections/hero.json",
-      "hash": "4782d40fb6d2fb9441bc6c7efb475f56d72590c176211f06e3c0dbeda0305ba7",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "src/data/sections/problem.json",
-      "hash": "84a21b48b2bcb066822f1a1a0747ab3fab9bb16ce1488d385c22e467487a5bf5",
-      "mod_time": "2026-08-03T12:15:51Z"
-    },
-    {
-      "path": "src/lib/lead-magnet.ts",
-      "hash": "364dc8da66dd4a90888497c1d7375a9f436ee70e25452250013402dd2046bb67",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "src/lib/structured-data.ts",
-      "hash": "4f7dad1fec0ddbbfc708416da1a0e63fe19181c7bafa944633470fc4d88b29bc",
-      "mod_time": "2026-10-05T20:39:14Z"
-    },
-    {
-      "path": "components.json",
-      "hash": "7e7d964e4a72ef554ea277b69d0fc1eaecd3a385237002c6f68955531f4a2f3c",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "content-export/global/footer.json",
-      "hash": "8d7b4d1d7297c6bf7627e786b77c5ef5361b77e4d8fc33f3e63be666a822abca",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "content-export/global/navigation.json",
-      "hash": "79db504e70db22e54c83848978320eba8f34d1ac7e416dd1108656b6f7c2115e",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "content-export/home/solution.json",
-      "hash": "3556e355152f20eff6e2416049f04c07dd2fcd2675389ba2b5abb5fb740be522",
-      "mod_time": "2026-08-03T11:12:20Z"
-    },
-    {
-      "path": "src/app/icon0.png",
-      "hash": "a02e83acc3354a1ee5809b260f2571dabd24ccadd6e097d80e93ceb2ab2656be",
-      "mod_time": "2026-08-28T07:34:01Z"
-    },
-    {
-      "path": "src/app/solutions/pharmaceutical/_components/ChecklistContentsSection.tsx",
-      "hash": "eaabd73dd39ca6a9af5faa5daaa162bc5424c17cfb803aa4ae84fa9f1e92a659",
-      "mod_time": "2026-08-03T07:17:16Z"
-    },
-    {
-      "path": "src/data/navigation.json",
-      "hash": "e014028e349690b9b5d5268fd0ad5845a294e8787c0e364af7474d0f0c47061c",
-      "mod_time": "2026-09-13T19:58:19Z"
-    },
-    {
-      "path": "src/data/sections/how-it-works.json",
-      "hash": "1f795390733c3289f3a7b7b27c1800142f151385a7558c35d8955587aea56a40",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": ".npmrc",
-      "hash": "fc876582c14778a7eb8bcebb76ac289c033bdedbc75c4f98cb667512411e4a76",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "postcss.config.mjs",
-      "hash": "7b299d3d3b16699ddda397c0b2373b3af4f25f8fc9ccc9b3d9e64ef083bc1c21",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "public/android-chrome-192x192.png",
-      "hash": "4ec41b87b179f7d8e3d878f9c8c4b07565d3d8d3954ce5011f05bfc011f6ca85",
-      "mod_time": "2026-08-28T07:34:01Z"
-    },
-    {
-      "path": "public/downloads/pharma-expense-audit-checklist-demo.pdf",
-      "hash": "8e15e2a9cf5610e426a7d95e7117a9394d528099f8eeb2e5f00571712fb0f9d2",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "public/logo-white.png",
-      "hash": "76b7a8aa568e615a8521bdef922ccb80d7b44070562501595c9d405ca9f51587",
-      "mod_time": "2026-08-04T07:37:04Z"
-    },
-    {
-      "path": "src/app/layout.tsx",
-      "hash": "fb2b1dc771c47e7a783958c3e0bd256bf02a826fb71d588d3ec59b449018cec8",
-      "mod_time": "2026-09-11T15:28:44Z"
-    },
-    {
-      "path": "src/app/legal/terms/page.tsx",
-      "hash": "e629f3cbeb5f8e6543d6021fb19fded402ba6bf6e356fba3509eec27e3932e69",
-      "mod_time": "2026-09-27T19:53:43Z"
-    },
-    {
-      "path": "src/app/pricing/page.tsx",
-      "hash": "444fa8150a64a3ed4f9f8dfbdf244cd305fa568696b6c791f3b650c5ad4967fe",
-      "mod_time": "2026-09-15T17:51:44Z"
-    },
-    {
-      "path": "next-env.d.ts",
-      "hash": "4e4da12aa061aac172fb1bcb48e9b6e4b293080d2f494327925fdba8f39632ac",
-      "mod_time": "2026-10-05T20:38:05Z"
-    },
-    {
-      "path": "src/app/contact-sales/_data/content.ts",
-      "hash": "6a6ae86d2015869850d93e941114fee735ebce1512b31da65450948c68e97dbb",
-      "mod_time": "2026-08-04T07:23:14Z"
-    },
-    {
-      "path": "src/app/solutions/pharmaceutical/_components/ChecklistIntroSection.tsx",
-      "hash": "77d897bc9d24b56a7715af668f911ea0cf1e18da94c1198ac00bc69caf00eaf9",
-      "mod_time": "2026-08-03T07:56:32Z"
-    },
-    {
-      "path": "src/app/solutions/pharmaceutical/_data/checklist-contents.ts",
-      "hash": "35118f0f93665060067b007d7701da89b64dc7e6fb4482e9ac360afa9c40ec80",
+      "path": "src/app/resources/blogs/_components/ShareLinks.tsx",
+      "hash": "349152b363ebd2160c9f8dac0c2ea1deef84c17f94e62948d6d97af9b048dd50",
       "mod_time": "2026-07-22T10:42:35Z"
     },
     {
@@ -298,89 +373,44 @@
       "mod_time": "2026-07-22T10:42:35Z"
     },
     {
-      "path": "src/app/solutions/pharmaceutical/_data/introducing-expendesk.ts",
-      "hash": "db4888d952f5255fbcfa09c0071c801fb162d171f44298de28d575112604f5d6",
+      "path": "src/app/solutions/pharmaceutical/_data/choose-next-step.ts",
+      "hash": "5bbd4b4dc6073c5aff6d5c5cf756307bdba19dd80795c806ff8a29a2f372dfaf",
+      "mod_time": "2026-10-07T19:53:06Z"
+    },
+    {
+      "path": "src/lib/scroll.ts",
+      "hash": "a25e54b6cd19464ef1931b1a60f242371053faacf54e1624a419f2b29cbe97fd",
       "mod_time": "2026-07-22T10:42:35Z"
     },
     {
-      "path": "content-export/home/testimonials.json",
-      "hash": "a1f17255f34a3e96a8e26d71fda16bfac63e41944679333a31d8567d136f65b3",
-      "mod_time": "2026-08-03T11:12:20Z"
+      "path": "content-export/solutions/pharmaceutical/bridge.json",
+      "hash": "bb1e495894b6d10bd7bc3bb13cb34a83f30030590aa33583d911e7fd89ccb440",
+      "mod_time": "2026-08-03T11:13:30Z"
     },
     {
-      "path": "content-export/solutions/pharmaceutical/final-cta.json",
-      "hash": "f5861d333c7f93b174e2eb88eeffd63d431b5f1584b346dca54100bf20639bd9",
+      "path": "content-export/solutions/pharmaceutical/checklist-contents.json",
+      "hash": "fc855b880e75c5720c8a3515b6528d667d8a9ba85abfa237598449c5ff347fb3",
       "mod_time": "2026-07-22T10:42:35Z"
     },
     {
-      "path": "src/app/about/page.tsx",
-      "hash": "be154680fcce32c67819f175cd5b28569f5225229417b418c1f444a0e5118304",
-      "mod_time": "2026-08-17T19:14:46Z"
+      "path": "src/components/sections/HowItWorksSection.tsx",
+      "hash": "b4d4ca441087ff037286ea6a383e5f2fe8b11464efbecbb39b916db0716827ce",
+      "mod_time": "2026-08-03T07:48:25Z"
     },
     {
-      "path": "src/app/solutions/manufacturing/_data/content.ts",
-      "hash": "c907e673ad36fb1578b0292138250d3f787ff09dbe510c21633c2f686d2979c7",
+      "path": "tsconfig.tsbuildinfo",
+      "hash": "722bb1ea86f524717ecd4156bc66399bdb1d84302c8df7db612467bfc6eba6a3",
+      "mod_time": "2026-10-07T19:54:31Z"
+    },
+    {
+      "path": ".npmrc",
+      "hash": "fc876582c14778a7eb8bcebb76ac289c033bdedbc75c4f98cb667512411e4a76",
       "mod_time": "2026-07-22T10:42:35Z"
     },
     {
-      "path": "src/app/solutions/pharmaceutical/_data/problem.ts",
-      "hash": "ae99286239bba089a2f312f3b0d623ee6b9b47fa934e34f097a9cb061e40b823",
-      "mod_time": "2026-08-03T11:11:59Z"
-    },
-    {
-      "path": "src/components/sections/FaqSection.tsx",
-      "hash": "69461772a5d2ecf9db60f9ffd1b3197e649b3c00f8031591f3992540ad14e5d7",
-      "mod_time": "2026-08-03T07:54:51Z"
-    },
-    {
-      "path": "src/data/sections/testimonials.json",
-      "hash": "feb59044f02c67a19463ca00087ce10c28c7b3449e07a4c246ef89e168a780a1",
-      "mod_time": "2026-08-03T11:11:14Z"
-    },
-    {
-      "path": "src/types/blog.ts",
-      "hash": "14f1faf34f8b96108b43e97ff96d4299bebe059538a218d8800a7fed2a17d9c3",
+      "path": "AGENTS.md",
+      "hash": "ceaa13d29db2c2ce408ba5d00fb6c5cccc0eadeb336cf076cfea699f985b9fd8",
       "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "content-export/home/features.json",
-      "hash": "d4b0fa8cf6a84ca3b1be0c9ea363e5bd0c52b5e7f99a31e17f6fc87e85f77bd8",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "src/app/resources/blogs/_components/ShareLinks.tsx",
-      "hash": "349152b363ebd2160c9f8dac0c2ea1deef84c17f94e62948d6d97af9b048dd50",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "src/components/sections/WhyExpendesk.tsx",
-      "hash": "25c7e9fe59c54eb39f411ec709954c832f2593bce772e918cee2ff34df07f4e2",
-      "mod_time": "2026-08-03T07:54:39Z"
-    },
-    {
-      "path": "src/lib/page-metadata.ts",
-      "hash": "ffb61fecb1e475912782cd8ac2feee2c36aa94fd5b4be393448ab3496cb96f09",
-      "mod_time": "2026-10-05T09:38:03Z"
-    },
-    {
-      "path": "src/app/resources/blogs/[slug]/not-found.tsx",
-      "hash": "423d791ea823a67b1547b0f0de5cefab729a4eac4aa3d3617184b18539e5b54b",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "src/app/resources/case-studies/page.tsx",
-      "hash": "276dedb28a9651875678fb76e30a2622bd5d738d2a015788ef4b0f998a3e884d",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "src/app/solutions/pharmaceutical/page.tsx",
-      "hash": "7acf6174bc3f5aaf725b62d836da080ae1bbd85c8b1842c1871fd4c552ade375",
-      "mod_time": "2026-08-24T19:45:39Z"
-    },
-    {
-      "path": "src/components/sections/HeroSection.tsx",
-      "hash": "8004261a32980ff29c22d3d17313be7a237bf819dcda8bd80fa67bcebc8bf69f",
-      "mod_time": "2026-08-04T19:58:38Z"
     },
     {
       "path": "public/logo.png",
@@ -388,44 +418,9 @@
       "mod_time": "2026-08-04T07:01:17Z"
     },
     {
-      "path": "src/app/solutions/pharmaceutical/_components/FaqSection.tsx",
-      "hash": "00fdfed93b3e007371063c7b09a1af48b25d0daa4f2456e3640f9df0feee6d13",
-      "mod_time": "2026-08-24T19:44:49Z"
-    },
-    {
-      "path": "src/data/sections/solution.json",
-      "hash": "e46e6570d307a3744dcd7e5be7859bf77e841b99f1c7bab23e1895586323b133",
-      "mod_time": "2026-08-03T12:14:49Z"
-    },
-    {
-      "path": "src/lib/og-card.tsx",
-      "hash": "0e4ed334c174bb603bdca6f1edc3bb0e70ef4562095b97ea14f8bb38e7fff3ec",
-      "mod_time": "2026-10-05T09:40:52Z"
-    },
-    {
-      "path": "tsconfig.tsbuildinfo",
-      "hash": "1e2439f3b3f12ab21a7607f86d3ebc516b6777e3d15f22a5d33309e20731882f",
-      "mod_time": "2026-10-05T20:39:36Z"
-    },
-    {
-      "path": "vercel.json",
-      "hash": "c89fa154d3f07f740f57d63bc221d55fcf3e3fb5c49b487bc6cf1229c96d70e9",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "src/app/favicon.ico",
-      "hash": "16783540c5eb03cba66d362414c55740d78378d1467ca99fd8b8f44bc288f505",
-      "mod_time": "2026-08-28T07:34:01Z"
-    },
-    {
-      "path": "src/app/manifest.ts",
-      "hash": "5d1acacebb80ac2b6748790d4b2b52f397b9dce81e931c4baceb03e5dd489302",
-      "mod_time": "2026-08-24T19:16:50Z"
-    },
-    {
-      "path": "src/app/pricing/_components/PricingFaqSection.tsx",
-      "hash": "82e798fbf63862d038149a40f0c0a4dac81e1d9e7644707ebbc64e24a855dcb7",
-      "mod_time": "2026-09-15T17:51:40Z"
+      "path": "src/app/book-a-demo/thank-you/page.tsx",
+      "hash": "139669365ed02d09f646cede260e5a5b30a9d9dae6f3610a50efc3a119444659",
+      "mod_time": "2026-10-07T19:52:40Z"
     },
     {
       "path": "src/app/resources/blogs/loading.tsx",
@@ -433,58 +428,48 @@
       "mod_time": "2026-07-22T10:42:35Z"
     },
     {
-      "path": "src/app/sitemap.ts",
-      "hash": "7ef0b85ba4e5cae6146d9b0e15829e6403f585c6920f3df44fa4afb483b55e17",
-      "mod_time": "2026-09-27T19:54:19Z"
+      "path": "src/app/solutions/pharmaceutical/_data/types.ts",
+      "hash": "7f75d14e4bec898f7d88ecd414d10ccdf56e92c36a567839fd5f9d39d4641c15",
+      "mod_time": "2026-08-24T19:44:17Z"
     },
     {
-      "path": "src/components/chat/ChatProvider.tsx",
-      "hash": "7f157c6eae3a9173a5d6cf39fa105a61bc99e73efee5cb2eaedd6d3b7ec30886",
-      "mod_time": "2026-08-04T19:58:38Z"
+      "path": "src/lib/structured-data.ts",
+      "hash": "4f7dad1fec0ddbbfc708416da1a0e63fe19181c7bafa944633470fc4d88b29bc",
+      "mod_time": "2026-10-05T20:39:14Z"
     },
     {
-      "path": "src/components/ui/GhlEmbedLoader.tsx",
-      "hash": "0797071a0525b95b9466b8fef25af20cea89078066234e4b5b766764e16a7490",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "content-export/home/hero.json",
-      "hash": "b7d0d30ae82f1e17dcd58572a94f455aae2bd9fe540cce2eb58ef30c217382e5",
+      "path": "content-export/solutions/pharmaceutical/self-assessment.json",
+      "hash": "4f533d2bb87a65e57befbc8084dc28d251a271042333b36f95be4da271c7e705",
       "mod_time": "2026-08-03T11:12:20Z"
     },
     {
-      "path": "eslint.config.mjs",
-      "hash": "275a07c13fc7c83a652efcfa9fb6a207c451a2f5088e6793415ce44281285720",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "public/logo-wordmark-white.png",
-      "hash": "d4b74cd06da825663a7c2da0a78651a914ae5939d972aa041549ca121a17d520",
-      "mod_time": "2026-08-04T07:18:13Z"
-    },
-    {
-      "path": "src/app/resources/blogs/layout.tsx",
-      "hash": "5eabe0758df434281a5a6975f4612e34f9ab313ca230c2d49f0bd38945c13144",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "src/app/solutions/manufacturing/page.tsx",
-      "hash": "be264104b23a784130fcdcc1ed59e8d8dfd48c84f6b26608b202a06570453338",
+      "path": "src/app/contact-sales/page.tsx",
+      "hash": "2f261836c7902c058b7bbd6c32f04a543327d0a6ed4e36673777d74042a8346b",
       "mod_time": "2026-08-24T18:15:25Z"
     },
     {
-      "path": "src/app/solutions/pharmaceutical/_components/BridgeSection.tsx",
-      "hash": "1b9cb2cd5d89f50f20e52f7cc39897dc57f85afb8a893303be1217da22753cac",
-      "mod_time": "2026-08-24T20:26:25Z"
+      "path": "src/data/README.md",
+      "hash": "a0e5f3d04a71c1cf6953eb176e3712b1e5aee71518566896a23b969afb039f89",
+      "mod_time": "2026-07-22T10:42:35Z"
     },
     {
-      "path": "src/components/chat/ChatPanel.tsx",
-      "hash": "1a1c988b2fb289e5f4076405dab481a53f2e10cd3b2567ca5a5a10b641c9f28e",
-      "mod_time": "2026-08-04T19:58:38Z"
+      "path": "src/hooks/use-ghl-embed-loaded.ts",
+      "hash": "ad9f838f339b4bbf1e6bf8d025868a6172de2a8d6cf78cacb7b3dd8d8f6e45b0",
+      "mod_time": "2026-07-22T10:42:35Z"
     },
     {
-      "path": "src/data/sections/lead-magnet.json",
-      "hash": "b7f855c28680d9bd383a42b377fa62f25ae18925249257e7edece11572eecbde",
+      "path": "src/components/ui/ScrollBeamDivider.tsx",
+      "hash": "2ed6cc89ce20a10d25cb92f3bd690b207e1c13daece7ab0dcb00a87827730fd5",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "hash": "1ec3f2502acbf8f3f00e312e87f62d9d44ef0aa6ba51b2876dfeda6692ffd622",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "src/types/index.ts",
+      "hash": "d1de218214dfd8c0febce23ed7d4d3352bd15bf38e35d0878ceaa87969ed2aef",
       "mod_time": "2026-07-22T10:42:35Z"
     },
     {
@@ -493,49 +478,19 @@
       "mod_time": "2026-07-22T10:42:35Z"
     },
     {
-      "path": "logo.png",
-      "hash": "0b6db1210b563f4f6aed0a1ceb90eee38752b7e42bb06d4b7ff0ce5d277fd836",
+      "path": "content-export/solutions/pharmaceutical/problem.json",
+      "hash": "ec487d8fd54827a4cde0051d0aed228c4f0fdd3629e07d86323d45198840abe2",
+      "mod_time": "2026-08-03T11:12:20Z"
+    },
+    {
+      "path": "src/app/contact-sales/_components/GhlContactForm.tsx",
+      "hash": "bf85b113745fdfe8f307bc844538b77d9f1070f33730579610660fca9ff80333",
       "mod_time": "2026-07-22T10:42:35Z"
     },
     {
-      "path": "src/app/api/revalidate/route.ts",
-      "hash": "4ed025f8372a41dfb69ff91177f639d79aa80afe530c583f69e55b466e92af7d",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "src/app/legal/privacy/page.tsx",
-      "hash": "dc0a3e5a45eb9ca7bb9f0fc2c1edaad6d2cf75788ba4aa33b7f99c18f5514be7",
-      "mod_time": "2026-09-27T19:53:43Z"
-    },
-    {
-      "path": "src/app/solutions/pharmaceutical/_data/hero.ts",
-      "hash": "dcf70c49635dc47511e91b17ed36cc8ce2da44c91c912cc8c366b91e979963f0",
-      "mod_time": "2026-08-24T20:26:25Z"
-    },
-    {
-      "path": "src/app/solutions/pharmaceutical/_data/index.ts",
-      "hash": "3ef0348e9bd8c778e264a7e30a046cac677bd95fd75c8964957ea9ec119a754f",
-      "mod_time": "2026-08-24T19:44:17Z"
-    },
-    {
-      "path": "src/data/sections/features.json",
-      "hash": "c73b87a51dec6dac6c118c6053e13c90315556eaf454d7b1aa38db361e8fe282",
-      "mod_time": "2026-10-05T20:39:14Z"
-    },
-    {
-      "path": "src/hooks/use-ghl-embed-loaded.ts",
-      "hash": "ad9f838f339b4bbf1e6bf8d025868a6172de2a8d6cf78cacb7b3dd8d8f6e45b0",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "content-export/solutions/manufacturing.json",
-      "hash": "6b64fba4d14ebae3ebd626b751bb3495bfd0179853f6689b879b63f91f0ba7aa",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "content-export/solutions/pharmaceutical/hero.json",
-      "hash": "31ac4b5eb9575653cc6f496c32470d5b84c256c20befe2c6b1935aa6b2d1b886",
-      "mod_time": "2026-07-22T10:42:35Z"
+      "path": "src/app/legal/_components/LegalDocumentPage.tsx",
+      "hash": "8c062ab2a2869759a66acc47ea264f31735f46e8f63c77ed291f835240a6b932",
+      "mod_time": "2026-09-27T19:53:25Z"
     },
     {
       "path": "src/app/legal/cookies/_data/content.ts",
@@ -543,54 +498,29 @@
       "mod_time": "2026-09-27T19:46:50Z"
     },
     {
-      "path": "src/data/footer.json",
-      "hash": "a1ae88f65148f5f252510c2e4f086930c7533c01870e80f216b7f279e52d9720",
-      "mod_time": "2026-09-27T19:54:19Z"
+      "path": "src/app/manifest.ts",
+      "hash": "5d1acacebb80ac2b6748790d4b2b52f397b9dce81e931c4baceb03e5dd489302",
+      "mod_time": "2026-08-24T19:16:50Z"
     },
     {
-      "path": "content-export/home/benefits.json",
-      "hash": "a556bdd15fb981748a2af1e4d83da46b2a3602edd2b26d28fbf6deea5df10d7b",
-      "mod_time": "2026-08-03T11:12:20Z"
+      "path": "src/app/pricing/_components/PricingPlansSection.tsx",
+      "hash": "83e75f9d6d0ad2b43449482a451a6f7ab8786d3ea4649f00e1805e71921f0f8c",
+      "mod_time": "2026-09-15T17:51:44Z"
     },
     {
-      "path": "package-lock.json",
-      "hash": "f2675cbd2aeddfe69a58059286526d3d9b61208b06df130f16ea0ce672bd37f1",
-      "mod_time": "2026-09-11T16:31:25Z"
+      "path": "src/components/sections/ComparisonSection.tsx",
+      "hash": "dd4156f32015f6fb811c9553457bbc3ec850c36ac7b79b416dc6882f85fb3e36",
+      "mod_time": "2026-08-03T07:15:24Z"
     },
     {
-      "path": "public/android-chrome-512x512.png",
-      "hash": "d77c70bb69c62ffc0deab6d9aa710136cd436bd30927c35f2b9a88cedaaedb8b",
-      "mod_time": "2026-08-24T19:16:21Z"
-    },
-    {
-      "path": "src/app/contact-sales/page.tsx",
-      "hash": "2f261836c7902c058b7bbd6c32f04a543327d0a6ed4e36673777d74042a8346b",
-      "mod_time": "2026-08-24T18:15:25Z"
-    },
-    {
-      "path": "src/app/legal/privacy/_data/content.ts",
-      "hash": "efd3d00663734f419dc68b60d15f8519055d407355b72f77ab30d724bb1bd4c1",
-      "mod_time": "2026-09-27T19:53:09Z"
-    },
-    {
-      "path": "src/app/pricing/_data/content.ts",
-      "hash": "ef40a4d8d54be1cf4fd82102a57e1e7c1b316a75751ff1c96a3ea6d1a3fe5b9f",
-      "mod_time": "2026-09-15T18:11:18Z"
-    },
-    {
-      "path": "src/app/resources/blogs/_components/BlogSidebar.tsx",
-      "hash": "0eea75d935cefb64096178d822d074fa7d60012e4ef656cfd8fca7ce8f924d58",
-      "mod_time": "2026-08-03T07:48:24Z"
-    },
-    {
-      "path": "src/app/resources/blogs/page.tsx",
-      "hash": "7d20272f8853369fbb957d30bf247a675758669f208b04b958d5f736b0856096",
-      "mod_time": "2026-08-06T19:28:14Z"
-    },
-    {
-      "path": "public/placeholder-ebook.pdf",
-      "hash": "ac0aac0c60472cb063b5ccbcb6521d9159ba142273e6b8fd622856118783149d",
+      "path": "content-export/solutions/pharmaceutical/introducing-expendesk.json",
+      "hash": "ac9470800b58f220059d395eda232b282dcd24c7611ffa63d7e0b4f43326fc35",
       "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "public/maskable-icon-192x192.png",
+      "hash": "96e6390c7c8198255000405576c3855e04b48a11cf188d92256ca9ddb4370948",
+      "mod_time": "2026-08-24T19:16:21Z"
     },
     {
       "path": "src/app/contact-us/_components/BookingCalendarSection.tsx",
@@ -598,13 +528,218 @@
       "mod_time": "2026-08-03T07:16:39Z"
     },
     {
+      "path": "src/app/icon0.png",
+      "hash": "a02e83acc3354a1ee5809b260f2571dabd24ccadd6e097d80e93ceb2ab2656be",
+      "mod_time": "2026-08-28T07:34:01Z"
+    },
+    {
+      "path": "src/app/resources/faqs/page.tsx",
+      "hash": "f7bdc6cd82b96f02a5227f15eb1bf1b544d11efb6d34cef56cf749a135c201e6",
+      "mod_time": "2026-08-06T19:32:22Z"
+    },
+    {
+      "path": "src/components/sections/ProblemSection.tsx",
+      "hash": "367773b07847011e5b202294a8b182bc135eaa80b487250fcff48eea0320881f",
+      "mod_time": "2026-08-03T10:11:25Z"
+    },
+    {
+      "path": "src/components/ui/ComingSoon.tsx",
+      "hash": "cde7e58f1d72c27a82157c8f93d1faf5a6a0e2dc8e6349d751661c0a51cc32e2",
+      "mod_time": "2026-08-03T07:56:30Z"
+    },
+    {
+      "path": "src/data/sections/testimonials.json",
+      "hash": "feb59044f02c67a19463ca00087ce10c28c7b3449e07a4c246ef89e168a780a1",
+      "mod_time": "2026-08-03T11:11:14Z"
+    },
+    {
+      "path": "content-export/home/testimonials.json",
+      "hash": "a1f17255f34a3e96a8e26d71fda16bfac63e41944679333a31d8567d136f65b3",
+      "mod_time": "2026-08-03T11:12:20Z"
+    },
+    {
+      "path": "src/app/api/chat/route.ts",
+      "hash": "12ed374f0ec7bc3f86100eebe4749dea4a20342316d388fb9bfebccb43f86874",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "src/app/legal/_data/company.ts",
+      "hash": "5bdee68af5486bb15e6d51e967c637f506535a0fd340a68d14121a02d5f8e5bd",
+      "mod_time": "2026-09-27T19:51:18Z"
+    },
+    {
+      "path": "src/app/resources/whitepapers/_data/content.ts",
+      "hash": "1ae7d23db6ecb6562dd8aa5abad15707d019f6b3a31865c6823a74d02e645619",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "src/components/layout/Navbar.tsx",
+      "hash": "31107ad0dd4e4afa148a8b2174c5358986277d2cecc90bb57b44c4d31ac29196",
+      "mod_time": "2026-08-04T07:13:14Z"
+    },
+    {
+      "path": "content-export/home/solution.json",
+      "hash": "3556e355152f20eff6e2416049f04c07dd2fcd2675389ba2b5abb5fb740be522",
+      "mod_time": "2026-08-03T11:12:20Z"
+    },
+    {
+      "path": "next.config.ts",
+      "hash": "29b5fdb986530e0e000244893e552f03e4fdeeea18f23863e332be6275ced4a6",
+      "mod_time": "2026-10-05T20:34:21Z"
+    },
+    {
+      "path": "src/app/legal/privacy/_data/content.ts",
+      "hash": "efd3d00663734f419dc68b60d15f8519055d407355b72f77ab30d724bb1bd4c1",
+      "mod_time": "2026-09-27T19:53:09Z"
+    },
+    {
+      "path": "src/app/legal/privacy/page.tsx",
+      "hash": "dc0a3e5a45eb9ca7bb9f0fc2c1edaad6d2cf75788ba4aa33b7f99c18f5514be7",
+      "mod_time": "2026-09-27T19:53:43Z"
+    },
+    {
+      "path": "src/app/resources/blogs/[slug]/page.tsx",
+      "hash": "c9744b1e7d32e6d41af0d80e7a1d1013f1dd01eb3b22965c9ee9c45876e093ba",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "src/app/resources/blogs/_components/BlogContent.tsx",
+      "hash": "d451a579b7ff9149732b11f5687f1a8b904f3e98df22975e3a2fc3fa0d82a156",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "src/app/solutions/manufacturing/_data/content.ts",
+      "hash": "92795f9971a9fc09215b2f2217a5b93554ef3de656c7d840032db442f70c8090",
+      "mod_time": "2026-10-07T19:53:06Z"
+    },
+    {
+      "path": "src/app/solutions/manufacturing/page.tsx",
+      "hash": "be264104b23a784130fcdcc1ed59e8d8dfd48c84f6b26608b202a06570453338",
+      "mod_time": "2026-08-24T18:15:25Z"
+    },
+    {
+      "path": "content-export/global/navigation.json",
+      "hash": "79db504e70db22e54c83848978320eba8f34d1ac7e416dd1108656b6f7c2115e",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "public/maskable-icon-512x512.png",
+      "hash": "26e0ffcbd3f9ca760af6d1b56fa319f96fa3f0a7ba2af581f4313dd4cbe4f960",
+      "mod_time": "2026-08-24T19:16:21Z"
+    },
+    {
+      "path": "src/app/resources/blogs/_components/BlogPagination.tsx",
+      "hash": "93b27382a413eaa3e16c27ec7d018dc507d5c67eeb9ec2dbd8424f5d400caf9f",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "src/app/solutions/digital-agencies/page.tsx",
+      "hash": "c6c5dde5d4859ddafdfcc8142c754d0f409b403d66efde7c63917770ab3b3bb0",
+      "mod_time": "2026-08-24T18:15:25Z"
+    },
+    {
+      "path": "src/app/solutions/page.tsx",
+      "hash": "1a28db2f19db6427770f9df79524db9df8de133d8024861866891332bdca0fdb",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "src/app/solutions/pharmaceutical/_components/ChecklistIntroSection.tsx",
+      "hash": "77d897bc9d24b56a7715af668f911ea0cf1e18da94c1198ac00bc69caf00eaf9",
+      "mod_time": "2026-08-03T07:56:32Z"
+    },
+    {
+      "path": "src/app/solutions/pharmaceutical/_components/FaqSection.tsx",
+      "hash": "00fdfed93b3e007371063c7b09a1af48b25d0daa4f2456e3640f9df0feee6d13",
+      "mod_time": "2026-08-24T19:44:49Z"
+    },
+    {
+      "path": "src/app/solutions/pharmaceutical/_data/hero.ts",
+      "hash": "39ac0e9cff735394a99761c0ea8a1a0dece2a9094b13fb26513780aa2ca87d3c",
+      "mod_time": "2026-10-07T19:53:06Z"
+    },
+    {
+      "path": "content-export/solutions/pharmaceutical/hero.json",
+      "hash": "31ac4b5eb9575653cc6f496c32470d5b84c256c20befe2c6b1935aa6b2d1b886",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "hash": "275a07c13fc7c83a652efcfa9fb6a207c451a2f5088e6793415ce44281285720",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "src/app/about/_data/content.ts",
+      "hash": "5df28ad3384c9dfb65175561ebe3232557640f07d1863859723056b1e1eb4888",
+      "mod_time": "2026-08-17T19:13:30Z"
+    },
+    {
+      "path": "src/app/contact-sales/_components/ContactSalesSection.tsx",
+      "hash": "99a32a03dbd6780baa5391567e5f90e4df1eb60c502ebca1fbf18377b949d2f6",
+      "mod_time": "2026-08-03T07:16:37Z"
+    },
+    {
+      "path": "src/app/pricing/_components/PricingHeroSection.tsx",
+      "hash": "cdff891c2d5f103139c205337b5834eafaaf7bd53dcde47754415defb55f2872",
+      "mod_time": "2026-09-15T17:51:44Z"
+    },
+    {
+      "path": "src/app/pricing/page.tsx",
+      "hash": "444fa8150a64a3ed4f9f8dfbdf244cd305fa568696b6c791f3b650c5ad4967fe",
+      "mod_time": "2026-09-15T17:51:44Z"
+    },
+    {
+      "path": "src/app/solutions/pharmaceutical/_components/ChecklistContentsSection.tsx",
+      "hash": "eaabd73dd39ca6a9af5faa5daaa162bc5424c17cfb803aa4ae84fa9f1e92a659",
+      "mod_time": "2026-08-03T07:17:16Z"
+    },
+    {
+      "path": "src/app/solutions/pharmaceutical/_components/FinalCtaSection.tsx",
+      "hash": "1a6caffc00ad13b9d801ffc761978062ab8fc82f844437ed72f403a655b27593",
+      "mod_time": "2026-08-03T07:48:24Z"
+    },
+    {
+      "path": "public/android-chrome-192x192.png",
+      "hash": "4ec41b87b179f7d8e3d878f9c8c4b07565d3d8d3954ce5011f05bfc011f6ca85",
+      "mod_time": "2026-08-28T07:34:01Z"
+    },
+    {
+      "path": "src/app/legal/_components/LegalPage.tsx",
+      "hash": "91584a0b092b9832083d78a6f14919097728c1a50515849e7410a677fdc49757",
+      "mod_time": "2026-09-27T19:51:18Z"
+    },
+    {
       "path": "src/app/resources/blogs/_data/content.ts",
       "hash": "05a7bd09f80ea96751546b96edccce55ae5d9f29c06cee950d4b6f72a0c98454",
       "mod_time": "2026-07-22T10:42:35Z"
     },
     {
-      "path": "src/app/solutions/digital-agencies/_data/content.ts",
-      "hash": "44c3668ee5b459231816396357182b79a774e1cf20519f278285dbd84b99bbe7",
+      "path": "src/app/solutions/pharmaceutical/twitter-image.tsx",
+      "hash": "e187bc4f06fbf5a9840293dfded3fa73d87fcf43d8b9a3a48d278dd169aa1c12",
+      "mod_time": "2026-08-24T19:46:20Z"
+    },
+    {
+      "path": "src/components/layout/ChatWidget.tsx",
+      "hash": "decfc3e58ca54623347bf067dac273ec2df2886e6f10569155038d8b85917653",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "src/components/sections/FaqSection.tsx",
+      "hash": "69461772a5d2ecf9db60f9ffd1b3197e649b3c00f8031591f3992540ad14e5d7",
+      "mod_time": "2026-08-03T07:54:51Z"
+    },
+    {
+      "path": "src/data/sections/how-it-works.json",
+      "hash": "754481ab49c902cfdae0d128d2fa453582ef0644d58ea0d2a2ad4ebfefb1bf10",
+      "mod_time": "2026-10-07T19:53:06Z"
+    },
+    {
+      "path": "src/data/sections/problem.json",
+      "hash": "de08ac12c3c7f3b89d3b7eca9d191f767d17230ad914db7d6286677d6600e506",
+      "mod_time": "2026-10-07T19:53:06Z"
+    },
+    {
+      "path": "postcss.config.mjs",
+      "hash": "7b299d3d3b16699ddda397c0b2373b3af4f25f8fc9ccc9b3d9e64ef083bc1c21",
       "mod_time": "2026-07-22T10:42:35Z"
     },
     {
@@ -613,99 +748,64 @@
       "mod_time": "2026-08-03T12:18:25Z"
     },
     {
-      "path": "src/data/chat.json",
-      "hash": "c13cc5e8efc700e80e53a3584b2d7b6601ee1be0704533e79920f484160729e3",
+      "path": "src/components/ui/YouTubeFacade.tsx",
+      "hash": "d5b001a07707ef080b85fbe336efc3de6850e38d12344735df692bd383c2a528",
+      "mod_time": "2026-10-07T19:51:40Z"
+    },
+    {
+      "path": "wordpress/blog-to-json-webhook.php",
+      "hash": "2b0649d7cefd39f5c881325d2be91373e593d4598a80f4ca0e902b927f18a4e2",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "README.md",
+      "hash": "403fd55fe0dfa2b035769f140b79e75090e42ed36b1fb491fb224929834a1c7a",
       "mod_time": "2026-08-04T19:58:38Z"
     },
     {
-      "path": "src/lib/scroll.ts",
-      "hash": "a25e54b6cd19464ef1931b1a60f242371053faacf54e1624a419f2b29cbe97fd",
+      "path": "brand/expendesk-mark-master.png",
+      "hash": "cbf82c22348c28d5ea520159f660b3c9aa90485f39726e3942ad3d7985bdfd01",
+      "mod_time": "2026-08-24T19:15:26Z"
+    },
+    {
+      "path": "public/placeholder-ebook.pdf",
+      "hash": "ac0aac0c60472cb063b5ccbcb6521d9159ba142273e6b8fd622856118783149d",
       "mod_time": "2026-07-22T10:42:35Z"
     },
     {
-      "path": "content-export/home/problem.json",
-      "hash": "0541c732f63340ca773964708a51da35f3a24c2fcc03702910ef95350391934f",
-      "mod_time": "2026-08-03T11:13:30Z"
+      "path": "src/app/apple-icon.png",
+      "hash": "60d1358567c29160dd902d025e822d6b2d214febef3200957491e6c6e1534ae9",
+      "mod_time": "2026-08-28T07:34:01Z"
     },
     {
-      "path": "src/app/resources/case-studies/_data/content.ts",
-      "hash": "837e995a80ffab00ae1ee41b9bf7768dede2da5ac225b306dfe0bc7ccc95cb3b",
-      "mod_time": "2026-07-22T10:42:35Z"
+      "path": "src/app/resources/blogs/_components/BlogSidebar.tsx",
+      "hash": "0eea75d935cefb64096178d822d074fa7d60012e4ef656cfd8fca7ce8f924d58",
+      "mod_time": "2026-08-03T07:48:24Z"
     },
     {
-      "path": "src/app/solutions/pharmaceutical/_components/HeroSection.tsx",
-      "hash": "51e42b842e5d3c92aeddd5c346761fe642b33c75601fcc6db8c467cc023081bc",
-      "mod_time": "2026-08-03T08:04:22Z"
+      "path": "src/app/robots.ts",
+      "hash": "47cf9074c6b6dfa98e351fdf83806ecf55bba1dae1414a506bdf9a2210f7b908",
+      "mod_time": "2026-08-06T19:29:05Z"
     },
     {
-      "path": "src/app/solutions/pharmaceutical/_data/choose-next-step.ts",
-      "hash": "2f7e2f22ca666b54ed86530d9a00d6c9b07448804a5f70305ed6e55080324cae",
-      "mod_time": "2026-07-22T10:42:35Z"
+      "path": "src/app/solutions/pharmaceutical/_components/ProblemSection.tsx",
+      "hash": "6444833119f5e87a3755227268ba04ded1cd138247393870eb6a0819cc034a18",
+      "mod_time": "2026-08-03T07:17:09Z"
     },
     {
-      "path": "src/components/sections/ProblemSection.tsx",
-      "hash": "367773b07847011e5b202294a8b182bc135eaa80b487250fcff48eea0320881f",
-      "mod_time": "2026-08-03T10:11:25Z"
-    },
-    {
-      "path": "src/data/sections/comparison.json",
-      "hash": "50928a70aabfc5197f1a994b4b8fd91ee2205984813a03306ad23d178253d47c",
+      "path": "src/app/solutions/pharmaceutical/_data/self-assessment.ts",
+      "hash": "7fc14c027643b735bb7fa4bf353233fa30cb649fe9d5a4b1ca8e7a6297661f43",
       "mod_time": "2026-08-03T11:11:14Z"
     },
     {
-      "path": "content-export/solutions/pharmaceutical/checklist-contents.json",
-      "hash": "fc855b880e75c5720c8a3515b6528d667d8a9ba85abfa237598449c5ff347fb3",
-      "mod_time": "2026-07-22T10:42:35Z"
+      "path": "src/app/contact-us/_data/content.ts",
+      "hash": "e103e19ec37e9ee3ec6be8fba7bcf658cc0f28d4b37f2e672d99cdf7475a651e",
+      "mod_time": "2026-10-07T19:53:31Z"
     },
     {
-      "path": "content-export/solutions/pharmaceutical/choose-next-step.json",
-      "hash": "c34b87c456e77f0af7bbcb0d7bf183c0b205f3f5762d6edd56aab2c9e058449d",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "docs/SEO.md",
-      "hash": "4f61df91df8fcfb27c9b4b9369244ec802ab59cb5fa8f18557c48a4f0adf1c61",
-      "mod_time": "2026-09-27T19:58:12Z"
-    },
-    {
-      "path": "src/app/legal/_components/LegalDocumentPage.tsx",
-      "hash": "8c062ab2a2869759a66acc47ea264f31735f46e8f63c77ed291f835240a6b932",
-      "mod_time": "2026-09-27T19:53:25Z"
-    },
-    {
-      "path": "src/app/legal/_components/LegalPage.tsx",
-      "hash": "91584a0b092b9832083d78a6f14919097728c1a50515849e7410a677fdc49757",
-      "mod_time": "2026-09-27T19:51:18Z"
-    },
-    {
-      "path": "src/app/resources/blogs/_components/BlogPagination.tsx",
-      "hash": "93b27382a413eaa3e16c27ec7d018dc507d5c67eeb9ec2dbd8424f5d400caf9f",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "src/app/solutions/pharmaceutical/_data/bridge.ts",
-      "hash": "066ecc47d2af9597d24ebc9be95dc2e00c838d4efda84d2cf527efe84ddcfb89",
-      "mod_time": "2026-08-03T11:13:30Z"
-    },
-    {
-      "path": "src/components/sections/ComparisonSection.tsx",
-      "hash": "dd4156f32015f6fb811c9553457bbc3ec850c36ac7b79b416dc6882f85fb3e36",
-      "mod_time": "2026-08-03T07:15:24Z"
-    },
-    {
-      "path": "content-export/home/lead-magnet.json",
-      "hash": "30fa31c44271355ae2a479eb9f5bb9d14710b1a791fef7ad4c381f6cda32dbe5",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "src/app/opengraph-image.tsx",
-      "hash": "727b9425475e969f444c10c72b8b1bd8922f0546c9175b09d3e14b7af9bc9e64",
-      "mod_time": "2026-10-05T09:38:57Z"
-    },
-    {
-      "path": "src/app/resources/blogs/_components/FeaturedPost.tsx",
-      "hash": "1b23d674578549e5e99b41be3bf7febab27296e1455cb112a0a8344cb3cae2fb",
-      "mod_time": "2026-08-03T07:53:26Z"
+      "path": "src/app/legal/disclaimer/page.tsx",
+      "hash": "16ee4a1a3d03bb3090a982d5c9f318913f9c253e9977e506b4be3356b04a8140",
+      "mod_time": "2026-09-27T19:53:43Z"
     },
     {
       "path": "src/app/solutions/pharmaceutical/_components/IntroducingExpendeskSection.tsx",
@@ -713,14 +813,64 @@
       "mod_time": "2026-08-03T07:48:24Z"
     },
     {
-      "path": "src/components/sections/TestimonialsSection.tsx",
-      "hash": "5a11c6a8ce8b73698edb92b71ba6110467488c1c5ed5d0064b0b0f25f151ff4d",
-      "mod_time": "2026-08-03T07:15:39Z"
+      "path": "src/app/solutions/pharmaceutical/_data/checklist-contents.ts",
+      "hash": "35118f0f93665060067b007d7701da89b64dc7e6fb4482e9ac360afa9c40ec80",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "src/components/chat/ChatPanel.tsx",
+      "hash": "1a1c988b2fb289e5f4076405dab481a53f2e10cd3b2567ca5a5a10b641c9f28e",
+      "mod_time": "2026-08-04T19:58:38Z"
+    },
+    {
+      "path": "src/components/chat/HeroChatDock.tsx",
+      "hash": "cc215e88a486391597b951a8ed5b45fbb603e87dfa82c5f75fc3d3a78852ff7e",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "src/components/sections/WhyExpendesk.tsx",
+      "hash": "25c7e9fe59c54eb39f411ec709954c832f2593bce772e918cee2ff34df07f4e2",
+      "mod_time": "2026-08-03T07:54:39Z"
+    },
+    {
+      "path": "src/lib/og-card.tsx",
+      "hash": "0e4ed334c174bb603bdca6f1edc3bb0e70ef4562095b97ea14f8bb38e7fff3ec",
+      "mod_time": "2026-10-05T09:40:52Z"
+    },
+    {
+      "path": "content-export/home/why-expendesk.json",
+      "hash": "eaf310d14c0a7784a73bb3683338150a23357aaf69dfc82d8d07565b373e7238",
+      "mod_time": "2026-08-03T11:12:20Z"
+    },
+    {
+      "path": "public/expendesk-mark.jpg",
+      "hash": "b0caef91a4485c9fc6f2475ead9f8166501b706d567911b59356e9198787efc5",
+      "mod_time": "2026-08-03T12:10:50Z"
+    },
+    {
+      "path": "src/app/legal/terms/page.tsx",
+      "hash": "e629f3cbeb5f8e6543d6021fb19fded402ba6bf6e356fba3509eec27e3932e69",
+      "mod_time": "2026-09-27T19:53:43Z"
+    },
+    {
+      "path": "src/app/resources/blogs/layout.tsx",
+      "hash": "5eabe0758df434281a5a6975f4612e34f9ab313ca230c2d49f0bd38945c13144",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "src/components/ui/ComingSoonSection.tsx",
+      "hash": "ea7bcb0f86e75847b4464833cf72643212eaaf3e678ef23fbfb6263ad5e52115",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "src/data/sections/lead-magnet.json",
+      "hash": "b7f855c28680d9bd383a42b377fa62f25ae18925249257e7edece11572eecbde",
+      "mod_time": "2026-07-22T10:42:35Z"
     },
     {
       "path": "src/data/sections/why-expendesk.json",
-      "hash": "35e286aae510a6f9c78b34246b5fa4ce00480d06cd4600e4268e44bb09227dd7",
-      "mod_time": "2026-08-03T11:11:14Z"
+      "hash": "acfc5cf4df59c311523ce76a480e2e9eda3f5a0b48fb889a076dd0cd67c22f62",
+      "mod_time": "2026-10-07T19:53:06Z"
     },
     {
       "path": "src/lib/blog-api.ts",
@@ -728,19 +878,159 @@
       "mod_time": "2026-07-22T10:42:35Z"
     },
     {
-      "path": "MSME Lead Magnet.pdf",
-      "hash": "5f8a033588cc25b891b5cb67498cb567376da5c2beee4c594fee83eee57ffad4",
+      "path": "content-export/home/features.json",
+      "hash": "d4b0fa8cf6a84ca3b1be0c9ea363e5bd0c52b5e7f99a31e17f6fc87e85f77bd8",
       "mod_time": "2026-07-22T10:42:35Z"
     },
     {
-      "path": "src/app/contact-sales/_components/GhlContactForm.tsx",
-      "hash": "bf85b113745fdfe8f307bc844538b77d9f1070f33730579610660fca9ff80333",
+      "path": "public/logo-white.png",
+      "hash": "76b7a8aa568e615a8521bdef922ccb80d7b44070562501595c9d405ca9f51587",
+      "mod_time": "2026-08-04T07:37:04Z"
+    },
+    {
+      "path": "src/app/legal/_data/types.ts",
+      "hash": "7dd48223b317cccec3714689d279bb43236ee5807096c7d3487126a77aed628c",
+      "mod_time": "2026-09-27T19:51:18Z"
+    },
+    {
+      "path": "src/app/resources/blogs/_components/FeaturedPost.tsx",
+      "hash": "1b23d674578549e5e99b41be3bf7febab27296e1455cb112a0a8344cb3cae2fb",
+      "mod_time": "2026-08-03T07:53:26Z"
+    },
+    {
+      "path": "src/app/solutions/_data/content.ts",
+      "hash": "75b0fe739e423a501d0dd5f54a3525dfad20934b2cea6633f87f7ee89cc70ffe",
       "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "src/components/ui/MagneticButton.tsx",
+      "hash": "2b38ffc290633dcd0a337cbb9698fbb9fb836c636813338c210579817aeda44c",
+      "mod_time": "2026-08-03T07:55:39Z"
+    },
+    {
+      "path": "src/lib/lead-magnet.ts",
+      "hash": "364dc8da66dd4a90888497c1d7375a9f436ee70e25452250013402dd2046bb67",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "content-export/README.md",
+      "hash": "5831b5dab0c73b0b4b2a4e3c5f15a2cde22fdfa98fb00df38261dc80f74e354b",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "src/app/book-a-demo/_components/DemoFormSection.tsx",
+      "hash": "c0e95223cdc3c203eb79f1645d78828663514e812605b33be58e9d6b5f543140",
+      "mod_time": "2026-10-07T20:07:57Z"
+    },
+    {
+      "path": "src/app/legal/terms/_data/content.ts",
+      "hash": "a5906ed002fd6c7aa6b58c9e580452df80c0cf755cf7482bd7f5360982adee17",
+      "mod_time": "2026-09-27T19:50:56Z"
+    },
+    {
+      "path": "src/app/resources/case-studies/_data/content.ts",
+      "hash": "837e995a80ffab00ae1ee41b9bf7768dede2da5ac225b306dfe0bc7ccc95cb3b",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "src/app/sitemap.ts",
+      "hash": "f7435a434fc019bb4f28ffd6bde2a565eda118b3532be390ee2ea2b105f9a87c",
+      "mod_time": "2026-10-07T19:54:27Z"
+    },
+    {
+      "path": "src/app/solutions/pharmaceutical/_components/Choosenextstepsection.tsx",
+      "hash": "24fa12967f23e41d9f8c97b1d2e47b068503dab64abdbf7c6ce4cd7e6f147354",
+      "mod_time": "2026-08-03T07:48:24Z"
+    },
+    {
+      "path": "src/data/coming-soon.json",
+      "hash": "6bd8e89fcbe86b0c84ce51e74dfd5a90bc7be05096f43c94489d33273043d27e",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "vercel.json",
+      "hash": "c89fa154d3f07f740f57d63bc221d55fcf3e3fb5c49b487bc6cf1229c96d70e9",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "content-export/global/footer.json",
+      "hash": "8d7b4d1d7297c6bf7627e786b77c5ef5361b77e4d8fc33f3e63be666a822abca",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "src/app/icon1.png",
+      "hash": "11fb08b3e02328243c61428bc73f0b90290507fe0f7f610f518457f9db72119f",
+      "mod_time": "2026-08-28T07:34:01Z"
+    },
+    {
+      "path": "src/app/pricing/_components/PricingFaqSection.tsx",
+      "hash": "82e798fbf63862d038149a40f0c0a4dac81e1d9e7644707ebbc64e24a855dcb7",
+      "mod_time": "2026-09-15T17:51:40Z"
+    },
+    {
+      "path": "src/app/resources/page.tsx",
+      "hash": "36bb2ea20b78322ad0985b14a3911b3eb07f9585eda86bb1a574081a046d61d4",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "src/app/solutions/pharmaceutical/_components/SelfAssessmentSection.tsx",
+      "hash": "458d6bae006e485a42a4a7f8d01aa485cc537ef4ce59fd825d2a2a62fde8c6c9",
+      "mod_time": "2026-10-07T19:53:06Z"
+    },
+    {
+      "path": "src/app/solutions/pharmaceutical/_data/introducing-expendesk.ts",
+      "hash": "bc669a76671422073bc39c289802fcd759b55e78c20faeb302ca83aac92a00bb",
+      "mod_time": "2026-10-07T19:53:06Z"
+    },
+    {
+      "path": "content-export/home/problem.json",
+      "hash": "0541c732f63340ca773964708a51da35f3a24c2fcc03702910ef95350391934f",
+      "mod_time": "2026-08-03T11:13:30Z"
+    },
+    {
+      "path": "content-export/solutions/manufacturing.json",
+      "hash": "6b64fba4d14ebae3ebd626b751bb3495bfd0179853f6689b879b63f91f0ba7aa",
+      "mod_time": "2026-07-22T10:42:35Z"
+    },
+    {
+      "path": "public/logo-wordmark-white.png",
+      "hash": "d4b74cd06da825663a7c2da0a78651a914ae5939d972aa041549ca121a17d520",
+      "mod_time": "2026-08-04T07:18:13Z"
     },
     {
       "path": "src/app/legal/copyright/page.tsx",
       "hash": "668931a7752f30f5658e8775bff9ee17f8db554c438e4c849f50b11e2203570c",
       "mod_time": "2026-09-27T19:53:43Z"
+    },
+    {
+      "path": "src/app/solutions/pharmaceutical/_data/index.ts",
+      "hash": "3ef0348e9bd8c778e264a7e30a046cac677bd95fd75c8964957ea9ec119a754f",
+      "mod_time": "2026-08-24T19:44:17Z"
+    },
+    {
+      "path": "src/data/sections/solution.json",
+      "hash": "e601c57b95542289c06cf2dc6f1c9b4ce58c67c8aabfd0807df8175f53a07873",
+      "mod_time": "2026-10-07T19:53:06Z"
+    },
+    {
+      "path": "src/lib/page-metadata.ts",
+      "hash": "ffb61fecb1e475912782cd8ac2feee2c36aa94fd5b4be393448ab3496cb96f09",
+      "mod_time": "2026-10-05T09:38:03Z"
+    },
+    {
+      "path": "src/lib/site.ts",
+      "hash": "1fb95ed557d47817ddd83c35608fe17ed40f61a5a1b4bc47a03d2c662b79ae73",
+      "mod_time": "2026-08-24T17:58:56Z"
+    },
+    {
+      "path": "docs/SEO.md",
+      "hash": "d5570ff5935d69fa7f3219c87880b9d6dcbe8d3e82ee7adb5bbafa78a60b3c89",
+      "mod_time": "2026-10-05T21:06:06Z"
+    },
+    {
+      "path": "src/app/icon2.png",
+      "hash": "0603cb6d05124b14c36588f20df33db9d3a763e6ce2e2fb83f47e049690d3235",
+      "mod_time": "2026-08-28T07:34:01Z"
     },
     {
       "path": "src/app/pricing/_components/PricingFinalCtaSection.tsx",
@@ -753,234 +1043,34 @@
       "mod_time": "2026-07-22T10:42:35Z"
     },
     {
-      "path": "src/app/robots.ts",
-      "hash": "47cf9074c6b6dfa98e351fdf83806ecf55bba1dae1414a506bdf9a2210f7b908",
-      "mod_time": "2026-08-06T19:29:05Z"
-    },
-    {
-      "path": "src/hooks/use-ghl-embed-resizer.ts",
-      "hash": "c888bca790e76558acf934341e7dedd7acf0a6a9f67b6cf3058405f6bb654d36",
+      "path": "components.json",
+      "hash": "7e7d964e4a72ef554ea277b69d0fc1eaecd3a385237002c6f68955531f4a2f3c",
       "mod_time": "2026-07-22T10:42:35Z"
     },
     {
-      "path": "tsconfig.json",
-      "hash": "dbacf04aa5f38c1ce4b0f030fbb84e5adff19306fb785b2e4aafef9c58705658",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "public/expendesk-mark.jpg",
-      "hash": "b0caef91a4485c9fc6f2475ead9f8166501b706d567911b59356e9198787efc5",
-      "mod_time": "2026-08-03T12:10:50Z"
-    },
-    {
-      "path": "src/app/api/chat/route.ts",
-      "hash": "12ed374f0ec7bc3f86100eebe4749dea4a20342316d388fb9bfebccb43f86874",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "src/app/solutions/digital-agencies/page.tsx",
-      "hash": "c6c5dde5d4859ddafdfcc8142c754d0f409b403d66efde7c63917770ab3b3bb0",
-      "mod_time": "2026-08-24T18:15:25Z"
-    },
-    {
-      "path": "src/components/sections/HowItWorksSection.tsx",
-      "hash": "b4d4ca441087ff037286ea6a383e5f2fe8b11464efbecbb39b916db0716827ce",
-      "mod_time": "2026-08-03T07:48:25Z"
-    },
-    {
-      "path": "CLAUDE.md",
-      "hash": "d631d88045f74623d568adfb4783b72e3d1b732330d749bc6c72e6648d4581d3",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "src/app/legal/_data/types.ts",
-      "hash": "7dd48223b317cccec3714689d279bb43236ee5807096c7d3487126a77aed628c",
-      "mod_time": "2026-09-27T19:51:18Z"
-    },
-    {
-      "path": "README.md",
-      "hash": "403fd55fe0dfa2b035769f140b79e75090e42ed36b1fb491fb224929834a1c7a",
-      "mod_time": "2026-08-04T19:58:38Z"
-    },
-    {
-      "path": "scripts/generate-icons.mjs",
-      "hash": "304cccfa4e6d8e0e289ab9a9f89bef3b20eb2fe92962c9291750b3546eecdcec",
-      "mod_time": "2026-08-28T07:34:00Z"
-    },
-    {
-      "path": "src/app/resources/blogs/_components/BlogCard.tsx",
-      "hash": "a58845af4ed1e90cebcc9990978ffd17768853c4972ffa009647955f85470d6b",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "src/components/layout/Footer.tsx",
-      "hash": "5c9c76255c6b37cf6c33d01361e5d85b6b47ebe5522c0791b55d2caf33fd49bc",
-      "mod_time": "2026-08-04T07:19:49Z"
-    },
-    {
-      "path": "src/components/ui/ComingSoon.tsx",
-      "hash": "cde7e58f1d72c27a82157c8f93d1faf5a6a0e2dc8e6349d751661c0a51cc32e2",
-      "mod_time": "2026-08-03T07:56:30Z"
-    },
-    {
-      "path": "AGENTS.md",
-      "hash": "ceaa13d29db2c2ce408ba5d00fb6c5cccc0eadeb336cf076cfea699f985b9fd8",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "content-export/home/why-expendesk.json",
-      "hash": "eaf310d14c0a7784a73bb3683338150a23357aaf69dfc82d8d07565b373e7238",
+      "path": "content-export/home/hero.json",
+      "hash": "b7d0d30ae82f1e17dcd58572a94f455aae2bd9fe540cce2eb58ef30c217382e5",
       "mod_time": "2026-08-03T11:12:20Z"
     },
     {
-      "path": "content-export/solutions/pharmaceutical/introducing-expendesk.json",
-      "hash": "ac9470800b58f220059d395eda232b282dcd24c7611ffa63d7e0b4f43326fc35",
+      "path": "content-export/solutions/digital-agencies.json",
+      "hash": "ede17986346bf638dc9d0e3197c222b19c260f8370864435f3e18f503ca7cbd1",
       "mod_time": "2026-07-22T10:42:35Z"
     },
     {
-      "path": "content-export/solutions/pharmaceutical/problem.json",
-      "hash": "ec487d8fd54827a4cde0051d0aed228c4f0fdd3629e07d86323d45198840abe2",
-      "mod_time": "2026-08-03T11:12:20Z"
-    },
-    {
-      "path": "src/app/legal/copyright/_data/content.ts",
-      "hash": "ac6130b1d11da6466f9ae2d63f3cc88bedf85480025e1146ba6e33f03e7ed49f",
-      "mod_time": "2026-09-27T19:49:23Z"
-    },
-    {
-      "path": "src/app/solutions/pharmaceutical/_data/final-cta.ts",
-      "hash": "11640c43f63df83151731dccd5a8d1925dbeb2055c66e9ac690033c13274140d",
+      "path": "logo.png",
+      "hash": "0b6db1210b563f4f6aed0a1ceb90eee38752b7e42bb06d4b7ff0ce5d277fd836",
       "mod_time": "2026-07-22T10:42:35Z"
     },
     {
-      "path": "src/app/solutions/pharmaceutical/opengraph-image.tsx",
-      "hash": "6420b787fce99286abf01212bb7c0d09397291d7b5cd4aede94a4f525c834448",
-      "mod_time": "2026-10-05T09:39:19Z"
+      "path": "src/components/sections/FeaturesVideo.tsx",
+      "hash": "a5e2a38b566d2319335090e4c33d89a8ff31cbb01abdddf0a5a54edb952ccfac",
+      "mod_time": "2026-10-05T20:36:55Z"
     },
     {
-      "path": "src/lib/site.ts",
-      "hash": "1fb95ed557d47817ddd83c35608fe17ed40f61a5a1b4bc47a03d2c662b79ae73",
-      "mod_time": "2026-08-24T17:58:56Z"
-    },
-    {
-      "path": "src/app/icon1.png",
-      "hash": "11fb08b3e02328243c61428bc73f0b90290507fe0f7f610f518457f9db72119f",
-      "mod_time": "2026-08-28T07:34:01Z"
-    },
-    {
-      "path": "src/app/pricing/_components/PricingHeroSection.tsx",
-      "hash": "cdff891c2d5f103139c205337b5834eafaaf7bd53dcde47754415defb55f2872",
-      "mod_time": "2026-09-15T17:51:44Z"
-    },
-    {
-      "path": "src/app/resources/blogs/[slug]/page.tsx",
-      "hash": "c9744b1e7d32e6d41af0d80e7a1d1013f1dd01eb3b22965c9ee9c45876e093ba",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "src/types/index.ts",
-      "hash": "d1de218214dfd8c0febce23ed7d4d3352bd15bf38e35d0878ceaa87969ed2aef",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": ".gitignore",
-      "hash": "af060020dc59c5fed43e32c0665c3f31a09a7e2d5f21faccff3a495b4543c971",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "src/app/contact-us/page.tsx",
-      "hash": "df32c83e6499bcbf8178a66d28a46f25681aafd42848cd1f64562d0243f72b06",
-      "mod_time": "2026-08-24T18:15:25Z"
-    },
-    {
-      "path": "src/app/legal/disclaimer/page.tsx",
-      "hash": "16ee4a1a3d03bb3090a982d5c9f318913f9c253e9977e506b4be3356b04a8140",
-      "mod_time": "2026-09-27T19:53:43Z"
-    },
-    {
-      "path": "src/app/solutions/pharmaceutical/twitter-image.tsx",
-      "hash": "e187bc4f06fbf5a9840293dfded3fa73d87fcf43d8b9a3a48d278dd169aa1c12",
-      "mod_time": "2026-08-24T19:46:20Z"
-    },
-    {
-      "path": "public/maskable-icon-512x512.png",
-      "hash": "26e0ffcbd3f9ca760af6d1b56fa319f96fa3f0a7ba2af581f4313dd4cbe4f960",
-      "mod_time": "2026-08-24T19:16:21Z"
-    },
-    {
-      "path": "src/app/solutions/pharmaceutical/_components/ProblemSection.tsx",
-      "hash": "6444833119f5e87a3755227268ba04ded1cd138247393870eb6a0819cc034a18",
-      "mod_time": "2026-08-03T07:17:09Z"
-    },
-    {
-      "path": "src/data/sections/benefits.json",
-      "hash": "f13484ab10b5c919033a25529f97f54fd159f18881f65791fca53fa99df7bf64",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "src/app/legal/disclaimer/_data/content.ts",
-      "hash": "0448f883b260fab8e66e7da285a3da623854be8fe64f9dab234d0e8534a20cd3",
-      "mod_time": "2026-09-27T19:47:35Z"
-    },
-    {
-      "path": "src/app/resources/faqs/page.tsx",
-      "hash": "f7bdc6cd82b96f02a5227f15eb1bf1b544d11efb6d34cef56cf749a135c201e6",
-      "mod_time": "2026-08-06T19:32:22Z"
-    },
-    {
-      "path": "src/app/solutions/_data/content.ts",
-      "hash": "75b0fe739e423a501d0dd5f54a3525dfad20934b2cea6633f87f7ee89cc70ffe",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "src/app/solutions/pharmaceutical/_components/SelfAssessmentSection.tsx",
-      "hash": "2801ee92e3ea083cacf9d755a0420d78c231e699e7214ac7a7de34af596649e6",
-      "mod_time": "2026-08-03T07:54:02Z"
-    },
-    {
-      "path": "src/lib/utils.ts",
-      "hash": "1ec3f2502acbf8f3f00e312e87f62d9d44ef0aa6ba51b2876dfeda6692ffd622",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "src/app/legal/_data/company.ts",
-      "hash": "5bdee68af5486bb15e6d51e967c637f506535a0fd340a68d14121a02d5f8e5bd",
-      "mod_time": "2026-09-27T19:51:18Z"
-    },
-    {
-      "path": "src/app/legal/terms/_data/content.ts",
-      "hash": "a5906ed002fd6c7aa6b58c9e580452df80c0cf755cf7482bd7f5360982adee17",
-      "mod_time": "2026-09-27T19:50:56Z"
-    },
-    {
-      "path": "src/app/resources/page.tsx",
-      "hash": "36bb2ea20b78322ad0985b14a3911b3eb07f9585eda86bb1a574081a046d61d4",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "src/app/resources/whitepapers/page.tsx",
-      "hash": "a547611d9ed0c44047d7dcef7d38a48b5e01525da9a886bd357ad02b829c04eb",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "src/app/solutions/page.tsx",
-      "hash": "1a28db2f19db6427770f9df79524db9df8de133d8024861866891332bdca0fdb",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "src/components/layout/ChatWidget.tsx",
-      "hash": "decfc3e58ca54623347bf067dac273ec2df2886e6f10569155038d8b85917653",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "src/components/sections/BenefitsSection.tsx",
-      "hash": "f617ed8c64c48c1d0c5962a1b4e68a940764b67e4ee675b8d509031245bbdb6d",
-      "mod_time": "2026-08-03T10:36:54Z"
-    },
-    {
-      "path": "src/data/coming-soon.json",
-      "hash": "6bd8e89fcbe86b0c84ce51e74dfd5a90bc7be05096f43c94489d33273043d27e",
-      "mod_time": "2026-07-22T10:42:35Z"
+      "path": "src/components/sections/LeadMagnetSection.tsx",
+      "hash": "1643a04c068f690324885246acfa4f4f5d56ca4fc88fb56c8131eb272d7dfb5d",
+      "mod_time": "2026-08-03T07:53:50Z"
     },
     {
       "path": "package.json",
@@ -988,91 +1078,46 @@
       "mod_time": "2026-09-11T15:21:17Z"
     },
     {
-      "path": "public/logo-wordmark.png",
-      "hash": "f0aa710457c6b24415ac26db219b98afb7903c53e5933bc478bb23e647fec619",
-      "mod_time": "2026-08-04T07:11:17Z"
+      "path": "src/app/book-a-demo/thank-you/_components/ThankYouSection.tsx",
+      "hash": "004d3f85fd979b60f4d5e48f51eef6acca0c5b560f40686b6f7948bc05579580",
+      "mod_time": "2026-10-07T19:52:30Z"
     },
     {
-      "path": "public/maskable-icon-192x192.png",
-      "hash": "96e6390c7c8198255000405576c3855e04b48a11cf188d92256ca9ddb4370948",
-      "mod_time": "2026-08-24T19:16:21Z"
+      "path": "src/app/contact-sales/_data/content.ts",
+      "hash": "cc2d67c192def90053476976bee942d2cecca279c3495c85af6eac671dcd395c",
+      "mod_time": "2026-10-07T19:53:06Z"
     },
     {
-      "path": "src/app/globals.css",
-      "hash": "52f986bc70afc2d8bafc4147aefdbe862a6519fdaa94be9a51b89316c8cca9eb",
-      "mod_time": "2026-08-03T10:33:26Z"
+      "path": "src/app/contact-us/_components/CalendarDetailsSection.tsx",
+      "hash": "b07182d73c7c2745b5202a60c936b02b4319afa47fc65d7145c2490afbe9ef17",
+      "mod_time": "2026-10-07T19:53:44Z"
     },
     {
-      "path": "src/app/page.tsx",
-      "hash": "7eea48250f674b2b9ffe638b8586beff5c729e79686b0cc8385471ecc7739c5c",
-      "mod_time": "2026-10-05T20:39:32Z"
-    },
-    {
-      "path": "src/app/solutions/pharmaceutical/_components/FinalCtaSection.tsx",
-      "hash": "1a6caffc00ad13b9d801ffc761978062ab8fc82f844437ed72f403a655b27593",
-      "mod_time": "2026-08-03T07:48:24Z"
-    },
-    {
-      "path": "src/app/solutions/pharmaceutical/_data/self-assessment.ts",
-      "hash": "7fc14c027643b735bb7fa4bf353233fa30cb649fe9d5a4b1ca8e7a6297661f43",
-      "mod_time": "2026-08-03T11:11:14Z"
-    },
-    {
-      "path": "src/components/layout/ScrollToHash.tsx",
-      "hash": "558111567e4c781c48fd4bfbff7e7bfcda4614ff4faaae9e4997f58e3ab41004",
+      "path": "src/app/resources/blogs/[slug]/not-found.tsx",
+      "hash": "423d791ea823a67b1547b0f0de5cefab729a4eac4aa3d3617184b18539e5b54b",
       "mod_time": "2026-07-22T10:42:35Z"
     },
     {
-      "path": "public/downloads/msme-lead-magnet.pdf",
-      "hash": "5f8a033588cc25b891b5cb67498cb567376da5c2beee4c594fee83eee57ffad4",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "src/app/legal/cookies/page.tsx",
-      "hash": "b6949f07eb2be2f7351c225f73d2fc45eea92041a38614de57b5a8b570346846",
-      "mod_time": "2026-09-27T19:53:43Z"
-    },
-    {
-      "path": "src/app/resources/whitepapers/_data/content.ts",
-      "hash": "1ae7d23db6ecb6562dd8aa5abad15707d019f6b3a31865c6823a74d02e645619",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "src/app/solutions/pharmaceutical/_components/Choosenextstepsection.tsx",
-      "hash": "24fa12967f23e41d9f8c97b1d2e47b068503dab64abdbf7c6ce4cd7e6f147354",
-      "mod_time": "2026-08-03T07:48:24Z"
-    },
-    {
-      "path": "src/components/chat/HeroChatDock.tsx",
-      "hash": "cc215e88a486391597b951a8ed5b45fbb603e87dfa82c5f75fc3d3a78852ff7e",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "wordpress/blog-to-json-webhook.php",
-      "hash": "2b0649d7cefd39f5c881325d2be91373e593d4598a80f4ca0e902b927f18a4e2",
-      "mod_time": "2026-07-22T10:42:35Z"
-    },
-    {
-      "path": "content-export/README.md",
-      "hash": "5831b5dab0c73b0b4b2a4e3c5f15a2cde22fdfa98fb00df38261dc80f74e354b",
+      "path": "src/app/resources/case-studies/page.tsx",
+      "hash": "276dedb28a9651875678fb76e30a2622bd5d738d2a015788ef4b0f998a3e884d",
       "mod_time": "2026-07-22T10:42:35Z"
     }
   ],
-  "fact_count": 1422,
-  "insight_count": 44,
+  "fact_count": 1493,
+  "insight_count": 46,
   "enola_version": "0.4.21",
-  "snapshot_id": "sha256:96487f2987e14aea997225a9abf1d5418c4dce40e68e7f0b22acaad25d1cc29a",
+  "snapshot_id": "sha256:88e2c68153bb8bc7021bc69134988e9ad682a44f57c3315304ef85f20612d167",
   "git": {
     "ref": "main",
-    "commit": "fae1d6cb20ec893a6c883197c4d214f33463543c",
-    "dirty": true,
+    "commit": "1c6fd2e56480f4bf410c2eca9e3aae1fb1a6a025",
+    "dirty": false,
     "remote": "github.com/young-architects/elogix"
   },
   "config_hash": "sha256:73d78ea79f51e19979d4c7d00bd9463ae684ebcb909116abad86675323c32c05",
   "extractor_version": "v270",
-  "files_seen": 204,
-  "files_parsed": 140,
-  "source_bytes": 1166477,
+  "files_seen": 213,
+  "files_parsed": 149,
+  "source_bytes": 1211421,
   "dirs_skipped": 3,
   "skipped_sample": [
     ".git/ (glob: **/.git/**)",
@@ -1080,17 +1125,17 @@
     "node_modules/ (glob: **/node_modules/**)"
   ],
   "ignore_glob_hash": "sha256:7523cc6397a498e151125a682d28fbf6df20c6f51f6dfaf18fd8f5239a20d2d8",
-  "heuristic_insights": 43,
+  "heuristic_insights": 45,
   "coverage": {
     "services_total": 0,
     "coverage_gaps": 0,
     "unresolved_edges": 0,
     "extractors_reporting": 1,
-    "extraction_unresolved": 146
+    "extraction_unresolved": 153
   },
   "census": {
-    "files_walked": 204,
-    "parsed": 140,
+    "files_walked": 213,
+    "parsed": 149,
     "excluded_by_ignore": 0,
     "excluded_by_kind": 63,
     "excluded_kinds": {
@@ -1113,22 +1158,22 @@
     ]
   },
   "output_hashes": {
-    "facts.jsonl": "sha256:d34f34f9fb88fb251d5051cce93a28482736f1f9ee70de1020a78650aa9272e1",
-    "insights.json": "sha256:f88039e225b0fe9b01be3bfb351cb79ef16cffc5258f738ecaae0f6fa9566a58",
-    "llm_context.md": "sha256:4e4b8318c50b19ce64f17566c4bc80af3868e0598c85976888723857d93a4e6b"
+    "facts.jsonl": "sha256:73eb0493457b5cd28e9669f7640040bc9341551eeebe47977228d93187061627",
+    "insights.json": "sha256:555fc85d7e7db3f6caa5ec795fb069d912e2529006c670e5d0d34488a01644d8",
+    "llm_context.md": "sha256:eb2c24bb52866dc11f26c44d20b2ddd082bd1df880db63d02593f1ab90d2d41a"
   },
   "unseen": {
     "files_excluded_by_ignore": 0,
     "dirs_excluded_by_ignore": 3,
     "outside_graph": {
-      "imports": 190
+      "imports": 201
     },
     "outside_graph_prefixes": {
       "@vercel/analytics": 1,
       "eslint": 1,
       "eslint-config-next": 2,
       "gsap": 3,
-      "next": 37,
+      "next": 40,
       "node:fs": 2
     },
     "dead_exemptions": 0,

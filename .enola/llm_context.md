@@ -2,77 +2,47 @@
 
 ## Repository Map
 
-| Module | Language | Symbols | Exported |
-|--------|----------|---------|----------|
-| `.` | typescript | 5 | 3 |
-| `scripts` | typescript | 9 | 0 |
-| `src/app` | typescript | 22 | 12 |
-| `src/app/about` | typescript | 2 | 2 |
-| `src/app/about/_data` | typescript | 1 | 1 |
-| `src/app/api/chat` | typescript | 5 | 2 |
-| `src/app/api/revalidate` | typescript | 1 | 1 |
-| `src/app/contact-sales` | typescript | 2 | 2 |
-| `src/app/contact-sales/_components` | typescript | 6 | 2 |
-| `src/app/contact-sales/_data` | typescript | 4 | 4 |
-| `src/app/contact-us` | typescript | 2 | 2 |
-| `src/app/contact-us/_components` | typescript | 3 | 1 |
-| `src/app/contact-us/_data` | typescript | 4 | 4 |
-| `src/app/legal/_components` | typescript | 6 | 2 |
-| `src/app/legal/_data` | typescript | 12 | 12 |
-| `src/app/legal/acceptable-use` | typescript | 3 | 2 |
-| `src/app/legal/acceptable-use/_data` | typescript | 1 | 1 |
-| `src/app/legal/cookies` | typescript | 3 | 2 |
-| `src/app/legal/cookies/_data` | typescript | 2 | 1 |
-| `src/app/legal/copyright` | typescript | 3 | 2 |
-| `src/app/legal/copyright/_data` | typescript | 2 | 1 |
-| `src/app/legal/disclaimer` | typescript | 3 | 2 |
-| `src/app/legal/disclaimer/_data` | typescript | 1 | 1 |
-| `src/app/legal/privacy` | typescript | 3 | 2 |
-| `src/app/legal/privacy/_data` | typescript | 3 | 1 |
-| `src/app/legal/terms` | typescript | 3 | 2 |
-| `src/app/legal/terms/_data` | typescript | 2 | 1 |
-| `src/app/pricing` | typescript | 2 | 2 |
-| `src/app/pricing/_components` | typescript | 15 | 4 |
-| `src/app/pricing/_data` | typescript | 7 | 7 |
-| `src/app/resources` | typescript | 2 | 2 |
-| `src/app/resources/_data` | typescript | 1 | 1 |
-| `src/app/resources/blogs` | typescript | 7 | 4 |
-| `src/app/resources/blogs/[slug]` | typescript | 6 | 5 |
-| `src/app/resources/blogs/_components` | typescript | 26 | 6 |
-| `src/app/resources/blogs/_data` | typescript | 7 | 7 |
-| `src/app/resources/case-studies` | typescript | 2 | 2 |
-| `src/app/resources/case-studies/_data` | typescript | 1 | 1 |
-| `src/app/resources/faqs` | typescript | 1 | 1 |
-| `src/app/resources/whitepapers` | typescript | 2 | 2 |
-| `src/app/resources/whitepapers/_data` | typescript | 1 | 1 |
-| `src/app/solutions` | typescript | 2 | 2 |
-| `src/app/solutions/_data` | typescript | 1 | 1 |
-| `src/app/solutions/digital-agencies` | typescript | 2 | 2 |
-| `src/app/solutions/digital-agencies/_data` | typescript | 1 | 1 |
-| `src/app/solutions/manufacturing` | typescript | 2 | 2 |
-| `src/app/solutions/manufacturing/_data` | typescript | 1 | 1 |
-| `src/app/solutions/pharmaceutical` | typescript | 8 | 6 |
-| `src/app/solutions/pharmaceutical/_components` | typescript | 87 | 10 |
-| `src/app/solutions/pharmaceutical/_data` | typescript | 43 | 43 |
-| `src/components/chat` | typescript | 14 | 4 |
-| `src/components/layout` | typescript | 31 | 5 |
-| `src/components/sections` | typescript | 115 | 20 |
-| `src/components/ui` | typescript | 17 | 10 |
-| `src/hooks` | typescript | 8 | 2 |
-| `src/lib` | typescript | 61 | 34 |
-| `src/types` | typescript | 26 | 25 |
-| `wordpress` | php | 5 | 5 |
+64 modules, 643 symbols, grouped by area. Every module is in `facts.jsonl`, or query_facts(kind="module").
+
+| Area | Modules | Symbols | Languages |
+|------|---------|---------|-----------|
+| `src` | 61 | 624 | typescript |
+| `scripts` | 1 | 9 | typescript |
+| `.` | 1 | 5 | typescript |
+| `wordpress` | 1 | 5 | php |
+
+Largest modules:
+- `src/components/sections` — 115 symbols (typescript)
+- `src/app/solutions/pharmaceutical/_components` — 87 symbols (typescript)
+- `src/lib` — 61 symbols (typescript)
+- `src/app/solutions/pharmaceutical/_data` — 43 symbols (typescript)
+- `src/components/layout` — 31 symbols (typescript)
+- `src/app/resources/blogs/_components` — 26 symbols (typescript)
+- `src/types` — 26 symbols (typescript)
+- `src/app` — 22 symbols (typescript)
+- `src/components/ui` — 21 symbols (typescript)
+- `src/app/pricing/_components` — 15 symbols (typescript)
+- `src/components/chat` — 14 symbols (typescript)
+- `src/app/legal/_data` — 12 symbols (typescript)
+- `scripts` — 9 symbols (typescript)
+- `src/app/solutions/pharmaceutical` — 8 symbols (typescript)
+- `src/hooks` — 8 symbols (typescript)
+- `src/app/book-a-demo/_data` — 7 symbols (typescript)
+- `src/app/contact-us/_data` — 7 symbols (typescript)
+- `src/app/pricing/_data` — 7 symbols (typescript)
+- `src/app/resources/blogs` — 7 symbols (typescript)
+- `src/app/resources/blogs/_data` — 7 symbols (typescript)
 
 ## Extraction Quality
 
-- Files parsed: **140** / 204 seen (0 file(s) + 3 directory tree(s) skipped by ignore globs)
+- Files parsed: **149** / 213 seen (0 file(s) + 3 directory tree(s) skipped by ignore globs)
 - Parse errors: 0
 
 ## Architecture Pattern
 
 **Architecture pattern: nextjs** (confidence: 95%)
 
-Recognised nextjs from directory names: 55 of 57 typescript modules classified — 98% of this repository's 58 modules. All 106 imports between ordered layers run inward; none run against the order.
+Recognised nextjs from directory names: 61 of 63 typescript modules classified — 98% of this repository's 64 modules. All 111 imports between ordered layers run inward; none run against the order.
 
 Layer mapping:
 - module "src/app" maps to layer "pages"
@@ -80,14 +50,14 @@ Layer mapping:
 - module "src/app/about/_data" maps to layer "pages"
 - module "src/app/api/chat" maps to layer "pages"
 - module "src/app/api/revalidate" maps to layer "pages"
+- module "src/app/book-a-demo" maps to layer "pages"
+- module "src/app/book-a-demo/_components" maps to layer "pages"
+- module "src/app/book-a-demo/_data" maps to layer "pages"
+- module "src/app/book-a-demo/thank-you" maps to layer "pages"
+- module "src/app/book-a-demo/thank-you/_components" maps to layer "pages"
+- module "src/app/book-a-demo/thank-you/_data" maps to layer "pages"
 - module "src/app/contact-sales" maps to layer "pages"
-- module "src/app/contact-sales/_components" maps to layer "pages"
-- module "src/app/contact-sales/_data" maps to layer "pages"
-- module "src/app/contact-us" maps to layer "pages"
-- module "src/app/contact-us/_components" maps to layer "pages"
-- module "src/app/contact-us/_data" maps to layer "pages"
-- module "src/app/legal/_components" maps to layer "pages"
-- … and 43 more (query_insights(explainer="layers") for all)
+- … and 49 more (query_insights(explainer="layers") for all)
 
 ## How to Add a Feature
 
@@ -100,12 +70,14 @@ This code is laid out as **nextjs**. A dependency runs from an outer layer to an
 
 ## Entry Points
 
-27 routes, 15 shown:
+29 routes, 15 shown:
 - **route** ALL `/api/chat` (src/app/api/chat/route.ts)
 - **route** ALL `/api/revalidate` (src/app/api/revalidate/route.ts)
 - **route** GET `/` (src/app/layout.tsx)
 - **route** GET `/` (src/app/page.tsx)
 - **route** GET `/about` (src/app/about/page.tsx)
+- **route** GET `/book-a-demo/thank-you` (src/app/book-a-demo/thank-you/page.tsx)
+- **route** GET `/book-a-demo` (src/app/book-a-demo/page.tsx)
 - **route** GET `/contact-sales` (src/app/contact-sales/page.tsx)
 - **route** GET `/contact-us` (src/app/contact-us/page.tsx)
 - **route** GET `/legal/acceptable-use` (src/app/legal/acceptable-use/page.tsx)
@@ -114,9 +86,7 @@ This code is laid out as **nextjs**. A dependency runs from an outer layer to an
 - **route** GET `/legal/disclaimer` (src/app/legal/disclaimer/page.tsx)
 - **route** GET `/legal/privacy` (src/app/legal/privacy/page.tsx)
 - **route** GET `/legal/terms` (src/app/legal/terms/page.tsx)
-- **route** GET `/pricing` (src/app/pricing/page.tsx)
-- **route** GET `/resources/blogs/[slug]` (src/app/resources/blogs/[slug]/page.tsx)
-- … and 12 more (query_facts(kind="route") for all)
+- … and 14 more (query_facts(kind="route") for all)
 
 ## Routes
 
@@ -128,6 +98,8 @@ This code is laid out as **nextjs**. A dependency runs from an outer layer to an
 | ALL | `/api/chat` | `src/app/api/chat/route.ts` | route |
 | POST | `/api/chat` | `src/components/chat/ChatProvider.tsx` |  |
 | ALL | `/api/revalidate` | `src/app/api/revalidate/route.ts` | route |
+| GET | `/book-a-demo` | `src/app/book-a-demo/page.tsx` | page |
+| GET | `/book-a-demo/thank-you` | `src/app/book-a-demo/thank-you/page.tsx` | page |
 | GET | `/contact-sales` | `src/app/contact-sales/page.tsx` | page |
 | GET | `/contact-us` | `src/app/contact-us/page.tsx` | page |
 | GET | `/legal/acceptable-use` | `src/app/legal/acceptable-use/page.tsx` | page |
@@ -164,6 +136,7 @@ This code is laid out as **nextjs**. A dependency runs from an outer layer to an
 - `src/components/chat` -> `src/types`
 - `src/components/sections` -> `src/types`
 - `src/components` -> `src/components/chat`
+- `src/components` -> `src/hooks`
 - `src/components` -> `src/lib`
 - `src` -> `src/lib`
 
@@ -175,13 +148,13 @@ This code is laid out as **nextjs**. A dependency runs from an outer layer to an
 | `src/app/solutions/pharmaceutical/_data` | 17 | 0 | high |
 | `src/lib` | 9 | 0 | medium |
 | `src/types` | 4 | 0 | low |
+| `src/hooks` | 3 | 0 | low |
 | `src/app/resources/blogs` | 0 | 2 | low |
 | `src/components/chat` | 1 | 1 | low |
 | `src/components/sections` | 0 | 2 | low |
-| `src/hooks` | 2 | 0 | low |
 | `src/app` | 0 | 1 | low |
 | `src/app/api/chat` | 0 | 1 | low |
 
 ---
 
-*Generated at 2026-10-05T21:05:39Z in 315.7651ms. 1422 facts, 44 insights.*
+*Generated at 2026-10-07T20:32:47Z in 384.5708ms. 1493 facts, 46 insights.*
