@@ -28,17 +28,17 @@ export default function ThankYouSection() {
         <div className="absolute -right-28 top-1/2 h-[20rem] w-[20rem] rounded-full bg-fuchsia-400/10 blur-[100px]" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-5xl px-5 pb-20 pt-28 sm:px-6 sm:pb-24 sm:pt-32 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-5xl px-5 pb-20 pt-24 sm:px-6 sm:pb-24 sm:pt-28 lg:px-8">
         {/* ── Confirmation ── */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-1.5 text-[13px] font-semibold uppercase tracking-widest text-emerald-700">
+          <span className="mb-3 inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-1.5 text-[13px] font-semibold uppercase tracking-widest text-emerald-700">
             <Check aria-hidden className="h-4 w-4" />
             {thankYouHero.eyebrow}
           </span>
-          <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.6rem] lg:leading-[1.14]">
+          <h1 className="text-[1.75rem] font-extrabold leading-tight tracking-tight text-slate-900 sm:text-3xl lg:text-[2rem] lg:leading-[1.15]">
             {thankYouHero.heading}
           </h1>
-          <div className="mx-auto mt-5 max-w-2xl space-y-3">
+          <div className="mx-auto mt-4 max-w-2xl space-y-2">
             {thankYouHero.lines.map((line) => (
               <p key={line} className="text-[15px] leading-relaxed text-slate-600 sm:text-base">
                 {line}
@@ -47,8 +47,23 @@ export default function ThankYouSection() {
           </div>
         </div>
 
-        {/* ── Demo video ── */}
-        <div className="mx-auto mt-10 max-w-3xl sm:mt-12">
+        {/* ── Demo video ──
+            Sized off the viewport, not a fixed width, so it lands above the
+            fold on any desktop screen instead of only the one it was eyeballed
+            on. YouTubeFacade is `aspect-video w-full`, so its height is purely
+            a function of this wrapper's width -- capping the width caps the
+            height exactly.
+
+              min(48rem, …)  never grow past the old max-w-3xl on tall screens
+              calc(…*16/9)   widest the video can be while its 16:9 height
+                             still fits the viewport minus 25rem, which is
+                             what the navbar, heading and copy above occupy
+              max(28rem, …)  floor, so a very short window shrinks it to
+                             something small rather than something useless
+
+            Desktop only: mobile `vh` units shift as browser chrome hides, and
+            a phone scrolls to reach this regardless. */}
+        <div className="mx-auto mt-7 w-full max-w-3xl sm:mt-8 lg:max-w-[min(48rem,max(28rem,calc((100dvh_-_25rem)_*_16_/_9)))]">
           <YouTubeFacade
             videoId={THANK_YOU_VIDEO_ID}
             title={thankYouHero.videoTitle}
