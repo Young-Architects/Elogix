@@ -65,24 +65,27 @@ export default function DemoFormSection() {
       </div>
 
       {/* pt-28 clears the fixed navbar (pt-3 + a ~60px pill ≈ 72px). */}
-      <div className="relative z-10 mx-auto max-w-6xl px-5 pb-20 pt-28 sm:px-6 sm:pb-24 sm:pt-32 lg:px-8">
-        {/* ── Page heading ── */}
+      {/* Vertical rhythm here is tuned so the form is visible on first paint
+          rather than a scroll away: the fixed navbar, the h1 and the subheading
+          are all that sit above it. pt-24 is the floor — the navbar is pt-3
+          plus a ~60px pill ≈ 72px, so anything less lets the heading touch it. */}
+      <div className="relative z-10 mx-auto max-w-6xl px-5 pb-20 pt-24 sm:px-6 sm:pb-24 sm:pt-28 lg:px-8">
+        {/* ── Page heading ──
+            No eyebrow badge. On a page reached by clicking "Book a Demo" it
+            only restated the h1, and it cost ~48px at the top of the fold. */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="mb-4 inline-block rounded-full bg-violet-100 px-4 py-1.5 text-[13px] font-semibold uppercase tracking-widest text-violet-600">
-            {demoHero.eyebrow}
-          </span>
           <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.12]">
             {demoHero.heading}
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-slate-600 sm:text-lg">
+          <p className="mx-auto mt-3 max-w-2xl text-base text-slate-600 sm:text-lg">
             {demoHero.subheading}
           </p>
         </div>
 
-        <div className="mt-12 grid items-start gap-10 lg:mt-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,460px)] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(0,500px)]">
+        <div className="mt-8 grid items-start gap-10 lg:mt-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,460px)] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(0,500px)]">
           {/* ── Right column on desktop, FIRST on mobile ── */}
           <div className="order-1 lg:order-2 lg:sticky lg:top-28">
-            <div className="mb-5 text-center lg:text-left">
+            <div className="mb-4 text-center lg:text-left">
               <h2 className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">
                 {demoFormPanel.heading}
               </h2>

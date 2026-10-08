@@ -28,7 +28,6 @@ import type { GhlFormEmbedConfig } from "@/components/ui/GhlFormEmbed";
 /* ------------------------------------------------------------------ */
 
 export const demoHero = {
-  eyebrow: "Book a demo",
   heading: "Book a Personalized Demo",
   subheading:
     "See How Expendesk Can Simplify Expense Management for Your Business",
