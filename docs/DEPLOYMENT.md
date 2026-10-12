@@ -32,9 +32,8 @@ Next.js 16 requires **Node >= 20.9**.
 
 ### 0.1 Collect the environment values
 
-Open Vercel → project → Settings → Environment Variables and copy the values
-for all seven. You cannot get them later from the running site — they are not
-recoverable once the project is deleted.
+Open Vercel → project → Settings → Environment Variables. **Five** are set,
+and five is all you need:
 
 ```
 WORDPRESS_API_URL
@@ -42,11 +41,31 @@ REVALIDATE_SECRET
 N8N_CHAT_WEBHOOK_URL
 N8N_CHAT_SECRET
 NEXT_PUBLIC_SITE_URL
-NEXT_PUBLIC_GTM_ID
-NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
 ```
 
-Paste them somewhere safe now. Step 4.2 needs them.
+`NEXT_PUBLIC_GTM_ID` and `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` are
+deliberately absent. Both have fallbacks in `src/lib/site.ts`: GTM falls back
+to the hardcoded container `GTM-5HQ9QMX7` (which is what the live site serves
+today), and the verification token falls back to empty, emitting no tag.
+Leave both unset and the VPS behaves exactly like production does now.
+
+Two of the five you already know without opening Vercel:
+
+| Variable | Value |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | `https://www.expendesk.com` |
+| `WORDPRESS_API_URL` | `https://lightseagreen-chough-517020.hostingersite.com` (the fallback in `next.config.ts`) |
+
+**Vercel variables marked Sensitive cannot be read back** — the value is
+write-only once saved. Click the `⋯` on each row → Edit and see whether the
+value is shown. If `REVALIDATE_SECRET` or the n8n pair cannot be revealed:
+
+- `REVALIDATE_SECRET` — generate a new one (`openssl rand -hex 32`) and put the
+  same value in the WordPress plugin. It is a shared secret, not a credential
+  issued by anyone, so rotating it is safe as long as both sides match.
+- `N8N_CHAT_WEBHOOK_URL` / `N8N_CHAT_SECRET` — copy from the n8n workflow.
+
+Paste everything somewhere safe now. Step 4.2 needs it.
 
 ### 0.2 Write down the rollback
 
@@ -312,11 +331,13 @@ Leave `VERCEL_ENV` unset. `src/lib/site.ts` falls back to `NODE_ENV`, so the
 build stays indexable. Setting it to anything but `production` applies a
 site-wide `noindex`.
 
-**Verify every variable is present and none is empty:**
+**Verify all five are present and none is empty:**
 ```bash
-grep -c '^[A-Z_]*=.\+' .env.production      # expect 7
+grep -c '^[A-Z_]*=.\+' .env.production      # expect 5
 grep '^[A-Z_]*=$' .env.production           # expect NO output
 ```
+An empty value is worse than a missing one: a missing variable falls through
+to the code's fallback, an empty string overrides it.
 
 ---
 
@@ -462,12 +483,14 @@ curl -s https://vps.expendesk.com/robots.txt
 All must be `200`. A blog post must render with its featured image — that
 proves `WORDPRESS_API_URL`, the `next/image` allowlist and sharp all work.
 
-**Also confirm GTM made it into the bundle** (the silent failure from 4.3):
+**Also confirm GTM made it into the bundle:**
 ```bash
 curl -s https://vps.expendesk.com/ | grep -o 'GTM-[A-Z0-9]*' | head -1
 ```
-Empty output means `NEXT_PUBLIC_GTM_ID` was missing at build time. Fix
-`.env.production` and **rebuild**.
+Expect `GTM-5HQ9QMX7` — served by the fallback in `src/lib/site.ts`, since
+`NEXT_PUBLIC_GTM_ID` is intentionally unset. Empty output means the var was
+set to an empty string somewhere, which overrides the fallback. Remove the
+line entirely and **rebuild**.
 
 Do not proceed until every check passes.
 
