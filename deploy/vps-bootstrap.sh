@@ -15,13 +15,34 @@ set -euo pipefail
 REPO="https://github.com/Young-Architects/Elogix.git"
 APP_DIR="/opt/expendesk"
 APP_NAME="expendesk"
-PORT="3000"
+PORT="${PORT:-}"          # empty = auto-pick the first free port
+CANDIDATE_PORTS="3000 3001 3002 3080 8080"
 NODE_MAJOR="22"
 
 say()  { printf '\n\033[1;35m==> %s\033[0m\n' "$*"; }
 ok()   { printf '    \033[0;32mok\033[0m  %s\n' "$*"; }
 skip() { printf '    \033[0;33m--\033[0m  %s (already done)\n' "$*"; }
 die()  { printf '\n\033[0;31mFAILED: %s\033[0m\n' "$*" >&2; exit 1; }
+
+# A port is "taken" if anything is LISTENing on it. This box already runs
+# Docker containers (Supabase Studio on 3000, n8n on 5678) and docker-proxy
+# binds before we do -- assuming 3000 was free is how the first run left pm2
+# restart-looping on EADDRINUSE while curl happily talked to somebody else.
+port_taken() {
+  if command -v ss >/dev/null 2>&1; then
+    ss -ltn 2>/dev/null | awk '{print $4}' | grep -qE "[:.]${1}$"
+  else
+    (exec 3<>"/dev/tcp/127.0.0.1/$1") 2>/dev/null && { exec 3<&- 3>&-; return 0; } || return 1
+  fi
+}
+
+pick_port() {
+  local p
+  for p in $CANDIDATE_PORTS; do
+    port_taken "$p" || { echo "$p"; return 0; }
+  done
+  return 1
+}
 
 [ "$(id -u)" -eq 0 ] || die "Run this as root."
 
@@ -111,14 +132,30 @@ npm run build
 ok "build complete"
 
 # --------------------------------------------------------------------- 7. run
-say "Starting"
-if pm2 describe "$APP_NAME" >/dev/null 2>&1; then
-  pm2 reload "$APP_NAME" --update-env >/dev/null
-  ok "reloaded"
+say "Choosing a port"
+# A failed earlier attempt can leave a restart-looping process holding the name.
+pm2 delete "$APP_NAME" >/dev/null 2>&1 || true
+
+if [ -n "$PORT" ]; then
+  port_taken "$PORT" && die "Port $PORT is already in use. Re-run with a free one, e.g.  PORT=3001 bash $0"
+  ok "using requested port $PORT"
 else
-  PORT="$PORT" pm2 start npm --name "$APP_NAME" -- start >/dev/null
-  ok "started on :$PORT"
+  PORT="$(pick_port)" || die "All candidate ports are busy ($CANDIDATE_PORTS). Re-run with an explicit one, e.g.  PORT=4000 bash $0"
+  ok "port $PORT is free"
 fi
+
+say "Starting"
+PORT="$PORT" pm2 start npm --name "$APP_NAME" -- start >/dev/null
+ok "launched on :$PORT"
+
+# pm2 calls it a success once the process is SPAWNED, which says nothing about
+# whether the server bound the port. Wait for a real listener before believing it.
+for _ in $(seq 1 20); do
+  port_taken "$PORT" && break
+  sleep 1
+done
+port_taken "$PORT" || die "Nothing is listening on $PORT after 20s. Run: pm2 logs $APP_NAME --lines 40"
+ok "bound to :$PORT"
 pm2 save >/dev/null
 pm2 startup systemd -u root --hp /root >/dev/null 2>&1 || true
 ok "will restart on reboot"
@@ -136,8 +173,13 @@ fi
 say "Verifying"
 sleep 4
 code=$(curl -s -o /dev/null -w '%{http_code}' "http://127.0.0.1:${PORT}/" || echo 000)
-[ "$code" = "200" ] || die "App returned $code. Run: pm2 logs $APP_NAME --lines 50"
-ok "home page 200"
+case "$code" in
+  200) ok "home page 200" ;;
+  3*)  loc=$(curl -sI "http://127.0.0.1:${PORT}/" | awk -F': ' 'tolower($1)=="location"{print $2}' | tr -d '\r')
+       die "Port $PORT answered $code redirecting to '$loc' -- that is NOT this app. Another service owns the port. Re-run with PORT=<free port>." ;;
+  000) die "Nothing answered on $PORT. Run: pm2 logs $APP_NAME --lines 50" ;;
+  *)   die "App returned $code. Run: pm2 logs $APP_NAME --lines 50" ;;
+esac
 
 robots=$(curl -s "http://127.0.0.1:${PORT}/robots.txt" | tr -d '\r')
 echo "$robots" | grep -qi "Disallow: /" \
