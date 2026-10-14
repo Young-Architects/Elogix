@@ -12,7 +12,7 @@
 
 set -euo pipefail
 
-REPO="git@github.com:Young-Architects/Elogix.git"
+REPO="https://github.com/Young-Architects/Elogix.git"
 APP_DIR="/opt/expendesk"
 APP_NAME="expendesk"
 PORT="3000"
@@ -60,32 +60,12 @@ else
   ok "4G swap enabled"
 fi
 
-# --------------------------------------------------------------- 3. deploy key
-say "GitHub access"
-mkdir -p /root/.ssh && chmod 700 /root/.ssh
-[ -f /root/.ssh/id_ed25519 ] || ssh-keygen -t ed25519 -C "vps-${APP_NAME}" -f /root/.ssh/id_ed25519 -N "" >/dev/null
-# Pre-trust github.com so the clone cannot block on a host-key prompt.
-ssh-keygen -F github.com >/dev/null 2>&1 || ssh-keyscan -t ed25519 github.com >> /root/.ssh/known_hosts 2>/dev/null
-
-if ssh -T -o BatchMode=yes -o StrictHostKeyChecking=no git@github.com 2>&1 | grep -q "successfully authenticated"; then
-  skip "deploy key already registered"
-else
-  cat <<MSG
-
-  ------------------------------------------------------------------
-  Add this as a DEPLOY KEY (read-only) on the repo, then come back:
-
-    GitHub -> Young-Architects/Elogix -> Settings -> Deploy keys
-    -> Add deploy key -> paste -> leave "Allow write access" UNCHECKED
-
-MSG
-  cat /root/.ssh/id_ed25519.pub
-  echo
-  read -rp "  Press Enter once the key is added... " _
-  ssh -T -o BatchMode=yes -o StrictHostKeyChecking=no git@github.com 2>&1 \
-    | grep -q "successfully authenticated" || die "GitHub still refuses the key."
-  ok "deploy key works"
-fi
+# ------------------------------------------------------- 3. (no key needed)
+# The repo is public, so it clones over HTTPS with no credentials. The
+# earlier version of this script set up an SSH deploy key, which failed for
+# anyone who had not added one -- and was never necessary. If the repo is ever
+# made private, switch REPO back to the git@github.com: form and add a
+# read-only deploy key.
 
 # -------------------------------------------------------------------- 4. code
 say "Source"
